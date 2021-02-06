@@ -41,7 +41,31 @@ class SteamHeating(models.Model):
         return self.label
 
 
-class Carriage(models.Model):
+class DayPlanningType(models.Model):
+    label = models.CharField(max_length=200)
+    sorting = models.IntegerField()
+
+    def __str__(self):
+        return self.label
+
+
+class DayPlanningStatus(models.Model):
+    label = models.CharField(max_length=200)
+    sorting = models.IntegerField()
+
+    def __str__(self):
+        return self.label
+
+
+class VehicleType(models.Model):
+    label = models.CharField(max_length=200)
+    sorting = models.IntegerField()
+
+    def __str__(self):
+        return self.label
+
+
+class Vehicle(models.Model):
     label = models.CharField(max_length=200)
     historic_name = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
@@ -49,6 +73,7 @@ class Carriage(models.Model):
     image = models.ImageField(blank=True, null=True)
     gross_weight = models.FloatField(blank=True, null=True)
     seats = models.IntegerField(blank=True, null=True)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE)
     status = models.ForeignKey(CarriageStatus, on_delete=models.CASCADE)
     carriage_type = models.ForeignKey(CarriageType, on_delete=models.CASCADE)
     home = models.ForeignKey(CarriageHome, on_delete=models.CASCADE)
@@ -58,32 +83,38 @@ class Carriage(models.Model):
     axles_distance = models.FloatField(blank=True, null=True)
     length = models.FloatField(blank=True, null=True)
     manufacturer = models.CharField(max_length=200, blank=True)
-
-    def __str__(self):
-        return self.label
-
-
-class Engine(models.Model):
-    label = models.CharField(max_length=200)
-    historic_name = models.CharField(max_length=200, blank=True)
-    description = models.TextField(blank=True)
-    uic = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(null=True)
-    gross_weight = models.FloatField(blank=True)
     traction_25 = models.IntegerField(blank=True)
     traction_30 = models.IntegerField(blank=True)
     power_unit = models.ForeignKey(PowerUnit, on_delete=models.CASCADE)
     steam_heating = models.ForeignKey(SteamHeating, on_delete=models.CASCADE)
-    status = models.ForeignKey(CarriageStatus, on_delete=models.CASCADE)
-    carriage_type = models.ForeignKey(CarriageType, on_delete=models.CASCADE)
-    home = models.ForeignKey(CarriageHome, on_delete=models.CASCADE)
-    start_year = models.IntegerField(null=True)
-    last_revision = models.DateField(null=True)
-    next_revision = models.DateField(null=True)
     max_speed = models.IntegerField(blank=True)
     lup = models.CharField(max_length=200, blank=True)
-    length = models.FloatField(blank=True)
-    manufacturer = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.label
+
+
+class DayPlanning(models.Model):
+    label = models.CharField(max_length=200)
+    day_planning_type = models.ForeignKey(DayPlanningType, on_delete=models.CASCADE)
+    date = models.DateField()
+    status = models.ForeignKey(DayPlanningStatus, on_delete=models.CASCADE)
+    paid = models.BooleanField
+
+    def __str__(self):
+        return self.label
+
+
+class Train(models.Model):
+    label = models.CharField(max_length=200)
+    km = models.IntegerField(blank=True)
+    day_planning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.label
+
+
+class TrainConfiguration(models.Model):
+    engine = models.ForeignKey(Vehicle, null=True, on_delete=models.CASCADE)
+    train = models.ForeignKey(Train, on_delete=models.CASCADE)
+    sorting = models.IntegerField(blank=True)

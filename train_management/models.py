@@ -65,6 +65,22 @@ class VehicleType(models.Model):
         return self.label
 
 
+class PersonnelStatus(models.Model):
+    label = models.CharField(max_length=200)
+    sorting = models.IntegerField()
+
+    def __str__(self):
+        return self.label
+
+
+class FunctionType(models.Model):
+    label = models.CharField(max_length=200)
+    sorting = models.IntegerField()
+
+    def __str__(self):
+        return self.label
+
+
 class Vehicle(models.Model):
     label = models.CharField(max_length=200)
     historic_name = models.CharField(max_length=200, blank=True)
@@ -118,3 +134,22 @@ class TrainConfiguration(models.Model):
     engine = models.ForeignKey(Vehicle, null=True, on_delete=models.CASCADE)
     train = models.ForeignKey(Train, on_delete=models.CASCADE)
     sorting = models.IntegerField(blank=True)
+
+
+class Personnel(models.Model):
+    firstname = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    mobile_phone = models.CharField(max_length=200)
+    status = models.ForeignKey(PersonnelStatus, on_delete=models.CASCADE)
+    mobile_phone_public = models.BooleanField
+    date_of_birth = models.DateField
+
+    def __str__(self):
+        return "%s, %s" % (self.firstname, self.lastname)
+
+
+class Function(models.Model):
+    label = models.CharField(max_length=200)
+    label_short = models.CharField(max_length=10)
+    function_type = models.ForeignKey(FunctionType, on_delete=models.CASCADE)

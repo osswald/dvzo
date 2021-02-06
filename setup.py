@@ -11,6 +11,7 @@ DESCRIPTION = 'Betriebsplanung'
 URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
     'Django',
+    'gunicorn',
 ]
 TEST_REQUIRE = [
     'pytest',

@@ -1,3 +1,8 @@
+# for now ignore all migrations
+**/migrations/
+
+*.css
+*.css.map
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,vim,sublimetext,vscode,linux,windows,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,vim,sublimetext,vscode,linux,windows,macos

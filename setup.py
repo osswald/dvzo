@@ -13,6 +13,10 @@ REQUIRED = [
     'Django',
     'Pillow',
     'gunicorn',
+    'django-static-precompiler',
+    'libsass',
+    'django-compressor',
+    'django-sass-processor',
 ]
 TEST_REQUIRE = [
     'pytest',

@@ -1,0 +1,30 @@
+@import "variables";
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: $lighter-grey;
+
+  .login-container {
+    // background-color: $lighter-grey;
+    width: 700px;
+    margin-top: 100px;
+
+    form {
+      display: flex;
+      flex-direction: column; 
+      
+      input {
+        margin-top: 20px;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px black solid;
+
+        &:focus {
+          outline: none;
+          border: 2px solid $blue;
+        }
+      }
+    }
+  }
+}

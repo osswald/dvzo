@@ -1,0 +1,99 @@
+@import "variables";
+
+$nav-width: 350px;
+$nav-padding: 40px;
+
+html {
+  background-color: $lighter-grey;
+}
+
+#topbar {
+  width: 100%;
+  height: 100px;
+  background-color: $lighter-grey;
+
+  .top-logo {
+    margin: 40px 40px 10px 40px;
+    height: 50px;
+  }
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+
+  #sidenav {
+    width: $nav-width;
+    padding: $nav-padding;
+    min-height: calc(100vh - 60px);
+    background-color: $lighter-grey;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      font-size: 20px; 
+      text-decoration: none;
+      color: $dark-grey;
+      margin-bottom: 5px;
+      align-items: center;
+      display: flex;
+
+      &.open-close-btn {
+        display: none;
+      }
+
+      .material-icons {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  #main {
+    width: calc(100% - #{$nav-width});
+    background-color: $lighter-grey;
+    padding: $nav-padding;
+  }
+}
+
+.open-close-btn {
+  display: none; 
+}
+
+@media only screen and (max-height: 812px) {
+  #topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+
+    .top-logo {
+      margin: 5px 20px 5px 20px;
+      height: 50px;
+    }
+
+    a {
+      font-size: 20px; 
+      text-decoration: none;
+      color: $dark-grey;
+      margin-left: 20px;
+    }
+  }
+  #main-container {
+    #sidenav {
+      width: 100%;
+      display: none;
+      padding: 20px;
+
+      a.open-close-btn {
+        display: flex;
+      }
+    }
+    #main {
+      width: 100%;
+    }
+  }
+
+  .open-close-btn {
+    display: flex; 
+  }
+}

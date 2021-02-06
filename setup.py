@@ -12,6 +12,7 @@ URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
     'Django',
     'Pillow',
+    'gunicorn',
 ]
 TEST_REQUIRE = [
     'pytest',

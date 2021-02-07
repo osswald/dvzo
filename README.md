@@ -1,8 +1,17 @@
 # DVZO Betriebsplanung
+
 ## Beschreibung
-TO DO
+
+TODO
 
 ## Installation and run
+
+### Requirements
+
+- `pdflatex` for rendering the pdf files
+
+### Getting started
+
 ```
 git clone git@github.com:osswald/dvzo.git
 cd dvzo

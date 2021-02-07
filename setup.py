@@ -17,6 +17,7 @@ REQUIRED = [
     'libsass',
     'django-compressor',
     'django-sass-processor',
+    'django_tex',
 ]
 TEST_REQUIRE = [
     'pytest',

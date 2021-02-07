@@ -1,0 +1,51 @@
+\documentclass[titlepage]{article}
+
+  % language setup
+  \usepackage[utf8]{inputenc}
+  \usepackage[ngerman]{babel}
+  % use fancyhdr to style the header and footer
+  \usepackage[a4paper, total={5.5in, 8in}]{geometry}
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \usepackage{datetime}
+  % make it easy to add figures and tables
+  \usepackage{graphicx}
+  {% graphicspath %}
+  \usepackage{tabularx}
+  \usepackage{float}
+  % setup the appendix
+  \usepackage[toc,page]{appendix}
+  % allow an emergency stretch of 1em to avoid oversize errors
+  \emergencystretch=1em
+  % removing the [noframe] will show a frame for each box
+  \usepackage[noframe]{showframe}
+
+
+  \newdateformat{monthdayyeardate}{
+    \THEDAY. \monthname[\THEMONTH] \THEYEAR}
+
+  % setup fancy header
+  \pagestyle{fancy}
+  \fancyhf{}
+  \rhead{Top right text}
+  \lhead{\includegraphics[scale=.2]{dvzo-logo.png}}
+  \rfoot{Page \thepage}
+  \lfoot{\monthdayyeardate\today}
+
+  \begin{document}
+
+  \section{ {{- foo -}} }
+
+  \begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{| p{1cm} | X | p{6cm} |}
+      \hline
+        1 & Lorem
+          & Ipsum \\ \hline
+        2 & Dolorum
+          & Est \\ \hline
+    \end{tabularx}
+    \caption{Example Table}\label{tbl:example_table}
+  \end{table}
+
+  \end{document}

@@ -130,10 +130,20 @@ class Train(models.Model):
         return self.label
 
 
+class TextBlock(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.IntegerField(blank=True)
+    day_planning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
+    sorting = models.IntegerField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+
 class TrainConfiguration(models.Model):
     engine = models.ForeignKey(Vehicle, null=True, on_delete=models.CASCADE)
     train = models.ForeignKey(Train, on_delete=models.CASCADE)
-    sorting = models.IntegerField(blank=True)
+    sorting = models.IntegerField(blank=True, null=True)
 
 
 class Personnel(models.Model):

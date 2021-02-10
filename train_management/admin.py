@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Vehicle, DayPlanning, Train
-from .models import CarriageStatus, CarriageType, CarriageHome, SteamHeating, PowerUnit, VehicleType
+from .models import CarriageStatus, CarriageType, CarriageHome, SteamHeating, PowerUnit
 from .models import DayPlanningType, DayPlanningStatus
 
 

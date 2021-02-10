@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class CarriageStatus(models.Model):
@@ -57,14 +58,6 @@ class DayPlanningStatus(models.Model):
         return self.label
 
 
-class VehicleType(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
 class PersonnelStatus(models.Model):
     label = models.CharField(max_length=200)
     sorting = models.IntegerField()
@@ -82,14 +75,24 @@ class FunctionType(models.Model):
 
 
 class Vehicle(models.Model):
-    label = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = _("Vehicle")
+        verbose_name_plural = _("Vehicles")
+
+    class VehicleType(models.TextChoices):
+        ENGINE = "E", _("Engine")
+        CARRIAGE = "C", _("Carriage")
+
+    label = models.CharField(_("label"), max_length=200)
     historic_name = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     uic = models.CharField(max_length=200, blank=True)
     image = models.ImageField(blank=True, null=True)
     gross_weight = models.FloatField(blank=True, null=True)
     seats = models.IntegerField(blank=True, null=True)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE)
+    vehicle_type = models.CharField(_("vehicle type"),
+        max_length=1, choices=VehicleType.choices)
     status = models.ForeignKey(CarriageStatus, on_delete=models.CASCADE)
     carriage_type = models.ForeignKey(CarriageType, on_delete=models.CASCADE)
     home = models.ForeignKey(CarriageHome, on_delete=models.CASCADE)

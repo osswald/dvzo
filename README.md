@@ -1,6 +1,9 @@
 # DVZO Betriebsplanung
 ## Beschreibung
-TO DO
+Administrations-Software für die Planung und den Betrieb einer historischen Eisenbahn.
+* Verwaltung von Fahrzeugen (Loks und Wagen)
+* Verwaltung von Fahrtentagen mit einem oder mehreren Zügen (Komposition aus Fahrzeugen)
+* Berechnung der Zuglast der Züge
 
 ## Installation and run
 ```

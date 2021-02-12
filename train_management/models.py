@@ -2,70 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class CarriageStatus(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class CarriageType(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class CarriageHome(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class PowerUnit(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class SteamHeating(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class DayPlanningType(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class DayPlanningStatus(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
-class PersonnelStatus(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
 class FunctionType(models.Model):
     label = models.CharField(max_length=200)
     sorting = models.IntegerField()
@@ -84,6 +20,33 @@ class Vehicle(models.Model):
         ENGINE = "E", _("Engine")
         CARRIAGE = "C", _("Carriage")
 
+    class CarriageStatus(models.TextChoices):
+        AVAILABLE = "A", _("Available")
+        SERVICE = "S", _("In Servicing")
+        ASK = "B", _("Ask")
+
+    class CarriageType(models.TextChoices):
+        SEATS = "C", _("Seating Car")
+        GASTRO = "W", _("Waggon Restaurant")
+        CARGO = "H", _("Cargo")
+
+    class CarriageHome(models.TextChoices):
+        BAUMA = "B", _("Bauma")
+        USTER = "U", _("Uster")
+        WALD = "W", _("Wald ZH")
+
+    class PowerUnit(models.TextChoices):
+        STEAM = "S", _("Steam")
+        DIESEL = "D", _("Diesel")
+        ELECTRIC = "E", _("Electric")
+        DIESEL_ELECTRIC = "F", _("Diesel/Electric")
+
+    class SteamHeating(models.TextChoices):
+        NO = "A", _("No")
+        FRONT = "B", _("Front")
+        BACK = "C", _("Back")
+        FRONT_BACK = "D", _("Front and Back")
+
     label = models.CharField(_("label"), max_length=200)
     historic_name = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
@@ -93,9 +56,12 @@ class Vehicle(models.Model):
     seats = models.IntegerField(blank=True, null=True)
     vehicle_type = models.CharField(_("vehicle type"),
         max_length=1, choices=VehicleType.choices)
-    status = models.ForeignKey(CarriageStatus, on_delete=models.CASCADE)
-    carriage_type = models.ForeignKey(CarriageType, on_delete=models.CASCADE)
-    home = models.ForeignKey(CarriageHome, on_delete=models.CASCADE)
+    status = models.CharField(_("status"),
+                                  max_length=1, choices=CarriageStatus.choices)
+    carriage_type = models.CharField(_("carriage_type"),
+                                  max_length=1, choices=CarriageType.choices)
+    home = models.CharField(_("home"),
+                                  max_length=1, choices=CarriageHome.choices)
     start_year = models.IntegerField(blank=True, null=True)
     last_revision = models.DateField(blank=True, null=True)
     next_revision = models.DateField(blank=True, null=True)
@@ -104,8 +70,10 @@ class Vehicle(models.Model):
     manufacturer = models.CharField(max_length=200, blank=True)
     traction_25 = models.IntegerField(blank=True)
     traction_30 = models.IntegerField(blank=True)
-    power_unit = models.ForeignKey(PowerUnit, on_delete=models.CASCADE)
-    steam_heating = models.ForeignKey(SteamHeating, on_delete=models.CASCADE)
+    power_unit = models.CharField(_("power_unit"),
+                                  max_length=1, choices=PowerUnit.choices)
+    steam_heating = models.CharField(_("steam_heating"),
+                                  max_length=1, choices=SteamHeating.choices)
     max_speed = models.IntegerField(blank=True)
     lup = models.CharField(max_length=200, blank=True)
 
@@ -114,10 +82,23 @@ class Vehicle(models.Model):
 
 
 class DayPlanning(models.Model):
+
+    class DayPlanningStatus(models.TextChoices):
+        DRAFT = "D", _("Draft")
+        CONFIRMED = "C", _("Confirmed")
+        EXECUTED = "E", _("Executed")
+
+    class DayPlanningType(models.TextChoices):
+        SUNDAY = "S", _("Sunday")
+        EXTRA = "E", _("Extra")
+        OTHER = "O", _("Other")
+
     label = models.CharField(max_length=200)
-    day_planning_type = models.ForeignKey(DayPlanningType, on_delete=models.CASCADE)
+    day_planning_type = models.CharField(_("day_planning_type"),
+                                  max_length=1, choices=DayPlanningType.choices)
     date = models.DateField()
-    status = models.ForeignKey(DayPlanningStatus, on_delete=models.CASCADE)
+    status = models.CharField(_("status"),
+                                  max_length=1, choices=DayPlanningStatus.choices)
     paid = models.BooleanField
 
     def __str__(self):
@@ -150,11 +131,17 @@ class TrainConfiguration(models.Model):
 
 
 class Personnel(models.Model):
+
+    class PersonnelStatus(models.TextChoices):
+        ACTIVE = "A", _("Active")
+        INACTIVE = "I", _("Inactive")
+
     firstname = models.CharField(max_length=200)
     lastname = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     mobile_phone = models.CharField(max_length=200)
-    status = models.ForeignKey(PersonnelStatus, on_delete=models.CASCADE)
+    status = models.CharField(_("status"),
+                                  max_length=1, choices=PersonnelStatus.choices)
     mobile_phone_public = models.BooleanField
     date_of_birth = models.DateField
 
@@ -163,6 +150,15 @@ class Personnel(models.Model):
 
 
 class Function(models.Model):
+
+    class FunctionType(models.TextChoices):
+        TRAIN = "T", _("Train")
+        BAUMA = "B", _("Bauma")
+        NEUTHAL = "N", _("Neuthal")
+        BAERETSWIL = "X", _("Bäretswil")
+        HINWIL = "H", _("Hinwil")
+
     label = models.CharField(max_length=200)
     label_short = models.CharField(max_length=10)
-    function_type = models.ForeignKey(FunctionType, on_delete=models.CASCADE)
+    function_type = models.CharField(_("function_type"),
+                                  max_length=1, choices=FunctionType.choices)

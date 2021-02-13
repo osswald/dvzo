@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-13 15:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:16
+msgid "Vehicle"
+msgstr "Fahrzeug"
+
+#: models.py:17
+msgid "Vehicles"
+msgstr "Fahrzeuge"
+
+#: models.py:20
+msgid "Engine"
+msgstr "Triebfahrzeug"
+
+#: models.py:21
+msgid "Carriage"
+msgstr "Wagen"
+
+#: models.py:24
+msgid "Available"
+msgstr "Verfügbar"
+
+#: models.py:25
+msgid "In Servicing"
+msgstr "Im Unterhalt"
+
+#: models.py:26
+msgid "Ask"
+msgstr "Nachfragen"
+
+#: models.py:29
+msgid "Seating Car"
+msgstr "Sitzplatzwagen"
+
+#: models.py:30
+msgid "Waggon Restaurant"
+msgstr "Speisewagen"
+
+#: models.py:31
+msgid "Cargo"
+msgstr "Güterwagen"
+
+#: models.py:34 models.py:156
+msgid "Bauma"
+msgstr "Bauma"
+
+#: models.py:35
+msgid "Uster"
+msgstr "Uster"
+
+#: models.py:36
+msgid "Wald ZH"
+msgstr "Wald ZH"
+
+#: models.py:39
+msgid "Steam"
+msgstr "Dampf"
+
+#: models.py:40
+msgid "Diesel"
+msgstr "Diesel"
+
+#: models.py:41
+msgid "Electric"
+msgstr "Elektrisch"
+
+#: models.py:42
+msgid "Diesel/Electric"
+msgstr "Diesel/Elektrisch"
+
+#: models.py:45
+msgid "No"
+msgstr "Nein"
+
+#: models.py:46
+msgid "Front"
+msgstr "Vorne"
+
+#: models.py:47
+msgid "Back"
+msgstr "Hinten"
+
+#: models.py:48
+msgid "Front and Back"
+msgstr "Vorne und hinten"
+
+#: models.py:50 models.py:96 models.py:109 models.py:161
+msgid "label"
+msgstr "Bezeichnung"
+
+#: models.py:51
+msgid "historic_name"
+msgstr "Historische Bezeichnung"
+
+#: models.py:52
+msgid "description"
+msgstr "Beschreibung"
+
+#: models.py:53
+msgid "UIC"
+msgstr "UIC"
+
+#: models.py:54
+msgid "image"
+msgstr "Bild"
+
+#: models.py:55
+msgid "gross_weight"
+msgstr "Bruttogewicht (t)"
+
+#: models.py:56
+msgid "seats"
+msgstr "Sitzplätze"
+
+#: models.py:57
+msgid "vehicle type"
+msgstr "Fahrzeugtyp"
+
+#: models.py:59 models.py:100 models.py:143
+msgid "status"
+msgstr "Status"
+
+#: models.py:61
+#, fuzzy
+#| msgid "Carriage"
+msgid "carriage_type"
+msgstr "Wagen"
+
+#: models.py:63
+msgid "home"
+msgstr ""
+
+#: models.py:65
+msgid "start year"
+msgstr "Inbetriebnahme (Jahr)"
+
+#: models.py:66
+msgid "last revision"
+msgstr "Letze Revision"
+
+#: models.py:67
+msgid "next revision"
+msgstr "Nächste Revision"
+
+#: models.py:68
+msgid "axles distance"
+msgstr "Achsabstand"
+
+#: models.py:69
+msgid "length"
+msgstr "Länge"
+
+#: models.py:70
+msgid "manufacturer"
+msgstr "Hersteller"
+
+#: models.py:71
+msgid "traction 25 permille"
+msgstr "Zugkraft 25 ‰ Steigung"
+
+#: models.py:72
+msgid "traction 30 permille"
+msgstr "Zugkraft 30 ‰ Steigung"
+
+#: models.py:73
+msgid "power_unit"
+msgstr "Antrieb"
+
+#: models.py:75
+msgid "steam_heating"
+msgstr "Dampfheizung"
+
+#: models.py:77
+msgid "maximum speed"
+msgstr "vMax"
+
+#: models.py:78
+msgid "length over bumper"
+msgstr "Länge über Puffer"
+
+#: models.py:87
+msgid "Draft"
+msgstr "Anfrage"
+
+#: models.py:88
+msgid "Confirmed"
+msgstr "Bestätigt"
+
+#: models.py:89
+msgid "Executed"
+msgstr "Durchgeführt"
+
+#: models.py:92
+msgid "Sunday"
+msgstr "Fahrtensonntag"
+
+#: models.py:93
+msgid "Extra"
+msgstr "Extrafahrt"
+
+#: models.py:94
+msgid "Other"
+msgstr "Andere"
+
+#: models.py:97
+msgid "day_planning_type"
+msgstr "Tagesplanungs-Typ"
+
+#: models.py:99
+msgid "date"
+msgstr "Datum"
+
+#: models.py:102
+msgid "paid"
+msgstr "Bezahlt"
+
+#: models.py:110
+msgid "km"
+msgstr "km"
+
+#: models.py:118
+msgid "title"
+msgstr "Titel"
+
+#: models.py:119
+msgid "content"
+msgstr "Inhalt"
+
+#: models.py:121 models.py:130
+msgid "sorting"
+msgstr "Sortierung"
+
+#: models.py:136
+msgid "Active"
+msgstr "Aktiv"
+
+#: models.py:137
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: models.py:139
+msgid "firstname"
+msgstr "Vorname"
+
+#: models.py:140
+msgid "lastname"
+msgstr "Nachname"
+
+#: models.py:141
+msgid "email"
+msgstr "E-Mail"
+
+#: models.py:142
+msgid "mobile phone"
+msgstr "Mobiltelefon"
+
+#: models.py:145
+msgid "mobile phone publicly available"
+msgstr "Mobiltelefon darf publiziert werden"
+
+#: models.py:146
+msgid "date of birth"
+msgstr "Geburtsdatum"
+
+#: models.py:155
+msgid "Train"
+msgstr "Zug"
+
+#: models.py:157
+msgid "Neuthal"
+msgstr "Neuthal"
+
+#: models.py:158
+msgid "Bäretswil"
+msgstr "Bäretswil"
+
+#: models.py:159
+msgid "Hinwil"
+msgstr "Hinwil"
+
+#: models.py:162
+#, fuzzy
+#| msgid "label"
+msgid "label short"
+msgstr "Bezeichnung"
+
+#: models.py:163
+msgid "function_type"
+msgstr "Funktionstyp"

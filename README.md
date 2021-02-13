@@ -15,6 +15,13 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## l10n
+```
+cd <APP>
+django-admin makemessages -l de_CH
+python manage.py compilemessage
+```
+
 ## Docker
 
 ```

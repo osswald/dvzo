@@ -14,7 +14,7 @@
       <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
       <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
       <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
-      <th data-field="vehicles" data-sortable="true">{% translate "Vehicles" %}</th>
+      <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
     </tr>
   </thead>
 </table>
@@ -29,9 +29,9 @@
         vehicleHtml = ""
         day.vehicles.forEach((vehicle) => {
           if (vehicle.vehicle_type === "carriage") {
-            vehicleHtml += "carriage";
+            vehicleHtml += `<span class="badge bg-warning">${vehicle.vehicle_label}</span>&ensp;`;
           } else if (vehicle.vehicle_type === "engine") {
-            vehicleHtml += "engine";
+            vehicleHtml += `<span class="badge bg-success">${vehicle.vehicle_label}</span>&ensp;`;
           } else {
             console.log("unknown vehicle type");
           }

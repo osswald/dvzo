@@ -2,11 +2,16 @@
 {% load i18n %}
 
 {% block content %}
-<h1>Some injected example text</h1>
+<h1>{% translate "Day Planning" %}</h1>
 
 <button id="button" class="btn btn-secondary">getSelections</button>
 
-<table id="dashboardTable" class="table table-striped table-hover">
+<table
+  id="dashboardTable"
+  class="table table-striped table-hover"
+  data-sort-name="date"
+  data-sort-order="asc"
+  >
   <thead>
     <tr>
       <th data-field="state" data-checkbox="true">ID</th>
@@ -18,6 +23,8 @@
     </tr>
   </thead>
 </table>
+
+<button id="button" class="btn btn-secondary">{% translate "New day planning" %}</button>
 
 <script>
   var $table = $('#dashboardTable');

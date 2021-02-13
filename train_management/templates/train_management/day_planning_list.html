@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Some injected example text</h1>
+
+<button id="button" class="btn btn-secondary">getSelections</button>
+
+<table id="dashboardTable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true">ID</th>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+      <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
+      <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
+      <th data-field="vehicles" data-sortable="true">{% translate "Vehicles" %}</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#dashboardTable');
+  var $button = $('#button');
+
+  function remoddleData(data) {
+    dataOut = [];
+    data.forEach((day) => {
+        vehicleHtml = ""
+        day.vehicles.forEach((vehicle) => {
+          if (vehicle.vehicle_type === "carriage") {
+            vehicleHtml += "carriage";
+          } else if (vehicle.vehicle_type === "engine") {
+            vehicleHtml += "engine";
+          } else {
+            console.log("unknown vehicle type");
+          }
+        });
+        day.vehicles = vehicleHtml;
+        dataOut.push(day);
+    });
+    return dataOut;
+  }
+
+  $(function() {
+    $.ajax({url: "day-plannings", success: function(result){
+
+      $table.bootstrapTable({data: remoddleData(result)})
+    }});
+  })
+
+  $(function() {
+    $button.click(function () {
+      alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+    })
+  })
+</script>
+{% endblock content %}

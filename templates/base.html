@@ -42,9 +42,9 @@
       <div id="sidenav">
         <a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
           <span class="material-icons">close</span>Close</a>
-        <a href="#"><span class="material-icons">logout</span>Logout</a>
-        <a href="#"><span class="material-icons">home</span>Home</a>
-        <a href="#"><span class="material-icons">event</span>Tagesplanung</a>
+        <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>
+        <a href="{% url 'dashboard' %}"><span class="material-icons">home</span>Home</a>
+        <a href="{% url 'day-planning-list' %}"><span class="material-icons">event</span>Tagesplanung</a>
         <a href="#"><span class="material-icons">tram</span>Fahrzeuge</a>
       </div>
 

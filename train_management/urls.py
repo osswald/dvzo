@@ -18,7 +18,6 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
-    path('login', views.login, name='login'),
     path('day-plannings', views.get_day_planning_data, name='day-plannings'),
     path('day-planning-list', views.day_planning_list, name='day-planning-list'),
 ]

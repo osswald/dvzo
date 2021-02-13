@@ -3,7 +3,7 @@ from .models import Vehicle, DayPlanning, Train
 
 
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('label', 'type', 'uic', 'status')
+    list_display = ('label', 'vehicle_type', 'uic', 'status')
 
 
 admin.site.register(Vehicle, VehicleAdmin)

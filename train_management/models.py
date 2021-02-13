@@ -121,6 +121,11 @@ class Train(models.Model):
     def __str__(self):
         return self.label
 
+    @property
+    def vehicles(self):
+        return Vehicle.objects.filter(
+            trainconfiguration__train=self).order_by('trainconfiguration__sorting')
+
 
 class TextBlock(models.Model):
 

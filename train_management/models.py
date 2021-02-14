@@ -28,6 +28,7 @@ class Vehicle(models.Model):
     class CarriageType(models.TextChoices):
         SEAT = "seat", _("Seating Car")
         GASTRO = "gastro", _("Waggon Restaurant")
+        LUGGAGE = "luggage", _("Luggage")
         CARGO = "cargo", _("Cargo")
 
     class Home(models.TextChoices):

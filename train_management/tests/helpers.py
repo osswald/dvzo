@@ -11,6 +11,10 @@ class SetupHelper:
         self.peter_waggon = None
         self.emma_waggon = None
         self.lisa_waggon = None
+        self.BC4563 = None
+        self.C6109 = None
+        self.WR109 = None
+        self.F202 = None
 
     @staticmethod
     def get_day_planning(date_str="2021-02-13", label="Default label dayplanning"):
@@ -147,3 +151,86 @@ class SetupHelper:
             max_speed=500,
         )
         self.elisabeth_lok.save()
+
+        self.BC4563 = Vehicle(
+            label="BC4563",
+            historic_name="BC4563",
+            description="Grüner Wagen mit 2. und 3. Klasse",
+            uic="55 85 2429 101-7",
+            gross_weight=15,
+            seats=45,
+            vehicle_type=Vehicle.VehicleType.CARRIAGE,
+            status=Vehicle.Status.AVAILABLE,
+            carriage_type=Vehicle.CarriageType.SEAT,
+            home=Vehicle.Home.BAUMA,
+            start_year=1886,
+            last_revision=date.fromisoformat("2018-10-24"),
+            next_revision=date.fromisoformat("2026-10-24"),
+            axles_distance=5,
+            length=12.07,
+            manufacturer="SIG",
+            max_speed=60,
+        )
+        self.BC4563.save()
+
+        self.C6109 = Vehicle(
+            label="C6109",
+            historic_name="C6109",
+            description="Grüner Wagen mit 3. Klasse",
+            uic="55 85 2803 102-1",
+            gross_weight=20,
+            seats=60,
+            vehicle_type=Vehicle.VehicleType.CARRIAGE,
+            status=Vehicle.Status.AVAILABLE,
+            carriage_type=Vehicle.CarriageType.SEAT,
+            home=Vehicle.Home.BAUMA,
+            start_year=1913,
+            last_revision=date.fromisoformat("2014-02-13"),
+            next_revision=date.fromisoformat("2022-02-13"),
+            axles_distance=9.2,
+            length=14.6,
+            manufacturer="SWS",
+            max_speed=60,
+        )
+        self.C6109.save()
+
+        self.WR109 = Vehicle(
+            label="WR109",
+            historic_name="WR109",
+            description="Waggon Restaurant",
+            uic="55 85 8803 109-3",
+            gross_weight=19,
+            seats=40,
+            vehicle_type=Vehicle.VehicleType.CARRIAGE,
+            status=Vehicle.Status.AVAILABLE,
+            carriage_type=Vehicle.CarriageType.SEAT,
+            home=Vehicle.Home.BAUMA,
+            start_year=1912,
+            last_revision=date.fromisoformat("2019-05-04"),
+            next_revision=date.fromisoformat("2027-05-04"),
+            axles_distance=8,
+            length=13.29,
+            manufacturer="SIG",
+            max_speed=60,
+        )
+        self.WR109.save()
+
+        self.F202 = Vehicle(
+            label="F202",
+            historic_name="F405",
+            description="Gepäckwagen",
+            uic="55 85 9603 202-6",
+            gross_weight=19,
+            vehicle_type=Vehicle.VehicleType.CARRIAGE,
+            status=Vehicle.Status.AVAILABLE,
+            carriage_type=Vehicle.CarriageType.LUGGAGE,
+            home=Vehicle.Home.BAUMA,
+            start_year=1891,
+            last_revision=date.fromisoformat("2015-11-01"),
+            next_revision=date.fromisoformat("2023-11-01"),
+            axles_distance=4,
+            length=8.64,
+            manufacturer="SIG",
+            max_speed=40,
+        )
+        self.F202.save()

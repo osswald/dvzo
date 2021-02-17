@@ -24,8 +24,8 @@
   <body>
     <div class="login-container">
       <h1>Login</h1>
-      <form action="login" method="POST">{% csrf_token %}
-        <input id="login-email" type="email" name="email" placeholder="Email" required="true">
+      <form method="post">{% csrf_token %}
+        <input id="login-username" type="text" name="username" placeholder="Username" required="true">
         <input id="login-password" type="password" name="password" placeholder="Password" required="true">
         <input id="login-submit" type="submit" name="submit" value="Login">
       </form>

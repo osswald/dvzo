@@ -28,7 +28,7 @@
       <tr>
         <td></td>
         <td>{{ row.id }}</td>
-        <td>{{ row.label }}</td>
+        <td><a href={% url "day-planning-detail" day_planning=row.id %}>{{ row.label }}</a></td>
         <td>{{ row.date }}</td>
         <td>{{ row.type }}</td>
         <td>

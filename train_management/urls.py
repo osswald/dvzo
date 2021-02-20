@@ -20,4 +20,6 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('day-plannings', views.get_day_planning_data, name='day-plannings'),
     path('day-planning-list', views.day_planning_list, name='day-planning-list'),
+    path('day-planning-detail/<int:day_planning>', views.day_planning_detail,
+         name='day-planning-detail'),
 ]

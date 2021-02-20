@@ -20,6 +20,14 @@ def day_planning_list(request):
     return render(request, "train_management/day_planning_list.html", {'data': data})
 
 
+@login_required
+def day_planning_detail(request, day_planning):
+    day_planning = DayPlanning.objects.get(id=day_planning)
+    return render(
+        request, "train_management/day_planning_detail.html",
+        {'day_planning': day_planning})
+
+
 def get_day_planning_data():
     plannings_out = []
     day_plannings = DayPlanning.objects.all()

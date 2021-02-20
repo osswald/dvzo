@@ -16,11 +16,11 @@ def dashboard(request):
 
 @login_required
 def day_planning_list(request):
-    return render(request, "train_management/day_planning_list.html")
+    data = get_day_planning_data()
+    return render(request, "train_management/day_planning_list.html", {'data': data})
 
 
-@login_required
-def get_day_planning_data(request):
+def get_day_planning_data():
     plannings_out = []
     day_plannings = DayPlanning.objects.all()
     for day_planning in day_plannings:
@@ -43,5 +43,4 @@ def get_day_planning_data(request):
             }
             plannings_out.append(planning)
 
-    return HttpResponse(
-        json.dumps(plannings_out), content_type='application/json')
+    return plannings_out

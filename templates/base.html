@@ -26,7 +26,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css" />
     <link href="{% sass_src 'css/base.scss' %}" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
     <title>DVZO Management</title>
@@ -39,7 +38,9 @@
       <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
     </div>
     <div id="main-container">
+
       <div id="sidenav">
+        <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
         <a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
           <span class="material-icons">close</span>Close</a>
         <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>
@@ -49,6 +50,7 @@
       </div>
 
       <div id="main">
+        <div id="top-nav"></div>
         {% block content %}{% endblock %}
       </div>
     </div>

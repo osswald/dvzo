@@ -1,65 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Some injected example text</h1>
+<h1>DVZO Dashboard</h1>
 
-<button id="button" class="btn btn-secondary">getSelections</button>
+<div class="container white-container">
+  Welcome to the DVZO Dashboard
+</div>
 
-<table id="dashboardTable" class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true">ID</th>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
-
-<script>
-  var $table = $('#dashboardTable')
-  var $button = $('#button')
-
-  $(function() {
-    var data = [
-      {
-        'id': 0,
-        'name': 'Item 0',
-        'price': '$0'
-      },
-      {
-        'id': 1,
-        'name': 'Item 1',
-        'price': '$1'
-      },
-      {
-        'id': 2,
-        'name': 'Item 2',
-        'price': '$2'
-      },
-      {
-        'id': 3,
-        'name': 'Item 3',
-        'price': '$3'
-      },
-      {
-        'id': 4,
-        'name': 'Item 4',
-        'price': '$4'
-      },
-      {
-        'id': 5,
-        'name': 'Item 5',
-        'price': '$5'
-      }
-    ]
-    $table.bootstrapTable({data: data})
-  })
-
-  $(function() {
-    $button.click(function () {
-      alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
-    })
-  })
-</script>
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.test import Client
 from train_management.tests.helpers import SetupHelper
 from train_management.models import Train
+from train_management.views import get_day_planning_data
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -17,9 +18,8 @@ class AnimalTestCase(TestCase):
         train_1 = setup_helper.get_train(day_planning_1)
         setup_helper.create_train_config(train_1)
 
-    def test_rest_endpoint_to_get_dayplanning(self):
-        response = self.client.get(reverse('day-plannings'))
-
+    def test_getting_dayplanning_data(self):
+        actual_data = get_day_planning_data()
         expected = [
             {
                 'id': 1,
@@ -47,8 +47,7 @@ class AnimalTestCase(TestCase):
             }
         ]
 
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.json(), expected)
+        self.assertEquals(actual_data, expected)
 
     def login(self):
         self.credentials = {

@@ -4,52 +4,7 @@
 <h1>DVZO Dashboard</h1>
 
 <div class="container white-container">
-
-  <button id="button" class="btn btn-secondary">getSelections</button>
-  <table
-    id="dashboardTable"
-    data-toggle="table" 
-    data-classes="table table-hover table-condensed"
-    data-striped="true"
-    data-sort-name="Quality"
-    data-sort-order="desc"
-    >
-    <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true">State</th>
-        <th data-field="index" data-visible="false">Index</th>
-        <th data-field="name" data-sortable="true">Name</th>
-        <th data-field="quality" data-sortable="true">Quality</th>
-        <th data-field="quantity" >Quantity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td>1</td>
-        <td>Wheat</td>
-        <td>Good</td>
-        <td>200 Bags</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>2</td>
-        <td>Rice</td>
-        <td>Good</td>
-        <td>100 Bags</td>
-      </tr>
-    </tbody>    
-  </table>
+  Welcome to the DVZO Dashboard
 </div>
 
-<script>
-  var $table = $('#dashboardTable')
-  var $button = $('#button')
-
-  $(function() {
-      $button.click(function () {
-          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
-        })
-    })
-</script>
 {% endblock content %}

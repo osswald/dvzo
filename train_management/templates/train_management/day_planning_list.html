@@ -2,59 +2,61 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% translate "Day Planning" %}</h1>
+<div class="container">
+  <h1>{% translate "Day Planning" %}</h1>
 
-<div class="container white-container">
-  <table
-    id="dayPlanningListTable"
-    data-toggle="table" 
-    data-classes="table table-hover table-condensed"
-    data-striped="true"
-    data-sort-name="date"
-    data-sort-order="asc"
-    >
-    <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true">State</th>
-        <th data-field="id" data-visible="false">ID</th>
-        <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-        <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
-        <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
-        <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
-        <th data-field="actions" data-sortable="false"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in data %}
-      <tr>
-        <td></td>
-        <td>{{ row.id }}</td>
-        <td>{{ row.label }}</td>
-        <td>{{ row.date }}</td>
-        <td>{{ row.type }}</td>
-        <td>
-          {% for vehicle in row.vehicles %}
-          {% if vehicle.vehicle_type == "engine" %}
-          <span class="badge bg-success">{{ vehicle.vehicle_label }}</span>
-          {% elif vehicle.vehicle_type == "carriage" %}
-          <span class="badge bg-warning">{{ vehicle.vehicle_label }}</span>
-          {% else %}
-          peter
-          {% endif %}
-          {% endfor %}
-        </td>
-        <td>
-          <a href={% url "day-planning-detail" day_planning=row.id %}>
-            <span class="material-icons">edit</span>
-          </a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <br>
-  <button id="button" class="btn btn-secondary" disabled="disabled">{% translate "New day planning" %}</button>
-  <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+  <div class="container white-container">
+    <table
+      id="dayPlanningListTable"
+      data-toggle="table" 
+      data-classes="table table-hover table-condensed"
+      data-striped="true"
+      data-sort-name="date"
+      data-sort-order="asc"
+      >
+      <thead>
+        <tr>
+          <th data-field="state" data-checkbox="true">State</th>
+          <th data-field="id" data-visible="false">ID</th>
+          <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+          <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
+          <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
+          <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
+          <th data-field="actions" data-sortable="false"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          <td></td>
+          <td>{{ row.id }}</td>
+          <td>{{ row.label }}</td>
+          <td>{{ row.date }}</td>
+          <td>{{ row.type }}</td>
+          <td>
+            {% for vehicle in row.vehicles %}
+            {% if vehicle.vehicle_type == "engine" %}
+            <span class="badge bg-success">{{ vehicle.vehicle_label }}</span>
+            {% elif vehicle.vehicle_type == "carriage" %}
+            <span class="badge bg-warning">{{ vehicle.vehicle_label }}</span>
+            {% else %}
+            peter
+            {% endif %}
+            {% endfor %}
+          </td>
+          <td>
+            <a href={% url "day-planning-detail" day_planning=row.id %}>
+              <span class="material-icons">edit</span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <button id="button" class="btn btn-secondary" disabled="disabled">{% translate "New day planning" %}</button>
+    <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+  </div>
 </div>
 
 <script>

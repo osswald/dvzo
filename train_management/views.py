@@ -17,7 +17,8 @@ def dashboard(request):
 @login_required
 def day_planning_list(request):
     data = get_day_planning_data()
-    return render(request, "train_management/day_planning_list.html", {'data': data})
+    return render(
+        request, "train_management/day_planning_list.html", {'data': data})
 
 
 @login_required
@@ -41,7 +42,6 @@ def get_day_planning_data():
                 'vehicle_label': vehicle.label,
             } for vehicle in vehicles]
 
-            # current_vehicles = "<span class="badge bg-success\">Peter</span>"
             planning = {
                 'id': day_planning.id,
                 'label': day_planning.label,

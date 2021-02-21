@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for day_planning in data %}
+        {% for day_planning in day_plannings %}
         <tr>
           <td></td>
           <td>{{ day_planning.id }}</td>
@@ -48,7 +48,10 @@
             {% endfor %}
           </td>
           <td>
-            <a href={% url "day-planning-detail" day_planning=day_planning.id %}>
+            <a href={% url "day-planning-delete" pk=day_planning.id %}>
+              <span class="material-icons">delete</span>
+            </a>
+            <a href={% url "day-planning-detail" pk=day_planning.id %}>
               <span class="material-icons">edit</span>
             </a>
           </td>
@@ -57,7 +60,7 @@
       </tbody>
     </table>
     <br>
-    <button id="button" class="btn btn-secondary" disabled="disabled">{% translate "New day planning" %}</button>
+    <a href={% url "day-planning-create" %} class="btn btn-secondary" >{% translate "New day planning" %}</a>
     <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
   </div>
 </div>

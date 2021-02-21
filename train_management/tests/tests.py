@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.test import Client
 from train_management.tests.helpers import SetupHelper
 from train_management.models import Train
-from train_management.views import get_day_planning_data
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -17,37 +16,6 @@ class AnimalTestCase(TestCase):
         day_planning_1 = setup_helper.get_day_planning()
         train_1 = setup_helper.get_train(day_planning_1)
         setup_helper.create_train_config(train_1)
-
-    def test_getting_dayplanning_data(self):
-        actual_data = get_day_planning_data()
-        expected = [
-            {
-                'id': 1,
-                'label': 'Default label dayplanning',
-                'date': '2021-02-13',
-                'type': 'extra',
-                'vehicles': [
-                    {
-                        'vehicle_type': 'engine',
-                        'vehicle_label': 'Loki Elisabeth'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Lisa'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Peter'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Emma'
-                    }
-                ]
-            }
-        ]
-
-        self.assertEquals(actual_data, expected)
 
     def login(self):
         self.credentials = {

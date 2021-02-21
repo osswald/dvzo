@@ -18,7 +18,8 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
-    path('day-planning-list', views.day_planning_list, name='day-planning-list'),
-    path('day-planning-detail/<int:day_planning>', views.day_planning_detail,
-         name='day-planning-detail'),
+    path('dayplanning/', views.DayPlanningListView.as_view(), name='day-planning-list'),
+    path('dayplanning/<int:pk>/', views.DayPlanningUpdateView.as_view(), name='day-planning-detail'),
+    path('dayplanning/add/', views.DayPlanningCreateView.as_view(), name='day-planning-create'),
+    path('dayplanning/<int:pk>/delete/', views.DayPlanningDeleteView.as_view(), name='day-planning-delete'),
 ]

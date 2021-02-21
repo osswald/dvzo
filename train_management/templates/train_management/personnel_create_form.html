@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% translate "New Personnel" %}</h1>
+  <div class="container white-container">
+    <h2>{% translate "Stammdaten" %}</h2>
+    <form  method="post">
+      {% csrf_token %}
+      {{ form }}<br><br>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

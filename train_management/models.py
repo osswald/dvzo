@@ -104,6 +104,7 @@ class DayPlanning(models.Model):
     status = models.CharField(_("status"),
                                 max_length=80, choices=DayPlanningStatus.choices)
     paid = models.BooleanField(_("paid"))
+    text = models.CharField(_("Text"), max_length=5000, blank=True)
 
     def __str__(self):
         return self.label
@@ -126,21 +127,6 @@ class Train(models.Model):
     def vehicles(self):
         return Vehicle.objects.filter(
             trainconfiguration__train=self).order_by('trainconfiguration__sorting')
-
-
-class TextBlock(models.Model):
-
-    class Meta:
-        verbose_name = _("Text block")
-        verbose_name_plural = _("Text blocks")
-
-    title = models.CharField(_("title"), max_length=200)
-    content = models.IntegerField(_("content"), blank=True)
-    day_planning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
-    sorting = models.IntegerField(_("sorting"), blank=True)
-
-    def __str__(self):
-        return self.title
 
 
 class TrainConfiguration(models.Model):

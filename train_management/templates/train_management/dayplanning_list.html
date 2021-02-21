@@ -32,7 +32,7 @@
           <td>{{ day_planning.id }}</td>
           <td>{{ day_planning.label }}</td>
           <td>{{ day_planning.date }}</td>
-          <td>{{ day_planning.day_planning_type }}</td>
+          <td>{{ day_planning.get_day_planning_type_display }}</td>
           <td>
             {% for train in day_planning.train_set.all %}
                 {% for vehicle in train.vehicles %}

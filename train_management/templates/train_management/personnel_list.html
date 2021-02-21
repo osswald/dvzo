@@ -35,9 +35,9 @@
         <td>{{ personnel.firstname }}</td>
         <td>
           {% if personnel.status == "active" %}
-          <span class="badge bg-success">{{ personnel.status }}</span>
+          <span class="badge bg-success">{{ personnel.get_status_display }}</span>
           {% elif personnel.status == "inactive" %}
-          <span class="badge bg-danger">{{ personnel.status }}</span>
+          <span class="badge bg-danger">{{ personnel.get_status_display }}</span>
           {% else %}
           {{ personnel.status }}
           {% endif %}

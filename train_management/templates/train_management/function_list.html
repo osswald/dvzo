@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <h1>{% translate "Function" %}</h1>
+
+  <div class="container white-container">
+    <table
+      id="functionListTable"
+      data-toggle="table"
+      data-classes="table table-hover table-condensed"
+      data-striped="true"
+      data-sort-name="label"
+      data-sort-order="asc"
+    >
+      <thead>
+      <tr>
+        <th data-field="state" data-checkbox="true">State</th>
+        <th data-field="id" data-visible="false">ID</th>
+        <th data-field="label_short" data-sortable="true">{% translate "Short name" %}</th>
+        <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+        <th data-field="function_type" data-sortable="true">{% translate "Type" %}</th>
+        <th data-field="actions" data-sortable="false"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for function in functions %}
+      <tr>
+        <td></td>
+        <td>{{ function.id }}</td>
+        <td>{{ function.label_short }}</td>
+        <td>{{ function.label }}</td>
+        <td>{{ function.get_function_type_display }}</td>
+        <td>
+          <a href={% url "function-delete" pk=function.id %}>
+              <span class="material-icons">delete</span>
+            </a>
+            <a href={% url "function-detail" pk=function.id %}>
+              <span class="material-icons">edit</span>
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <a href={% url "function-create" %} class="btn btn-secondary" >{% translate "New function" %}</a>
+    <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+  </div>
+</div>
+
+<script>
+  var $table = $('#functionListTable');
+  var $button = $('#daySelectionBtn');
+
+  $(function() {
+      $button.click(function () {
+          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+        })
+    })
+
+</script>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{{ object.label }}</h1>
+  <div class="container white-container">
+    <form action="{% url "function-detail" pk=object.id %}" method="post">
+      {% csrf_token %}
+      {{ form }}<br><br>
+      <input type="submit" value="Submit" class="btn btn-primary">
+      <a href={% url "function-list" %} class="btn btn-primary">{% translate "Back to list" %}</a>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

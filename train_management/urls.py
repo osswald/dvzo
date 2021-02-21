@@ -27,4 +27,9 @@ urlpatterns = [
     path('personnel/<int:pk>/', views.PersonnelUpdateView.as_view(), name='personnel-detail'),
     path('personnel/add/', views.PersonnelCreateView.as_view(), name='personnel-create'),
     path('personnel/<int:pk>/delete/', views.PersonnelDeleteView.as_view(), name='personnel-delete'),
+
+    path('function/', views.FunctionListView.as_view(), name='function-list'),
+    path('function/<int:pk>/', views.FunctionUpdateView.as_view(), name='function-detail'),
+    path('function/add/', views.FunctionCreateView.as_view(), name='function-create'),
+    path('function/<int:pk>/delete/', views.FunctionDeleteView.as_view(), name='function-delete'),
 ]

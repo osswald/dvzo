@@ -9,6 +9,7 @@ from django.forms import EmailInput
 
 from train_management.models import DayPlanning
 from train_management.models import Personnel
+from train_management.models import Function
 
 
 class DayPlanningForm(ModelForm):
@@ -50,3 +51,16 @@ class PersonnelForm(ModelForm):
     date_of_birth = DateField(
         widget=TextInput(attrs={'class': 'form-control', 'type': 'date'}))
 
+
+class FunctionForm(ModelForm):
+    class Meta:
+        model = Function
+        fields = ['label_short', 'label', 'function_type']
+
+    label_short = CharField(
+        widget=TextInput(attrs={'class': 'form-control'}))
+    label = CharField(
+        widget=TextInput(attrs={'class': 'form-control'}))
+    function_type = ChoiceField(
+        choices=Function.FunctionType.choices,
+        widget=Select(attrs={'class': 'form-control'}))

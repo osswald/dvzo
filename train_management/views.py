@@ -6,8 +6,10 @@ from django.utils.decorators import method_decorator
 
 from train_management.models import DayPlanning
 from train_management.models import Personnel
+from train_management.models import Function
 from train_management.forms import DayPlanningForm
 from train_management.forms import PersonnelForm
+from train_management.forms import FunctionForm
 
 
 @login_required
@@ -81,3 +83,37 @@ class PersonnelCreateView(generic.CreateView):
 class PersonnelDeleteView(generic.DeleteView):
     model = Personnel
     success_url = reverse_lazy("personnel-list")
+
+
+@method_decorator(login_required, name='dispatch')
+class FunctionListView(generic.ListView):
+    context_object_name = "functions"
+
+    def get_queryset(self):
+        return Function.objects.all()
+
+
+@method_decorator(login_required, name='dispatch')
+class FunctionUpdateView(generic.UpdateView):
+    model = Function
+    form_class = FunctionForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("function-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class FunctionCreateView(generic.CreateView):
+    model = Function
+    form_class = FunctionForm
+    template_name_suffix = "_create_form"
+
+    def get_success_url(self):
+        return reverse_lazy("function-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class FunctionDeleteView(generic.DeleteView):
+    model = Function
+    success_url = reverse_lazy("function-list")

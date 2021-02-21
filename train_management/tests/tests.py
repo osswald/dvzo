@@ -18,37 +18,6 @@ class AnimalTestCase(TestCase):
         train_1 = setup_helper.get_train(day_planning_1)
         setup_helper.create_train_config(train_1)
 
-    def test_getting_dayplanning_data(self):
-        actual_data = get_day_planning_data()
-        expected = [
-            {
-                'id': 1,
-                'label': 'Default label dayplanning',
-                'date': '2021-02-13',
-                'type': 'extra',
-                'vehicles': [
-                    {
-                        'vehicle_type': 'engine',
-                        'vehicle_label': 'Loki Elisabeth'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Lisa'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Peter'
-                    },
-                    {
-                        'vehicle_type': 'carriage',
-                        'vehicle_label': 'Wagen Emma'
-                    }
-                ]
-            }
-        ]
-
-        self.assertEquals(actual_data, expected)
-
     def login(self):
         self.credentials = {
             'username': 'testuser',

@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.test import Client
 from train_management.tests.helpers import SetupHelper
 from train_management.models import Train
-from train_management.views import get_day_planning_data
 from django.contrib.auth.models import User
 from django.urls import reverse
 

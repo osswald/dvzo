@@ -30,7 +30,7 @@ python manage.py compilemessage
 
 ```
 # build image
-docker build -t dvzo --build-args ADMIN_PW=secret .
+docker build -t dvzo --build-arg ADMIN_PW=secret .
 # create superuser inside the container
 docker run -it dvzo:latest sh
 # startup app

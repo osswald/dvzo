@@ -10,13 +10,13 @@ EMAIL = 'christoph.osswald@dvzo.ch'
 DESCRIPTION = 'Betriebsplanung'
 URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
-    'Django',
     'Pillow',
     'gunicorn',
     'django-static-precompiler',
     'libsass',
     'django-compressor',
     'django-sass-processor',
+    'Django',
 ]
 TEST_REQUIRE = [
     'pytest',

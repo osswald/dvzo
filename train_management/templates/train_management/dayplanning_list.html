@@ -53,19 +53,25 @@
             {% endfor %}
           </td>
           <td>
+            {% if perms.train_management.delete_dayplanning %}
             <a href={% url "day-planning-delete" pk=day_planning.id %}>
               <span class="material-icons">delete</span>
             </a>
+            {% endif %}
+            {% if perms.train_management.change_dayplanning %}
             <a href={% url "day-planning-detail" pk=day_planning.id %}>
               <span class="material-icons">edit</span>
             </a>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     <br>
+    {% if perms.train_management.add_dayplanning %}
     <a href={% url "day-planning-create" %} class="btn btn-secondary" >{% translate "New day planning" %}</a>
+    {% endif %}
     <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
   </div>
 </div>

@@ -103,7 +103,7 @@ class DayPlanning(models.Model):
     date = models.DateField(_("date"))
     status = models.CharField(_("status"),
                                 max_length=80, choices=DayPlanningStatus.choices)
-    paid = models.BooleanField(_("paid"))
+    paid = models.BooleanField(_("paid"), default=False)
     text = models.CharField(_("Text"), max_length=5000, blank=True)
 
     def __str__(self):

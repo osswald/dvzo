@@ -9,7 +9,7 @@
     <h2>{% translate "Stammdaten" %}</h2>
     <form action="{% url "personnel-detail" pk=object.id %}" method="post">
       {% csrf_token %}
-      {{ form }}<br><br>
+      {% include 'includes/form.html' %}
       <input type="submit" value="Submit" class="btn btn-primary">
       <a href={% url "personnel-list" %} class="btn btn-primary">{% translate "Back to list" %}</a>
     </form>

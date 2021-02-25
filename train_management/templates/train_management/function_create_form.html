@@ -8,7 +8,7 @@
   <div class="container white-container">
     <form  method="post">
       {% csrf_token %}
-      {{ form }}<br><br>
+      {% include 'includes/form.html' %}
       <input type="submit" value="Submit" class="btn btn-primary">
     </form>
   </div>

@@ -4,15 +4,19 @@
 {% block content %}
 
 <div class="container">
-  <h1>{{ object.label }}</h1>
-  <div class="container white-container">
-    <h2>{% translate "Stammdaten" %}</h2>
-    <form action="{% url "day-planning-detail" pk=object.id %}" method="post">
-      {% csrf_token %}
-      {% include 'includes/form.html' %}
-      <input type="submit" value="Submit" class="btn btn-primary">
-      <a href={% url "day-planning-list" %} class="btn btn-primary">{% translate "Back to list" %}</a>
-    </form>
+  <div class="row">
+    <div class="col">
+      <h1>{{ object.label }}</h1>
+      <div class="container white-container">
+        <h2>{% translate "Master data" %}</h2>
+        <form action='{% url "day-planning-update" pk=object.id %}' method="post">
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <a href='{% url "day-planning-detail" pk=object.id %}' class="btn btn-danger">{% translate "Cancel" %}</a>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 

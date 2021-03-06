@@ -26,6 +26,13 @@ class DayPlanningListView(generic.ListView):
 
 
 @method_decorator(login_required, name='dispatch')
+class DayPlanningDetailView(generic.DetailView):
+    model = DayPlanning
+    form_class = DayPlanningForm
+    template_name_suffix = "_detail_form"
+
+
+@method_decorator(login_required, name='dispatch')
 class DayPlanningUpdateView(generic.UpdateView):
     model = DayPlanning
     form_class = DayPlanningForm

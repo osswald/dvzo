@@ -124,18 +124,12 @@
     </div>
   </div>
   <div class="row row-cols-lg-2">
+    {% for train in object.train_set.all %}
     <div class="col">
       <div class="container white-container">
-        <h2>{% translate "Zug 1" %}</h2>
-        <p>
+        <h2>{{train.label}}</h2>
         <h3>Formation</h3>
-        <span class="badge bg-primary">Lok 2</span>
-        <span class="badge bg-dark">FZ202</span>
-        <span class="badge bg-secondary">BC123</span>
-        <span class="badge bg-secondary">C22</span>
-        <span class="badge bg-secondary">C58</span>
-        <span class="badge bg-danger">WR151</span>
-        </p>
+        {% include 'includes/train.html' train=train only %}
         <table class="table table-sm">
           <thead>
           <th>Funktion</th>
@@ -175,45 +169,8 @@
         <a href="#" class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
       </div>
     </div>
-    <div class="col">
-      <div class="container white-container">
-        <h2>{% translate "Zug 2" %}</h2>
+    {% endfor %}
 
-        <h3>Formation</h3>
-        <span class="badge bg-primary">Lok 2</span>
-        <span class="badge bg-dark">FZ202</span>
-        <span class="badge bg-secondary">BC123</span>
-        <span class="badge bg-secondary">C22</span>
-        <span class="badge bg-secondary">C58</span>
-        <span class="badge bg-danger">WR151</span>
-
-        <a href="#" class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="container white-container">
-        <h2>{% translate "Rangier" %}</h2>
-        <h3>Formation</h3>
-        <span class="badge bg-primary">Tem II</span>
-        <table class="table table-sm">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Lf</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Rangier</td>
-            <td>Max Muster</td>
-          </tr>
-          </tbody>
-        </table>
-        <a href="#" class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
-      </div>
-    </div>
   </div>
 </div>
 

@@ -44,7 +44,6 @@
         <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
         <a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
           <span class="material-icons">close</span>Close</a>
-        <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>
         <a href="{% url 'dashboard' %}"><span class="material-icons">home</span>Home</a>
         {% if perms.train_management.view_dayplanning %}
         <a href="{% url 'day-planning-list' %}"><span class="material-icons">event</span>Tagesplanung</a>
@@ -52,6 +51,7 @@
         <a href="#"><span class="material-icons">tram</span>Fahrzeuge</a>
         <a href="{% url 'personnel-list' %}"><span class="material-icons">person</span>Personal</a>
         <a href="{% url 'function-list' %}"><span class="material-icons">build</span>Funktionen</a>
+        <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>
       </div>
 
       <div id="main">

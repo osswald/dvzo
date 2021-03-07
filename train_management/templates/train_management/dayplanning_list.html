@@ -40,7 +40,7 @@
           <td>{{ day_planning.get_day_planning_type_display }}</td>
           <td>
             {% for train in day_planning.train_set.all %}
-                {% include 'includes/train.html' train=train only %}
+                {% include 'includes/train.html' %}
             <br>
             {% endfor %}
           </td>

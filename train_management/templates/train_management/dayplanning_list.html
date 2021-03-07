@@ -40,26 +40,18 @@
           <td>{{ day_planning.get_day_planning_type_display }}</td>
           <td>
             {% for train in day_planning.train_set.all %}
-                {% for vehicle in train.vehicles %}
-                    {% if vehicle.vehicle_type == "engine" %}
-                    <span class="badge bg-success">{{ vehicle.label }}</span>
-                    {% elif vehicle.vehicle_type == "carriage" %}
-                    <span class="badge bg-warning">{{ vehicle.label }}</span>
-                    {% else %}
-                    peter
-                    {% endif %}
-                {% endfor %}
+                {% include 'includes/train.html' train=train only %}
             <br>
             {% endfor %}
           </td>
           <td>
             {% if perms.train_management.delete_dayplanning %}
-            <a href={% url "day-planning-delete" pk=day_planning.id %}>
+            <a href='{% url "day-planning-delete" pk=day_planning.id %}'>
               <span class="material-icons">delete</span>
             </a>
             {% endif %}
             {% if perms.train_management.change_dayplanning %}
-            <a href={% url "day-planning-detail" pk=day_planning.id %}>
+            <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
               <span class="material-icons">edit</span>
             </a>
             {% endif %}
@@ -70,7 +62,7 @@
     </table>
     <br>
     {% if perms.train_management.add_dayplanning %}
-    <a href={% url "day-planning-create" %} class="btn btn-secondary" >{% translate "New day planning" %}</a>
+    <a href='{% url "day-planning-create" %}' class="btn btn-secondary" >{% translate "New day planning" %}</a>
     {% endif %}
     <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
   </div>

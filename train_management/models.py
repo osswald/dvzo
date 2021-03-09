@@ -128,6 +128,11 @@ class Train(models.Model):
         return Vehicle.objects.filter(
             trainconfiguration__train=self).order_by('trainconfiguration__sorting')
 
+    def set_composition(self, vehicles):
+        TrainConfiguration.objects.filter(train=self).delete()
+        for sorting, vehicle in enumerate(vehicles):
+            TrainConfiguration(train=self, vehicle=vehicle, sorting=sorting).save()
+
 
 class TrainConfiguration(models.Model):
 

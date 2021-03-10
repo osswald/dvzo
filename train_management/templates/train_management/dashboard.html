@@ -4,7 +4,17 @@
 <h1>DVZO Dashboard</h1>
 
 <div class="container white-container">
-  Welcome to the DVZO Dashboard
+  <h2>Was ist neu?</h2>
+  <ul>
+    <li>
+      Erstellen und bearbeiten von <a href="{% url 'day-planning-list' %}">Tagesplanungen.</a>
+      <ul>
+        <li>Züge können mit Formation hinzugefügt und bearbeitet werden.</li>
+        <li>Funktionen können hinzugefügt und bearbeitet werden.</li>
+        <li>Das Briefing kann erstellt werden.</li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 {% endblock content %}

@@ -2,6 +2,7 @@ from train_management.models import DayPlanning
 from train_management.models import Train
 from train_management.models import Vehicle
 from train_management.models import TrainConfiguration
+from train_management.models import Function
 from datetime import date
 
 
@@ -15,6 +16,20 @@ class SetupHelper:
         self.C6109 = None
         self.WR109 = None
         self.F202 = None
+        self.Bw_Neuthal = None
+        self.Bw_Baeretswil = None
+        self.Kobe_Baeretswil = None
+        self.Sw_Baeretswil = None
+        self.V_Hinwil = None
+        self.Hzf = None
+        self.Hzm = None
+        self.Hzs = None
+        self.K = None
+        self.Lf = None
+        self.Z = None
+        self.Sw_Bauma = None
+        self.Wr = None
+        self.RoWa_Bauma = None
 
     @staticmethod
     def get_day_planning(date_str="2021-02-13", label="Default label dayplanning"):
@@ -234,3 +249,116 @@ class SetupHelper:
             max_speed=40,
         )
         self.F202.save()
+
+    def create_function(self):
+        self.Bw_Neuthal = Function(
+            label="Barrierenwärter",
+            label_short="Bw",
+            sorting="10",
+            function_type=Function.FunctionType.NEUTHAL,
+        )
+        self.Bw_Neuthal.save()
+
+        self.Bw_Baeretswil = Function(
+            label="Barrierenwärter",
+            label_short="Bw",
+            sorting="30",
+            function_type=Function.FunctionType.BAERETSWIL,
+        )
+        self.Bw_Baeretswil.save()
+
+        self.Kobe_Baeretswil = Function(
+            label="Koordinator",
+            label_short="KoBe",
+            sorting="10",
+            function_type=Function.FunctionType.BAERETSWIL,
+        )
+        self.Kobe_Baeretswil.save()
+
+        self.Sw_Baeretswil = Function(
+            label="Stationswärter",
+            label_short="Sw",
+            sorting="20",
+            function_type=Function.FunctionType.BAERETSWIL,
+        )
+        self.Sw_Baeretswil.save()
+
+        self.V_Hinwil = Function(
+            label="Verkauf",
+            label_short="V",
+            sorting="10",
+            function_type=Function.FunctionType.HINWIL,
+        )
+        self.V_Hinwil.save()
+
+        self.Hzf = Function(
+            label="Heizer früh",
+            label_short="Hz f",
+            sorting="20",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Hzf.save()
+
+        self.Hzm = Function(
+            label="Heizer mittel",
+            label_short="Hz m",
+            sorting="30",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Hzm.save()
+
+        self.Hzs = Function(
+            label="Heizer spät",
+            label_short="Hz s",
+            sorting="40",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Hzs.save()
+
+        self.K = Function(
+            label="Kondukteuer",
+            label_short="K",
+            sorting="120",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.K.save()
+
+        self.Lf = Function(
+            label="Lokführer",
+            label_short="Lf",
+            sorting="10",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Lf.save()
+
+        self.Z = Function(
+            label="Zugchef",
+            label_short="Z",
+            sorting="110",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Z.save()
+
+        self.Sw_Bauma = Function(
+            label="Stationswärter",
+            label_short="Sw",
+            sorting="10",
+            function_type=Function.FunctionType.BAUMA,
+        )
+        self.Sw_Bauma.save()
+
+        self.Wr = Function(
+            label="Gastro",
+            label_short="WR",
+            sorting="210",
+            function_type=Function.FunctionType.TRAIN,
+        )
+        self.Wr.save()
+
+        self.RoWa_Bauma = Function(
+            label="Rottenwagen",
+            label_short="RoWa",
+            sorting="110",
+            function_type=Function.FunctionType.BAUMA,
+        )
+        self.RoWa_Bauma.save()

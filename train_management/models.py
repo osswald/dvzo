@@ -163,7 +163,7 @@ class Personnel(models.Model):
         return "%s, %s" % (self.firstname, self.lastname)
 
 
-class Function(models.Model):
+class DvzoFunction(models.Model):
 
     class Meta:
         verbose_name = _("Function")

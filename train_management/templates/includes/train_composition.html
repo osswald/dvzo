@@ -1,0 +1,21 @@
+{% if vehicle.vehicle_type == "engine" %}
+  <li data-id="{{vehicle.id}}" class="list-group-item bg-primary fw-bold text-light">
+    {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+  </li>
+{% elif vehicle.vehicle_type == "carriage" %}
+  {% if vehicle.carriage_type == "seat" %}
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-secondary fw-bold text-light">
+      {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+    </li>
+  {% elif vehicle.carriage_type == "gastro" %}
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-danger fw-bold text-light">
+      {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+    </li>
+  {% else %}
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-dark fw-bold text-light">
+      {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+    </li>
+  {% endif %}
+{% else %}
+  peter
+{% endif %}

@@ -166,7 +166,8 @@
           </tr>
           </tbody>
         </table>
-	<a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
+	    <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">{% translate "Edit train" %}</a>
+	    <a href='#' class="btn btn-primary">{% translate "Edit functions" %}</a>
       </div>
     </div>
     {% empty %}

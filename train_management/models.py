@@ -178,5 +178,6 @@ class Function(models.Model):
 
     label = models.CharField(_("label"), max_length=200)
     label_short = models.CharField(_("label short"), max_length=80)
+    sorting = models.IntegerField(null=True, blank=True)
     function_type = models.CharField(_("function_type"),
                                   max_length=80, choices=FunctionType.choices)

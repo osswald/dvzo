@@ -42,7 +42,7 @@
 
 
         <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary">{% translate "Edit master data" %}</a>
-
+        <a href={% url "train-composition-create" pk=object.id %} class="btn btn-primary">{% translate "Add new train" %}</a>
       </div>
     </div>
 
@@ -166,7 +166,7 @@
           </tr>
           </tbody>
         </table>
-        <a href="#" class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
+	<a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">{% translate "Zug bearbeiten" %}</a>
       </div>
     </div>
     {% empty %}

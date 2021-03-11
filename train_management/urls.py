@@ -33,4 +33,7 @@ urlpatterns = [
     path('function/<int:pk>/', views.FunctionUpdateView.as_view(), name='function-detail'),
     path('function/add/', views.FunctionCreateView.as_view(), name='function-create'),
     path('function/<int:pk>/delete/', views.FunctionDeleteView.as_view(), name='function-delete'),
+
+    path('traincomposition/<int:pk>/', views.TrainCompositionUpdateView.as_view(), name='train-composition-update'),
+    path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
 ]

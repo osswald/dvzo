@@ -4,8 +4,17 @@
 {% block content %}
 
 <div class="container">
-      <h1>{{ object.label }}</h1>
-        <a href='{% url "day-planning-list" %}' class="btn btn-primary">{% translate "Back to list" %}</a>
+  <h1>{{ object.label }}</h1>
+  <div class="container white-container">
+    <a href='{% url "day-planning-list" %}' class="btn btn-primary">
+      <i class="fas fa-list"></i>
+      {% translate "Back to list" %}
+    </a>
+    <a href="#" class="btn btn-primary disabled">
+      <i class="fas fa-print"></i>
+      {% translate "Briefing" %}
+    </a>
+  </div>
   <div class="row row-cols-lg-2">
     <div class="col">
       <div class="container white-container">
@@ -41,8 +50,14 @@
         </table>
 
 
-        <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary">{% translate "Edit master data" %}</a>
-        <a href={% url "train-composition-create" pk=object.id %} class="btn btn-primary">{% translate "Add new train" %}</a>
+        <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary">
+          <i class="far fa-edit"></i>
+          {% translate "Edit master data" %}
+        </a>
+        <a href='{% url "train-composition-create" pk=object.id %}' class="btn btn-primary">
+          <i class="fas fa-plus"></i>
+          {% translate "Add new train" %}
+        </a>
       </div>
     </div>
 
@@ -118,7 +133,10 @@
           </tr>
           </tbody>
         </table>
-        <a href="#" class="btn btn-primary">{% translate "Edit functions" %}</a>
+        <a href="#" class="btn btn-primary">
+          <i class="far fa-edit"></i>
+          {% translate "Edit functions" %}
+        </a>
       </div>
 
     </div>
@@ -132,8 +150,8 @@
         {% include 'includes/train.html'%}
         <table class="table table-sm">
           <thead>
-          <th>Funktion</th>
-          <th>Person</th>
+          <th style="width: 25%">Funktion</th>
+          <th style="width: 750%">Person</th>
           </thead>
           <tbody>
           <tr>
@@ -166,8 +184,81 @@
           </tr>
           </tbody>
         </table>
-	    <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">{% translate "Edit train" %}</a>
-	    <a href='#' class="btn btn-primary">{% translate "Edit functions" %}</a>
+        <table class="table table-sm">
+          <thead>
+          <th style="width: 25%">Fahrt</th>
+          <th style="width: 75%"></th>
+          </thead>
+          <tbody>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">428K</a></td>
+            <td>
+              <span class="fw-bold">BMA</span>
+              - <span class="fst-italic">NEU</span>
+              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
+              - <span class="fw-bold">HI</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">431K</a></td>
+            <td>
+              <span class="fw-bold">HI</span>
+              - <span class="fst-italic">ETH</span>
+              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
+              - <span class="fw-bold">BMA</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">450K</a></td>
+            <td>
+              <span class="fw-bold">BMA</span>
+              - <span class="fst-italic">NEU</span>
+              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
+              - <span class="fw-bold">HI</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">453K</a></td>
+            <td>
+              <span class="fw-bold">HI</span>
+              - <span class="fst-italic">ETH</span>
+              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
+              - <span class="fw-bold">BMA</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">460K</a></td>
+            <td>
+              <span class="fw-bold">BMA</span>
+              - <span class="fst-italic">NEU</span>
+              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
+              - <span class="fw-bold">HI</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="badge bg-secondary">463K</a></td>
+            <td>
+              <span class="fw-bold">HI</span>
+              - <span class="fst-italic">ETH</span>
+              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
+              - <span class="fw-bold">BMA</span>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+        <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">
+          <i class="far fa-edit"></i>
+          {% translate "Edit train" %}
+        </a>
+        <a href='#' class="btn btn-primary">
+          <i class="far fa-edit"></i>
+          {% translate "Edit functions" %}
+        </a>
+        <a href='#' class="btn btn-primary">
+          <i class="far fa-edit"></i>
+          {% translate "Edit schedule" %}
+        </a>
       </div>
     </div>
     {% empty %}

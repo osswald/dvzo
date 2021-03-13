@@ -17,15 +17,15 @@
   <div class="row row-cols-lg-2">
     <div class="col container white-container">
       <h2>{% translate "Selected vehicles" %}</h2>
-      <ul id="train" class="list-group">
+      <ul id="train" class="list-group" style="background-color: yellow">
         {% for vehicle in train.vehicles %}
           {% include 'includes/train_composition.html'%}
         {% endfor %}
       </ul>
     </div>
     <div class="col container white-container">
-      <h2>{% translate "Selected vehicles" %}</h2>
-      <ul id="vehicles" class="list-group">
+      <h2>{% translate "Available vehicles" %}</h2>
+      <ul id="vehicles" class="list-group" style="background-color: yellow">
         {% for vehicle in available_vehicles %}
           {% include 'includes/train_composition.html'%}
         {% endfor %}

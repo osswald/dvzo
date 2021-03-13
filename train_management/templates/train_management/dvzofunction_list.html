@@ -38,11 +38,11 @@
         <td>{{ function.label }}</td>
         <td>{{ function.get_function_type_display }}</td>
         <td>
-          <a href={% url "function-delete" pk=function.id %}>
-              <span class="material-icons">delete</span>
-            </a>
-            <a href={% url "function-detail" pk=function.id %}>
-              <span class="material-icons">edit</span>
+          <a href='{% url "function-delete" pk=function.id %}'>
+              <i class="fas fa-trash-alt text-danger"></i>
+            </a>&nbsp;
+            <a href='{% url "function-detail" pk=function.id %}'>
+              <i class="far fa-edit"></i>
             </a>
         </td>
       </tr>
@@ -50,7 +50,10 @@
       </tbody>
     </table>
     <br>
-    <a href={% url "function-create" %} class="btn btn-secondary" >{% translate "New function" %}</a>
+    <a href='{% url "function-create" %}' class="btn btn-secondary" >
+      <i class="fas fa-plus"></i>
+      {% translate "New function" %}
+    </a>
     <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
   </div>
 </div>

@@ -50,11 +50,11 @@
         <td>{{ personnel.email }}</td>
         <td>{{ personnel.mobile_phone }}</td>
         <td>
-          <a href={% url "personnel-delete" pk=personnel.id %}>
-              <span class="material-icons">delete</span>
-            </a>
-            <a href={% url "personnel-detail" pk=personnel.id %}>
-              <span class="material-icons">edit</span>
+          <a href='{% url "personnel-delete" pk=personnel.id %}'>
+              <i class="fas fa-trash-alt text-danger"></i>
+            </a>&nbsp;
+            <a href='{% url "personnel-detail" pk=personnel.id %}'>
+              <i class="far fa-edit"></i>
             </a>
         </td>
       </tr>
@@ -62,8 +62,11 @@
       </tbody>
     </table>
     <br>
-    <a href={% url "personnel-create" %} class="btn btn-secondary" >{% translate "New personnel" %}</a>
-    <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+    <a href='{% url "personnel-create" %}' class="btn btn-primary" >
+      <i class="fas fa-plus"></i>
+      {% translate "New personnel" %}
+    </a>
+    <button id="daySelectionBtn" class="btn btn-secondary disabled">tmpGetSelections</button>
   </div>
 </div>
 

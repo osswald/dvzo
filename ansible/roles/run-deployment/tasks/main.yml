@@ -16,16 +16,44 @@
 - name: Ensures /root/dvzo dir exists
   file: path=/root/dvzo state=directory
 
-- name: Copy docker-compose file to host
-  copy:
-    src: files/docker-compose.yml
-    dest: /root/dvzo/docker-compose.yml
-    owner: root
-    group: root
-    mode: '0644'
-    force: yes
-
-- name: Tear down existing services
+- name: Run using v2
   community.docker.docker_compose:
-    project_src: /root/dvzo
-    state: absent
+    project_name: /root/dvzo
+    definition:
+      version: "2"
+      networks:
+        dvzo_net:
+          driver: bridge
+      services:
+        dvzo_container:
+          image: osswald/dvzo:latest
+          container_name: dvzo_container
+          restart: unless-stopped
+          networks:
+            - dvzo_net
+          expose:
+            - 8080
+        dvzo_database:
+          image: postgres:13.2
+          container_name: dvzo_database
+          restart: unless-stopped
+          environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=password
+            - APP_DB_USER=docker
+            - APP_DB_PASS=docker
+            - APP_DB_NAME=docker
+          networks:
+            - dvzo_net
+          volumes:
+            - db-data:/var/lib/postgresql/data
+          ports:
+            - 5432:5432
+      volumes:
+        db-data:
+          driver: local
+  register: output
+
+- name: Check debug
+  ansible.builtin.debug:
+    var: output

@@ -1,0 +1,31 @@
+# vim:ft=ansible:
+- name: Upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: pip self-update
+  pip:
+    name: pip
+    state: latest
+
+- name: Install prerequisites (python packages)
+  pip:
+    name: ['docker', 'PyYAML', 'docker-compose']
+
+- name: Ensures /root/dvzo dir exists
+  file: path=/root/dvzo state=directory
+
+- name: Copy docker-compose file to host
+  copy:
+    src: files/docker-compose.yml
+    dest: /root/dvzo/docker-compose.yml
+    owner: root
+    group: root
+    mode: '0644'
+    force: yes
+
+- name: Tear down existing services
+  community.docker.docker_compose:
+    project_src: /root/dvzo
+    state: absent

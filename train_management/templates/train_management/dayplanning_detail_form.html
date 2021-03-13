@@ -10,7 +10,7 @@
       <i class="fas fa-list"></i>
       {% translate "Back to list" %}
     </a>
-    <a href="#" class="btn btn-primary disabled">
+    <a href='{% url "briefing-pdf" pk=object.id %}' class="btn btn-primary">
       <i class="fas fa-print"></i>
       {% translate "Briefing" %}
     </a>

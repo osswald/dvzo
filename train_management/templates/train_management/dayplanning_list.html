@@ -35,7 +35,11 @@
         <tr>
           <td></td>
           <td>{{ day_planning.id }}</td>
-          <td>{{ day_planning.label }}</td>
+          <td>
+            <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
+              {{ day_planning.label }}
+            </a>
+            </td>
           <td>{{ day_planning.date }}</td>
           <td>{{ day_planning.get_day_planning_type_display }}</td>
           <td>
@@ -47,12 +51,7 @@
           <td>
             {% if perms.train_management.delete_dayplanning %}
             <a href='{% url "day-planning-delete" pk=day_planning.id %}'>
-              <span class="material-icons">delete</span>
-            </a>
-            {% endif %}
-            {% if perms.train_management.change_dayplanning %}
-            <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
-              <span class="material-icons">edit</span>
+              <i class="fas fa-trash-alt text-danger"></i>
             </a>
             {% endif %}
           </td>
@@ -62,9 +61,12 @@
     </table>
     <br>
     {% if perms.train_management.add_dayplanning %}
-    <a href='{% url "day-planning-create" %}' class="btn btn-secondary" >{% translate "New day planning" %}</a>
+    <a href='{% url "day-planning-create" %}' class="btn btn-primary" >
+      <i class="fas fa-plus"></i>
+      {% translate "New day planning" %}
+    </a>
     {% endif %}
-    <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+    <button id="daySelectionBtn" class="btn btn-secondary disabled">tmpGetSelections</button>
   </div>
 </div>
 

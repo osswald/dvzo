@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 
 from train_management.models import DayPlanning
 from train_management.models import Personnel
-from train_management.models import Function
+from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
 from train_management.forms import DayPlanningForm
@@ -101,12 +101,12 @@ class FunctionListView(generic.ListView):
     context_object_name = "functions"
 
     def get_queryset(self):
-        return Function.objects.all()
+        return DvzoFunction.objects.all()
 
 
 @method_decorator(login_required, name='dispatch')
 class FunctionUpdateView(generic.UpdateView):
-    model = Function
+    model = DvzoFunction
     form_class = FunctionForm
     template_name_suffix = "_update_form"
 
@@ -116,7 +116,7 @@ class FunctionUpdateView(generic.UpdateView):
 
 @method_decorator(login_required, name='dispatch')
 class FunctionCreateView(generic.CreateView):
-    model = Function
+    model = DvzoFunction
     form_class = FunctionForm
     template_name_suffix = "_create_form"
 
@@ -126,7 +126,7 @@ class FunctionCreateView(generic.CreateView):
 
 @method_decorator(login_required, name='dispatch')
 class FunctionDeleteView(generic.DeleteView):
-    model = Function
+    model = DvzoFunction
     success_url = reverse_lazy("function-list")
 
 

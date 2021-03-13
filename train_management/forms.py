@@ -2,7 +2,7 @@ from django.forms import ModelForm
 
 from train_management.models import DayPlanning
 from train_management.models import Personnel
-from train_management.models import Function
+from train_management.models import DvzoFunction
 from train_management.models import Train
 
 
@@ -20,7 +20,7 @@ class PersonnelForm(ModelForm):
 
 class FunctionForm(ModelForm):
     class Meta:
-        model = Function
+        model = DvzoFunction
         fields = ['label_short', 'label', 'function_type']
 
 

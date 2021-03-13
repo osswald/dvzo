@@ -2,7 +2,7 @@ from train_management.models import DayPlanning
 from train_management.models import Train
 from train_management.models import Vehicle
 from train_management.models import TrainConfiguration
-from train_management.models import Function
+from train_management.models import DvzoFunction
 from datetime import date
 
 
@@ -251,114 +251,114 @@ class SetupHelper:
         self.F202.save()
 
     def create_function(self):
-        self.Bw_Neuthal = Function(
+        self.Bw_Neuthal = DvzoFunction(
             label="Barrierenwärter",
             label_short="Bw",
             sorting="10",
-            function_type=Function.FunctionType.NEUTHAL,
+            function_type=DvzoFunction.FunctionType.NEUTHAL,
         )
         self.Bw_Neuthal.save()
 
-        self.Bw_Baeretswil = Function(
+        self.Bw_Baeretswil = DvzoFunction(
             label="Barrierenwärter",
             label_short="Bw",
             sorting="30",
-            function_type=Function.FunctionType.BAERETSWIL,
+            function_type=DvzoFunction.FunctionType.BAERETSWIL,
         )
         self.Bw_Baeretswil.save()
 
-        self.Kobe_Baeretswil = Function(
+        self.Kobe_Baeretswil = DvzoFunction(
             label="Koordinator",
             label_short="KoBe",
             sorting="10",
-            function_type=Function.FunctionType.BAERETSWIL,
+            function_type=DvzoFunction.FunctionType.BAERETSWIL,
         )
         self.Kobe_Baeretswil.save()
 
-        self.Sw_Baeretswil = Function(
+        self.Sw_Baeretswil = DvzoFunction(
             label="Stationswärter",
             label_short="Sw",
             sorting="20",
-            function_type=Function.FunctionType.BAERETSWIL,
+            function_type=DvzoFunction.FunctionType.BAERETSWIL,
         )
         self.Sw_Baeretswil.save()
 
-        self.V_Hinwil = Function(
+        self.V_Hinwil = DvzoFunction(
             label="Verkauf",
             label_short="V",
             sorting="10",
-            function_type=Function.FunctionType.HINWIL,
+            function_type=DvzoFunction.FunctionType.HINWIL,
         )
         self.V_Hinwil.save()
 
-        self.Hzf = Function(
+        self.Hzf = DvzoFunction(
             label="Heizer früh",
             label_short="Hz f",
             sorting="20",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Hzf.save()
 
-        self.Hzm = Function(
+        self.Hzm = DvzoFunction(
             label="Heizer mittel",
             label_short="Hz m",
             sorting="30",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Hzm.save()
 
-        self.Hzs = Function(
+        self.Hzs = DvzoFunction(
             label="Heizer spät",
             label_short="Hz s",
             sorting="40",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Hzs.save()
 
-        self.K = Function(
+        self.K = DvzoFunction(
             label="Kondukteuer",
             label_short="K",
             sorting="120",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.K.save()
 
-        self.Lf = Function(
+        self.Lf = DvzoFunction(
             label="Lokführer",
             label_short="Lf",
             sorting="10",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Lf.save()
 
-        self.Z = Function(
+        self.Z = DvzoFunction(
             label="Zugchef",
             label_short="Z",
             sorting="110",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Z.save()
 
-        self.Sw_Bauma = Function(
+        self.Sw_Bauma = DvzoFunction(
             label="Stationswärter",
             label_short="Sw",
             sorting="10",
-            function_type=Function.FunctionType.BAUMA,
+            function_type=DvzoFunction.FunctionType.BAUMA,
         )
         self.Sw_Bauma.save()
 
-        self.Wr = Function(
+        self.Wr = DvzoFunction(
             label="Gastro",
             label_short="WR",
             sorting="210",
-            function_type=Function.FunctionType.TRAIN,
+            function_type=DvzoFunction.FunctionType.TRAIN,
         )
         self.Wr.save()
 
-        self.RoWa_Bauma = Function(
+        self.RoWa_Bauma = DvzoFunction(
             label="Rottenwagen",
             label_short="RoWa",
             sorting="110",
-            function_type=Function.FunctionType.BAUMA,
+            function_type=DvzoFunction.FunctionType.BAUMA,
         )
         self.RoWa_Bauma.save()

@@ -1,6 +1,6 @@
 @import "variables";
 
-$nav-width: 300px;
+$nav-width: 270px;
 $nav-padding: 40px;
 
 html {
@@ -144,4 +144,12 @@ h5 {
 
 p {
   font-size: 1em;
+}
+
+.dvzo-25 th:first-child {
+  width: 25%
+}
+
+.dvzo-50 th:first-child {
+  width: 50%
 }

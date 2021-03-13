@@ -10,6 +10,7 @@ from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
+
 from train_management.forms import DayPlanningForm
 from train_management.forms import PersonnelForm
 from train_management.forms import FunctionForm

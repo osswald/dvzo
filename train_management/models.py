@@ -2,14 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class FunctionType(models.Model):
-    label = models.CharField(max_length=200)
-    sorting = models.IntegerField()
-
-    def __str__(self):
-        return self.label
-
-
 class Vehicle(models.Model):
 
     class Meta:
@@ -186,3 +178,14 @@ class DvzoFunction(models.Model):
     sorting = models.IntegerField(null=True, blank=True)
     function_type = models.CharField(_("function_type"),
                                   max_length=80, choices=FunctionType.choices)
+
+
+class Mileage(models.Model):
+
+    class Meta:
+        verbose_name = _("Mileage")
+        verbose_name_plural = _("Mileages")
+
+    date = models.DateField(_("date"))
+    label = models.CharField(_("label"), max_length=200, blank=True)
+    train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)

@@ -1,0 +1,30 @@
+# vim:ft=ansible:
+- name: Upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: Install copr
+  package:
+    name: "dnf-command(copr)"
+    state: latest
+  become: yes
+
+- name: Enable caddy
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: "@caddy/caddy"
+
+- name: Install caddy
+  package:
+    name: caddy
+    state: latest
+  become: yes
+
+- name: Enable caddy server
+  service:
+    name: caddy
+    state: started
+    enabled: yes
+  become: yes

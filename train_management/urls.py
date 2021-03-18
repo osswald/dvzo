@@ -24,7 +24,7 @@ urlpatterns = [
     path('dayplanning/add/', views.DayPlanningCreateView.as_view(), name='day-planning-create'),
     path('dayplanning/<int:pk>/delete/', views.DayPlanningDeleteView.as_view(), name='day-planning-delete'),
 
-    path('dayplanning/<int:pk>/briefing', views.briefing_pdf, name='briefing-pdf'),
+    path('dayplanning/<int:pk>/briefing/', views.briefing_pdf, name='briefing-pdf'),
 
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),
     path('personnel/<int:pk>/', views.PersonnelUpdateView.as_view(), name='personnel-detail'),

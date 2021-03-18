@@ -40,11 +40,9 @@
           container_name: dvzo_database
           restart: unless-stopped
           environment:
-            - POSTGRES_USER=root
-            - POSTGRES_PASSWORD=password
-            - APP_DB_USER=docker
-            - APP_DB_PASS=docker
-            - APP_DB_NAME=docker
+            - POSTGRES_USER={{ dvzo_database.user }}
+            - POSTGRES_PASSWORD={{ dvzo_database.password }}
+            - POSTGRES_DB={{ dvzo_database.db_name }}
           networks:
             - dvzo_net
           volumes:

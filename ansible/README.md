@@ -10,5 +10,7 @@ Install docker-compose module:
 ## Setup Server
 
 ```
+ansible-vault decrypt ./inventories/prod/group_vars/all.yml
 ansible-playbook -i ./inventories/prod dvzo.yml [--check]
+ansible-vault encrypt ./inventories/prod/group_vars/all.yml
 ```

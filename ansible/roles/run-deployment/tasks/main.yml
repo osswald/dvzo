@@ -31,8 +31,10 @@
           restart: unless-stopped
           networks:
             - dvzo_net
+          ports:
+            - 8000:8000
           expose:
-            - 8080
+            - 8000
         dvzo_database:
           image: postgres:13.2
           container_name: dvzo_database

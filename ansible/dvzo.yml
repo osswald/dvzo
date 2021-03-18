@@ -6,3 +6,4 @@
       - install-docker
       - install-caddy
       - run-deployment
+      - setup-networking

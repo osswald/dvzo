@@ -184,6 +184,4 @@ def briefing_pdf(request, pk):
     template_name = 'latex/briefing.tex'
     dayplanning = DayPlanning.objects.get(pk=pk)
     context = {'dayplanning': dayplanning}
-    print("Hallo Marcel")
-    # print(next(dayplanning.train_set.all()).last)
     return render_to_pdf(request, template_name, context, filename='briefing.pdf')

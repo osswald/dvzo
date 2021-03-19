@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <h1>{% translate "Carriage" %}</h1>
+
+  <div class="container white-container">
+    <table
+      id="carriageListTable"
+      data-toggle="table"
+      data-classes="table table-hover table-condensed"
+      data-striped="true"
+      data-locale="de-DE"
+      data-search="true"
+      data-sort-name="label"
+      data-sort-order="asc"
+      data-pagination="true"
+      data-page-size="15"
+      data-page-list="[15, 25, 50, 100, 200, All]"
+    >
+      <thead>
+      <tr>
+        <th data-field="state" data-checkbox="true">State</th>
+        <th data-field="id" data-visible="false">ID</th>
+        <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+        <th data-field="carriage_type" data-sortable="true">{% translate "Carriage type" %}</th>
+        <th data-field="status" data-sortable="true">{% translate "Status" %}</th>
+        <th data-field="seats" data-sortable="false">{% translate "Seats" %}</th>
+        <th data-field="actions" data-sortable="false"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for carriage in carriages %}
+      <tr>
+        <td></td>
+        <td>{{ carriage.id }}</td>
+        <td>{{ carriage.label }}</td>
+        <td>{{ carriage.get_carriage_type_display }}</td>
+        <td>
+          {% if carriage.status == "available" %}
+          <span class="badge bg-success">{{ carriage.get_status_display }}</span>
+          {% else %}
+          {{ carriage.get_status_display }}
+          {% endif %}
+        </td>
+        <td>{{ carriage.seats }}</td>
+        <td>
+          <a href='{% url "carriage-delete" pk=carriage.id %}'>
+              <i class="fas fa-trash-alt text-danger"></i>
+            </a>&nbsp;
+            <a href='{% url "carriage-detail" pk=carriage.id %}'>
+              <i class="far fa-edit"></i>
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <a href='{% url "carriage-create" %}' class="btn btn-primary" >
+      <i class="fas fa-plus"></i>
+      {% translate "New carriage" %}
+    </a>
+    <button id="daySelectionBtn" class="btn btn-secondary disabled">tmpGetSelections</button>
+  </div>
+</div>
+
+<script>
+  var $table = $('#carriageListTable');
+  var $button = $('#daySelectionBtn');
+
+  $(function() {
+      $button.click(function () {
+          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+        })
+    })
+
+</script>
+{% endblock content %}

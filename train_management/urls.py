@@ -36,4 +36,14 @@ urlpatterns = [
 
     path('traincomposition/<int:pk>/', views.TrainCompositionUpdateView.as_view(), name='train-composition-update'),
     path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
+
+    path('carriage/', views.CarriageListView.as_view(), name='carriage-list'),
+    path('carriage/<int:pk>/', views.CarriageUpdateView.as_view(), name='carriage-detail'),
+    path('carriage/add/', views.CarriageCreateView.as_view(), name='carriage-create'),
+    path('carriage/<int:pk>/delete/', views.CarriageDeleteView.as_view(), name='carriage-delete'),
+
+    path('engine/', views.EngineListView.as_view(), name='engine-list'),
+    path('engine/<int:pk>/', views.EngineUpdateView.as_view(), name='engine-detail'),
+    path('engine/add/', views.EngineCreateView.as_view(), name='engine-create'),
+    path('engine/<int:pk>/delete/', views.EngineDeleteView.as_view(), name='engine-delete'),
 ]

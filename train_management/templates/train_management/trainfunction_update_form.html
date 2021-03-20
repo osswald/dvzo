@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
+<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
+
+<div class="container">
+  <h1>{{ object.label }}</h1>
+  <div class="container white-container">
+    <form action="{% url "train-function-update" pk=object.id %}" method="post">
+      {% csrf_token %}
+      {% include 'includes/form.html' %}
+      <input type="submit" value="Submit" class="btn btn-primary">
+      <a href={% url "train-function-list" %} class="btn btn-primary">{% translate "Back to list" %}</a>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+  {% for field in form %}
+     var multipleCancelButton = new Choices('#{{field.id_for_label}}', {
+     removeItemButton: true,
+     searchResultLimit:5,
+     renderChoiceLimit:5
+     });
+  {% endfor %}
+  });
+</script>
+
+
+{% endblock content %}

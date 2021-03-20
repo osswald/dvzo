@@ -10,10 +10,15 @@ from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
+from train_management.models import TrainFunction
+from train_management.models import DayPlanningFunction
+
 from train_management.forms import DayPlanningForm
 from train_management.forms import PersonnelForm
 from train_management.forms import FunctionForm
 from train_management.forms import TrainForm
+from train_management.forms import TrainFunctionForm
+from train_management.forms import DayPlanningFunctionForm
 
 
 @login_required
@@ -177,3 +182,65 @@ class TrainCompositionCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainFunctionUpdateView(generic.UpdateView):
+    model = TrainFunction
+    form_class = TrainFunctionForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainFunctionCreateView(generic.CreateView):
+    model = TrainFunction
+    form_class = TrainFunctionForm
+    template_name_suffix = "_create_form"
+
+    def post(self, request, pk, **kwargs):
+        self.train = get_object_or_404(Train, pk=pk)
+        return super().post(request, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainFunctionListView(generic.ListView):
+    context_object_name = "trainfunctions"
+
+    def get_queryset(self):
+        return TrainFunction.objects.all()
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainFunctionDeleteView(generic.DeleteView):
+    model = TrainFunction
+    success_url = reverse_lazy("train-function-list")
+
+
+@method_decorator(login_required, name='dispatch')
+class DayPlanningFunctionUpdateView(generic.UpdateView):
+    model = DayPlanningFunction
+    form_class = DayPlanningFunctionForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.dayplanning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class DayPlanningFunctionCreateView(generic.CreateView):
+    model = DayPlanningFunction
+    form_class = DayPlanningFunctionForm
+    template_name_suffix = "_create_form"
+
+    def post(self, request, pk, **kwargs):
+        self.train = get_object_or_404(DayPlanning, pk=pk)
+        return super().post(request, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.dayplanning.id})

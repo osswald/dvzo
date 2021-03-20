@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block content %}
+<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
+<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
+
+<div class="container">
+  <h1>{% translate "New Functions" %}</h1>
+  <div class="container white-container">
+    <form method="post">
+      {% csrf_token %}
+      {% include 'includes/form_field.html' with field=form.dayplanning %}
+      <h3>Hinwil</h3>
+      {% include 'includes/form_field.html' with field=form.sales_hi %}
+      <h3>Bäretswil</h3>
+      {% include 'includes/form_field.html' with field=form.coordinator_baew %}
+      {% include 'includes/form_field.html' with field=form.station_baew %}
+      {% include 'includes/form_field.html' with field=form.barrier_baew %}
+      <h3>Neuthal</h3>
+      {% include 'includes/form_field.html' with field=form.barrier_neu %}
+      <h3>Bauma</h3>
+      {% include 'includes/form_field.html' with field=form.coordinator_bma %}
+      {% include 'includes/form_field.html' with field=form.station_bma %}
+      {% include 'includes/form_field.html' with field=form.barrier_bma %}
+      {% include 'includes/form_field.html' with field=form.engine_assistant_bma %}
+      {% include 'includes/form_field.html' with field=form.food_bma %}
+
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+  {% for field in form %}
+     var multipleCancelButton = new Choices('#{{field.id_for_label}}', {
+     removeItemButton: true,
+     searchResultLimit:5,
+     renderChoiceLimit:5
+     });
+  {% endfor %}
+  });
+</script>
+
+{% endblock content %}

@@ -4,6 +4,8 @@ from train_management.models import DayPlanning
 from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
+from train_management.models import DayPlanningFunction
+from train_management.models import TrainFunction
 
 
 class DayPlanningForm(ModelForm):
@@ -28,3 +30,25 @@ class TrainForm(ModelForm):
     class Meta:
         model = Train
         fields = ['km', 'label']
+
+
+class TrainFunctionForm(ModelForm):
+    class Meta:
+        model = TrainFunction
+        fields = ['train',
+                  'driver',
+                  'stoker_early',
+                  'stoker_middle',
+                  'stoker_late',
+                  'accomp_z',
+                  'accomp_k',
+                  'accomp_b',
+                  'shunting',
+                  'gastro'
+                  ]
+
+
+class DayPlanningFunctionForm(ModelForm):
+    class Meta:
+        model = DayPlanningFunction
+        fields = '__all__'

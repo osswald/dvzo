@@ -24,6 +24,19 @@ urlpatterns = [
     path('dayplanning/add/', views.DayPlanningCreateView.as_view(), name='day-planning-create'),
     path('dayplanning/<int:pk>/delete/', views.DayPlanningDeleteView.as_view(), name='day-planning-delete'),
 
+    path('dayplanning/trainfunction', views.TrainFunctionListView.as_view(), name='train-function-list'),
+    path('dayplanning/trainfunction/add/<int:pk>',
+         views.TrainFunctionCreateView.as_view(), name='train-function-create'),
+    path('dayplanning/trainfunction/<int:pk>',
+         views.TrainFunctionUpdateView.as_view(), name='train-function-update'),
+    path('dayplanning/trainfunction/<int:pk>/delete/',
+         views.TrainFunctionDeleteView.as_view(), name='train-function-delete'),
+
+    path('dayplanning/function/add/<int:pk>',
+         views.DayPlanningFunctionCreateView.as_view(), name='dayplanning-function-create'),
+    path('dayplanning/function/<int:pk>',
+         views.DayPlanningFunctionUpdateView.as_view(), name='dayplanning-function-update'),
+
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),
     path('personnel/<int:pk>/', views.PersonnelUpdateView.as_view(), name='personnel-detail'),
     path('personnel/add/', views.PersonnelCreateView.as_view(), name='personnel-create'),

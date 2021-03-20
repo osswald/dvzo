@@ -67,7 +67,7 @@ class Vehicle(models.Model):
                                   max_length=80, choices=PowerUnit.choices)
     steam_heating = models.CharField(_("steam_heating"),
                                 max_length=80, choices=SteamHeating.choices)
-    max_speed = models.IntegerField(_("maximum speed"), blank=True)
+    max_speed = models.IntegerField(_("maximum speed"), blank=True, null=True)
 
     def __str__(self):
         return self.label
@@ -157,7 +157,7 @@ class Personnel(models.Model):
     date_of_birth = models.DateField(_("date of birth"))
 
     def __str__(self):
-        return "%s, %s" % (self.firstname, self.lastname)
+        return "%s %s" % (self.firstname, self.lastname)
 
 
 class DvzoFunction(models.Model):
@@ -189,3 +189,41 @@ class Mileage(models.Model):
     date = models.DateField(_("date"))
     label = models.CharField(_("label"), max_length=200, blank=True)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)
+
+
+class TrainFunction(models.Model):
+
+    class Meta:
+        verbose_name = _("Train function")
+        verbose_name_plural = _("Train functions")
+
+    train = models.OneToOneField(Train, on_delete=models.CASCADE)
+    driver = models.ManyToManyField(Personnel, related_name="driver", blank=True)
+    stoker_early = models.ManyToManyField(Personnel, related_name="stoker_early", blank=True)
+    stoker_middle = models.ManyToManyField(Personnel, related_name="stoker_middle", blank=True)
+    stoker_late = models.ManyToManyField(Personnel, related_name="stoker_late", blank=True)
+    accomp_z = models.ManyToManyField(Personnel, related_name="accomp_z", blank=True)
+    accomp_k = models.ManyToManyField(Personnel, related_name="accomp_k", blank=True)
+    accomp_b = models.ManyToManyField(Personnel, related_name="accomp_b", blank=True)
+    shunting_assistant = models.ManyToManyField(Personnel, related_name="shunting_assistant", blank=True)
+    shunting = models.ManyToManyField(Personnel, related_name="shunting", blank=True)
+    gastro = models.ManyToManyField(Personnel, related_name="gastro", blank=True)
+
+
+class DayPlanningFunction(models.Model):
+
+    class Meta:
+        verbose_name = _("Day planning function")
+        verbose_name_plural = _("Day planning functions")
+
+    dayplanning = models.OneToOneField(DayPlanning, on_delete=models.CASCADE)
+    sales_hi = models.ManyToManyField(Personnel, related_name="sales_hi", blank=True)
+    coordinator_baew = models.ManyToManyField(Personnel, related_name="coordinator_baew", blank=True)
+    station_baew = models.ManyToManyField(Personnel, related_name="station_baew", blank=True)
+    barrier_baew = models.ManyToManyField(Personnel, related_name="barrier_baew", blank=True)
+    barrier_neu = models.ManyToManyField(Personnel, related_name="barrier_neu", blank=True)
+    coordinator_bma = models.ManyToManyField(Personnel, related_name="coordinator_bma", blank=True)
+    station_bma = models.ManyToManyField(Personnel, related_name="station_bma", blank=True)
+    barrier_bma = models.ManyToManyField(Personnel, related_name="barrier_bma", blank=True)
+    engine_assistant_bma = models.ManyToManyField(Personnel, related_name="engine_assistant_bma", blank=True)
+    food_bma = models.ManyToManyField(Personnel, related_name="food_bma", blank=True)

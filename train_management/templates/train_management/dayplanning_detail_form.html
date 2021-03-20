@@ -64,62 +64,6 @@
     <div class="col">
       <div class="container white-container">
         <h2>{% translate "Functions" %}</h2>
-        <h3>{% translate "Bauma" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Anlagenwärter</td>
-            <td>Peter Muster</td>
-          </tr>
-          <tr>
-            <td>Lokbetreuer</td>
-            <td>
-              Max Muster<br>
-              Manuel Muster<br>
-              Michael Muster
-            </td>
-          </tr>
-          </tbody>
-        </table>
-
-        <h3>{% translate "Neuthal" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Barrierenwärter</td>
-            <td>
-              Max Muster<br>
-              Manuel Muster<br>
-              Michael Muster
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <h3>{% translate "Bäretswil" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Koordinator</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Anlagenwärter</td>
-            <td>Max Muster</td>
-          </tr>
-          </tbody>
-        </table>
         <h3>{% translate "Hinwil" %}</h3>
         <table class="table table-sm dvzo-50">
           <thead>
@@ -127,16 +71,147 @@
           <th>Person</th>
           </thead>
           <tbody>
-          <tr>
-            <td>Billetverkauf</td>
-            <td>Max Muster</td>
-          </tr>
+          {% if object.dayplanningfunction.sales_hi.all|length > 0 %}
+              <tr>
+                <td>Verkauf</td>
+                <td>
+                  {% for person in object.dayplanningfunction.sales_hi.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
           </tbody>
         </table>
-        <a href="#" class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit functions" %}
+
+        <h3>{% translate "Bäretswil" %}</h3>
+        <table class="table table-sm dvzo-50">
+          <thead>
+          <th>Funktion</th>
+          <th>Person</th>
+          </thead>
+          <tbody>
+          {% if object.dayplanningfunction.coordinator_baew.all|length > 0 %}
+              <tr>
+                <td>Koordinator</td>
+                <td>
+                  {% for person in object.dayplanningfunction.coordinator_baew.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.station_baew.all|length > 0 %}
+              <tr>
+                <td>Stationswärter</td>
+                <td>
+                  {% for person in object.dayplanningfunction.station_baew.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.barrier_baew.all|length > 0 %}
+              <tr>
+                <td>Barrierenwärter</td>
+                <td>
+                  {% for person in object.dayplanningfunction.barrier_baew.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          </tbody>
+        </table>
+        <h3>{% translate "Neuthal" %}</h3>
+        <table class="table table-sm dvzo-50">
+          <thead>
+          <th>Funktion</th>
+          <th>Person</th>
+          </thead>
+          <tbody>
+          {% if object.dayplanningfunction.barrier_neu.all|length > 0 %}
+              <tr>
+                <td>Barrierenwärter</td>
+                <td>
+                  {% for person in object.dayplanningfunction.barrier_neu.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          </tbody>
+        </table>
+        <h3>{% translate "Bauma" %}</h3>
+        <table class="table table-sm dvzo-50">
+          <thead>
+          <th>Funktion</th>
+          <th>Person</th>
+          </thead>
+          <tbody>
+          {% if object.dayplanningfunction.coordinator_bma.all|length > 0 %}
+              <tr>
+                <td>Koordinator</td>
+                <td>
+                  {% for person in object.dayplanningfunction.coordinator_bma.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.station_bma.all|length > 0 %}
+              <tr>
+                <td>Stationswärter</td>
+                <td>
+                  {% for person in object.dayplanningfunction.station_bma.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.barrier_bma.all|length > 0 %}
+              <tr>
+                <td>Barrierenwärter</td>
+                <td>
+                  {% for person in object.dayplanningfunction.barrier_bma.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.engine_assistant_bma.all|length > 0 %}
+              <tr>
+                <td>Lokbetreuer</td>
+                <td>
+                  {% for person in object.dayplanningfunction.engine_assistant_bma.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          {% if object.dayplanningfunction.food_bma.all|length > 0 %}
+              <tr>
+                <td>Rottenwagen</td>
+                <td>
+                  {% for person in object.dayplanningfunction.food_bma.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+          {% endif %}
+          </tbody>
+        </table>
+        {% if object.dayplanningfunction %}
+          <a href='{% url "dayplanning-function-update" pk=object.dayplanningfunction.id %}' class="btn btn-primary">
+            <i class="far fa-edit"></i>
+            {% translate "Edit functions" %}
         </a>
+        {% else %}
+          <a href='{% url "dayplanning-function-create" pk=object.id %}' class="btn btn-primary">
+            <i class="far fa-edit"></i>
+            {% translate "Add functions" %}
+          </a>
+        {% endif %}
       </div>
 
     </div>
@@ -148,42 +223,106 @@
         <h2>{{train.label}}</h2>
         <h3>Formation</h3>
         {% include 'includes/train.html'%}
-        <table class="table table-sm dvzo-25">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Lf</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Hz f</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Hz s</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Z</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>K</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>WR</td>
-            <td>
-              Max Muster<br>
-              Monika Muster<br>
-              Miranda Muster
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        {% if train.trainfunction %}
+          <table class="table table-sm dvzo-25">
+            <thead>
+            <th>Funktion</th>
+            <th>Person</th>
+            </thead>
+            <tbody>
+            {% if train.trainfunction.driver.all|length > 0 %}
+              <tr>
+                <td>Lokführer</td>
+                <td>
+                  {% for person in train.trainfunction.driver.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.stoker_early.all|length > 0 %}
+              <tr>
+                <td>Heizer früh</td>
+                <td>
+                  {% for person in train.trainfunction.stoker_early.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.stoker_middle.all|length > 0 %}
+              <tr>
+                <td>Heizer mittel</td>
+                <td>
+                  {% for person in train.trainfunction.stoker_middle.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.stoker_late.all|length > 0 %}
+              <tr>
+                <td>Heizer spät</td>
+                <td>
+                  {% for person in train.trainfunction.stoker_late.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.accomp_z.all|length > 0 %}
+              <tr>
+                <td>Zugchef</td>
+                <td>
+                  {% for person in train.trainfunction.accomp_z.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.accomp_k.all|length > 0 %}
+              <tr>
+                <td>Kondukteur</td>
+                <td>
+                  {% for person in train.trainfunction.accomp_k.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.accomp_b.all|length > 0 %}
+              <tr>
+                <td>Kundenbegleiter</td>
+                <td>
+                  {% for person in train.trainfunction.accomp_b.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.shunting.all|length > 0 %}
+              <tr>
+                <td>Rangierbegliter</td>
+                <td>
+                  {% for person in train.trainfunction.shunting.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            {% if train.trainfunction.gastro.all|length > 0 %}
+              <tr>
+                <td>Gastro</td>
+                <td>
+                  {% for person in train.trainfunction.gastro.all %}
+                  {{person}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+            </tbody>
+          </table>
+        {% endif %}
         <table class="table table-sm dvzo-25">
           <thead>
           <th>Fahrt</th>
@@ -251,10 +390,18 @@
           <i class="far fa-edit"></i>
           {% translate "Edit train" %}
         </a>
-        <a href='#' class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit functions" %}
+        {% if train.trainfunction %}
+          <a href='{% url "train-function-update" pk=train.trainfunction.id %}' class="btn btn-primary">
+            <i class="far fa-edit"></i>
+            {% translate "Edit functions" %}
         </a>
+        {% else %}
+          <a href='{% url "train-function-create" pk=train.id %}' class="btn btn-primary">
+            <i class="far fa-edit"></i>
+            {% translate "Add functions" %}
+          </a>
+        {% endif %}
+
         <a href='#' class="btn btn-primary">
           <i class="far fa-edit"></i>
           {% translate "Edit schedule" %}

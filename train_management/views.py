@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django_tex.shortcuts import render_to_pdf
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -253,3 +254,11 @@ class EngineCreateView(generic.CreateView):
 class EngineDeleteView(generic.DeleteView):
     model = Vehicle
     success_url = reverse_lazy("engine-list")
+
+ 
+@method_decorator(login_required, name='dispatch')
+def briefing_pdf(request, pk):
+    template_name = 'latex/briefing.tex'
+    dayplanning = DayPlanning.objects.get(pk=pk)
+    context = {'dayplanning': dayplanning}
+    return render_to_pdf(request, template_name, context, filename='briefing.pdf')

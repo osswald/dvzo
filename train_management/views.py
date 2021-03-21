@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django_tex.shortcuts import render_to_pdf
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -177,3 +178,10 @@ class TrainCompositionCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+
+
+def briefing_pdf(request, pk):
+    template_name = 'latex/briefing.tex'
+    dayplanning = DayPlanning.objects.get(pk=pk)
+    context = {'dayplanning': dayplanning}
+    return render_to_pdf(request, template_name, context, filename='briefing.pdf')

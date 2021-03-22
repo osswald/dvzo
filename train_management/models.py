@@ -67,7 +67,7 @@ class Vehicle(models.Model):
                                   max_length=80, choices=PowerUnit.choices)
     steam_heating = models.CharField(_("steam_heating"),
                                 max_length=80, choices=SteamHeating.choices)
-    max_speed = models.IntegerField(_("maximum speed"), blank=True)
+    max_speed = models.IntegerField(_("maximum speed"), blank=True, null=True)
 
     def __str__(self):
         return self.label

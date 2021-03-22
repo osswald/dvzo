@@ -49,7 +49,8 @@
         {% if perms.train_management.view_dayplanning %}
         <a href="{% url 'day-planning-list' %}"><span class="material-icons">event</span>Tagesplanung</a>
         {% endif %}
-        <a href="#"><span class="material-icons">tram</span>Fahrzeuge</a>
+        <a href="{% url 'engine-list' %}"><span class="material-icons">tram</span>Triebfahrzeuge</a>
+        <a href="{% url 'carriage-list' %}"><span class="material-icons">tram</span>Wagen</a>
         <a href="{% url 'personnel-list' %}"><span class="material-icons">person</span>Personal</a>
         <a href="{% url 'function-list' %}"><span class="material-icons">build</span>Funktionen</a>
         <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>

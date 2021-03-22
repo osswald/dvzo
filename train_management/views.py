@@ -15,6 +15,8 @@ from train_management.forms import DayPlanningForm
 from train_management.forms import PersonnelForm
 from train_management.forms import FunctionForm
 from train_management.forms import TrainForm
+from train_management.forms import CarriageForm
+from train_management.forms import EngineForm
 
 
 @login_required
@@ -180,6 +182,81 @@ class TrainCompositionCreateView(generic.CreateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
 
 
+@method_decorator(login_required, name='dispatch')
+class CarriageListView(generic.ListView):
+    context_object_name = "carriages"
+    queryset = Vehicle.objects.filter(vehicle_type="carriage")
+    template_name = "train_management/carriage_list.html"
+
+
+@method_decorator(login_required, name='dispatch')
+class CarriageUpdateView(generic.UpdateView):
+    model = Vehicle
+    form_class = CarriageForm
+    template_name = "train_management/carriage_update_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("carriage-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class CarriageCreateView(generic.CreateView):
+    model = Vehicle
+    form_class = CarriageForm
+    template_name = "train_management/carriage_create_form.html"
+
+    def form_valid(self, form):
+        form.instance.vehicle_type = "carriage"
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("carriage-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class CarriageDeleteView(generic.DeleteView):
+    model = Vehicle
+    success_url = reverse_lazy("carriage-list")
+
+
+@method_decorator(login_required, name='dispatch')
+class EngineListView(generic.ListView):
+    context_object_name = "engines"
+    queryset = Vehicle.objects.filter(vehicle_type="engine")
+    template_name = "train_management/engine_list.html"
+
+
+@method_decorator(login_required, name='dispatch')
+class EngineUpdateView(generic.UpdateView):
+    model = Vehicle
+    form_class = EngineForm
+    template_name = "train_management/engine_update_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("engine-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class EngineCreateView(generic.CreateView):
+    model = Vehicle
+    form_class = EngineForm
+    template_name = "train_management/engine_create_form.html"
+
+    def form_valid(self, form):
+        form.instance.vehicle_type = "engine"
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("engine-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class EngineDeleteView(generic.DeleteView):
+    model = Vehicle
+    success_url = reverse_lazy("engine-list")
+
+ 
+@method_decorator(login_required, name='dispatch')
 def briefing_pdf(request, pk):
     template_name = 'latex/briefing.tex'
     dayplanning = DayPlanning.objects.get(pk=pk)

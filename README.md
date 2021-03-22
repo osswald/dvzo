@@ -15,6 +15,7 @@ cd dvzo
 python setup.py install
 python manage.py migrate
 python manage.py createsuperuser
+python manage.py collectstatic --noinput  # only prod
 python manage.py runserver
 ```
 
@@ -54,9 +55,9 @@ python manage.py compilemessages
 
 ```
 # build image
-docker build -t dvzo --build-arg ADMIN_PW=secret .
+docker build -t dvzo .
 # create superuser inside the container
 docker run -it dvzo:latest sh
 # startup app
-docker run -d -p 8000:8000 dvzo:latest
+docker run -d -p 8000:8000 -e SECRET_KEY="secret" -e ALLOWED_HOSTS="*" dvzo:latest
 ```

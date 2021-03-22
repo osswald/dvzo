@@ -1,5 +1,6 @@
 # for now ignore all migrations
 **/migrations/
+/staticfiles/
 
 *.css
 *.css.map

@@ -18,6 +18,10 @@ REQUIRED = [
     'django-compressor',
     'django-sass-processor',
     'django_tex',
+    'Django',
+    'python-dotenv',
+    'psycopg2-binary',
+    'whitenoise',
     'django-phonenumber-field[phonenumbers]',
     'Django'
 ]

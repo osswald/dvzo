@@ -43,21 +43,15 @@
 
       <div id="sidenav">
         <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
-        <a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
-          <span class="material-icons">close</span>Close</a>
-        <a href="{% url 'dashboard' %}"><span class="material-icons">home</span>Home</a>
-        {% if perms.train_management.view_dayplanning %}
-        <a href="{% url 'day-planning-list' %}"><span class="material-icons">event</span>Tagesplanung</a>
-        {% endif %}
-        <a href="{% url 'engine-list' %}"><span class="material-icons">tram</span>Triebfahrzeuge</a>
-        <a href="{% url 'carriage-list' %}"><span class="material-icons">tram</span>Wagen</a>
-        <a href="{% url 'personnel-list' %}"><span class="material-icons">person</span>Personal</a>
-        <a href="{% url 'function-list' %}"><span class="material-icons">build</span>Funktionen</a>
-        <a href="{% url 'logout' %}"><span class="material-icons">logout</span>Logout</a>
+        {% include 'includes/side_navigation.html'%}
       </div>
 
       <div id="main">
-        <div id="top-nav"></div>
+        <div id="top-nav" style="padding-right: 20px; padding-top: 20px;">
+          <ul class="nav justify-content-end">
+            {% include 'includes/top_navigation.html'%}
+          </ul>
+        </div>
         {% block content %}{% endblock %}
       </div>
     </div>

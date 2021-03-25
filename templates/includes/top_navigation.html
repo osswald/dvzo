@@ -1,0 +1,25 @@
+<div class="btn-group" role="group">
+  <button id="topnavDropdown"
+          type="button"
+          class="btn btn-light dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+    <i class="far fa-user"></i>
+    {{ user.first_name }} {{ user.last_name }}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="topnavDropdown">
+    <li>
+      <a class="dropdown-item" href="#">
+        <i class="far fa-id-card"></i>
+        Profil
+      </a>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <a class="dropdown-item" href="{% url 'logout' %}">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </a>
+    </li>
+  </ul>
+</div>

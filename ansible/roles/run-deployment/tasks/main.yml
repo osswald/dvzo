@@ -1,0 +1,59 @@
+# vim:ft=ansible:
+- name: Upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: pip self-update
+  pip:
+    name: pip
+    state: latest
+
+- name: Install prerequisites (python packages)
+  pip:
+    name: ['docker', 'PyYAML', 'docker-compose']
+
+- name: Ensures /root/dvzo dir exists
+  file: path=/root/dvzo state=directory
+
+- name: Run using v2
+  community.docker.docker_compose:
+    project_name: /root/dvzo
+    definition:
+      version: "2"
+      networks:
+        dvzo_net:
+          driver: bridge
+      services:
+        dvzo_container:
+          image: osswald/dvzo:latest
+          container_name: dvzo_container
+          restart: unless-stopped
+          networks:
+            - dvzo_net
+          ports:
+            - 8000:8000
+          expose:
+            - 8000
+        dvzo_database:
+          image: postgres:13.2
+          container_name: dvzo_database
+          restart: unless-stopped
+          environment:
+            - POSTGRES_USER={{ dvzo_database.user }}
+            - POSTGRES_PASSWORD={{ dvzo_database.password }}
+            - POSTGRES_DB={{ dvzo_database.db_name }}
+          networks:
+            - dvzo_net
+          volumes:
+            - db-data:/var/lib/postgresql/data
+          ports:
+            - 5432:5432
+      volumes:
+        db-data:
+          driver: local
+  register: output
+
+- name: Check debug
+  ansible.builtin.debug:
+    var: output

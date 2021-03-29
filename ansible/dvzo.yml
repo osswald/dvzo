@@ -1,0 +1,9 @@
+# vim:ft=ansible:
+---
+  - hosts: webserver
+    become: true
+    roles:
+      - install-docker
+      - install-caddy
+      - run-deployment
+      - setup-networking

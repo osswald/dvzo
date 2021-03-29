@@ -1,0 +1,27 @@
+# vim:ft=ansible:
+- name: Upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: permit traffic in default zone for https service
+  ansible.posix.firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+
+- name: Ensures /root/dvzo dir exists
+  file: path=/root/dvzo state=directory
+
+- name: Copy Caddyfile with owner and permissions
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/files/Caddyfile"
+    dest: /root/dvzo/Caddyfile
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Load caddy config
+  ansible.builtin.shell:
+    cmd: /usr/bin/caddy reload Caddyfile
+    chdir: /root/dvzo

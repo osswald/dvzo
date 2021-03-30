@@ -5,6 +5,7 @@ from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
+from train_management.models import PhoneNumber
 
 
 class DayPlanningForm(ModelForm):
@@ -77,3 +78,15 @@ class CarriageForm(ModelForm):
                   'manufacturer',
                   'max_speed'
                   ]
+
+
+class PhoneNumberForm(ModelForm):
+    class Meta:
+        model = PhoneNumber
+        fields = ['label', 'phone_number', 'phone_number_type']
+
+
+class PhoneNumberPersonnelForm(ModelForm):
+    class Meta:
+        model = Personnel
+        fields = ['lastname', 'firstname', 'status', 'mobile_phone', 'mobile_phone_public',]

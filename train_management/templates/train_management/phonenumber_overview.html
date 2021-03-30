@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% translate "Phone numbers" %}</h1>
+  <div class="container white-container">
+    <div class="d-grid gap-2 d-md-block">
+      <a href="{% url 'phonenumber-detail' %}?type=emergency" class="btn btn-lg btn-danger">{% translate "Emergency" %}</a>
+      <a href="{% url 'phonenumber-member-detail' %}" class="btn btn-lg btn-secondary">{% translate "Members" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=dvzo" class="btn btn-lg btn-primary">{% translate "DVZO" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=sbb" class="btn btn-lg btn-primary">{% translate "SBB" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=other" class="btn btn-lg btn-primary">{% translate "Other" %}</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -48,4 +48,25 @@ urlpatterns = [
     path('engine/<int:pk>/', views.EngineUpdateView.as_view(), name='engine-detail'),
     path('engine/add/', views.EngineCreateView.as_view(), name='engine-create'),
     path('engine/<int:pk>/delete/', views.EngineDeleteView.as_view(), name='engine-delete'),
+
+    path('station/', views.StationListView.as_view(), name='station-list'),
+    path('station/<int:pk>/', views.StationUpdateView.as_view(), name='station-detail'),
+    path('station/add/', views.StationCreateView.as_view(), name='station-create'),
+    path('station/<int:pk>/delete/', views.StationDeleteView.as_view(), name='station-delete'),
+
+    path('dayplanning/train/timetable/add/<int:pk>/',
+         views.TrainTimetableCreateView.as_view(), name='train-timetable-create'),
+    path('dayplanning/train/timetable/<int:pk>/',
+         views.TrainTimetableUpdateView.as_view(), name='train-timetable-update'),
+    path('dayplanning/train/timetable/delete/<int:pk>/',
+         views.TrainTimetableUpdateView.as_view(), name='train-timetable-delete'),
+
+    path('traintimetabletemplate/',
+         views.TrainTimetableTemplateListView.as_view(), name='train-timetable-template-list'),
+    path('traintimetabletemplate/<int:pk>/',
+         views.TrainTimetableTemplateUpdateView.as_view(), name='train-timetable-template-detail'),
+    path('traintimetabletemplate/add/',
+         views.TrainTimetableTemplateCreateView.as_view(), name='train-timetable-template-create'),
+    path('traintimetabletemplate/<int:pk>/delete/',
+         views.TrainTimetableTemplateDeleteView.as_view(), name='train-timetable-template-delete'),
 ]

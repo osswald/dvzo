@@ -5,6 +5,9 @@ from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
+from train_management.models import Station
+from train_management.models import TrainTimetable
+from train_management.models import TrainTimetableTemplate
 
 
 class DayPlanningForm(ModelForm):
@@ -76,4 +79,29 @@ class CarriageForm(ModelForm):
                   'length',
                   'manufacturer',
                   'max_speed'
+                  ]
+
+
+class StationForm(ModelForm):
+    class Meta:
+        model = Station
+        fields = ['didok_nr', 'label', 'label_short']
+
+
+class TrainTimetableForm(ModelForm):
+    class Meta:
+        model = TrainTimetable
+        fields = ['label', 'comment', 'start_station', 'start_time', 'destination_station', 'destination_time',]
+
+
+class TrainTimetableTemplateForm(ModelForm):
+    class Meta:
+        model = TrainTimetableTemplate
+        fields = ['template_name',
+                  'label',
+                  'comment',
+                  'start_station',
+                  'start_time',
+                  'destination_station',
+                  'destination_time',
                   ]

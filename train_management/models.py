@@ -97,7 +97,7 @@ class DayPlanning(models.Model):
     status = models.CharField(_("status"),
                                 max_length=80, choices=DayPlanningStatus.choices)
     paid = models.BooleanField(_("paid"), default=False)
-    text = models.CharField(_("Text"), max_length=5000, blank=True)
+    text = models.TextField(_("Text"), max_length=5000, blank=True)
 
     def __str__(self):
         return self.label
@@ -106,8 +106,8 @@ class DayPlanning(models.Model):
 class Train(models.Model):
 
     class Meta:
-        verbose_name = _("Train")
-        verbose_name_plural = _("Trains")
+        verbose_name = _("Train tour")
+        verbose_name_plural = _("Train tours")
 
     label = models.CharField(_("label"), max_length=200)
     km = models.IntegerField(_("km"), blank=True)
@@ -207,3 +207,48 @@ class PhoneNumber(models.Model):
     label = models.CharField(_("label"), max_length=200)
     phone_number = PhoneNumberField(_("Phone number"))
     phone_number_type = models.CharField(_("Phone number type"), max_length=80, choices=PhoneNumberType.choices)
+
+    
+class Station(models.Model):
+    class Meta:
+        verbose_name = _("Betriebspunkt")
+        verbose_name_plural = _("Betriebspunkte")
+
+    didok_nr = models.CharField(_("DIDOK Nr."), blank=True, max_length=200)
+    label_short = models.CharField(_("label short"), max_length=5)
+    label = models.CharField(_("label"), max_length=200)
+
+    def __str__(self):
+        return self.label
+
+
+class TrainTimetable(models.Model):
+
+    class Meta:
+        verbose_name = _("Train timetable")
+        verbose_name_plural = _("Train timetables")
+
+    label = models.CharField(_("label"), max_length=200)
+    train = models.ForeignKey(Train, on_delete=models.DO_NOTHING, null=True)
+    start_station = models.ForeignKey(Station, related_name="start_station", on_delete=models.DO_NOTHING, null=True)
+    destination_station = models.ForeignKey(Station, related_name="destination_station", on_delete=models.DO_NOTHING, null=True)
+    start_time = models.TimeField(_("start time"), null=True, blank=True)
+    destination_time = models.TimeField(_("destination time"), null=True, blank=True)
+    comment = models.TextField(_("description"), blank=True)
+
+
+class TrainTimetableTemplate(models.Model):
+
+    class Meta:
+        verbose_name = _("Train timetable template")
+        verbose_name_plural = _("Train timetable templates")
+
+    template_name = models.CharField(_("template name"), max_length=200)
+    label = models.CharField(_("label"), max_length=200)
+    train = models.ForeignKey(Train, on_delete=models.DO_NOTHING, null=True)
+    start_station = models.ForeignKey(Station, related_name="start_station_template", on_delete=models.DO_NOTHING, null=True)
+    destination_station = models.ForeignKey(Station, related_name="destination_station_template", on_delete=models.DO_NOTHING, null=True)
+    start_time = models.TimeField(_("start time"), null=True, blank=True)
+    destination_time = models.TimeField(_("destination time"), null=True, blank=True)
+    comment = models.TextField(_("description"), blank=True)
+    active = models.BooleanField(_("active"), default=True)

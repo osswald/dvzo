@@ -56,7 +56,7 @@
         </a>
         <a href='{% url "train-composition-create" pk=object.id %}' class="btn btn-primary">
           <i class="fas fa-plus"></i>
-          {% translate "Add new train" %}
+          {% translate "Add new train tour" %}
         </a>
       </div>
     </div>
@@ -184,81 +184,72 @@
           </tr>
           </tbody>
         </table>
+        {% if train.traintimetable_set.all|length %}
         <table class="table table-sm dvzo-25">
           <thead>
           <th>Fahrt</th>
           <th></th>
+          <th></th>
           </thead>
           <tbody>
+          {% for traintimetable in train.traintimetable_set.all %}
           <tr>
-            <td><a href="#" class="badge bg-secondary">428K</a></td>
             <td>
-              <span class="fw-bold">BMA</span>
-              - <span class="fst-italic">NEU</span>
-              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
-              - <span class="fw-bold">HI</span>
+              <div class="badge bg-secondary">{{ traintimetable.label }}</div>
+            </td>
+            <td>
+              <span class="fw-bold">{{ traintimetable.start_station }}</span>
+              <span>{{ traintimetable.start_time }}</span>
+              - <span class="fw-bold">{{ traintimetable.destination_station }}</span>
+              <span>{{ traintimetable.destination_time }}</span>
+            </td>
+            <td>
+              <a href='{% url "train-timetable-delete" pk=traintimetable.id %}'>
+                <i class="fas fa-trash-alt text-danger"></i>
+              </a>&nbsp;
+              <a href='{% url "train-timetable-update" pk=traintimetable.id %}'>
+                <i class="far fa-edit"></i>
+              </a>
             </td>
           </tr>
+          {% if traintimetable.comment|length %}
           <tr>
-            <td><a href="#" class="badge bg-secondary">431K</a></td>
-            <td>
-              <span class="fw-bold">HI</span>
-              - <span class="fst-italic">ETH</span>
-              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
-              - <span class="fw-bold">BMA</span>
-            </td>
+            <td colspan="3">{{ traintimetable.comment }}</td>
           </tr>
-          <tr>
-            <td><a href="#" class="badge bg-secondary">450K</a></td>
-            <td>
-              <span class="fw-bold">BMA</span>
-              - <span class="fst-italic">NEU</span>
-              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
-              - <span class="fw-bold">HI</span>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="badge bg-secondary">453K</a></td>
-            <td>
-              <span class="fw-bold">HI</span>
-              - <span class="fst-italic">ETH</span>
-              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
-              - <span class="fw-bold">BMA</span>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="badge bg-secondary">460K</a></td>
-            <td>
-              <span class="fw-bold">BMA</span>
-              - <span class="fst-italic">NEU</span>
-              - BAEW - (BAET) - <span class="fst-italic">ETH</span>
-              - <span class="fw-bold">HI</span>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="badge bg-secondary">463K</a></td>
-            <td>
-              <span class="fw-bold">HI</span>
-              - <span class="fst-italic">ETH</span>
-              - (BAET) - BAEW - <span class="fst-italic">NEU</span>
-              - <span class="fw-bold">BMA</span>
-            </td>
-          </tr>
+          {% endif %}
+          {% endfor %}
 
           </tbody>
         </table>
+        {% endif %}
         <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">
           <i class="far fa-edit"></i>
-          {% translate "Edit train" %}
+          {% translate "Edit train formation" %}
         </a>
         <a href='#' class="btn btn-primary">
           <i class="far fa-edit"></i>
           {% translate "Edit functions" %}
         </a>
-        <a href='#' class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit schedule" %}
-        </a>
+        <div class="btn-group">
+          <a href='{% url "train-timetable-create" pk=train.id %}' class="btn btn-primary">
+            <i class="far fa-edit"></i>
+            {% translate "Add schedule" %}
+          </a>
+          <button type="button"
+                  class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item disabled" href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
+                <i class="far fa-id-card"></i>
+                {% translate "Add from Template" %}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     {% empty %}

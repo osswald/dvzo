@@ -6,6 +6,9 @@ from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
 from train_management.models import PhoneNumber
+from train_management.models import Station
+from train_management.models import TrainTimetable
+from train_management.models import TrainTimetableTemplate
 
 
 class DayPlanningForm(ModelForm):
@@ -89,4 +92,29 @@ class PhoneNumberForm(ModelForm):
 class PhoneNumberPersonnelForm(ModelForm):
     class Meta:
         model = Personnel
-        fields = ['lastname', 'firstname', 'status', 'mobile_phone', 'mobile_phone_public',]
+        fields = ['lastname', 'firstname', 'status', 'mobile_phone', 'mobile_phone_public']
+
+
+class StationForm(ModelForm):
+    class Meta:
+        model = Station
+        fields = ['didok_nr', 'label', 'label_short']
+
+
+class TrainTimetableForm(ModelForm):
+    class Meta:
+        model = TrainTimetable
+        fields = ['label', 'comment', 'start_station', 'start_time', 'destination_station', 'destination_time',]
+
+
+class TrainTimetableTemplateForm(ModelForm):
+    class Meta:
+        model = TrainTimetableTemplate
+        fields = ['template_name',
+                  'label',
+                  'comment',
+                  'start_station',
+                  'start_time',
+                  'destination_station',
+                  'destination_time',
+                  ]

@@ -381,7 +381,7 @@ class TrainTimetableTemplateDeleteView(generic.DeleteView):
 
 @method_decorator(login_required, name='dispatch')
 class EditTrainFunctions(generic.View):
-    dvzo_functions = DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN)
+    dvzo_functions = DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN).order_by('sorting')
     persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE)
 
     def get(self, request, train_id, **kwargs):

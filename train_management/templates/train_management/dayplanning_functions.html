@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      {% for place in places %}
+        <h2>{{ place.label }}</h2>
+        {% for function in functions %}
+
+          {% if function.function.function_type == place.value %}
+            <div class="mb-3">
+              <label for="function-{{ function.function.id }}">{{ function.function.label }}</label>
+              <select id="function-{{ function.function.id }}" name="{{ function.function.id }}" multiple class="form-select">
+                {% for person in persons %}
+                  <option value="{{ person.id }}" {% if person.id in function.persons %}selected{% endif %}>{{ person.firstname }} {{ person.lastname }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+
+        {% endfor %}
+      {% endfor %}
+      <input type="submit" value="submit">
+    </form>
+  </div>
+{% endblock content %}

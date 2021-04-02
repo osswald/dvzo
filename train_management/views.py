@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django_tex.shortcuts import render_to_pdf
 from django.shortcuts import get_object_or_404
@@ -5,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
+from train_management.models import FunctionPersons
 
 from train_management.models import DayPlanning
 from train_management.models import Personnel
@@ -376,3 +378,39 @@ class TrainTimetableTemplateDeleteView(generic.DeleteView):
     model = TrainTimetableTemplate
     success_url = reverse_lazy("train-timetable-template-list")
 
+
+@method_decorator(login_required, name='dispatch')
+class EditTrainFunctions(generic.View):
+    dvzo_functions = DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN)
+    persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE)
+
+    def get(self, request, train_id, **kwargs):
+        train = get_object_or_404(Train, pk=train_id)
+        dvzo_functions_with_extra_info = []
+        for dvzo_function in self.dvzo_functions:
+            all_function_persons_of_train = dvzo_function.functionpersons_set.filter(train=train)
+            persons_ids = list(set([x.person.id for x in all_function_persons_of_train]))
+            dvzo_functions_with_extra_info.append({
+                'function': dvzo_function,
+                'persons': persons_ids,
+            })
+
+        return render(
+            self.request, 'train_management/train_functions.html',
+            {'train': train, 'functions': dvzo_functions_with_extra_info, 'persons': self.persons})
+
+    def post(self, request, train_id):
+        train = get_object_or_404(Train, pk=train_id)
+        function_persons = []
+        for dvzo_function in self.dvzo_functions:
+            persons_in_function_ids = request.POST.getlist(str(dvzo_function.id))
+            if persons_in_function_ids:
+                for person_id in persons_in_function_ids:
+                    function_person = FunctionPersons(
+                        person=Personnel.objects.get(pk=person_id),
+                        dvzo_function=dvzo_function)
+                    function_person.save()
+                    function_persons.append(function_person)
+        train.function_persons.set(function_persons)
+        train.save()
+        return redirect("day-planning-detail", pk=train.day_planning.id)

@@ -26,7 +26,7 @@ class PersonnelForm(ModelForm):
 class FunctionForm(ModelForm):
     class Meta:
         model = DvzoFunction
-        fields = ['label_short', 'label', 'function_type']
+        fields = ['label_short', 'label', 'function_type', 'sorting']
 
 
 class TrainForm(ModelForm):

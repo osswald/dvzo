@@ -78,4 +78,9 @@ urlpatterns = [
          views.TrainTimetableTemplateCreateView.as_view(), name='train-timetable-template-create'),
     path('traintimetabletemplate/<int:pk>/delete/',
          views.TrainTimetableTemplateDeleteView.as_view(), name='train-timetable-template-delete'),
+
+    path('edit-train-functions/<int:train_id>',
+         views.EditTrainFunctions.as_view(), name='edit-train-functions'),
+    path('edit-dayplanning-functions/<int:dayplanning_id>',
+         views.EditDayPlanningFunctions.as_view(), name='edit-dayplanning-functions'),
 ]

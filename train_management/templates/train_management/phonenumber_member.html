@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% translate "Phone numbers members" %}</h1>
+  <div class="container white-container">
+    <div class="d-grid gap-2 d-md-block">
+      <div class="list-group">
+        {% for phone_number in phone_numbers %}
+          <a href="tel:{{ phone_number.mobile_phone }}" class="list-group-item list-group-item-action">
+            {{ phone_number }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

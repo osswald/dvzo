@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <h1>{% translate "Phone number" %}</h1>
+
+  <div class="container white-container">
+    <table
+      id="phoneNumberListTable"
+      data-toggle="table"
+      data-classes="table table-hover table-condensed"
+      data-striped="true"
+      data-sort-name="label"
+      data-locale="de-DE"
+      data-search="true"
+      data-sort-order="asc"
+      data-pagination="true"
+      data-page-size="15"
+      data-page-list="[15, 25, 50, 100, 200, All]"
+    >
+      <thead>
+      <tr>
+        <th data-field="state" data-checkbox="true">State</th>
+        <th data-field="id" data-visible="false">ID</th>
+        <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+        <th data-field="phone_number" data-sortable="true">{% translate "Number" %}</th>
+        <th data-field="phone_number_type" data-sortable="true">{% translate "Type" %}</th>
+        <th data-field="actions" data-sortable="false"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for phone_number in phone_numbers %}
+      <tr>
+        <td></td>
+        <td>{{ phone_number.id }}</td>
+        <td>{{ phone_number.label }}</td>
+        <td><a href="tel:{{ phone_number.phone_number }}">{{ phone_number.phone_number.as_national }}</a></td>
+        <td>{{ phone_number.get_phone_number_type_display }}</td>
+        <td>
+          <a href='{% url "phone-delete" pk=phone_number.id %}'>
+              <i class="fas fa-trash-alt text-danger"></i>
+            </a>&nbsp;
+            <a href='{% url "phone-detail" pk=phone_number.id %}'>
+              <i class="far fa-edit"></i>
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <a href='{% url "phone-create" %}' class="btn btn-secondary" >
+      <i class="fas fa-plus"></i>
+      {% translate "New phone number" %}
+    </a>
+    <button id="daySelectionBtn" class="btn btn-secondary">tmpGetSelections</button>
+  </div>
+</div>
+
+<script>
+  var $table = $('#phoneNumberListTable');
+  var $button = $('#daySelectionBtn');
+
+  $(function() {
+      $button.click(function () {
+          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+        })
+    })
+
+</script>
+{% endblock content %}

@@ -9,12 +9,18 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="topnavDropdown">
     <li>
+      <a class="dropdown-item" href="{% url 'phonenumber-list' %}">
+        <i class="fas fa-phone"></i>
+        Telefonnummern
+      </a>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
       <a class="dropdown-item" href="#">
         <i class="far fa-id-card"></i>
         Profil
       </a>
     </li>
-    <li><hr class="dropdown-divider"></li>
     <li>
       <a class="dropdown-item" href="{% url 'logout' %}">
         <i class="fas fa-sign-out-alt"></i>

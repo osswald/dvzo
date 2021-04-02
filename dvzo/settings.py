@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'widget_tweaks',
-    'django_tex'
+    'django_tex',
+    'phonenumber_field'
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ STATICFILES_FINDERS = [
     'sass_processor.finders.CssFinder',
 ]
 
+PHONENUMBER_DEFAULT_REGION = "CH"
 
 SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
 

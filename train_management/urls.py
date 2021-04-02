@@ -49,6 +49,15 @@ urlpatterns = [
     path('engine/add/', views.EngineCreateView.as_view(), name='engine-create'),
     path('engine/<int:pk>/delete/', views.EngineDeleteView.as_view(), name='engine-delete'),
 
+    path('phone/', views.PhoneNumberListView.as_view(), name='phone-list'),
+    path('phone/<int:pk>/', views.PhoneNumberUpdateView.as_view(), name='phone-detail'),
+    path('phone/add/', views.PhoneNumberCreateView.as_view(), name='phone-create'),
+    path('phone/<int:pk>/delete/', views.PhoneNumberDeleteView.as_view(), name='phone-delete'),
+
+    path('phonenumber/', views.PhoneNumberOverview.as_view(), name='phonenumber-list'),
+    path('phonenumber/member/', views.PhoneNumberMemberList.as_view(), name='phonenumber-member-detail'),
+    path('phonenumber/type/', views.PhoneNumberDetail.as_view(), name='phonenumber-detail'),
+
     path('station/', views.StationListView.as_view(), name='station-list'),
     path('station/<int:pk>/', views.StationUpdateView.as_view(), name='station-detail'),
     path('station/add/', views.StationCreateView.as_view(), name='station-create'),

@@ -18,7 +18,8 @@ REQUIRED = [
     'django-compressor',
     'django-sass-processor',
     'django_tex',
-    'Django',
+    'django-phonenumber-field[phonenumbers]',
+    'Django'
 ]
 TEST_REQUIRE = [
     'pytest',

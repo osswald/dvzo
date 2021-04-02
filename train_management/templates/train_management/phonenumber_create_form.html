@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% translate "New phone number" %}</h1>
+  <div class="container white-container">
+    <form  method="post">
+      {% csrf_token %}
+      {% include 'includes/form.html' %}
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

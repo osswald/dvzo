@@ -11,12 +11,18 @@ from train_management.models import Personnel
 from train_management.models import DvzoFunction
 from train_management.models import Train
 from train_management.models import Vehicle
+from train_management.models import Station
+from train_management.models import TrainTimetable
+from train_management.models import TrainTimetableTemplate
 from train_management.forms import DayPlanningForm
 from train_management.forms import PersonnelForm
 from train_management.forms import FunctionForm
 from train_management.forms import TrainForm
 from train_management.forms import CarriageForm
 from train_management.forms import EngineForm
+from train_management.forms import StationForm
+from train_management.forms import TrainTimetableForm
+from train_management.forms import TrainTimetableTemplateForm
 
 
 @login_required
@@ -262,3 +268,111 @@ def briefing_pdf(request, pk):
     dayplanning = DayPlanning.objects.get(pk=pk)
     context = {'dayplanning': dayplanning}
     return render_to_pdf(request, template_name, context, filename='briefing.pdf')
+
+
+@method_decorator(login_required, name='dispatch')
+class StationListView(generic.ListView):
+    context_object_name = "stations"
+
+    def get_queryset(self):
+        return Station.objects.all()
+
+
+@method_decorator(login_required, name='dispatch')
+class StationUpdateView(generic.UpdateView):
+    model = Station
+    form_class = StationForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("station-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class StationCreateView(generic.CreateView):
+    model = Station
+    form_class = StationForm
+    template_name_suffix = "_create_form"
+
+    def get_success_url(self):
+        return reverse_lazy("station-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class StationDeleteView(generic.DeleteView):
+    model = Station
+    success_url = reverse_lazy("station-list")
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableCreateView(generic.CreateView):
+    model = TrainTimetable
+    form_class = TrainTimetableForm
+    template_name_suffix = "_update_form"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def post(self, request, pk, **kwargs):
+        self.train = get_object_or_404(Train, pk=pk)
+        return super().post(request, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.train = self.train
+        return_value = super().form_valid(form)
+        return return_value
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableUpdateView(generic.UpdateView):
+    model = TrainTimetable
+    form_class = TrainTimetableForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableDeleteView(generic.DeleteView):
+    model = TrainTimetable
+    success_url = reverse_lazy("day-planning-list")
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableTemplateListView(generic.ListView):
+    context_object_name = "templates"
+
+    def get_queryset(self):
+        return TrainTimetableTemplate.objects.all()
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableTemplateUpdateView(generic.UpdateView):
+    model = TrainTimetableTemplate
+    form_class = TrainTimetableTemplateForm
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("train-timetable-template-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableTemplateCreateView(generic.CreateView):
+    model = TrainTimetableTemplate
+    form_class = TrainTimetableTemplateForm
+    template_name_suffix = "_create_form"
+
+    def get_success_url(self):
+        return reverse_lazy("train-timetable-template-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class TrainTimetableTemplateDeleteView(generic.DeleteView):
+    model = TrainTimetableTemplate
+    success_url = reverse_lazy("train-timetable-template-list")
+

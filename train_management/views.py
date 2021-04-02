@@ -264,7 +264,7 @@ class EngineDeleteView(generic.DeleteView):
     success_url = reverse_lazy("engine-list")
 
  
-@method_decorator(login_required, name='dispatch')
+@login_required
 def briefing_pdf(request, pk):
     template_name = 'latex/briefing.tex'
     dayplanning = DayPlanning.objects.get(pk=pk)

@@ -87,7 +87,7 @@ class Personnel(models.Model):
     firstname = models.CharField(_("firstname"), max_length=200)
     lastname = models.CharField(_("lastname"), max_length=200)
     email = models.CharField(_("email"), max_length=200)
-    mobile_phone = models.CharField(_("mobile phone"), max_length=200)
+    mobile_phone = PhoneNumberField(_("mobile phone"))
     status = models.CharField(_("status"),
                               max_length=80, choices=PersonnelStatus.choices)
     mobile_phone_public = models.BooleanField(_("mobile phone publicly available"))

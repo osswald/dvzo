@@ -48,7 +48,7 @@
           {% endif %}
         </td>
         <td>{{ personnel.email }}</td>
-        <td>{{ personnel.mobile_phone }}</td>
+        <td>{{ personnel.mobile_phone.as_national }}</td>
         <td>
           <a href='{% url "personnel-delete" pk=personnel.id %}'>
               <i class="fas fa-trash-alt text-danger"></i>

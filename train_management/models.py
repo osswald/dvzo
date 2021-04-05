@@ -84,17 +84,23 @@ class Personnel(models.Model):
         ACTIVE = "active", _("Active")
         INACTIVE = "inactive", _("Inactive")
 
+    class PersonnelMobilePublic(models.TextChoices):
+        YES = "yes", _("Yes")
+        NO = "no", _("No")
+        UNKNOWN = "unknown", _("Unknown")
+
     firstname = models.CharField(_("firstname"), max_length=200)
     lastname = models.CharField(_("lastname"), max_length=200)
     email = models.CharField(_("email"), max_length=200)
     mobile_phone = PhoneNumberField(_("mobile phone"))
     status = models.CharField(_("status"),
                               max_length=80, choices=PersonnelStatus.choices)
-    mobile_phone_public = models.BooleanField(_("mobile phone publicly available"))
+    mobile_phone_public = models.CharField(_("mobile phone publicly available"), max_length=80,
+                                           choices=PersonnelMobilePublic.choices, default=PersonnelMobilePublic.UNKNOWN)
     date_of_birth = models.DateField(_("date of birth"))
 
     def __str__(self):
-        return "%s, %s" % (self.firstname, self.lastname)
+        return "%s %s" % (self.firstname, self.lastname)
 
 
 class DvzoFunction(models.Model):
@@ -138,16 +144,48 @@ class DayPlanning(models.Model):
         EXTRA = "extra", _("Extra")
         OTHER = "other", _("Other")
 
-    label = models.CharField(_("label"), max_length=200)
-    day_planning_type = models.CharField(_("day_planning_type"),
-                                  max_length=80, choices=DayPlanningType.choices)
-    date = models.DateField(_("date"))
-    status = models.CharField(_("status"),
-                                max_length=80, choices=DayPlanningStatus.choices)
-    paid = models.BooleanField(_("paid"), default=False)
-    text = models.TextField(_("Text"), max_length=5000, blank=True)
+    class DayPlanningPaid(models.TextChoices):
+        YES = "yes", _("Yes")
+        NO = "no", _("No")
+        NOT_APPLICABLE = "not_applicable", _("Not applicable")
 
+    class DayPlanningSlot(models.TextChoices):
+        OPEN = "open", _("Open")
+        ORDERED = "ordered", _("Ordered")
+        RECEIVED = "received", _("Received")
+        NOT_APPLICABLE = "not_applicable", _("Not applicable")
+
+    class DayPlanningPersonnelDisposition(models.TextChoices):
+        OPEN = "open", _("Open")
+        DISPOSED = "disposed", _("Disposed")
+        NOT_APPLICABLE = "not_applicable", _("Not applicable")
+
+    class DayPlanningBookingStatus(models.TextChoices):
+        PROPOSAL = "proposal", _("Proposal")
+        RESERVATION = "reservation", _("Reservation")
+        BOOKED = "booked", _("Booked")
+        CANCELLED_DVZO = "cancelled_dvzo", _("Cancelled DVZO")
+        CANCELLED_CUSTOMER = "cancelled_customer", _("Cancelled customer")
+        NOT_APPLICABLE = "not_applicable", _("Not applicable")
+
+    label = models.CharField(_("label"), max_length=200)
+    day_planning_type = models.CharField(_("day_planning_type"), max_length=80, choices=DayPlanningType.choices)
+    date = models.DateField(_("date"))
+    status = models.CharField(_("status"), max_length=80, choices=DayPlanningStatus.choices)
+    paid = models.TextField(_("paid"), max_length=80, choices=DayPlanningPaid.choices,
+                            default=DayPlanningPaid.NOT_APPLICABLE)
+    text = models.TextField(_("Text"), max_length=5000, blank=True)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="dayplanning")
+    slot_ordered = models.CharField(_("slot ordered"), max_length=80, choices=DayPlanningSlot.choices,
+                                    default=DayPlanningSlot.NOT_APPLICABLE)
+    personnel_disposition = models.CharField(_("Personnel disposition"), max_length=80,
+                                             choices=DayPlanningPersonnelDisposition.choices,
+                                             default=DayPlanningPersonnelDisposition.OPEN)
+    customers = models.IntegerField(_("Number of customers"), blank=True, null=True)
+    price = models.DecimalField(_("Price"), blank=True, max_digits=8, decimal_places=2, null=True)
+    booking_status = models.CharField(_("Booking status"), max_length=80, choices=DayPlanningBookingStatus.choices,
+                                      default=DayPlanningBookingStatus.NOT_APPLICABLE)
+    comment = models.TextField(_("Comment"), blank=True)
 
     def __str__(self):
         return self.label
@@ -251,6 +289,10 @@ class TrainTimetableTemplate(models.Model):
         verbose_name = _("Train timetable template")
         verbose_name_plural = _("Train timetable templates")
 
+    class Active(models.TextChoices):
+        YES = "yes", _("Yes")
+        NO = "no", _("No")
+
     template_name = models.CharField(_("template name"), max_length=200)
     label = models.CharField(_("label"), max_length=200)
     train = models.ForeignKey(Train, on_delete=models.DO_NOTHING, null=True)
@@ -259,4 +301,4 @@ class TrainTimetableTemplate(models.Model):
     start_time = models.TimeField(_("start time"), null=True, blank=True)
     destination_time = models.TimeField(_("destination time"), null=True, blank=True)
     comment = models.TextField(_("description"), blank=True)
-    active = models.BooleanField(_("active"), default=True)
+    active = models.CharField(_("active"), max_length=50, choices=Active.choices, default=Active.YES)

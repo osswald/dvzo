@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load tapeforms %}
 
 {% block content %}
 
@@ -8,7 +9,7 @@
   <div class="container white-container">
     <form  method="post">
       {% csrf_token %}
-      {% include 'includes/form.html' %}
+      {% form form %}
       <input type="submit" value="Submit" class="btn btn-primary">
     </form>
   </div>

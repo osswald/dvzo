@@ -29,9 +29,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
-    'widget_tweaks',
     'django_tex',
-    'phonenumber_field'
+    'phonenumber_field',
+    'tapeforms'
 ] + PROJECT_APPS
 
 MIDDLEWARE = [

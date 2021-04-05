@@ -1,9 +1,12 @@
 from django.forms import ModelForm
+from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
 
 from train_management.models import Vehicle
 
 
-class EngineForm(ModelForm):
+class EngineForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
     class Meta:
         model = Vehicle
         fields = ['label',
@@ -28,7 +31,9 @@ class EngineForm(ModelForm):
                   ]
 
 
-class CarriageForm(ModelForm):
+class CarriageForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
     class Meta:
         model = Vehicle
         fields = ['label',

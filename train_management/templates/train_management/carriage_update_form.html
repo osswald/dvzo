@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load tapeforms %}
 
 {% block content %}
 
@@ -9,7 +10,7 @@
     <h2>{% translate "Stammdaten" %}</h2>
     <form action="{% url "carriage-detail" pk=object.id %}" method="post">
       {% csrf_token %}
-      {% include 'includes/form.html' %}
+      {% form form %}
       <input type="submit" value="Submit" class="btn btn-primary">
       <a href={% url "carriage-list" %} class="btn btn-primary">{% translate "Back to list" %}</a>
     </form>

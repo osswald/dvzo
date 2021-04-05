@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from train_management.models import PhoneNumber, Personnel
+from train_management.models import Personnel, PhoneNumber
 
 
 class PhoneNumberForm(ModelForm):

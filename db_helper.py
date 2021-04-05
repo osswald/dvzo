@@ -1,11 +1,13 @@
 #! ./venv/bin/python
 import os
+
 import django
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dvzo.settings")
 django.setup()
 
 from train_management.tests.helpers import SetupHelper  # noqa
+
 setup_helper = SetupHelper()
 setup_helper.create_train_components()
 

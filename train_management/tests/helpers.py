@@ -1,9 +1,6 @@
-from train_management.models import DayPlanning
-from train_management.models import Train
-from train_management.models import Vehicle
-from train_management.models import TrainConfiguration
-from train_management.models import DvzoFunction
 from datetime import date
+
+from train_management.models import DayPlanning, DvzoFunction, Train, TrainConfiguration, Vehicle
 
 
 class SetupHelper:

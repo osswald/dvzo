@@ -1,7 +1,7 @@
-from django.test import TestCase
-from django.test import Client
-from train_management.tests.helpers import SetupHelper
 from django.contrib.auth.models import User
+from django.test import Client, TestCase
+
+from train_management.tests.helpers import SetupHelper
 
 
 class AnimalTestCase(TestCase):

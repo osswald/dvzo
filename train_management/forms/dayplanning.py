@@ -35,6 +35,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                      'fields': ('label',
                                 'date',
                                 'day_planning_type',
+                                'status',
                                 'text'),
                  }, {
                      'extra': {

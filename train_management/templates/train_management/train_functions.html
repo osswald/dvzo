@@ -2,6 +2,10 @@
 {% load i18n %}
 
 {% block content %}
+
+<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
+<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
+
   <div class="container">
     <form method="post">
       {% csrf_token %}
@@ -19,4 +23,18 @@
       <input type="submit" value="submit">
     </form>
   </div>
+
+<script>
+   $(document).ready(function(){
+  {% for function in functions %}
+ var f_{{ function.function.id }} = new Choices('#function-{{ function.function.id }}', {
+ removeItemButton: true,
+ searchResultLimit:5,
+ renderChoiceLimit:5
+
+ });
+{% endfor %}
+
+ });
+</script>
 {% endblock content %}

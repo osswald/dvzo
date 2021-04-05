@@ -13,7 +13,7 @@
       data-striped="true"
       data-locale="de-DE"
       data-search="true"
-      data-sort-name="lastname"
+      data-sort-name="last_name"
       data-sort-order="asc"
       data-pagination="true"
       data-page-size="15"
@@ -23,8 +23,8 @@
       <tr>
         <th data-field="state" data-checkbox="true">State</th>
         <th data-field="id" data-visible="false">ID</th>
-        <th data-field="lastname" data-sortable="true">{% translate "Lastname" %}</th>
-        <th data-field="firstname" data-sortable="true">{% translate "Firstname" %}</th>
+        <th data-field="last_name" data-sortable="true">{% translate "Lastname" %}</th>
+        <th data-field="first_name" data-sortable="true">{% translate "Firstname" %}</th>
         <th data-field="status" data-sortable="true">{% translate "Status" %}</th>
         <th data-field="email" data-sortable="false">{% translate "E-Mail" %}</th>
         <th data-field="mobile_phone" data-sortable="false">{% translate "Mobile Phone" %}</th>
@@ -35,9 +35,9 @@
       {% for personnel in personnels %}
       <tr>
         <td></td>
-        <td>{{ personnel.id }}</td>
-        <td>{{ personnel.lastname }}</td>
-        <td>{{ personnel.firstname }}</td>
+        <td>{{ personnel.username }}</td>
+        <td>{{ personnel.last_name }}</td>
+        <td>{{ personnel.first_name }}</td>
         <td>
           {% if personnel.status == "active" %}
           <span class="badge bg-success">{{ personnel.get_status_display }}</span>

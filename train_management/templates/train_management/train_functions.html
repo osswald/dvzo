@@ -11,7 +11,7 @@
           <label for="function-{{ function.function.id }}">{{ function.function.label }}</label>
           <select id="function-{{ function.function.id }}" name="{{ function.function.id }}" multiple class="form-select">
             {% for person in persons %}
-              <option value="{{ person.id }}" {% if person.id in function.persons %}selected{% endif %}>{{ person.firstname }} {{ person.lastname }}</option>
+              <option value="{{ person.id }}" {% if person.id in function.persons %}selected{% endif %}>{{ person.first_name }} {{ person.last_name }}</option>
             {% endfor %}
           </select>
         </div>

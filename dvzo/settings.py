@@ -93,7 +93,7 @@ LATEX_GRAPHICSPATH = [ASSET_DIR.as_posix()]
 
 WSGI_APPLICATION = 'dvzo.wsgi.application'
 
-if DEBUG:
+if os.getenv("PRODUCTION") == "False":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

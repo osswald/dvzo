@@ -1,3 +1,4 @@
+{% load static compress %}
 {% load sass_tags %}
 {% load static %}
 
@@ -6,7 +7,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% compress css %}
   <link href="{% sass_src 'css/login.scss' %}" rel="stylesheet" type="text/css"/>
+  {% endcompress %}
   <title>DVZO.app</title>
 </head>
 <body>

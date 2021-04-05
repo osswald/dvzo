@@ -20,7 +20,7 @@ REQUIRED = [
     'Django',
     'python-dotenv',
     'psycopg2-binary',
-    'whitenoise',
+    'whitenoise[brotli]',
     'django-phonenumber-field[phonenumbers]',
     'django-tapeforms',
     'Django'

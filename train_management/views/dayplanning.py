@@ -53,7 +53,7 @@ class DayPlanningDeleteView(generic.DeleteView):
 @method_decorator(login_required, name='dispatch')
 class EditTrainFunctions(generic.View):
     dvzo_functions = DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN).order_by('sorting')
-    persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('lastname')
+    persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('user__last_name')
 
     def get(self, request, train_id, **kwargs):
         train = get_object_or_404(Train, pk=train_id)
@@ -90,7 +90,7 @@ class EditTrainFunctions(generic.View):
 @method_decorator(login_required, name='dispatch')
 class EditDayPlanningFunctions(generic.View):
     dvzo_functions = DvzoFunction.objects.exclude(function_type=DvzoFunction.FunctionType.TRAIN).order_by('sorting')
-    persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('lastname')
+    persons = Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('user__last_name')
 
     def get(self, request, dayplanning_id, **kwargs):
         dayplanning = get_object_or_404(DayPlanning, pk=dayplanning_id)

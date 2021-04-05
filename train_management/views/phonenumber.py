@@ -59,6 +59,6 @@ class PhoneNumberDetail(generic.ListView):
 
 @method_decorator(login_required, name='dispatch')
 class PhoneNumberMemberList(generic.ListView):
-    queryset = Personnel.objects.filter(status="active", mobile_phone_public=True).order_by("lastname")
+    queryset = Personnel.objects.filter(status="active", mobile_phone_public=True).order_by("user__last_name")
     template_name = "train_management/phonenumber_member.html"
     context_object_name = "phone_numbers"

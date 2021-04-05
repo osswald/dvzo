@@ -85,4 +85,5 @@ urlpatterns = [
          views.EditTrainFunctions.as_view(), name='edit-train-functions'),
     path('edit-dayplanning-functions/<int:dayplanning_id>',
          views.EditDayPlanningFunctions.as_view(), name='edit-dayplanning-functions'),
+    path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create')
 ]

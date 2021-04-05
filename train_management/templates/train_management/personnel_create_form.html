@@ -10,6 +10,7 @@
     <h2>{% translate "Stammdaten" %}</h2>
     <form  method="post">
       {% csrf_token %}
+      {% form user_form %}
       {% form form %}
       <input type="submit" value="Submit" class="btn btn-primary">
     </form>

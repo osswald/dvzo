@@ -16,6 +16,7 @@ services:
       - DB_PASSWORD={{ dvzo_database.password }}
       - DB_HOSTNAME=dvzo_database
       - DB_PORT=5432
+      - PRODUCTION=True
     networks:
       - dvzo_net
     ports:

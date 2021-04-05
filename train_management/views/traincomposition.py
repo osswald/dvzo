@@ -3,9 +3,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
-from train_management.forms import TrainForm
 
-from train_management.models import Train, Vehicle, DayPlanning
+from train_management.forms import TrainForm
+from train_management.models import DayPlanning, Train, Vehicle
 
 
 @method_decorator(login_required, name='dispatch')

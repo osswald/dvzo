@@ -22,3 +22,12 @@ steps:
 - script: |
     python manage.py test
   displayName: 'Run tests'
+
+- script: |
+    flake8 .
+    isort . --check
+  displayName: 'Style checks (pep8, isort)'
+
+- script: |
+    bandit --ini .bandit -r
+  displayName: 'Vulnerability check (bandit)'

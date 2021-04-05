@@ -24,6 +24,9 @@ REQUIRED = [
 TEST_REQUIRE = [
     'pytest',
     'pytest-azurepipelines',
+    'flake8',
+    'isort',
+    'bandit',
 ]
 
 setuptools.setup(

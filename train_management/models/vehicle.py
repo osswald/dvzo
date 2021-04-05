@@ -48,11 +48,11 @@ class Vehicle(models.Model):
     gross_weight = models.FloatField(_("gross_weight"), blank=True, null=True)
     seats = models.IntegerField(_("seats"), blank=True, null=True)
     vehicle_type = models.CharField(_("vehicle type"),
-                            max_length=80, choices=VehicleType.choices)
+                                    max_length=80, choices=VehicleType.choices)
     status = models.CharField(_("status"),
-                            max_length=80, choices=Status.choices)
+                              max_length=80, choices=Status.choices)
     carriage_type = models.CharField(_("carriage_type"),
-                            max_length=80, choices=CarriageType.choices)
+                                     max_length=80, choices=CarriageType.choices)
     home = models.CharField(_("home"),
                             max_length=80, choices=Home.choices)
     start_year = models.IntegerField(_("start year"), blank=True, null=True)
@@ -66,9 +66,8 @@ class Vehicle(models.Model):
     power_unit = models.CharField(_("power_unit"),
                                   max_length=80, choices=PowerUnit.choices)
     steam_heating = models.CharField(_("steam_heating"),
-                                max_length=80, choices=SteamHeating.choices)
+                                     max_length=80, choices=SteamHeating.choices)
     max_speed = models.IntegerField(_("maximum speed"), blank=True, null=True)
 
     def __str__(self):
         return self.label
-

@@ -18,4 +18,3 @@ class PhoneNumber(models.Model):
     label = models.CharField(_("label"), max_length=200)
     phone_number = PhoneNumberField(_("Phone number"))
     phone_number_type = models.CharField(_("Phone number type"), max_length=80, choices=PhoneNumberType.choices)
-

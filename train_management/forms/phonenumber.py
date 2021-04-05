@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from train_management.models import PhoneNumber, Personnel
+from train_management.models import Personnel, PhoneNumber
 
 
 class PhoneNumberForm(ModelForm):
@@ -13,4 +13,3 @@ class PhoneNumberPersonnelForm(ModelForm):
     class Meta:
         model = Personnel
         fields = ['lastname', 'firstname', 'status', 'mobile_phone', 'mobile_phone_public']
-

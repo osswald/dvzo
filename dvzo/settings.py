@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't@_lgw5lg3l&_=it2b14kdn2@#-pi&g_t9=n2jqsg9_4rk_&4w'
+# TODO: remove sec string
+SECRET_KEY = 't@_lgw5lg3l&_=it2b14kdn2@#-pi&g_t9=n2jqsg9_4rk_&4w'  # nosec
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -88,7 +89,7 @@ TEMPLATES = [
             ],
         },
     },
-{
+    {
         'NAME': 'tex',
         'BACKEND': 'django_tex.engine.TeXEngine',
         'APP_DIRS': True,

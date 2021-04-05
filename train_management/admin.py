@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Vehicle, DayPlanning, Train
+
+from .models import DayPlanning, Train, Vehicle
 
 
 class VehicleAdmin(admin.ModelAdmin):

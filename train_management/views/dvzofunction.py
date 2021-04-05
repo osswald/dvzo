@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
-from train_management.forms import FunctionForm
 
+from train_management.forms import FunctionForm
 from train_management.models import DvzoFunction
 
 
@@ -39,4 +39,3 @@ class FunctionCreateView(generic.CreateView):
 class FunctionDeleteView(generic.DeleteView):
     model = DvzoFunction
     success_url = reverse_lazy("function-list")
-

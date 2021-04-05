@@ -275,6 +275,14 @@ def briefing_pdf(request, pk):
     return render_to_pdf(request, template_name, context, filename='briefing.pdf')
 
 
+@login_required
+def bulletin_pdf(request, pk):
+    template_name = 'latex/bulletin.tex'
+    dayplanning = DayPlanning.objects.get(pk=pk)
+    context = {'dayplanning': dayplanning}
+    return render_to_pdf(request, template_name, context, filename='bulletin.pdf')
+
+
 @method_decorator(login_required, name='dispatch')
 class PhoneNumberListView(generic.ListView):
     context_object_name = "phone_numbers"

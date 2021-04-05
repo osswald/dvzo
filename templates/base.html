@@ -1,3 +1,4 @@
+{% load static compress %}
 {% load sass_tags %}
 {% load static %}
 
@@ -28,7 +29,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% compress css %}
     <link href="{% sass_src 'css/base.scss' %}" rel="stylesheet" type="text/css" />
+    {% endcompress %}
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
     <title>DVZO Management</title>
   </head>

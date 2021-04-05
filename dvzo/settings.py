@@ -22,18 +22,18 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'sass_processor',
-    'django_tex',
-    'phonenumber_field',
-    'tapeforms'
-] + PROJECT_APPS
+                     'django.contrib.admin',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     'sass_processor',
+                     'django_tex',
+                     'phonenumber_field',
+                     'tapeforms',
+                     'compressor',
+                 ] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -46,30 +46,26 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_HOST = os.getenv('STATIC_HOST', '')
+STATIC_URL = STATIC_HOST + '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
+    'compressor.finders.CompressorFinder'
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-WHITENOISE_MIMETYPES = {
-    '.css': 'text/css'
-}
+COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 
 PHONENUMBER_DEFAULT_REGION = "CH"
 
-SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
-
-STATICFILES_DIRS = [SASS_PROCESSOR_ROOT]
-
 ROOT_URLCONF = 'dvzo.urls'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 TEMPLATE_DIR = BASE_DIR / 'templates'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -141,8 +137,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-STATIC_URL = '/static/'
 
 LOGGING = {
     "version": 1,

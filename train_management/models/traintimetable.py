@@ -19,3 +19,6 @@ class TrainTimetable(models.Model):
     start_time = models.TimeField(_("start time"), null=True, blank=True)
     destination_time = models.TimeField(_("destination time"), null=True, blank=True)
     comment = models.TextField(_("description"), blank=True)
+
+    def __str__(self):
+        return self.label

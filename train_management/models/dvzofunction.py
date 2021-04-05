@@ -20,3 +20,6 @@ class DvzoFunction(models.Model):
     sorting = models.IntegerField(null=True, blank=True)
     function_type = models.CharField(_("function_type"),
                                      max_length=80, choices=FunctionType.choices)
+
+    def __str__(self):
+        return self.label

@@ -25,3 +25,6 @@ class TrainTimetableTemplate(models.Model):
     destination_time = models.TimeField(_("destination time"), null=True, blank=True)
     comment = models.TextField(_("description"), blank=True)
     active = models.CharField(_("active"), max_length=50, choices=Active.choices, default=Active.YES)
+
+    def __str__(self):
+        return self.template_name

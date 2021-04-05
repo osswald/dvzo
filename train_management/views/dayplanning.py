@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 
-from train_management.forms import DayPlanningForm
+from train_management.forms import DayPlanningFieldsetForm
 from train_management.models import DayPlanning, DvzoFunction, FunctionPersons, Personnel, Train
 
 
@@ -19,14 +19,14 @@ class DayPlanningListView(generic.ListView):
 @method_decorator(login_required, name='dispatch')
 class DayPlanningDetailView(generic.DetailView):
     model = DayPlanning
-    form_class = DayPlanningForm
+    form_class = DayPlanningFieldsetForm
     template_name_suffix = "_detail_form"
 
 
 @method_decorator(login_required, name='dispatch')
 class DayPlanningUpdateView(generic.UpdateView):
     model = DayPlanning
-    form_class = DayPlanningForm
+    form_class = DayPlanningFieldsetForm
     template_name_suffix = "_update_form"
 
     def get_success_url(self):
@@ -36,7 +36,7 @@ class DayPlanningUpdateView(generic.UpdateView):
 @method_decorator(login_required, name='dispatch')
 class DayPlanningCreateView(generic.CreateView):
     model = DayPlanning
-    form_class = DayPlanningForm
+    form_class = DayPlanningFieldsetForm
     template_name_suffix = "_create_form"
 
     def get_success_url(self):

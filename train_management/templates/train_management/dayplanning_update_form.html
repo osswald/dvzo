@@ -12,7 +12,12 @@
         <h2>{% translate "Master data" %}</h2>
         <form action='{% url "day-planning-update" pk=object.id %}' method="post">
         {% csrf_token %}
-        {% form form %}
+        {% for fieldset in form.get_fieldsets %}
+          <div class="container white-container">
+            <h3>{{ fieldset.extra.title }}</h3>
+            {% form fieldset %}
+          </div>
+        {% endfor %}
         <input type="submit" value="Submit" class="btn btn-primary">
         <a href='{% url "day-planning-detail" pk=object.id %}' class="btn btn-danger">{% translate "Cancel" %}</a>
         </form>

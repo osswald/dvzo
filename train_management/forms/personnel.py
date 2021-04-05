@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
-from django.contrib.auth.models import User
 
 from train_management.models import Personnel
 

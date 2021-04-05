@@ -1,11 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
-from django.http import HttpResponseRedirect
 
-from train_management.forms import PersonnelForm
-from train_management.forms import UserForm
+from train_management.forms import PersonnelForm, UserForm
 from train_management.models import Personnel
 
 

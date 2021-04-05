@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
 
-from train_management.models import Personnel, PhoneNumber
+from train_management.models import PhoneNumber
 
 
 class PhoneNumberForm(BootstrapTapeformMixin, ModelForm):

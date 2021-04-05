@@ -28,11 +28,18 @@ pip install ".[test]"
 pytest
 ```
 
-For the formatting we have flake8 and isort in place.
+For the formatting we have flake8 and isort in place plus bandit for
+vulnerability checks.
 
 ```
+# run style checks (pep8)
 flake8 .
+
+# run isort checks (import sorting/ordering)
 isort . [--check]
+
+# check vulnerabilities
+bandit --ini .bandit -r
 ```
 
 ## l10n

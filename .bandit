@@ -1,0 +1,4 @@
+[bandit]
+targets = dvzo/,train_management/
+recursive = true
+skips = B101

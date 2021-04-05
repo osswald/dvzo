@@ -16,44 +16,25 @@
 - name: Ensures /root/dvzo dir exists
   file: path=/root/dvzo state=directory
 
-- name: Run using v2
+- name: Add docker-compose.yml
+  template:
+    src: "{{item}}.j2"
+    dest: "/root/dvzo/{{ item }}"
+  with_items:
+    - docker-compose.yml
+
+- name: Tear down existing dvzo services
   community.docker.docker_compose:
-    project_name: /root/dvzo
-    definition:
-      version: "2"
-      networks:
-        dvzo_net:
-          driver: bridge
-      services:
-        dvzo_container:
-          image: osswald/dvzo:latest
-          container_name: dvzo_container
-          restart: unless-stopped
-          networks:
-            - dvzo_net
-          ports:
-            - 8000:8000
-          expose:
-            - 8000
-        dvzo_database:
-          image: postgres:13.2
-          container_name: dvzo_database
-          restart: unless-stopped
-          environment:
-            - POSTGRES_USER={{ dvzo_database.user }}
-            - POSTGRES_PASSWORD={{ dvzo_database.password }}
-            - POSTGRES_DB={{ dvzo_database.db_name }}
-          networks:
-            - dvzo_net
-          volumes:
-            - db-data:/var/lib/postgresql/data
-          ports:
-            - 5432:5432
-      volumes:
-        db-data:
-          driver: local
+    project_src: /root/dvzo
+    state: absent
+    remove_images: all
+    remove_volumes: no
+
+- name: Create and start dvzo services
+  community.docker.docker_compose:
+    project_src: /root/dvzo
   register: output
 
-- name: Check debug
+- name: Check debug log of dvzo services
   ansible.builtin.debug:
     var: output

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-25 22:15+0100\n"
+"POT-Creation-Date: 2021-04-05 09:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,326 +17,494 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:8
-msgid "Vehicle"
-msgstr "Fahrzeug"
+#: models/dayplanning.py:10
+msgid "Day planning"
+msgstr "Tagesplanungs"
 
-#: models.py:9 templates/train_management/dayplanning_list.html:29
-msgid "Vehicles"
-msgstr "Fahrzeuge"
+#: models/dayplanning.py:11
+msgid "Day plannings"
+msgstr "Tagesplanungen"
 
-#: models.py:12 templates/train_management/engine_list.html:6
-msgid "Engine"
-msgstr "Triebfahrzeug"
+#: models/dayplanning.py:14
+msgid "Draft"
+msgstr "Anfrage"
 
-#: models.py:13 templates/train_management/carriage_list.html:6
-msgid "Carriage"
-msgstr "Wagen"
+#: models/dayplanning.py:15
+msgid "Confirmed"
+msgstr "Bestätigt"
 
-#: models.py:16
-msgid "Available"
-msgstr "Verfügbar"
+#: models/dayplanning.py:16
+msgid "Executed"
+msgstr "Durchgeführt"
 
-#: models.py:17
-msgid "In Servicing"
-msgstr "Im Unterhalt"
+#: models/dayplanning.py:19
+msgid "Sunday"
+msgstr "Fahrsonntag"
 
-#: models.py:18
-msgid "Ask"
-msgstr "Nachfragen"
+#: models/dayplanning.py:20
+msgid "Extra"
+msgstr "Extrafahrt"
 
-#: models.py:21
-msgid "Seating Car"
-msgstr "Sitzplatzwagen"
+#: models/dayplanning.py:21 models/phonenumber.py:16
+#: templates/train_management/phonenumber_overview.html:14
+msgid "Other"
+msgstr "Andere"
 
-#: models.py:22
-msgid "Waggon Restaurant"
-msgstr "Speisewagen"
+#: models/dayplanning.py:24 models/personnel.py:17
+#: models/traintimetabletemplate.py:13
+#: templates/train_management/dayplanning_detail_form.html:43
+msgid "Yes"
+msgstr "Ja"
 
-#: models.py:23
-msgid "Luggage"
-msgstr "Gepäck"
+#: models/dayplanning.py:25 models/personnel.py:18
+#: models/traintimetabletemplate.py:14 models/vehicle.py:38
+#: templates/train_management/dayplanning_detail_form.html:43
+msgid "No"
+msgstr "Nein"
 
-#: models.py:24
-msgid "Cargo"
-msgstr "Güterwagen"
+#: models/dayplanning.py:26 models/dayplanning.py:32 models/dayplanning.py:37
+#: models/dayplanning.py:45
+msgid "Not applicable"
+msgstr "Nicht zutreffend"
 
-#: models.py:27 models.py:171
+#: models/dayplanning.py:29 models/dayplanning.py:35
+msgid "Open"
+msgstr "Offen"
+
+#: models/dayplanning.py:30
+msgid "Ordered"
+msgstr "Bestellt"
+
+#: models/dayplanning.py:31
+msgid "Received"
+msgstr "Trasse vorhanden"
+
+#: models/dayplanning.py:36
+msgid "Disposed"
+msgstr "Eingeteilt"
+
+#: models/dayplanning.py:40
+msgid "Proposal"
+msgstr "Anfrage"
+
+#: models/dayplanning.py:41
+msgid "Reservation"
+msgstr "Reservation"
+
+#: models/dayplanning.py:42
+msgid "Booked"
+msgstr "Gebucht"
+
+#: models/dayplanning.py:43
+msgid "Cancelled DVZO"
+msgstr "Absage DVZO"
+
+#: models/dayplanning.py:44
+msgid "Cancelled customer"
+msgstr "Absage Kunde"
+
+#: models/dayplanning.py:47 models/dvzofunction.py:18 models/mileage.py:13
+#: models/phonenumber.py:18 models/station.py:12 models/train.py:12
+#: models/traintimetable.py:12 models/traintimetabletemplate.py:17
+#: models/vehicle.py:43
+msgid "label"
+msgstr "Bezeichnung"
+
+#: models/dayplanning.py:48
+msgid "day_planning_type"
+msgstr "Tagesplanungs-Typ"
+
+#: models/dayplanning.py:49 models/mileage.py:12
+msgid "date"
+msgstr "Datum"
+
+#: models/dayplanning.py:50 models/personnel.py:25 models/vehicle.py:52
+msgid "status"
+msgstr "Status"
+
+#: models/dayplanning.py:51
+msgid "paid"
+msgstr "Bezahlt"
+
+#: models/dayplanning.py:53
+msgid "Text"
+msgstr "Text"
+
+#: models/dayplanning.py:55
+msgid "slot ordered"
+msgstr "Trassenbestellung"
+
+#: models/dayplanning.py:57
+msgid "Personnel disposition"
+msgstr "Personaleinteilung"
+
+#: models/dayplanning.py:60
+msgid "Number of customers"
+msgstr "Anzahl Personen"
+
+#: models/dayplanning.py:61
+msgid "Price"
+msgstr "Preis"
+
+#: models/dayplanning.py:62
+#, fuzzy
+#| msgid "status"
+msgid "Booking status"
+msgstr "Buchungsstatus"
+
+#: models/dayplanning.py:64
+msgid "Comment"
+msgstr "Bemerkung"
+
+#: models/dvzofunction.py:8 templates/train_management/dvzofunction_list.html:6
+msgid "Function"
+msgstr "Funktionstyp"
+
+#: models/dvzofunction.py:9
+#: templates/train_management/dayplanning_detail_form.html:66
+msgid "Functions"
+msgstr "Funktionstyp"
+
+#: models/dvzofunction.py:12
+msgid "Train"
+msgstr "Zug"
+
+#: models/dvzofunction.py:13 models/vehicle.py:27
 #: templates/train_management/dayplanning_detail_form.html:67
 msgid "Bauma"
 msgstr "Bauma"
 
-#: models.py:28
-msgid "Uster"
-msgstr "Uster"
-
-#: models.py:29
-msgid "Wald ZH"
-msgstr "Wald ZH"
-
-#: models.py:32
-msgid "Steam"
-msgstr "Dampf"
-
-#: models.py:33
-msgid "Diesel"
-msgstr "Diesel"
-
-#: models.py:34
-msgid "Electric"
-msgstr "Elektrisch"
-
-#: models.py:35
-msgid "Diesel/Electric"
-msgstr "Diesel/Elektrisch"
-
-#: models.py:38 templates/train_management/dayplanning_detail_form.html:43
-msgid "No"
-msgstr "Nein"
-
-#: models.py:39
-msgid "Front"
-msgstr "Vorne"
-
-#: models.py:40
-msgid "Back"
-msgstr "Hinten"
-
-#: models.py:41
-msgid "Front and Back"
-msgstr "Vorne und hinten"
-
-#: models.py:43 models.py:92 models.py:111 models.py:176 models.py:190
-msgid "label"
-msgstr "Bezeichnung"
-
-#: models.py:44
-msgid "historic_name"
-msgstr "Historische Bezeichnung"
-
-#: models.py:45
-msgid "description"
-msgstr "Beschreibung"
-
-#: models.py:46
-msgid "UIC"
-msgstr "UIC"
-
-#: models.py:47
-msgid "image"
-msgstr "Bild"
-
-#: models.py:48
-msgid "gross_weight"
-msgstr "Bruttogewicht (t)"
-
-#: models.py:49
-msgid "seats"
-msgstr "Sitzplätze"
-
-#: models.py:50
-msgid "vehicle type"
-msgstr "Fahrzeugtyp"
-
-#: models.py:52 models.py:96 models.py:154
-msgid "status"
-msgstr "Status"
-
-#: models.py:54
-msgid "carriage_type"
-msgstr "Wagen"
-
-#: models.py:56
-msgid "home"
-msgstr "Heimatbahnhof"
-
-#: models.py:58
-msgid "start year"
-msgstr "Inbetriebnahme (Jahr)"
-
-#: models.py:59
-msgid "last revision"
-msgstr "Letze Revision"
-
-#: models.py:60
-msgid "next revision"
-msgstr "Nächste Revision"
-
-#: models.py:61
-msgid "axles distance"
-msgstr "Achsabstand"
-
-#: models.py:62
-msgid "length"
-msgstr "Länge"
-
-#: models.py:63
-msgid "manufacturer"
-msgstr "Hersteller"
-
-#: models.py:64
-msgid "traction 25 permille"
-msgstr "Zugkraft 25 ‰ Steigung"
-
-#: models.py:65
-msgid "traction 30 permille"
-msgstr "Zugkraft 30 ‰ Steigung"
-
-#: models.py:66
-msgid "power_unit"
-msgstr "Antrieb"
-
-#: models.py:68
-msgid "steam_heating"
-msgstr "Dampfheizung"
-
-#: models.py:70
-msgid "maximum speed"
-msgstr "vMax"
-
-#: models.py:79
-msgid "Day planning"
-msgstr "Tagesplanungs"
-
-#: models.py:80
-msgid "Day plannings"
-msgstr "Tagesplanungen"
-
-#: models.py:83
-msgid "Draft"
-msgstr "Anfrage"
-
-#: models.py:84
-msgid "Confirmed"
-msgstr "Bestätigt"
-
-#: models.py:85
-msgid "Executed"
-msgstr "Durchgeführt"
-
-#: models.py:88
-msgid "Sunday"
-msgstr "Fahrtensonntag"
-
-#: models.py:89
-msgid "Extra"
-msgstr "Extrafahrt"
-
-#: models.py:90
-msgid "Other"
-msgstr "Andere"
-
-#: models.py:93
-msgid "day_planning_type"
-msgstr "Tagesplanungs-Typ"
-
-#: models.py:95 models.py:189
-msgid "date"
-msgstr "Datum"
-
-#: models.py:98
-msgid "paid"
-msgstr "Bezahlt"
-
-#: models.py:99
-msgid "Text"
-msgstr "Text"
-
-#: models.py:108 models.py:170
-msgid "Train"
-msgstr "Zug"
-
-#: models.py:109
-msgid "Trains"
-msgstr "Zug"
-
-#: models.py:112
-msgid "km"
-msgstr "km"
-
-#: models.py:132
-msgid "Train configuration"
-msgstr "Zugkonfiguration"
-
-#: models.py:133
-msgid "Train configurations"
-msgstr "Zugkonfigurationen"
-
-#: models.py:137
-msgid "sorting"
-msgstr "Sortierung"
-
-#: models.py:143 models.py:144 templates/train_management/personnel_list.html:6
-msgid "Personnel"
-msgstr "Personal"
-
-#: models.py:147
-msgid "Active"
-msgstr "Aktiv"
-
-#: models.py:148
-msgid "Inactive"
-msgstr "Inaktiv"
-
-#: models.py:150
-msgid "firstname"
-msgstr "Vorname"
-
-#: models.py:151
-msgid "lastname"
-msgstr "Nachname"
-
-#: models.py:152
-msgid "email"
-msgstr "E-Mail"
-
-#: models.py:153
-msgid "mobile phone"
-msgstr "Mobiltelefon"
-
-#: models.py:156
-msgid "mobile phone publicly available"
-msgstr "Mobiltelefon darf publiziert werden"
-
-#: models.py:157
-msgid "date of birth"
-msgstr "Geburtsdatum"
-
-#: models.py:166 templates/train_management/dvzofunction_list.html:6
-msgid "Function"
-msgstr "Funktionstyp"
-
-#: models.py:167 templates/train_management/dayplanning_detail_form.html:66
-msgid "Functions"
-msgstr "Funktionstyp"
-
-#: models.py:172 templates/train_management/dayplanning_detail_form.html:89
+#: models/dvzofunction.py:14
+#: templates/train_management/dayplanning_detail_form.html:89
 msgid "Neuthal"
 msgstr "Neuthal"
 
-#: models.py:173 templates/train_management/dayplanning_detail_form.html:106
+#: models/dvzofunction.py:15
+#: templates/train_management/dayplanning_detail_form.html:106
 msgid "Bäretswil"
 msgstr "Bäretswil"
 
-#: models.py:174 templates/train_management/dayplanning_detail_form.html:123
+#: models/dvzofunction.py:16
+#: templates/train_management/dayplanning_detail_form.html:123
 msgid "Hinwil"
 msgstr "Hinwil"
 
-#: models.py:177
+#: models/dvzofunction.py:19 models/station.py:11
 msgid "label short"
-msgstr "Bezeichnung"
+msgstr "Kurzbezeichnung"
 
-#: models.py:179
+#: models/dvzofunction.py:21
 msgid "function_type"
 msgstr "Funktionstyp"
 
-#: models.py:186
+#: models/mileage.py:9
 msgid "Mileage"
 msgstr "Laufleistung"
 
-#: models.py:187
+#: models/mileage.py:10
 msgid "Mileages"
 msgstr "Laufleistungen"
+
+#: models/personnel.py:9 models/personnel.py:10
+#: templates/train_management/personnel_list.html:6
+msgid "Personnel"
+msgstr "Personal"
+
+#: models/personnel.py:13
+msgid "Active"
+msgstr "Aktiv"
+
+#: models/personnel.py:14
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: models/personnel.py:19
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: models/personnel.py:21
+msgid "firstname"
+msgstr "Vorname"
+
+#: models/personnel.py:22
+msgid "lastname"
+msgstr "Nachname"
+
+#: models/personnel.py:23
+msgid "email"
+msgstr "E-Mail"
+
+#: models/personnel.py:24
+msgid "mobile phone"
+msgstr "Mobiltelefon"
+
+#: models/personnel.py:27
+msgid "mobile phone publicly available"
+msgstr "Mobiltelefon darf publiziert werden"
+
+#: models/personnel.py:29
+msgid "date of birth"
+msgstr "Geburtsdatum"
+
+#: models/phonenumber.py:9 models/phonenumber.py:19
+#: templates/train_management/phonenumber_list.html:6
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: models/phonenumber.py:10
+#: templates/train_management/phonenumber_overview.html:7
+#: templates/train_management/phonenumber_type.html:7
+msgid "Phone numbers"
+msgstr "Telefonnummern"
+
+#: models/phonenumber.py:13
+#: templates/train_management/phonenumber_overview.html:13
+msgid "SBB"
+msgstr "SBB"
+
+#: models/phonenumber.py:14
+#: templates/train_management/phonenumber_overview.html:10
+msgid "Emergency"
+msgstr "Notfall"
+
+#: models/phonenumber.py:15
+#: templates/train_management/phonenumber_overview.html:12
+msgid "DVZO"
+msgstr "DVZO"
+
+#: models/phonenumber.py:20
+msgid "Phone number type"
+msgstr "Telefonnummer-Typ"
+
+#: models/station.py:7
+msgid "Betriebspunkt"
+msgstr "Betriebspunkt"
+
+#: models/station.py:8
+msgid "Betriebspunkte"
+msgstr "Betriebspunkte"
+
+#: models/station.py:10 templates/train_management/station_list.html:26
+msgid "DIDOK Nr."
+msgstr "DIDOK Nr."
+
+#: models/train.py:9
+msgid "Train tour"
+msgstr "Umlauf"
+
+#: models/train.py:10
+msgid "Train tours"
+msgstr "Umläufe"
+
+#: models/train.py:13
+msgid "km"
+msgstr "km"
+
+#: models/train.py:34
+msgid "Train configuration"
+msgstr "Zugkonfiguration"
+
+#: models/train.py:35
+msgid "Train configurations"
+msgstr "Zugkonfigurationen"
+
+#: models/train.py:39
+msgid "sorting"
+msgstr "Sortierung"
+
+#: models/traintimetable.py:9
+msgid "Train timetable"
+msgstr "Zug-Fahrplan"
+
+#: models/traintimetable.py:10
+msgid "Train timetables"
+msgstr "Zug-Fahrpläne"
+
+#: models/traintimetable.py:16 models/traintimetabletemplate.py:21
+msgid "start time"
+msgstr "Abfahrt"
+
+#: models/traintimetable.py:17 models/traintimetabletemplate.py:22
+msgid "destination time"
+msgstr "Ankunft"
+
+#: models/traintimetable.py:18 models/traintimetabletemplate.py:23
+#: models/vehicle.py:45
+msgid "description"
+msgstr "Beschreibung"
+
+#: models/traintimetabletemplate.py:9
+msgid "Train timetable template"
+msgstr "Zug-Fahrplan-Vorlage"
+
+#: models/traintimetabletemplate.py:10
+#: templates/train_management/traintimetabletemplate_list.html:6
+msgid "Train timetable templates"
+msgstr "Zug-Fahrplan-Vorlagen"
+
+#: models/traintimetabletemplate.py:16
+msgid "template name"
+msgstr "Vorlage-Bezeichnung"
+
+#: models/traintimetabletemplate.py:24
+msgid "active"
+msgstr "Aktiv"
+
+#: models/vehicle.py:8
+msgid "Vehicle"
+msgstr "Fahrzeug"
+
+#: models/vehicle.py:9 templates/train_management/dayplanning_list.html:29
+msgid "Vehicles"
+msgstr "Fahrzeuge"
+
+#: models/vehicle.py:12 templates/train_management/engine_list.html:6
+msgid "Engine"
+msgstr "Triebfahrzeug"
+
+#: models/vehicle.py:13 templates/train_management/carriage_list.html:6
+msgid "Carriage"
+msgstr "Wagen"
+
+#: models/vehicle.py:16
+msgid "Available"
+msgstr "Verfügbar"
+
+#: models/vehicle.py:17
+msgid "In Servicing"
+msgstr "Im Unterhalt"
+
+#: models/vehicle.py:18
+msgid "Ask"
+msgstr "Nachfragen"
+
+#: models/vehicle.py:21
+msgid "Seating Car"
+msgstr "Sitzplatzwagen"
+
+#: models/vehicle.py:22
+msgid "Waggon Restaurant"
+msgstr "Speisewagen"
+
+#: models/vehicle.py:23
+msgid "Luggage"
+msgstr "Gepäck"
+
+#: models/vehicle.py:24
+msgid "Cargo"
+msgstr "Güterwagen"
+
+#: models/vehicle.py:28
+msgid "Uster"
+msgstr "Uster"
+
+#: models/vehicle.py:29
+msgid "Wald ZH"
+msgstr "Wald ZH"
+
+#: models/vehicle.py:32
+msgid "Steam"
+msgstr "Dampf"
+
+#: models/vehicle.py:33
+msgid "Diesel"
+msgstr "Diesel"
+
+#: models/vehicle.py:34
+msgid "Electric"
+msgstr "Elektrisch"
+
+#: models/vehicle.py:35
+msgid "Diesel/Electric"
+msgstr "Diesel/Elektrisch"
+
+#: models/vehicle.py:39
+msgid "Front"
+msgstr "Vorne"
+
+#: models/vehicle.py:40
+msgid "Back"
+msgstr "Hinten"
+
+#: models/vehicle.py:41
+msgid "Front and Back"
+msgstr "Vorne und hinten"
+
+#: models/vehicle.py:44
+msgid "historic_name"
+msgstr "Historische Bezeichnung"
+
+#: models/vehicle.py:46
+msgid "UIC"
+msgstr "UIC"
+
+#: models/vehicle.py:47
+msgid "image"
+msgstr "Bild"
+
+#: models/vehicle.py:48
+msgid "gross_weight"
+msgstr "Bruttogewicht (t)"
+
+#: models/vehicle.py:49
+msgid "seats"
+msgstr "Sitzplätze"
+
+#: models/vehicle.py:50
+msgid "vehicle type"
+msgstr "Fahrzeugtyp"
+
+#: models/vehicle.py:54
+msgid "carriage_type"
+msgstr "Wagen"
+
+#: models/vehicle.py:56
+msgid "home"
+msgstr "Heimatbahnhof"
+
+#: models/vehicle.py:58
+msgid "start year"
+msgstr "Inbetriebnahme (Jahr)"
+
+#: models/vehicle.py:59
+msgid "last revision"
+msgstr "Letze Revision"
+
+#: models/vehicle.py:60
+msgid "next revision"
+msgstr "Nächste Revision"
+
+#: models/vehicle.py:61
+msgid "axles distance"
+msgstr "Achsabstand"
+
+#: models/vehicle.py:62
+msgid "length"
+msgstr "Länge"
+
+#: models/vehicle.py:63
+msgid "manufacturer"
+msgstr "Hersteller"
+
+#: models/vehicle.py:64
+msgid "traction 25 permille"
+msgstr "Zugkraft 25 ‰ Steigung"
+
+#: models/vehicle.py:65
+msgid "traction 30 permille"
+msgstr "Zugkraft 30 ‰ Steigung"
+
+#: models/vehicle.py:66
+msgid "power_unit"
+msgstr "Antrieb"
+
+#: models/vehicle.py:68
+msgid "steam_heating"
+msgstr "Dampfheizung"
+
+#: models/vehicle.py:70
+msgid "maximum speed"
+msgstr "vMax"
 
 #: templates/train_management/carriage_create_form.html:7
 #: templates/train_management/carriage_list.html:63
@@ -351,6 +519,11 @@ msgstr "Neuer Wagen"
 #: templates/train_management/engine_update_form.html:9
 #: templates/train_management/personnel_create_form.html:9
 #: templates/train_management/personnel_update_form.html:9
+#: templates/train_management/station_create_form.html:9
+#: templates/train_management/station_update_form.html:9
+#: templates/train_management/traintimetable_update_form.html:14
+#: templates/train_management/traintimetabletemplate_create_form.html:9
+#: templates/train_management/traintimetabletemplate_update_form.html:9
 msgid "Stammdaten"
 msgstr "Stammdaten"
 
@@ -358,6 +531,9 @@ msgstr "Stammdaten"
 #: templates/train_management/dayplanning_list.html:26
 #: templates/train_management/dvzofunction_list.html:27
 #: templates/train_management/engine_list.html:26
+#: templates/train_management/phonenumber_list.html:26
+#: templates/train_management/station_list.html:28
+#: templates/train_management/traintimetabletemplate_list.html:27
 msgid "Label"
 msgstr "Bezeichnung"
 
@@ -380,12 +556,19 @@ msgstr "Sitzplätze"
 #: templates/train_management/dvzofunction_update_form.html:13
 #: templates/train_management/engine_update_form.html:14
 #: templates/train_management/personnel_update_form.html:14
+#: templates/train_management/phonenumber_update_form.html:13
+#: templates/train_management/station_update_form.html:14
+#: templates/train_management/traintimetabletemplate_update_form.html:14
 msgid "Back to list"
 msgstr "Zurück zur Liste"
 
 #: templates/train_management/dayplanning_confirm_delete.html:9
 #: templates/train_management/dvzofunction_confirm_delete.html:9
 #: templates/train_management/personnel_confirm_delete.html:9
+#: templates/train_management/phonenumber_confirm_delete.html:9
+#: templates/train_management/station_confirm_delete.html:9
+#: templates/train_management/traintimetable_confirm_delete.html:9
+#: templates/train_management/traintimetabletemplate_confirm_delete.html:9
 #: templates/train_management/vehicle_confirm_delete.html:9
 msgid "Delete?"
 msgstr "Löschen?"
@@ -398,31 +581,30 @@ msgstr "Neue Tagesplanungs"
 msgid "Briefing"
 msgstr "Briefing"
 
-#: templates/train_management/dayplanning_detail_form.html:43
-msgid "Yes"
-msgstr "Ja"
-
 #: templates/train_management/dayplanning_detail_form.html:55
 msgid "Edit master data"
 msgstr "Stammdaten bearbeiten"
 
 #: templates/train_management/dayplanning_detail_form.html:59
-msgid "Add new train"
-msgstr "Neuen Zug hinzufügen"
+msgid "Add new train tour"
+msgstr "Neuen Umlauf hinzufügen"
 
 #: templates/train_management/dayplanning_detail_form.html:138
-#: templates/train_management/dayplanning_detail_form.html:256
+#: templates/train_management/dayplanning_detail_form.html:231
 msgid "Edit functions"
 msgstr "Funktionen bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:252
-#: templates/train_management/train_update_form.html:9
-msgid "Edit train"
-msgstr "Zug bearbeiten"
+#: templates/train_management/dayplanning_detail_form.html:227
+msgid "Edit train formation"
+msgstr "Formation bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:260
-msgid "Edit schedule"
-msgstr "Fahrplan bearbeiten"
+#: templates/train_management/dayplanning_detail_form.html:236
+msgid "Add schedule"
+msgstr "Fahrplan hinzufügen"
+
+#: templates/train_management/dayplanning_detail_form.html:248
+msgid "Add from Template"
+msgstr "Aus Vorlage hinzufügen"
 
 #: templates/train_management/dayplanning_list.html:6
 msgid "Day Planning"
@@ -434,12 +616,17 @@ msgstr "Datum"
 
 #: templates/train_management/dayplanning_list.html:28
 #: templates/train_management/dvzofunction_list.html:28
+#: templates/train_management/phonenumber_list.html:28
 msgid "Type"
 msgstr "Typ"
 
 #: templates/train_management/dayplanning_list.html:66
 msgid "New day planning"
 msgstr "Neue Tagesplanung"
+
+#: templates/train_management/dayplanning_list.html:71
+msgid "Bulletin"
+msgstr "Bulletin"
 
 #: templates/train_management/dayplanning_update_form.html:11
 msgid "Master data"
@@ -498,6 +685,40 @@ msgstr "Mobiltelefon"
 msgid "New personnel"
 msgstr "Neues Personal"
 
+#: templates/train_management/phonenumber_create_form.html:7
+#: templates/train_management/phonenumber_list.html:55
+msgid "New phone number"
+msgstr "Neue Telefonnummer"
+
+#: templates/train_management/phonenumber_list.html:27
+msgid "Number"
+msgstr "Nummer"
+
+#: templates/train_management/phonenumber_member.html:7
+msgid "Phone numbers members"
+msgstr "Mitglieder Telefonnummern"
+
+#: templates/train_management/phonenumber_overview.html:11
+msgid "Members"
+msgstr "Mitglieder"
+
+#: templates/train_management/station_create_form.html:7
+#: templates/train_management/station_list.html:55
+msgid "New station"
+msgstr "Neuer Betriebspunkt"
+
+#: templates/train_management/station_list.html:6
+msgid "Stations"
+msgstr "Betriebspunkte"
+
+#: templates/train_management/station_list.html:27
+msgid "Label short"
+msgstr "Kurzbezeichnung"
+
+#: templates/train_management/train_update_form.html:9
+msgid "Edit train"
+msgstr "Zug bearbeiten"
+
 #: templates/train_management/train_update_form.html:19
 msgid "Selected vehicles"
 msgstr "Ausgewählte Fahrzeuge"
@@ -509,6 +730,35 @@ msgstr "Verfügbare Fahrzeuge"
 #: templates/train_management/train_update_form.html:35
 msgid "Save"
 msgstr "Speichern"
+
+#: templates/train_management/traintimetable_update_form.html:10
+msgid "Add train timetable"
+msgstr "Zug-Fahrplan hinzufügen"
+
+#: templates/train_management/traintimetabletemplate_create_form.html:7
+#: templates/train_management/traintimetabletemplate_list.html:61
+msgid "New train timetable template"
+msgstr "Neue Zug-Fahrplan-Vorlage"
+
+#: templates/train_management/traintimetabletemplate_list.html:26
+msgid "Template name"
+msgstr "Vorlage-Bezeichnung"
+
+#: templates/train_management/traintimetabletemplate_list.html:28
+msgid "Start station"
+msgstr "Abgangsbahnhof"
+
+#: templates/train_management/traintimetabletemplate_list.html:29
+msgid "Start time"
+msgstr "Abfahrt"
+
+#: templates/train_management/traintimetabletemplate_list.html:30
+msgid "Destination station"
+msgstr "Zielbahnhof"
+
+#: templates/train_management/traintimetabletemplate_list.html:31
+msgid "Destination time"
+msgstr "Ankunft"
 
 #~ msgid "Zug 1"
 #~ msgstr "Zug 1"

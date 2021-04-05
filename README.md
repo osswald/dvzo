@@ -47,7 +47,7 @@ bandit --ini .bandit -r
 ```
 cd <APP>
 django-admin makemessages -l de_CH
-python manage.py compilemessage
+python manage.py compilemessages
 ```
 
 ## Docker

@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'dvzo.storage.WhiteNoiseStaticFilesStorage'
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -142,18 +142,17 @@ STATIC_URL = '/static/'
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
-    "root": {"level": "INFO", "handlers": ["file"]},
+    "root": {"level": "INFO", "handlers": ["std_out"]},
     "handlers": {
-        "file": {
+        "std_out": {
             "level": "INFO",
-            "class": "logging.FileHandler",
-            "filename": "/var/log/django.log",
+            "class": "logging.StreamHandler",
             "formatter": "app",
         },
     },
     "loggers": {
         "django": {
-            "handlers": ["file"],
+            "handlers": ["std_out"],
             "level": "INFO",
             "propagate": True
         },

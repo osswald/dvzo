@@ -8,14 +8,14 @@ services:
     container_name: dvzo_container
     restart: unless-stopped
     environment:
-      - SECRET_KEY="{{ dvzo_app.secret_key }}"
-      - DEBUG="False"
-      - ALLOWED_HOSTS="dvzo.app"
-      - DB_NAME="{{ dvzo_database.db_name }}"
-      - DB_USER="{{ dvzo_database.user }}"
-      - DB_PASSWORD="{{ dvzo_database.password }}"
-      - DB_HOST="dvzo_database"
-      - DB_HOST="5432"
+      - SECRET_KEY={{ dvzo_app.secret_key }}
+      - DEBUG=False
+      - ALLOWED_HOSTS=dvzo.app
+      - DB_NAME={{ dvzo_database.db_name }}
+      - DB_USERNAME={{ dvzo_database.user }}
+      - DB_PASSWORD={{ dvzo_database.password }}
+      - DB_HOSTNAME=dvzo_database
+      - DB_PORT=5432
     networks:
       - dvzo_net
     ports:

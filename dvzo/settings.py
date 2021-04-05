@@ -22,18 +22,19 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
-                     'django.contrib.admin',
-                     'django.contrib.auth',
-                     'django.contrib.contenttypes',
-                     'django.contrib.sessions',
-                     'django.contrib.messages',
-                     'django.contrib.staticfiles',
-                     'sass_processor',
-                     'django_tex',
-                     'phonenumber_field',
-                     'tapeforms',
-                     'compressor',
-                 ] + PROJECT_APPS
+    'whitenoise.runserver_nostatic',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'sass_processor',
+    'django_tex',
+    'phonenumber_field',
+    'tapeforms',
+    'compressor',
+] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,17 +48,20 @@ MIDDLEWARE = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_HOST = os.getenv('STATIC_HOST', '')
-STATIC_URL = STATIC_HOST + '/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder'
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 
-COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+COMPRESS_PRECOMPILERS = [("text/x-scss", "django_libsass.SassCompiler")]
+COMPRESS_CACHEABLE_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+
+COMPRESS_URL = STATIC_URL
+COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
 

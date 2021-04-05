@@ -19,7 +19,7 @@
     <div class="col">
       <div class="container white-container">
 
-        <h2>{% translate "Stammdaten" %}</h2>
+        <h2>{% translate "Master data" %}</h2>
         <table class="table table-sm dvzo-50">
           <thead>
           <th></th>
@@ -27,24 +27,60 @@
           </thead>
           <tbody>
           <tr>
-            <th>Datum</th>
+            <th>{% translate "Date" %}</th>
             <td>{{object.date}}</td>
           </tr>
           <tr>
-            <th>Typ</th>
+            <th>{% translate "Type" %}</th>
             <td>{{object.get_day_planning_type_display}}</td>
           </tr>
           <tr>
-            <th>Status</th>
-            <td>{{object.get_status_display}}</td>
-          </tr>
-          <tr>
-            <th>Bezahlt</th>
-            <td>{% if object.paid == True %} {% translate "Yes" %} {% else %} {% translate "No" %} {% endif %}</td>
-          </tr>
-          <tr>
-            <th>Text</th>
+            <th>{% translate "Text" %}</th>
             <td>{{object.text}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <h2>{% translate "Planning" %}</h2>
+        <table class="table table-sm dvzo-50">
+          <thead>
+          <th></th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{% translate "Slot ordered" %}</th>
+            <td>{{object.get_slot_ordered_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "Personnel disposition" %}</th>
+            <td>{{object.get_personnel_disposition_display}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <h2>{% translate "Booking" %}</h2>
+        <table class="table table-sm dvzo-50">
+          <thead>
+          <th></th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{% translate "Booking status" %}</th>
+            <td>{{object.get_booking_status_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "Customers" %}</th>
+            <td>{{object.customers}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "Price" %}</th>
+            <td>{{object.price}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "Paid" %}</th>
+            <td>{{object.get_paid_display}}</td>
           </tr>
           </tbody>
         </table>

@@ -20,6 +20,10 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
+    cp .env.example .env
+  displayName: 'Copy dummy env file'
+
+- script: |
     python manage.py test
   displayName: 'Run tests'
 

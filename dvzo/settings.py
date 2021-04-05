@@ -22,6 +22,7 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,7 +32,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'django_tex',
     'phonenumber_field',
-    'tapeforms'
+    'tapeforms',
+    'compressor',
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -45,26 +47,29 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'dvzo.storage.WhiteNoiseStaticFilesStorage'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+
+COMPRESS_PRECOMPILERS = [("text/x-scss", "django_libsass.SassCompiler")]
+COMPRESS_CACHEABLE_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+
+COMPRESS_URL = STATIC_URL
+COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 
 PHONENUMBER_DEFAULT_REGION = "CH"
 
-SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
-
-STATICFILES_DIRS = [SASS_PROCESSOR_ROOT]
-
 ROOT_URLCONF = 'dvzo.urls'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 TEMPLATE_DIR = BASE_DIR / 'templates'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -136,8 +141,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-STATIC_URL = '/static/'
 
 LOGGING = {
     "version": 1,

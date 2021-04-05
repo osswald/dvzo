@@ -38,4 +38,5 @@ class FunctionCreateView(generic.CreateView):
 @method_decorator(login_required, name='dispatch')
 class FunctionDeleteView(generic.DeleteView):
     model = DvzoFunction
+    template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("function-list")

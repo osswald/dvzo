@@ -38,4 +38,5 @@ class TrainTimetableTemplateCreateView(generic.CreateView):
 @method_decorator(login_required, name='dispatch')
 class TrainTimetableTemplateDeleteView(generic.DeleteView):
     model = TrainTimetableTemplate
+    template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("train-timetable-template-list")

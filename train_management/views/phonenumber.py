@@ -39,6 +39,7 @@ class PhoneNumberCreateView(generic.CreateView):
 @method_decorator(login_required, name='dispatch')
 class PhoneNumberDeleteView(generic.DeleteView):
     model = PhoneNumber
+    template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("phone-list")
 
 

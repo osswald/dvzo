@@ -38,4 +38,5 @@ class PersonnelCreateView(generic.CreateView):
 @method_decorator(login_required, name='dispatch')
 class PersonnelDeleteView(generic.DeleteView):
     model = Personnel
+    template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("personnel-list")

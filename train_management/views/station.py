@@ -38,4 +38,5 @@ class StationCreateView(generic.CreateView):
 @method_decorator(login_required, name='dispatch')
 class StationDeleteView(generic.DeleteView):
     model = Station
+    template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("station-list")

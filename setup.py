@@ -12,7 +12,6 @@ URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
     'Pillow',
     'gunicorn',
-    'django-widget-tweaks',
     'django-static-precompiler',
     'libsass',
     'django-compressor',
@@ -23,6 +22,7 @@ REQUIRED = [
     'psycopg2-binary',
     'whitenoise',
     'django-phonenumber-field[phonenumbers]',
+    'django-tapeforms',
     'Django'
 ]
 TEST_REQUIRE = [

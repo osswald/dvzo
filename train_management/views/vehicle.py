@@ -79,4 +79,3 @@ class EngineCreateView(generic.CreateView):
 class EngineDeleteView(generic.DeleteView):
     model = Vehicle
     success_url = reverse_lazy("engine-list")
-

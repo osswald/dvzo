@@ -18,6 +18,23 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## Testing & Formatting
+
+```
+# install test dependencies
+pip install ".[test]"
+
+# run tests
+pytest
+```
+
+For the formatting we have flake8 and isort in place.
+
+```
+flake8 .
+isort . [--check]
+```
+
 ## l10n
 
 ```

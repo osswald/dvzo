@@ -88,7 +88,7 @@ TEMPLATES = [
             ],
         },
     },
-{
+    {
         'NAME': 'tex',
         'BACKEND': 'django_tex.engine.TeXEngine',
         'APP_DIRS': True,

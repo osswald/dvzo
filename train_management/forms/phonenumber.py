@@ -13,4 +13,3 @@ class PhoneNumberPersonnelForm(ModelForm):
     class Meta:
         model = Personnel
         fields = ['lastname', 'firstname', 'status', 'mobile_phone', 'mobile_phone_public']
-

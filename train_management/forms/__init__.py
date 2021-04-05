@@ -1,9 +1,9 @@
-from train_management.forms.dayplanning import *
-from train_management.forms.dvzofunction import *
-from train_management.forms.personnel import *
-from train_management.forms.phonenumber import *
-from train_management.forms.station import *
-from train_management.forms.train import *
-from train_management.forms.traintimetable import *
-from train_management.forms.traintimetabletemplate import *
-from train_management.forms.vehicle import *
+from train_management.forms.dayplanning import *  # noqa
+from train_management.forms.dvzofunction import *  # noqa
+from train_management.forms.personnel import *  # noqa
+from train_management.forms.phonenumber import *  # noqa
+from train_management.forms.station import *  # noqa
+from train_management.forms.train import *  # noqa
+from train_management.forms.traintimetable import *  # noqa
+from train_management.forms.traintimetabletemplate import *  # noqa
+from train_management.forms.vehicle import *  # noqa

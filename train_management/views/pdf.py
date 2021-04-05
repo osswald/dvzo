@@ -18,4 +18,3 @@ def bulletin_pdf(request, pk):
     dayplanning = DayPlanning.objects.get(pk=pk)
     context = {'dayplanning': dayplanning}
     return render_to_pdf(request, template_name, context, filename='briefing.pdf')
-

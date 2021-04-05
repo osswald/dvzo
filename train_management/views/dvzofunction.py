@@ -39,4 +39,3 @@ class FunctionCreateView(generic.CreateView):
 class FunctionDeleteView(generic.DeleteView):
     model = DvzoFunction
     success_url = reverse_lazy("function-list")
-

@@ -12,4 +12,3 @@ class Mileage(models.Model):
     date = models.DateField(_("date"))
     label = models.CharField(_("label"), max_length=200, blank=True)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)
-

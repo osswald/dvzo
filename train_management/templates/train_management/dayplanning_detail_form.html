@@ -100,126 +100,65 @@
     <div class="col">
       <div class="container white-container">
         <h2>{% translate "Functions" %}</h2>
-        <h3>{% translate "Bauma" %}</h3>
+        {% for function_type, functions in dayplanning_functions.items %}
+        <h3>{{function_type}}</h3>
         <table class="table table-sm dvzo-50">
           <thead>
-          <th>Funktion</th>
-          <th>Person</th>
+          <th>{% translate "Function" %}</th>
+          <th>{% translate "Person" %}</th>
           </thead>
           <tbody>
           <tr>
-            <td>Anlagenwärter</td>
-            <td>Peter Muster</td>
-          </tr>
-          <tr>
-            <td>Lokbetreuer</td>
+            {% for function, persons in functions.items %}
+            <td>{{function}}</td>
             <td>
-              Max Muster<br>
-              Manuel Muster<br>
-              Michael Muster
+              {% for person in persons %}
+              {{person}}
+              {% if not forloop.last %}<br>{% endif %}
+              {% endfor %}
             </td>
+            {% endfor %}
           </tr>
           </tbody>
         </table>
-
-        <h3>{% translate "Neuthal" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Barrierenwärter</td>
-            <td>
-              Max Muster<br>
-              Manuel Muster<br>
-              Michael Muster
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <h3>{% translate "Bäretswil" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Koordinator</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Anlagenwärter</td>
-            <td>Max Muster</td>
-          </tr>
-          </tbody>
-        </table>
-        <h3>{% translate "Hinwil" %}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>Funktion</th>
-          <th>Person</th>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Billetverkauf</td>
-            <td>Max Muster</td>
-          </tr>
-          </tbody>
-        </table>
-        <a href="{% url "edit-dayplanning-functions" dayplanning_id=object.id %}" class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit functions" %}
+        {% endfor %}
+        <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}" class="btn btn-primary">
+        <i class="far fa-edit"></i>
+        {% translate "Edit functions" %}
         </a>
       </div>
 
     </div>
   </div>
   <div class="row row-cols-lg-2 gy-4">
-    {% for train in object.train_set.all %}
+    {% for train_data in trains_data %}
+    {% with train=train_data.train %}
     <div class="col">
-      <div class="container white-container">
-        <h2>{{train.label}}</h2>
-        <h3>Formation</h3>
-        {% include 'includes/train.html'%}
+      <div class="container white-cotainer">
+        <h2>{{train}}</h2>
+        <h3>{% translate "Formation" %}</h3>
+        {% include 'includes/train.html' %}
+
         <table class="table table-sm dvzo-25">
           <thead>
-          <th>Funktion</th>
-          <th>Person</th>
+          <th>{% translate "Function" %}</th>
+          <th>{% translate "Person" %}</th>
           </thead>
           <tbody>
+          {% for function, persons in train_data.functions.items %}
           <tr>
-            <td>Lf</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Hz f</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Hz s</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>Z</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>K</td>
-            <td>Max Muster</td>
-          </tr>
-          <tr>
-            <td>WR</td>
+            <td>{{function}}</td>
             <td>
-              Max Muster<br>
-              Monika Muster<br>
-              Miranda Muster
+              {% for person in persons %}
+              {{ person }}
+              {% if not forloop.last %}<br>{% endif %}
+              {% endfor %}
             </td>
           </tr>
+          {% endfor %}
           </tbody>
         </table>
+
         {% if train.traintimetable_set.all|length %}
         <table class="table table-sm dvzo-25">
           <thead>
@@ -248,24 +187,27 @@
               </a>
             </td>
           </tr>
-          {% if traintimetable.comment|length %}
-          <tr>
-            <td colspan="3">{{ traintimetable.comment }}</td>
-          </tr>
-          {% endif %}
           {% endfor %}
-
           </tbody>
         </table>
         {% endif %}
+
+        {% if traintimetable.comment|length %}
+        <tr>
+          <td colspan="3">{{ traintimetable.comment }}</td>
+        </tr>
+        {% endif %}
+
         <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">
           <i class="far fa-edit"></i>
           {% translate "Edit train formation" %}
         </a>
+
         <a href='{% url "edit-train-functions" train_id=train.id %}' class="btn btn-primary">
           <i class="far fa-edit"></i>
           {% translate "Edit functions" %}
         </a>
+
         <div class="btn-group">
           <a href='{% url "train-timetable-create" pk=train.id %}' class="btn btn-primary">
             <i class="far fa-edit"></i>
@@ -279,18 +221,20 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item disabled" href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
+              <a class="dropdown-item disabled"
+                 href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
                 <i class="far fa-id-card"></i>
                 {% translate "Add from Template" %}
               </a>
             </li>
           </ul>
         </div>
+
       </div>
     </div>
+    {% endwith %}
     {% empty %}
     {% endfor %}
-
   </div>
 </div>
 

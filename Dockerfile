@@ -8,7 +8,6 @@ WORKDIR /code
 COPY . /code/
 
 RUN python setup.py install
-RUN apk add gettext
 RUN python manage.py compilemessages
 RUN python manage.py collectstatic --noinput
 RUN python manage.py compilescss

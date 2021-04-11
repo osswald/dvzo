@@ -3,15 +3,17 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{% translate "Phone numbers" %}</h1>
-  <div class="container white-container">
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "Phone numbers" %}
+  </div>
+  <div class="dvzo-content">
     <div class="d-grid gap-2 d-md-block">
-      <a href="{% url 'phonenumber-detail' %}?type=emergency" class="btn btn-lg btn-danger">{% translate "Emergency" %}</a>
-      <a href="{% url 'phonenumber-member-detail' %}" class="btn btn-lg btn-secondary">{% translate "Members" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=dvzo" class="btn btn-lg btn-primary">{% translate "DVZO" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=sbb" class="btn btn-lg btn-primary">{% translate "SBB" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=other" class="btn btn-lg btn-primary">{% translate "Other" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=emergency" class="btn btn-lg btn-danger my-1 me-1">{% translate "Emergency" %}</a>
+      <a href="{% url 'phonenumber-member-detail' %}" class="btn btn-lg btn-secondary my-1 me-1">{% translate "Members" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=dvzo" class="btn btn-lg btn-primary my-1 me-1">{% translate "DVZO" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=sbb" class="btn btn-lg btn-primary my-1 me-1">{% translate "SBB" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=other" class="btn btn-lg btn-primary my-1 me-1">{% translate "Other" %}</a>
     </div>
   </div>
 </div>

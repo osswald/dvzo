@@ -2,71 +2,84 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container">
-  <h1>{% translate "Stations" %}</h1>
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "Stations" %}
+  </div>
 
-  <div class="container white-container">
-    <table
-      id="stationListTable"
-      data-toggle="table"
-      data-classes="table table-hover table-condensed"
-      data-striped="true"
-      data-locale="de-DE"
-      data-search="true"
-      data-sort-name="label"
-      data-sort-order="asc"
-      data-pagination="true"
-      data-page-size="15"
-      data-page-list="[15, 25, 50, 100, 200, All]"
-    >
-      <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true">State</th>
-        <th data-field="id" data-visible="false">ID</th>
-        <th data-field="didok_nr" data-sortable="true">{% translate "DIDOK Nr." %}</th>
-        <th data-field="label_short" data-sortable="true">{% translate "Label short" %}</th>
-        <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-        <th data-field="actions" data-sortable="false"></th>
-      </tr>
-      </thead>
-      <tbody>
-      {% for station in stations %}
-      <tr>
-        <td></td>
-        <td>{{ station.id }}</td>
-        <td>{{ station.didok_nr }}</td>
-        <td>{{ station.label_short }}</td>
-        <td>{{ station.label }}</td>
-        <td>
-          <a href='{% url "station-delete" pk=station.id %}'>
-              <i class="fas fa-trash-alt text-danger"></i>
-            </a>&nbsp;
-            <a href='{% url "station-detail" pk=station.id %}'>
-              <i class="far fa-edit"></i>
-            </a>
-        </td>
-      </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-    <br>
-    <a href='{% url "station-create" %}' class="btn btn-primary" >
-      <i class="fas fa-plus"></i>
-      {% translate "New station" %}
-    </a>
-    <button id="daySelectionBtn" class="btn btn-secondary disabled">tmpGetSelections</button>
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="stationListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">State</th>
+                  <th data-field="id" data-visible="false">ID</th>
+                  <th data-field="didok_nr" data-sortable="true">{% translate "DIDOK Nr." %}</th>
+                  <th data-field="label_short" data-sortable="true">{% translate "Label short" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for station in stations %}
+                <tr>
+                  <td></td>
+                  <td>{{ station.id }}</td>
+                  <td>{{ station.didok_nr }}</td>
+                  <td>{{ station.label_short }}</td>
+                  <td>{{ station.label }}</td>
+                  <td>
+                    <a href='{% url "station-delete" pk=station.id %}'>
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href='{% url "station-detail" pk=station.id %}'>
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <a href='{% url "station-create" %}' class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "New station" %}
+          </a>
+          <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-  var $table = $('#stationListTable');
-  var $button = $('#daySelectionBtn');
+var $table = $('#stationListTable');
+var $button = $('#daySelectionBtn');
 
-  $(function() {
-      $button.click(function () {
-          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
-        })
-    })
+$(function() {
+    $button.click(function () {
+        alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+      })
+  })
 
 </script>
 {% endblock content %}

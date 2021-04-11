@@ -5,5 +5,6 @@ rm train_management/migrations/*.py
 python setup.py install
 python manage.py makemigrations train_management
 python manage.py migrate
+python manage.py compilemessages
 python db_helper.py
 python manage.py createsuperuser --username admin

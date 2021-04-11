@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from train_management.forms import DayPlanningFieldsetForm
-from train_management.models import DayPlanning, DvzoFunction, FunctionPersons, Personnel, Train
+from train_management.models import DayPlanning, DvzoFunction, FunctionPersons, Personnel, Train, TrainTimetable
 
 
 @method_decorator(login_required, name='dispatch')
@@ -35,6 +35,7 @@ class DayPlanningDetailView(generic.DetailView):
                     dvzo_function=dvzo_function)]
                 function_type_data[dvzo_function] = persons
             function_types[function_type] = function_type_data
+
         trains_data = []
         for train in Train.objects.filter(day_planning=self.object):
             functions = {}
@@ -45,9 +46,12 @@ class DayPlanningDetailView(generic.DetailView):
             trains_data.append({
                 "train": train,
                 "functions": functions})
+
+        traintimetables = TrainTimetable.objects.filter(train__in=self.object.train_set.all()).order_by("label")
         return super().get_context_data(
             dayplanning_functions=function_types,
             trains_data=trains_data,
+            traintimetables=traintimetables,
             **kwargs)
 
 

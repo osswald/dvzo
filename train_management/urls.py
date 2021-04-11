@@ -65,6 +65,15 @@ urlpatterns = [
     path('station/add/', views.StationCreateView.as_view(), name='station-create'),
     path('station/<int:pk>/delete/', views.StationDeleteView.as_view(), name='station-delete'),
 
+    path('dayplanning/train/reservation/add/<int:pk>/',
+         views.ReservationCreateView.as_view(), name='reservation-create'),
+    path('dayplanning/train/reservation/<int:pk>/',
+         views.ReservationUpdateView.as_view(), name='reservation-update'),
+    path('dayplanning/train/reservation/',
+         views.ReservationListView.as_view(), name='reservation-list'),
+    path('dayplanning/train/reservation/delete/<int:pk>/',
+         views.ReservationDeleteView.as_view(), name='reservation-delete'),
+
     path('dayplanning/train/timetable/add/<int:pk>/',
          views.TrainTimetableCreateView.as_view(), name='train-timetable-create'),
     path('dayplanning/train/timetable/<int:pk>/',

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load tapeforms %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% if object %}
+    {{ object.label }}
+    {% else %}
+    {% translate "Add reservation" %}
+    {% endif %}
+  </h1>
+  <div class="container white-container">
+    <h2>{% translate "Stammdaten" %}</h2>
+    <form action="" method="post">
+      {% csrf_token %}
+      {% form form %}
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

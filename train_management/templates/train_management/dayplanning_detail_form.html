@@ -170,7 +170,9 @@
           {% for traintimetable in train.traintimetable_set.all %}
           <tr>
             <td>
-              <div class="badge bg-secondary">{{ traintimetable.label }}</div>
+              <div class="badge bg-secondary">
+                {{ traintimetable.label }}
+              </div>
             </td>
             <td>
               <span class="fw-bold">{{ traintimetable.start_station }}</span>
@@ -184,6 +186,9 @@
               </a>&nbsp;
               <a href='{% url "train-timetable-update" pk=traintimetable.id %}'>
                 <i class="far fa-edit"></i>
+              </a>
+              <a href='{% url "reservation-create" pk=traintimetable.id %}'>
+                +Res
               </a>
             </td>
           </tr>
@@ -235,6 +240,14 @@
     {% endwith %}
     {% empty %}
     {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card gy-4 px-3 px-4">
+        <h2>{% translate "Reservations" %}</h2>
+        <p>asdf</p>
+      </div>
+    </div>
   </div>
 </div>
 

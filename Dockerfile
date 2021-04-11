@@ -4,6 +4,8 @@ ENV SECRET_KEY="override-me"
 ENV DEBUG="False"
 ENV ALLOWED_HOSTS="*"
 
+RUN apt-get update && apt-get install -y gettext
+
 WORKDIR /code
 COPY . /code/
 

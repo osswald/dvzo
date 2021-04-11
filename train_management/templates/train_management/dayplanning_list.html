@@ -2,78 +2,90 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container">
-  <h1>{% translate "Day Planning" %}</h1>
-
-  <div class="container white-container">
-    <table
-      id="dayPlanningListTable"
-      data-toggle="table" 
-      data-classes="table table-hover table-condensed"
-      data-striped="true"
-      data-locale="de-DE"
-      data-search="true"
-      data-sort-name="date"
-      data-sort-order="asc"
-      data-pagination="true"
-      data-page-size="15"
-      data-page-list="[15, 25, 50, 100, 200, All]"
-      >
-      <thead>
-        <tr>
-          <th data-field="state" data-checkbox="true">State</th>
-          <th data-field="id" data-visible="false">ID</th>
-          <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-          <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
-          <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
-          <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
-          <th data-field="actions" data-sortable="false"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for day_planning in day_plannings %}
-        <tr>
-          <td></td>
-          <td>{{ day_planning.id }}</td>
-          <td>
-            <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
-              {{ day_planning.label }}
-            </a>
-            </td>
-          <td>{{ day_planning.date }}</td>
-          <td>{{ day_planning.get_day_planning_type_display }}</td>
-          <td>
-            {% for train in day_planning.train_set.all %}
-                {% include 'includes/train.html' %}
-            <br>
-            {% endfor %}
-          </td>
-          <td>
-            {% if perms.train_management.delete_dayplanning %}
-            <a href='{% url "day-planning-delete" pk=day_planning.id %}'>
-              <i class="fas fa-trash-alt text-danger"></i>
-            </a>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <br>
-    {% if perms.train_management.add_dayplanning %}
-    <a href='{% url "day-planning-create" %}' class="btn btn-primary" >
-      <i class="fas fa-plus"></i>
-      {% translate "New day planning" %}
-    </a>
-    {% endif %}
-    <button id="daySelectionBtn" class="btn btn-secondary disabled">
-      <i class="fas fa-print"></i>
-      {% translate "Bulletin" %}
-    </button>
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "Day Planning" %}
+  </div>
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="dayPlanningListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="date"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">State</th>
+                  <th data-field="id" data-visible="false">ID</th>
+                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+                  <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
+                  <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
+                  <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for day_planning in day_plannings %}
+                <tr>
+                  <td></td>
+                  <td>{{ day_planning.id }}</td>
+                  <td>
+                    <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
+                      {{ day_planning.label }}
+                    </a>
+                  </td>
+                  <td>{{ day_planning.date }}</td>
+                  <td>{{ day_planning.get_day_planning_type_display }}</td>
+                  <td>
+                    {% for train in day_planning.train_set.all %}
+                    {% include 'includes/train.html' %}
+                    <br>
+                    {% endfor %}
+                  </td>
+                  <td>
+                    {% if perms.train_management.delete_dayplanning %}
+                    <a href='{% url "day-planning-delete" pk=day_planning.id %}'>
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_dayplanning %}
+          <a href='{% url "day-planning-create" %}' class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "New day planning" %}
+          </a>
+          {% endif %}
+          <button id="daySelectionBtn" class="btn btn-secondary disabled btn-sm">
+            <i class="fas fa-print"></i>
+            {% translate "Bulletin" %}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<script>
+  <script>
   var $table = $('#dayPlanningListTable');
   var $button = $('#daySelectionBtn');
 
@@ -82,5 +94,10 @@
           alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
         })
     })
-</script>
-{% endblock content %}
+
+
+
+
+
+  </script>
+  {% endblock content %}

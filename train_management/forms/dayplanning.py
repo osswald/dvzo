@@ -27,30 +27,34 @@ class DayPlanningForm(BootstrapTapeformMixin, ModelForm):
 
 
 class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
-    fieldsets = ({
-                     'extra': {
-                         'title': _("Master data"),
-                         'css_class': 'csssss'
-                     },
-                     'fields': ('label',
-                                'date',
-                                'day_planning_type',
-                                'status',
-                                'text'),
-                 }, {
-                     'extra': {
-                         'title': _("Planning"),
-                         'css_class': 'csssss',
-                     },
-                     'fields': ('slot_ordered',
-                                'personnel_disposition'),
-                 }, {
-                     'extra': {
-                         'title': _("Booking"),
-                         'css_class': 'csssss',
-                     },
-                     'fields': ('booking_status',
-                                'customers',
-                                'price',
-                                'paid'),
-                 })
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("Master data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'date',
+                'day_planning_type',
+                'status',
+                'text'),
+        }, {
+            'extra': {
+                'title': _("Planning"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'slot_ordered',
+                'personnel_disposition'),
+        }, {
+            'extra': {
+                'title': _("Booking"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'booking_status',
+                'customers',
+                'price',
+                'paid'),
+        })

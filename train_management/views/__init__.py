@@ -10,4 +10,3 @@ from train_management.views.traincomposition import *  # noqa
 from train_management.views.traintimetable import *  # noqa
 from train_management.views.traintimetabletemplate import *  # noqa
 from train_management.views.vehicle import *  # noqa
-from train_management.views.reservation import *  #noqa

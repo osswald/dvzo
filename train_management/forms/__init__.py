@@ -8,4 +8,3 @@ from train_management.forms.train import *  # noqa
 from train_management.forms.traintimetable import *  # noqa
 from train_management.forms.traintimetabletemplate import *  # noqa
 from train_management.forms.vehicle import *  # noqa
-from train_management.forms.reservation import *  # noqa

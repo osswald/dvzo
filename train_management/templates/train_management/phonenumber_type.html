@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block title %}{% translate "Phone numbers" %} - {{ phone_number.get_phone_number_type_display }}{% endblock %}
+
 {% block content %}
 
 <div class="dvzo-container">

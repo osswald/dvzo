@@ -38,3 +38,8 @@
 - name: Check debug log of dvzo services
   ansible.builtin.debug:
     var: output
+
+- name: Migrate database
+  shell:
+    cmd: "docker-compose exec dvzo_container python manage.py migrate"
+    chdir: /root/dvzo/

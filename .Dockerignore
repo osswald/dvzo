@@ -1,0 +1,15 @@
+.bandit
+.editorconfig
+.env.example
+.git
+.gitignore
+CODE_OF_CONDUCT.md
+LICENSE
+README.md
+/ansible/
+azure-pipelines.yml
+/build/
+db_helper.py
+db_helper.sh
+/dist/
+/dvzo.egg-info/

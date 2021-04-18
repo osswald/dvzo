@@ -13,26 +13,26 @@
   pip:
     name: ['docker', 'PyYAML', 'docker-compose']
 
-- name: Ensures /root/dvzo dir exists
-  file: path=/root/dvzo state=directory
+- name: Ensures /home/dvzo/app dir exists
+  file: path=/home/dvzo/app state=directory
 
 - name: Add docker-compose.yml
   template:
     src: "{{item}}.j2"
-    dest: "/root/dvzo/{{ item }}"
+    dest: "/home/dvzo/app/{{ item }}"
   with_items:
     - docker-compose.yml
 
 - name: Tear down existing dvzo services
   community.docker.docker_compose:
-    project_src: /root/dvzo
+    project_src: /home/dvzo/app
     state: absent
     remove_images: all
     remove_volumes: no
 
 - name: Create and start dvzo services
   community.docker.docker_compose:
-    project_src: /root/dvzo
+    project_src: /home/dvzo/app
   register: output
 
 - name: Check debug log of dvzo services
@@ -41,5 +41,5 @@
 
 - name: Migrate database
   shell:
-    cmd: "docker-compose exec dvzo_container python manage.py migrate"
-    chdir: /root/dvzo/
+    cmd: "/usr/local/bin/docker-compose exec dvzo_container .venv/bin/python manage.py migrate"
+    chdir: /home/dvzo/app

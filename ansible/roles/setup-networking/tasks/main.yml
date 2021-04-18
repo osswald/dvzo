@@ -16,12 +16,12 @@
 - name: Copy Caddyfile with owner and permissions
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/files/Caddyfile"
-    dest: /root/dvzo/Caddyfile
-    owner: root
-    group: root
+    dest: /home/dvzo/app/Caddyfile
+    owner: dvzo
+    group: dvzo
     mode: '0644'
 
 - name: Load caddy config
   ansible.builtin.shell:
     cmd: /usr/bin/caddy reload Caddyfile
-    chdir: /root/dvzo
+    chdir: /home/dvzo/app

@@ -28,7 +28,7 @@ RUN .venv/bin/python -m pip install --upgrade pip
 RUN .venv/bin/python setup.py install
 RUN .venv/bin/python manage.py compilemessages
 RUN .venv/bin/python manage.py collectstatic --noinput
-# Somehow it is necessary to uninstall and install Pillow for compilemessages
+# Somehow it is necessary to uninstall and install Pillow for compilescss
 RUN .venv/bin/python -m pip uninstall -y Pillow
 RUN .venv/bin/python -m pip install Pillow
 RUN .venv/bin/python manage.py compilescss

@@ -3,94 +3,118 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{{ object.label }}</h1>
-  <div class="container white-container">
-    <a href='{% url "day-planning-list" %}' class="btn btn-primary">
-      <i class="fas fa-list"></i>
-      {% translate "Back to list" %}
-    </a>
-    <a href='{% url "briefing-pdf" pk=object.id %}' class="btn btn-primary">
-      <i class="fas fa-print"></i>
-      {% translate "Briefing" %}
-    </a>
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ object.label }}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href='{% url "day-planning-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "Back to list" %}
+            </a>
+            <a href='{% url "briefing-pdf" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-print"></i>
+              {% translate "Briefing" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row row-cols-lg-2 gy-4">
     <div class="col">
-      <div class="container white-container">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Master data" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Date" %}</th>
+                <td>{{object.date}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Type" %}</th>
+                <td>{{object.get_day_planning_type_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Text" %}</th>
+                <td>{{object.text}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-        <h2>{% translate "Master data" %}</h2>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th></th>
-          <th></th>
-          </thead>
-          <tbody>
-          <tr>
-            <th>{% translate "Date" %}</th>
-            <td>{{object.date}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Type" %}</th>
-            <td>{{object.get_day_planning_type_display}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Text" %}</th>
-            <td>{{object.text}}</td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Planning" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Slot ordered" %}</th>
+                <td>{{object.get_slot_ordered_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Personnel disposition" %}</th>
+                <td>{{object.get_personnel_disposition_display}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-        <h2>{% translate "Planning" %}</h2>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th></th>
-          <th></th>
-          </thead>
-          <tbody>
-          <tr>
-            <th>{% translate "Slot ordered" %}</th>
-            <td>{{object.get_slot_ordered_display}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Personnel disposition" %}</th>
-            <td>{{object.get_personnel_disposition_display}}</td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Booking" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Booking status" %}</th>
+                <td>{{object.get_booking_status_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Customers" %}</th>
+                <td>{{object.customers}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Price" %}</th>
+                <td>{{object.price}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Paid" %}</th>
+                <td>{{object.get_paid_display}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-        <h2>{% translate "Booking" %}</h2>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th></th>
-          <th></th>
-          </thead>
-          <tbody>
-          <tr>
-            <th>{% translate "Booking status" %}</th>
-            <td>{{object.get_booking_status_display}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Customers" %}</th>
-            <td>{{object.customers}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Price" %}</th>
-            <td>{{object.price}}</td>
-          </tr>
-          <tr>
-            <th>{% translate "Paid" %}</th>
-            <td>{{object.get_paid_display}}</td>
-          </tr>
-          </tbody>
-        </table>
-
-
-        <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary">
+      <div class="dvzo-button-bottom">
+        <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
           {% translate "Edit master data" %}
         </a>
-        <a href='{% url "train-composition-create" pk=object.id %}' class="btn btn-primary">
+        <a href='{% url "train-composition-create" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
           <i class="fas fa-plus"></i>
           {% translate "Add new train tour" %}
         </a>
@@ -98,31 +122,37 @@
     </div>
 
     <div class="col">
-      <div class="container white-container">
-        <h2>{% translate "Functions" %}</h2>
-        {% for function_type, functions in dayplanning_functions.items %}
-        <h3>{{function_type}}</h3>
-        <table class="table table-sm dvzo-50">
-          <thead>
-          <th>{% translate "Function" %}</th>
-          <th>{% translate "Person" %}</th>
-          </thead>
-          <tbody>
-          <tr>
-            {% for function, persons in functions.items %}
-            <td>{{function}}</td>
-            <td>
-              {% for person in persons %}
-              {{person}}
-              {% if not forloop.last %}<br>{% endif %}
-              {% endfor %}
-            </td>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "dayplanning.title.Functions" %}</div>
+          <div class="card-text">
+            {% for function_type, functions in dayplanning_functions.items %}
+            <h4>{{function_type}}</h4>
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th>{% translate "Function" %}</th>
+              <th>{% translate "Person" %}</th>
+              </thead>
+              <tbody>
+              <tr>
+                {% for function, persons in functions.items %}
+                <td>{{function}}</td>
+                <td>
+                  {% for person in persons %}
+                  {{person}}
+                  {% if not forloop.last %}<br>{% endif %}
+                  {% endfor %}
+                </td>
+                {% endfor %}
+              </tr>
+              </tbody>
+            </table>
             {% endfor %}
-          </tr>
-          </tbody>
-        </table>
-        {% endfor %}
-        <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}" class="btn btn-primary">
+          </div>
+        </div>
+      </div>
+      <div class="dvzo-button-bottom">
+        <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
           {% translate "Edit functions" %}
         </a>
@@ -130,112 +160,119 @@
     </div>
   </div>
 
+
   <div class="row row-cols-lg-2 gy-4">
     {% for train_data in trains_data %}
     {% with train=train_data.train %}
     <div class="col">
-      <div class="container white-cotainer">
-        <h2>{{train}}</h2>
-        <h3>{% translate "Formation" %}</h3>
-        {% include 'includes/train.html' %}
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{{train}}</div>
+          <div class="card-text">
+            <h4>{% translate "Formation" %}</h4>
+            {% include 'includes/train.html' %}
 
-        <table class="table table-sm dvzo-25">
-          <thead>
-          <th>{% translate "Function" %}</th>
-          <th>{% translate "Person" %}</th>
-          </thead>
-          <tbody>
-          {% for function, persons in train_data.functions.items %}
-          <tr>
-            <td>{{function}}</td>
-            <td>
-              {% for person in persons %}
-              {{ person }}
-              {% if not forloop.last %}<br>{% endif %}
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>{% translate "Function" %}</th>
+              <th>{% translate "Person" %}</th>
+              </thead>
+              <tbody>
+              {% for function, persons in train_data.functions.items %}
+              <tr>
+                <td>{{function}}</td>
+                <td>
+                  {% for person in persons %}
+                  {{ person }}
+                  {% if not forloop.last %}<br>{% endif %}
+                  {% endfor %}
+                </td>
+              </tr>
               {% endfor %}
-            </td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
+              </tbody>
+            </table>
 
-        {% if train.traintimetable_set.all|length %}
-        <table class="table table-sm dvzo-25">
-          <thead>
-          <th>Fahrt</th>
-          <th></th>
-          <th></th>
-          </thead>
-          <tbody>
-          {% for traintimetable in train.traintimetable_set.all %}
-          <tr>
-            <td white-space: nowrap>
-              <div class="badge bg-secondary">
-                {{ traintimetable.label }}
-              </div>
-              {% if traintimetable.reservation_set.all|length > 0 %}
-              <span style="border: 1px solid black">R</span>
-              {% endif %}
-            </td>
-            <td>
-              <span class="fw-bold">{{ traintimetable.start_station }}</span>
-              <span>{{ traintimetable.start_time }}</span>
-              - <span class="fw-bold">{{ traintimetable.destination_station }}</span>
-              <span>{{ traintimetable.destination_time }}</span>
-            </td>
-            <td>
-              <a href='{% url "train-timetable-delete" pk=traintimetable.id %}'>
-                <i class="fas fa-trash-alt text-danger"></i>
-              </a>&nbsp;
-              <a href='{% url "train-timetable-update" pk=traintimetable.id %}'>
-                <i class="far fa-edit"></i>
-              </a>
-              <a href='{% url "reservation-create" pk=traintimetable.id %}'>
-                +Res
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-        {% endif %}
+            {% if train.traintimetable_set.all|length %}
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>Fahrt</th>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              {% for traintimetable in train.traintimetable_set.all %}
+              <tr>
+                <td style="white-space: nowrap">
+                  <div class="badge bg-secondary">
+                    {{ traintimetable.label }}
+                  </div>
+                  {% if traintimetable.reservation_set.all|length > 0 %}
+                  <div class="badge bg-dark">R</div>
+                  {% endif %}
+                </td>
+                <td>
+                  <span class="fw-bold">{{ traintimetable.start_station }}</span>
+                  <span>{{ traintimetable.start_time }}</span>
+                  - <span class="fw-bold">{{ traintimetable.destination_station }}</span>
+                  <span>{{ traintimetable.destination_time }}</span>
+                </td>
+                <td>
+                  <a href='{% url "train-timetable-delete" pk=traintimetable.id %}'>
+                    <i class="fas fa-trash-alt text-danger"></i>
+                  </a>&nbsp;
+                  <a href='{% url "train-timetable-update" pk=traintimetable.id %}'>
+                    <i class="far fa-edit"></i>
+                  </a>
+                  <a href='{% url "reservation-create" pk=traintimetable.id %}'>
+                    +Res
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            {% endif %}
 
-        {% if traintimetable.comment|length %}
-        <tr>
-          <td colspan="3">{{ traintimetable.comment }}</td>
-        </tr>
-        {% endif %}
+            {% if traintimetable.comment|length %}
+            <tr>
+              <td colspan="3">{{ traintimetable.comment }}</td>
+            </tr>
+            {% endif %}
+          </div>
+        </div>
+      </div>
 
-        <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit train formation" %}
-        </a>
-
-        <a href='{% url "edit-train-functions" train_id=train.id %}' class="btn btn-primary">
-          <i class="far fa-edit"></i>
-          {% translate "Edit functions" %}
-        </a>
-
-        <div class="btn-group">
-          <a href='{% url "train-timetable-create" pk=train.id %}' class="btn btn-primary">
+        <div class="dvzo-button-bottom">
+          <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary btn-sm my-1 me-1">
             <i class="far fa-edit"></i>
-            {% translate "Add schedule" %}
+            {% translate "Edit train formation" %}
           </a>
-          <button type="button"
-                  class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item disabled"
-                 href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
-                <i class="far fa-id-card"></i>
-                {% translate "Add from Template" %}
-              </a>
-            </li>
-          </ul>
+
+          <a href='{% url "edit-train-functions" train_id=train.id %}' class="btn btn-primary btn-sm my-1 me-1">
+            <i class="far fa-edit"></i>
+            {% translate "Edit functions" %}
+          </a>
+
+          <div class="btn-group my-1 me-1">
+            <a href='{% url "train-timetable-create" pk=train.id %}' class="btn btn-primary btn-sm">
+              <i class="far fa-edit"></i>
+              {% translate "Add schedule" %}
+            </a>
+            <button type="button"
+                    class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item disabled"
+                   href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
+                  <i class="far fa-id-card"></i>
+                  {% translate "Add from Template" %}
+                </a>
+              </li>
+            </ul>
         </div>
 
       </div>
@@ -244,49 +281,52 @@
     {% empty %}
     {% endfor %}
   </div>
+
   <div class="row">
     <div class="col">
-      <div class="card gy-4 px-3 px-4">
-        <h2>{% translate "Reservations" %}</h2>
-
-        <table class="table table-sm dvzo-25">
-          <thead>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          </thead>
-          <tbody>
-          {% for traintimetable in traintimetables %}
-          {% with reservations=traintimetable.reservation_set.all %}
-          {% if reservations|length > 0 %}
-          <tr>
-            <td rowspan={{reservations|length}}>
-              <div class="badge bg-secondary">
-                {{ traintimetable.label }}
-              </div>
-            </td>
-            {% endif %}
-            {% for reservation in reservations %}
-            <td>
-              <span class="fw-bold">{{ traintimetable.start_station.label_short }}</span>
-              <span>{{ traintimetable.start_time }}</span>
-              - <span class="fw-bold">{{ traintimetable.destination_station.label_short }}</span>
-              <span>{{ traintimetable.destination_time }}</span>
-            </td>
-            <td>{{reservation.label}}</td>
-            <td>{{reservation.amount}}</td>
-            <td>{{reservation.get_reservation_type_display}}</td>
-            <td>{{reservation.get_reservation_status_display}}</td>
-          </tr>
-          {% endfor %}
-          {% endwith %}
-          {% endfor %}
-          </tbody>
-        </table>
-
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Reservations" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              {% for traintimetable in traintimetables %}
+              {% with reservations=traintimetable.reservation_set.all %}
+              {% if reservations|length > 0 %}
+              <tr>
+                <td rowspan={{reservations|length}}>
+                  <div class="badge bg-secondary">
+                    {{ traintimetable.label }}
+                  </div>
+                </td>
+                {% endif %}
+                {% for reservation in reservations %}
+                <td>
+                  <span class="fw-bold">{{ traintimetable.start_station.label_short }}</span>
+                  <span>{{ traintimetable.start_time }}</span>
+                  - <span class="fw-bold">{{ traintimetable.destination_station.label_short }}</span>
+                  <span>{{ traintimetable.destination_time }}</span>
+                </td>
+                <td>{{reservation.label}}</td>
+                <td>{{reservation.amount}}</td>
+                <td>{{reservation.get_reservation_type_display}}</td>
+                <td>{{reservation.get_reservation_status_display}}</td>
+              </tr>
+              {% endfor %}
+              {% endwith %}
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

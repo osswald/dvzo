@@ -4,16 +4,32 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{% translate "New station" %}</h1>
-  <div class="container white-container">
-    <h2>{% translate "Stammdaten" %}</h2>
-    <form  method="post">
-      {% csrf_token %}
-      {% form form %}
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+<div class="dvzo-container">
+
+  <div class="dvzo-header">
+    {% translate "New station" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <form method="post">
+          <div class="card my-2">
+            <div class="card-body">
+              <div class="card-text">
+                {% csrf_token %}
+                {% form form %}
+              </div>
+            </div>
+          </div>
+          <div class="dvzo-buttons-bottom">
+            <input type="submit" value="{% translate 'Submit' %}" class="btn btn-primary btn-sm">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
+
 
 {% endblock content %}

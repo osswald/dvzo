@@ -3,9 +3,11 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{% translate "Phone numbers" %} {{ phone_number.get_phone_number_type_display }}</h1>
-  <div class="container white-container">
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "Phone numbers" %} {{ phone_number.get_phone_number_type_display }}
+  </div>
+  <div class="dvzo-content">
     <div class="d-grid gap-2 d-md-block">
       <div class="list-group">
         {% for phone_number in phone_numbers %}

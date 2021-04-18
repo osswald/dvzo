@@ -4,15 +4,28 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{% translate "New Function" %}</h1>
-  <div class="container white-container">
-    <form  method="post">
-      {% csrf_token %}
-      {% form form %}
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "New Function" %}
+  </div>
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <form method="post">
+          {% csrf_token %}
+          <div class="card my-2">
+            <div class="card-body">
+              <div class="card-text">
+                {% form form %}
+              </div>
+            </div>
+          </div>
+          <div class="dvzo-buttons-bottom">
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-{% endblock content %}
+    {% endblock content %}

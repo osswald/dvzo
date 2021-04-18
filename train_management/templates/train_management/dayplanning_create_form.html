@@ -4,19 +4,30 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>{% translate "New Day Planning" %}</h1>
-    <form method="post">
-      {% csrf_token %}
-      {% for fieldset in form.get_fieldsets %}
-        <div class="container white-container">
-          <h3>{{ fieldset.extra.title }}</h3>
-          {% form fieldset %}
-        </div>
-      {% endfor %}
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "New Day Planning" %}
+  </div>
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <form method="post">
+          {% csrf_token %}
+          {% for fieldset in form.get_fieldsets %}
+          <div class="card my-2">
+            <div class="card-body">
+              <div class="card-title">{{ fieldset.extra.title }}</div>
+              <div class="card-text">{% form fieldset %}</div>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="dvzo-buttons-bottom">
+            <input type="submit" value="{% translate 'Submit' %}" class="btn btn-primary btn-sm">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
-{% endblock content %}
+    {% endblock content %}

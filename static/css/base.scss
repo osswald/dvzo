@@ -71,7 +71,6 @@ html {
 
     #top-nav {
       background-color: #fff; 
-      box-shadow: $boxShadowDefault;
       height: 70px;
       margin: -40px 0 40px -40px;
       width: calc(100% + 2 * 40px);
@@ -156,4 +155,12 @@ p {
 
 tbody a {
   text-decoration: none;
+}
+
+.dvzo-header {
+  font-size: 1.5em;
+}
+
+.card-title {
+  font-size: 1.5em;
 }

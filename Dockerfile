@@ -6,7 +6,6 @@ ENV ALLOWED_HOSTS="*"
 
 # Update and install and bash
 RUN apk update
-RUN apk add --no-cache bash
 RUN apk add --no-cache bash postgresql-libs
 RUN apk add --no-cache jpeg-dev zlib-dev libjpeg
 RUN apk add --no-cache --virtual build-deps gcc python3-dev postgresql-dev musl-dev g++ gettext

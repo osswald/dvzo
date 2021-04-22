@@ -25,7 +25,7 @@ class Personnel(models.Model):
                               max_length=80, choices=PersonnelStatus.choices)
     mobile_phone_public = models.CharField(_("mobile phone publicly available"), max_length=80,
                                            choices=PersonnelMobilePublic.choices, default=PersonnelMobilePublic.UNKNOWN)
-    date_of_birth = models.DateField(_("date of birth"))
+    date_of_birth = models.DateField(_("date of birth"), null=True, blank=True)
 
     def __str__(self):
         return "%s, %s" % (self.first_name, self.last_name)

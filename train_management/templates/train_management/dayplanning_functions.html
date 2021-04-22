@@ -2,11 +2,15 @@
 {% load i18n %}
 
 {% block title %}{% translate "Day planning funtions" %}{% endblock %}
+{% block header_scripts %}
+  <link rel="stylesheet"
+        href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
+  <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0">
+  </script>
+{% endblock header_scripts %}
 
 {% block content %}
 
-<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
-<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
 
   <div class="container">
     <form method="post">

@@ -10,3 +10,4 @@ from train_management.models.traintimetable import *  # noqa  # isort:skip
 from train_management.models.mileage import *  # noqa  # isort:skip
 from train_management.models.phonenumber import *  # noqa  # isort:skip
 from train_management.models.reservation import *  # noqa  # isort:skip
+from train_management.models.availability import *  # noqa  # isort:skip

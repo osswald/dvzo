@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from train_management.forms import CarriageForm, EngineForm
-from train_management.models import Vehicle
+from train_management.models import Availability,Vehicle
 
 
 @method_decorator(login_required, name='dispatch')
@@ -25,6 +25,17 @@ class CarriageUpdateView(generic.UpdateView):
 
 
 @method_decorator(login_required, name='dispatch')
+class CarriageDetailView(generic.DetailView):
+    model = Vehicle
+    form_class = CarriageForm
+    template_name = "train_management/carriage_detail_form.html"
+
+    def get_context_data(self, **kwargs):
+        availabilities = Availability.objects.filter(vehicle=self.object.id).order_by("start")
+        return super().get_context_data(availabilities=availabilities, **kwargs)
+
+
+@method_decorator(login_required, name='dispatch')
 class CarriageCreateView(generic.CreateView):
     model = Vehicle
     form_class = CarriageForm
@@ -35,7 +46,7 @@ class CarriageCreateView(generic.CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("carriage-detail", kwargs={'pk': self.object.id})
+        return reverse_lazy("carriage-list")
 
 
 @method_decorator(login_required, name='dispatch')
@@ -63,6 +74,17 @@ class EngineUpdateView(generic.UpdateView):
 
 
 @method_decorator(login_required, name='dispatch')
+class EngineDetailView(generic.DetailView):
+    model = Vehicle
+    form_class = EngineForm
+    template_name = "train_management/engine_detail_form.html"
+
+    def get_context_data(self, **kwargs):
+        availabilities = Availability.objects.filter(vehicle=self.object.id).order_by("start")
+        return super().get_context_data(availabilities=availabilities, **kwargs)
+
+
+@method_decorator(login_required, name='dispatch')
 class EngineCreateView(generic.CreateView):
     model = Vehicle
     form_class = EngineForm
@@ -73,7 +95,7 @@ class EngineCreateView(generic.CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("engine-detail", kwargs={'pk': self.object.id})
+        return reverse_lazy("engine-list")
 
 
 @method_decorator(login_required, name='dispatch')

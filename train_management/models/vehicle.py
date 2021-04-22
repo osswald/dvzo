@@ -50,9 +50,9 @@ class Vehicle(models.Model):
     vehicle_type = models.CharField(_("vehicle type"),
                                     max_length=80, choices=VehicleType.choices)
     status = models.CharField(_("status"),
-                              max_length=80, choices=Status.choices)
+                              max_length=80, choices=Status.choices, default=Status.AVAILABLE)
     carriage_type = models.CharField(_("carriage_type"),
-                                     max_length=80, choices=CarriageType.choices)
+                                     max_length=80, choices=CarriageType.choices, blank=True)
     home = models.CharField(_("home"),
                             max_length=80, choices=Home.choices)
     start_year = models.IntegerField(_("start year"), blank=True, null=True)

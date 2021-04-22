@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Carriage" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ object.label }}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href='{% url "carriage-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "Back to list" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-lg-2 gy-4">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Master data" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Date" %}</th>
+                <td>{{object.date}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Type" %}</th>
+                <td>{{object.get_day_planning_type_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Text" %}</th>
+                <td>{{object.text}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Planning" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Slot ordered" %}</th>
+                <td>{{object.get_slot_ordered_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Personnel disposition" %}</th>
+                <td>{{object.get_personnel_disposition_display}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Booking" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-50">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "Booking status" %}</th>
+                <td>{{object.get_booking_status_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Customers" %}</th>
+                <td>{{object.customers}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Price" %}</th>
+                <td>{{object.price}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "Paid" %}</th>
+                <td>{{object.get_paid_display}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="dvzo-button-bottom mb-4">
+        <a href='{% url "carriage-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+          <i class="far fa-edit"></i>
+          {% translate "Edit" %}
+        </a>
+        <a href='{% url "availability-carriage-create" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+          <i class="far fa-edit"></i>
+          {% translate "Add availability" %}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Availability" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>Status</th>
+              <th>Start</th>
+              <th>End</th>
+              </thead>
+              <tbody>
+              {% for availability in availabilities %}
+              <tr>
+                <td>{{ availability.get_availability_status_display }}</td>
+                <td>{{ availability.start }}</td>
+                <td>{{ availability.end }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

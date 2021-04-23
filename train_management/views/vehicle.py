@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from train_management.forms import CarriageForm, EngineForm
-from train_management.models import Availability,Vehicle
+from train_management.models import Availability, Vehicle
 
 
 @method_decorator(login_required, name='dispatch')

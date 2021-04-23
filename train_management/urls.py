@@ -102,7 +102,7 @@ urlpatterns = [
          views.EditDayPlanningFunctions.as_view(), name='edit-dayplanning-functions'),
     path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
 
-    path('availability/', views.StationListView.as_view(), name='availability-list'),
+    path('availability/', views.AvailabilityListView.as_view(), name='availability-list'),
     path('availability/engine/<int:pk>/',
          views.AvailabilityEngineUpdateView.as_view(), name='availability-engine-detail'),
     path('availability/carriage/<int:pk>/',

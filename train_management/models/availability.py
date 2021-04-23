@@ -3,8 +3,7 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import DayPlanning, TrainConfiguration
-from train_management.models import Vehicle
+from train_management.models import DayPlanning, TrainConfiguration, Vehicle
 
 
 class Availability(models.Model):
@@ -28,24 +27,22 @@ class Availability(models.Model):
                                            default=AvailabilityStatus.SERVICE)
 
     def __str__(self):
-        return self.vehicle
+        return self.vehicle.label
 
 
 @receiver(post_delete, sender=TrainConfiguration)
 def train_configuration_post_delete(sender, instance, *args, **kwargs):
     day_planning = DayPlanning.objects.get(id=instance.train.day_planning.id)
     vehicle = Vehicle.objects.get(id=instance.vehicle.id)
-    print(instance.id, "has been created")
-    Availability(vehicle=vehicle, dayplanning=day_planning).delete()
+    Availability.objects.filter(vehicle=vehicle, dayplanning=day_planning).delete()
 
 
 @receiver(post_save, sender=TrainConfiguration)
-def train_configuration_post_delete(sender, instance, created, *args, **kwargs):
+def train_configuration_post_create(sender, instance, created, *args, **kwargs):
     day_planning = DayPlanning.objects.get(id=instance.train.day_planning.id)
     vehicle = Vehicle.objects.get(id=instance.vehicle.id)
     availability_status = Availability.AvailabilityStatus.IN_USE
     date = day_planning.date
     if created:
-        print(instance.id, "has been created")
         Availability(vehicle=vehicle, dayplanning=day_planning,
                      start=date, end=date, availability_status=availability_status).save()

@@ -86,4 +86,4 @@ class AvailabilityCarriageUpdateView(generic.UpdateView):
 class AvailabilityDeleteView(generic.DeleteView):
     model = Availability
     template_name = "train_management/confirm_delete.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("availability-list")

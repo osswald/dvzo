@@ -1,8 +1,6 @@
 from datetime import date
 
-from train_management.models import DayPlanning, DvzoFunction, Train, TrainConfiguration, Vehicle
-
-from train_management.models import DayPlanning, DvzoFunction, Personnel, Station, Train, TrainConfiguration, \
+from train_management.models import DayPlanning, DvzoFunction, Station, Train, TrainConfiguration, \
     TrainTimetableTemplate, Vehicle
 
 

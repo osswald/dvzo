@@ -19,6 +19,10 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
+    path('calendar/', views.calendar, name='calendar'),
+    path('calendar/event_data', views.get_availability_data, name='event-data'),
+    path('calendar/resource_data', views.get_resource_data, name='resource-data'),
+
     path('dayplanning/', views.DayPlanningListView.as_view(), name='day-planning-list'),
     path('dayplanning/detail/<int:pk>/', views.DayPlanningDetailView.as_view(), name='day-planning-detail'),
     path('dayplanning/update/<int:pk>/', views.DayPlanningUpdateView.as_view(), name='day-planning-update'),
@@ -42,12 +46,14 @@ urlpatterns = [
     path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
 
     path('carriage/', views.CarriageListView.as_view(), name='carriage-list'),
-    path('carriage/<int:pk>/', views.CarriageUpdateView.as_view(), name='carriage-detail'),
+    path('carriage/<int:pk>/', views.CarriageDetailView.as_view(), name='carriage-detail'),
+    path('carriage/<int:pk>/update/', views.CarriageUpdateView.as_view(), name='carriage-update'),
     path('carriage/add/', views.CarriageCreateView.as_view(), name='carriage-create'),
     path('carriage/<int:pk>/delete/', views.CarriageDeleteView.as_view(), name='carriage-delete'),
 
     path('engine/', views.EngineListView.as_view(), name='engine-list'),
-    path('engine/<int:pk>/', views.EngineUpdateView.as_view(), name='engine-detail'),
+    path('engine/<int:pk>/', views.EngineDetailView.as_view(), name='engine-detail'),
+    path('engine/<int:pk>/update', views.EngineUpdateView.as_view(), name='engine-update'),
     path('engine/add/', views.EngineCreateView.as_view(), name='engine-create'),
     path('engine/<int:pk>/delete/', views.EngineDeleteView.as_view(), name='engine-delete'),
 
@@ -94,5 +100,16 @@ urlpatterns = [
          views.EditTrainFunctions.as_view(), name='edit-train-functions'),
     path('edit-dayplanning-functions/<int:dayplanning_id>',
          views.EditDayPlanningFunctions.as_view(), name='edit-dayplanning-functions'),
-    path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create')
+    path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
+
+    path('availability/', views.AvailabilityListView.as_view(), name='availability-list'),
+    path('availability/engine/<int:pk>/',
+         views.AvailabilityEngineUpdateView.as_view(), name='availability-engine-detail'),
+    path('availability/carriage/<int:pk>/',
+         views.AvailabilityCarriageUpdateView.as_view(), name='availability-carriage-detail'),
+    path('availability/engine/add/<int:pk>',
+         views.AvailabilityEngineCreateView.as_view(), name='availability-engine-create'),
+    path('availability/carriage/add/<int:pk>',
+         views.AvailabilityCarriageCreateView.as_view(), name='availability-carriage-create'),
+    path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete')
 ]

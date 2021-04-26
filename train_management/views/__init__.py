@@ -1,3 +1,5 @@
+from train_management.views.availability import *  # noqa
+from train_management.views.calendar import *  # noqa
 from train_management.views.dashboard import *  # noqa
 from train_management.views.dayplanning import *  # noqa
 from train_management.views.dvzofunction import *  # noqa

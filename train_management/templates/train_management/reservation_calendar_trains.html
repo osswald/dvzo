@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block title %}{% translate "reservation_calendar_trains.title" %}{% endblock %}
+
+{% block content %}
+
+
+<div class="dvzo-header">
+  {{dayplanning.label}}, {{dayplanning.date}}
+</div>
+
+<div class="dvzo-content">
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <table class="table">
+              <thead>
+                <th>Fahrt</th>
+                <th>Route</th>
+                <th></th>
+              </thead>
+              <tbody>
+              {% for traintimetable in traintimetables %}
+                <tr>
+                  <td style="white-space: nowrap">
+                    <div class="badge bg-secondary">
+                      {{ traintimetable.label }}
+                    </div>
+                    {% if traintimetable.reservation_set.all|length > 0 %}
+                    <div class="badge bg-dark">R</div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <span class="fw-bold">{{ traintimetable.start_station }}</span>
+                    <span>{{ traintimetable.start_time }}</span>
+                    - <span class="fw-bold">{{ traintimetable.destination_station }}</span>
+                    <span>{{ traintimetable.destination_time }}</span>
+                  </td>
+                  <!-- TODO: Once routes are properly implemented, show the route instead of start_station and destination_station
+                  -->
+                  <td>
+                    <a href='{% url "reservation-create" pk=traintimetable.id %}'>
+                      +Res
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

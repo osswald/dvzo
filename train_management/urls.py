@@ -111,5 +111,8 @@ urlpatterns = [
          views.AvailabilityEngineCreateView.as_view(), name='availability-engine-create'),
     path('availability/carriage/add/<int:pk>',
          views.AvailabilityCarriageCreateView.as_view(), name='availability-carriage-create'),
-    path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete')
+    path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete'),
+
+    path('reservation-calendar/', views.reservation_calendar, name='reservation-calendar'),
+    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains')
 ]

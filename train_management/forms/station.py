@@ -11,6 +11,6 @@ class StationForm(BootstrapTapeformMixin, ModelForm):
         model = Station
         fields = ['didok_nr',
                   'label',
-                  'label_short'
+                  'label_short',
                   'neighbours'
                   ]

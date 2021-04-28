@@ -25,6 +25,186 @@
               <div class="card-text">
                 {% csrf_token %}
                 {% form form %}
+                <table class="table">
+                <thead>
+                <th>Betriebspunkt</th>
+                <th>Ankunft</th>
+                <th>Abfahrt</th>
+                <th>Haltezweck</th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option selected>BMA</option>
+                      <option>NEU</option>
+                      <option>BAEW</option>
+                      <option>BAET</option>
+                      <option>ETH</option>
+                      <option>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" value="09.30" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option selected>Start</option>
+                      <option>Halt</option>
+                      <option>Ende</option>
+                      <option>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option>BMA</option>
+                      <option selected>NEU</option>
+                      <option>BAEW</option>
+                      <option>BAET</option>
+                      <option>ETH</option>
+                      <option>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" value="09:38" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" value="09:38" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>Start</option>
+                      <option selected>Halt</option>
+                      <option>Ende</option>
+                      <option>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td><i class="far fa-minus-square"></i></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option>BMA</option>
+                      <option>NEU</option>
+                      <option selected>BAEW</option>
+                      <option>BAET</option>
+                      <option>ETH</option>
+                      <option>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" value="09:48" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" value="09:52" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>Start</option>
+                      <option selected>Halt</option>
+                      <option>Ende</option>
+                      <option>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td><i class="far fa-minus-square"></i></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option>BMA</option>
+                      <option>NEU</option>
+                      <option>BAEW</option>
+                      <option selected>BAET</option>
+                      <option>ETH</option>
+                      <option>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" value="09:54" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>Start</option>
+                      <option>Halt</option>
+                      <option>Ende</option>
+                      <option selected>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td><i class="far fa-minus-square"></i></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option>BMA</option>
+                      <option>NEU</option>
+                      <option>BAEW</option>
+                      <option>BAET</option>
+                      <option selected>ETH</option>
+                      <option>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" value="09:57" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" value="09:57" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>Start</option>
+                      <option selected>Halt</option>
+                      <option>Ende</option>
+                      <option>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td><i class="far fa-minus-square"></i></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="form-control">
+                      <option>BMA</option>
+                      <option>NEU</option>
+                      <option>BAEW</option>
+                      <option>BAET</option>
+                      <option>ETH</option>
+                      <option selected>HI</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="time" value="10:10" class="form-control">
+                  </td>
+                  <td>
+                    <input type="time" class="form-control">
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>Start</option>
+                      <option>Halt</option>
+                      <option selected>Ende</option>
+                      <option>Durchfahrt</option>
+                      <option>DiuM</option>
+                    </select>
+                  </td>
+                  <td><i class="far fa-minus-square"></i></td>
+                </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-sm btn-primary"><i class="far fa-plus-square"></i> Halt hinzufügen</button>
               </div>
             </div>
           </div>

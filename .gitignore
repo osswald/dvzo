@@ -1,8 +1,10 @@
+# node
+/node_modules/
+
 # for now ignore all migrations
 **/migrations/
 /staticfiles/
 
-*.css
 *.css.map
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,vim,sublimetext,vscode,linux,windows,macos

@@ -1,0 +1,41 @@
+{
+  "name": "dvzo",
+  "version": "1.0.0",
+  "description": "## Beschreibung",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osswald/dvzo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osswald/dvzo/issues"
+  },
+  "homepage": "https://github.com/osswald/dvzo#readme",
+  "devDependencies": {
+    "css-loader": "^5.2.4",
+    "css-minimizer-webpack-plugin": "^2.0.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fullcalendar/core": "^5.6.0",
+    "@fullcalendar/resource-timeline": "^5.6.0",
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.0",
+    "bootstrap-table": "^1.18.3",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  }
+}

@@ -51,6 +51,16 @@ django-admin makemessages -l de_CH
 python manage.py compilemessages
 ```
 
+## Resources
+
+```
+npm run dev  # bundle
+npm install <package> --save  # install prod pkg
+npm install <package --save-dev  # install dev pkg
+
+npm run prod  # build resources for production
+```
+
 ## Docker
 
 ```

@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
+from django_tex.shortcuts import render_to_pdf
 
 from train_management.forms import DayPlanningFieldsetForm
 from train_management.models import DayPlanning, DvzoFunction, FunctionPersons, Personnel, Train, TrainTimetable
@@ -23,36 +24,8 @@ class DayPlanningDetailView(generic.DetailView):
     template_name_suffix = "_detail_form"
 
     def get_context_data(self, **kwargs):
-        function_types = {}
-        for functions in _get_dvzo_functions_no_train().filter(functionpersons__dayplanning=self.object):
-            function_type = functions.function_type
-            function_type_data = {}
-            for dvzo_function in DvzoFunction.objects.filter(
-                    functionpersons__dayplanning=self.object,
-                    function_type=function_type).order_by("sorting"):
-                persons = [function_person.person for function_person in FunctionPersons.objects.filter(
-                    dayplanning=self.object,
-                    dvzo_function=dvzo_function)]
-                function_type_data[dvzo_function] = persons
-            function_types[function_type] = function_type_data
-
-        trains_data = []
-        for train in Train.objects.filter(day_planning=self.object):
-            functions = {}
-            for function in _get_dvzo_functions_train().filter(functionpersons__train=train):
-                functions[function] = Personnel.objects.filter(
-                    functionpersons__dvzo_function=function,
-                    functionpersons__train=train)
-            trains_data.append({
-                "train": train,
-                "functions": functions})
-
-        traintimetables = TrainTimetable.objects.filter(train__in=self.object.train_set.all()).order_by("label")
-        return super().get_context_data(
-            dayplanning_functions=function_types,
-            trains_data=trains_data,
-            traintimetables=traintimetables,
-            **kwargs)
+        context = get_dayplanning_context_data(self.object)
+        return super().get_context_data(**context, **kwargs)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -80,6 +53,16 @@ class DayPlanningDeleteView(generic.DeleteView):
     model = DayPlanning
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")
+
+
+@login_required
+def briefing_pdf(request, pk):
+    template_name = 'latex/briefing.tex'
+    dayplanning = DayPlanning.objects.get(pk=pk)
+    context = get_dayplanning_context_data(dayplanning)
+    context['dayplanning'] = dayplanning
+    print(context)
+    return render_to_pdf(request, template_name, context, filename='briefing.pdf')
 
 
 @method_decorator(login_required, name='dispatch')
@@ -169,3 +152,35 @@ def _get_dvzo_functions_no_train():
 
 def _get_personnel():
     return Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('user__last_name')
+
+
+def get_dayplanning_context_data(dayplanning):
+    function_types = {}
+    for functions in _get_dvzo_functions_no_train().filter(functionpersons__dayplanning=dayplanning):
+        function_type = functions.function_type
+        function_type_data = {}
+        for dvzo_function in DvzoFunction.objects.filter(
+                functionpersons__dayplanning=dayplanning,
+                function_type=function_type).order_by("sorting"):
+            persons = [function_person.person for function_person in FunctionPersons.objects.filter(
+                dayplanning=dayplanning,
+                dvzo_function=dvzo_function)]
+            function_type_data[dvzo_function] = persons
+        function_types[functions.get_function_type_display()] = function_type_data
+
+    trains_data = []
+    for train in Train.objects.filter(day_planning=dayplanning):
+        functions = {}
+        for function in _get_dvzo_functions_train().filter(functionpersons__train=train):
+            functions[function] = Personnel.objects.filter(
+                functionpersons__dvzo_function=function,
+                functionpersons__train=train)
+        trains_data.append({
+            "train": train,
+            "functions": functions})
+
+    traintimetables = TrainTimetable.objects.filter(train__in=dayplanning.train_set.all()).order_by("label")
+    return {
+        "dayplanning_functions": function_types,
+        "trains_data": trains_data,
+        "traintimetables": traintimetables}

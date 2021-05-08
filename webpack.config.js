@@ -46,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'auxiliary.css'
+      filename: 'auxiliary.min.css'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

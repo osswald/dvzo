@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
@@ -19,7 +19,7 @@ class Personnel(models.Model):
         NO = "no", _("No")
         UNKNOWN = "unknown", _("Unknown")
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
     mobile_phone = PhoneNumberField(_("mobile phone"))
     status = models.CharField(_("status"),
                               max_length=80, choices=PersonnelStatus.choices)

@@ -19,6 +19,7 @@ ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS"), ]
 
 PROJECT_APPS = [
     'train_management',
+    'users'
 ]
 
 INSTALLED_APPS = [
@@ -46,6 +47,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+AUTH_USER_MODEL = 'users.User'
+
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'

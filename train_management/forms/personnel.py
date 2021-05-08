@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
 
@@ -21,7 +21,7 @@ class UserForm(BootstrapTapeformMixin, ModelForm):
     field_container_css_class = 'mb-3'
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username',
                   'last_name',
                   'first_name',

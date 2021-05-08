@@ -39,18 +39,17 @@
   </div>
 </div>
 
-## TODO: script needs to format the correct field
 <script>
    $(document).ready(function(){
-  
- var f_{{ function.function.id }} = new Choices('#function-{{ function.function.id }}', {
- removeItemButton: true,
- searchResultLimit:5,
- renderChoiceLimit:5
 
- });
+     var multipleCancelButton = new Choices('#id_neighbours', {
+       removeItemButton: true,
+       searchResultLimit:5,
+       renderChoiceLimit:5
+     });
 
- });
+
+   });
 </script>
 
 {% endblock content %}

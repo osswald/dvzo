@@ -2,12 +2,6 @@
 {% load i18n %}
 
 {% block title %}{% translate "Day planning funtions" %}{% endblock %}
-{% block header_scripts %}
-  <link rel="stylesheet"
-        href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
-  <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0">
-  </script>
-{% endblock header_scripts %}
 
 {% block content %}
 
@@ -37,16 +31,14 @@
   </div>
 
 <script>
-   $(document).ready(function(){
+$(document).ready(function(){
   {% for function in functions %}
- var f_{{ function.function.id }} = new Choices('#function-{{ function.function.id }}', {
- removeItemButton: true,
- searchResultLimit:5,
- renderChoiceLimit:5
-
- });
-{% endfor %}
-
- });
+    const f_{{ function.function.id }} = new Choices('#function-{{ function.function.id }}', {
+      removeItemButton: true,
+      searchResultLimit:5,
+      renderChoiceLimit:5
+    });
+  {% endfor %}
+});
 </script>
 {% endblock content %}

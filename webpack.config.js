@@ -11,6 +11,7 @@ module.exports = {
     filename: 'index-bundle.js',  // output bundle file name
     path: path.resolve(__dirname, './static'),  // path to our Django static directory
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -33,9 +34,9 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { importLoaders: 1 } }
+          { loader: 'css-loader', options: { importLoaders: 1 } },
         ]
-      }
+      },
     ]
   },
   optimization: {

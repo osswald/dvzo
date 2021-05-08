@@ -5,7 +5,6 @@
 /static/*.txt
 
 # for now ignore all migrations
-**/migrations/
 /staticfiles/
 
 *.css.map

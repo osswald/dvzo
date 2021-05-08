@@ -30,11 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sass_processor',
     'django_tex',
     'phonenumber_field',
     'tapeforms',
-    'compressor',
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -60,15 +58,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
-
-COMPRESS_PRECOMPILERS = [("text/x-scss", "django_libsass.SassCompiler")]
-COMPRESS_CACHEABLE_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
-
-COMPRESS_URL = STATIC_URL
-COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
 
 PHONENUMBER_DEFAULT_REGION = "CH"
 

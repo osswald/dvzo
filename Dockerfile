@@ -9,6 +9,7 @@ RUN apk update
 RUN apk add --no-cache bash postgresql-libs
 RUN apk add --no-cache jpeg-dev zlib-dev libjpeg
 RUN apk add --no-cache --virtual build-deps gcc python3-dev postgresql-dev musl-dev g++ gettext
+RUN apk add --no-cache --update --virtual node nodejs npm
 
 # Copy project
 COPY . /home/dvzo/app
@@ -27,15 +28,16 @@ RUN python -m venv .venv
 RUN .venv/bin/python -m pip install --upgrade pip
 RUN .venv/bin/python setup.py install
 RUN .venv/bin/python manage.py compilemessages
+RUN npm i && npm run prod
+RUN rm -rf node_modules
 RUN .venv/bin/python manage.py collectstatic --noinput
-# Somehow it is necessary to uninstall and install Pillow for compilescss
+
 RUN .venv/bin/python -m pip uninstall -y Pillow
 RUN .venv/bin/python -m pip install Pillow
-RUN .venv/bin/python manage.py compilescss
-RUN .venv/bin/python manage.py collectstatic --noinput
 
 USER root
 RUN apk --purge del build-deps
+RUN apk --purge del node
 USER dvzo
 
 # Expose Port

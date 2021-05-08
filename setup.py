@@ -12,10 +12,6 @@ URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
     'Pillow',
     'gunicorn',
-    'django-static-precompiler',
-    'libsass',
-    'django-compressor',
-    'django-sass-processor',
     'django_tex',
     'Django',
     'python-dotenv',

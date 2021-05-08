@@ -6,9 +6,6 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
-<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
-
 <div class="dvzo-container">
 
   <div class="dvzo-header">
@@ -37,16 +34,13 @@
 </div>
 
 <script>
-   $(document).ready(function(){
-
-     var multipleCancelButton = new Choices('#id_neighbours', {
-       removeItemButton: true,
-       searchResultLimit:5,
-       renderChoiceLimit:5
-     });
-
-
-   });
+  $(document).ready(function(){
+    const multipleCancelButton = new Choices('#id_neighbours', {
+      removeItemButton: true,
+      searchResultLimit:5,
+      renderChoiceLimit:5
+    });
+  });
 </script>
 
 {% endblock content %}

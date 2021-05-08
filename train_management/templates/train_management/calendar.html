@@ -4,35 +4,6 @@
 
 {% block title %}Dashboard{% endblock %}
 {% block header_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.6.0/main.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.6.0/main.min.css">
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-      locale: 'de',
-      timeZone: 'UTC',
-      slotLabelFormat: [
-        { day: '2-digit' }
-      ],
-      initialView: 'resourceTimelineMonth',
-      resourceAreaWidth: '20%',
-      aspectRatio: 1.5,
-      editable: true,
-      resourceAreaHeaderContent: 'Fahrzeuge',
-      resourceOrder: 'title',
-      resourceGroupField: 'vehicleType',
-      resources: '/calendar/resource_data',
-      events: '/calendar/event_data'
-  });
-
-  calendar.render();
-});
-
-</script>
 
 {% endblock header_scripts %}
 {% block content %}

@@ -1,0 +1,44 @@
+.calendar {
+  .calendar-header {
+    background-color: $dvzoColor;
+    color: white;
+    border: 0;
+
+    .year-title:hover, .prev:hover, .next:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .year-neighbor {
+      color: inherit;
+      opacity: 0.7;
+    }
+
+    .year-neighbor2 {
+      color: inherit;
+      opacity: 0.4;
+    }
+  }
+
+  .month-container {
+    height: 210px;
+  }
+
+  table.month {
+    height: 100%;
+
+    .month-title {
+      background-color: $dvzoColor;
+      color: white;
+      padding: 5px;
+    }
+
+    .day-header {
+      padding-top: 8px;
+      border-bottom: 2px solid $dvzoColor;
+    }
+
+    td.day .day-content {
+      padding: 5px 8px;
+    }
+  }
+}

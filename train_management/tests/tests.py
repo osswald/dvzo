@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 
 from train_management.tests.helpers import SetupHelper
@@ -19,5 +19,6 @@ class AnimalTestCase(TestCase):
         self.credentials = {
             'username': 'testuser',
             'password': 'secret'}
-        User.objects.create_user(**self.credentials)
+        user_model = get_user_model()
+        user_model.objects.create_user(**self.credentials)
         self.client.login(**self.credentials)

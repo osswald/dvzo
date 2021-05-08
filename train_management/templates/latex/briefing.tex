@@ -15,6 +15,7 @@
   \usepackage{fancyhdr}
   \usepackage{colortbl}
   \usepackage{color}
+  \usepackage{multirow}
   \definecolor{red}{rgb}{0.929, 0.090, 0.294}
 
 
@@ -106,4 +107,62 @@
       \end{tabularx}
   \end{table}
   {% endif %}
-  \end{document}
+
+  \begin{flushleft}
+  \textbf{Personal}
+  \end{flushleft}
+  \begin{table}[htbp]
+  {% set functions_table = namespace(row_count=0) %}
+    \begin{tabular}{|l|l|l|l|}
+      \hline Einsatzort & Funktion & Name & Telefon \\
+      \hline
+      {% for train_data in trains_data %}
+        {% set train = train_data.train %}
+	{% set functions_table.row_count = 0 %}	
+        {% for function in train_data.functions.values() %}
+          {% set functions_table.row_count = functions_table.row_count + function|length %}
+        {% endfor %}
+        \multirow{ {{ functions_table.row_count }} }{*}{ {{ train}} }
+        {% for function, persons in train_data.functions.items()  %}
+          & \multirow{ {{ persons|length }} }{*}{ {{ function }} }
+          {% for person in persons %}
+            {% if not loop.first %}
+              &
+            {% endif %}
+              & {{ person}} &
+	    {% if person.mobile_phone_public == "yes" %}
+              {{ person.mobile_phone.as_national }}
+            {% endif %}
+            \\
+          {% endfor %}
+          \cline{2-4}
+        {% endfor %}
+        \hline
+      {% endfor %}
+
+      {% for function_type, functions in dayplanning_functions.items() %}
+        {% set functions_table.row_count = 0 %}
+        {% for function in functions.values() %}
+	  {% set functions_table.row_count = functions_table.row_count + function|length %}
+        {% endfor %}
+        \multirow{1}{*}{ {{ function_type }} }
+        {% for function, persons in functions.items() %}
+          & \multirow{ {{ persons|length }} }{*}{ {{ function }} }
+          {% for person in persons %}
+            {% if not loop.first %}
+              &
+            {% endif %}
+              & {{ person}} &
+	    {% if person.mobile_phone_public == "yes" %}
+              {{ person.mobile_phone.as_national }}
+            {% endif %}
+            \\
+          {% endfor %}
+          \cline{2-4}
+        {% endfor %}
+        \hline
+      {% endfor %}
+    \end{tabular}
+  \end{table}
+
+\end{document}

@@ -94,6 +94,13 @@ TEMPLATES = [
         'BACKEND': 'django_tex.engine.TeXEngine',
         'APP_DIRS': True,
     },
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'dvzo.jinja2.environment',
+        }
+    }
 ]
 
 # django_tex resources

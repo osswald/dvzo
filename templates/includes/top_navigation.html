@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="btn-group" role="group">
   <button id="topnavDropdown"
           type="button"
@@ -11,20 +13,32 @@
     <li>
       <a class="dropdown-item" href="{% url 'phonenumber-list' %}">
         <i class="fas fa-phone"></i>
-        Telefonnummern
+        {% translate "top_nav.phone_numbers" %}
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#">
+        <i class="fas fa-calendar-alt"></i>
+        {% translate "top_nav.my_bookings" %}
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#">
+        <i class="fas fa-chart-area"></i>
+        {% translate "top_nav.frequencies" %}
       </a>
     </li>
     <li><hr class="dropdown-divider"></li>
     <li>
       <a class="dropdown-item" href="#">
         <i class="far fa-id-card"></i>
-        Profil
+        {% translate "top_nav.profile" %}
       </a>
     </li>
     <li>
       <a class="dropdown-item" href="{% url 'logout' %}">
         <i class="fas fa-sign-out-alt"></i>
-        Logout
+        {% translate "top_nav.logout" %}
       </a>
     </li>
   </ul>

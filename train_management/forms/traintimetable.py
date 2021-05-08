@@ -15,4 +15,6 @@ class TrainTimetableForm(BootstrapTapeformMixin, ModelForm):
                   'start_time',
                   'destination_station',
                   'destination_time',
+                  'reservation_internal',
+                  'reservation_external'
                   ]

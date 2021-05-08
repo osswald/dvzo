@@ -7,6 +7,7 @@ from train_management.views.pdf import *  # noqa
 from train_management.views.personnel import *  # noqa
 from train_management.views.phonenumber import *  # noqa
 from train_management.views.reservation import *  # noqa
+from train_management.views.reservation_calendar import *  # noqa
 from train_management.views.station import *  # noqa
 from train_management.views.traincomposition import *  # noqa
 from train_management.views.traintimetable import *  # noqa

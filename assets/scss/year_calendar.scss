@@ -1,3 +1,5 @@
+$monthHeight: 210px;
+
 .calendar {
   .calendar-header {
     background-color: $dvzoColor;
@@ -20,7 +22,7 @@
   }
 
   .month-container {
-    height: 210px;
+    height: $monthHeight;
   }
 
   table.month {

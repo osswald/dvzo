@@ -4,12 +4,15 @@ import 'jquery';
 import 'bootstrap';
 import 'bootstrap-table';
 import '@fortawesome/fontawesome-free/js/all.js';
-
 import $ from 'jquery';
-window.$ = $;
+import Choices from "choices.js";
+import Sortable from "sortablejs";
 
-const Choices = require('choices.js');
+// Ugly assign stuff on window to use in templates
+// Please remove me!
+window.$ = $;
 window.Choices = Choices;
+window.Sortable = Sortable;
 
 // Custom resources
 import './javascript/resource-calendar';

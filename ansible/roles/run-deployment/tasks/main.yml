@@ -8,10 +8,12 @@
   pip:
     name: pip
     state: latest
+    executable: /usr/local/bin/pip3
 
 - name: Install prerequisites (python packages)
   pip:
     name: ['docker', 'PyYAML', 'docker-compose']
+    executable: /usr/local/bin/pip3
 
 - name: Ensures /home/dvzo/app dir exists
   file: path=/home/dvzo/app state=directory
@@ -29,6 +31,7 @@
     state: absent
     remove_images: all
     remove_volumes: no
+  ignore_errors: yes
 
 - name: Create and start dvzo services
   community.docker.docker_compose:

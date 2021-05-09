@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django_tex',
     'phonenumber_field',
     'tapeforms',
+    'compressor',
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -46,18 +47,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 AUTH_USER_MODEL = 'users.User'
-
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 PHONENUMBER_DEFAULT_REGION = "CH"
 

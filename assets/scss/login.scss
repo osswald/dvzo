@@ -1,18 +1,14 @@
-// @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-// @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-// @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
 
-body{
-	margin: 0;
+.login-body{
+  margin: 0;
 	padding: 0;
 	background: #fff;
-
 	color: #fff;
-	font-family: Arial;
+	font-family: Arial, sans-serif;
 	font-size: 12px;
-}
-
-.body{
 	position: absolute;
 	top: -20px;
 	left: -20px;
@@ -26,7 +22,7 @@ body{
 	z-index: 0;
 }
 
-.grad{
+.login-grad{
 	position: absolute;
 	top: -20px;
 	left: -20px;
@@ -39,7 +35,7 @@ body{
 	opacity: 0.7;
 }
 
-.header{
+.login-header{
 	color: #fff;
 	font-family: 'Chango', sans-serif;
 	font-size: 42px;
@@ -47,11 +43,11 @@ body{
 	z-index: 2;
 }
 
-div.header span{
+div.login-header span{
 	color: #ed174b !important;
 }
 
-.login{
+.login-login{
   position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 135px);
@@ -61,7 +57,7 @@ div.header span{
 	z-index: 3;
 }
 
-.login input[type=text]{
+.login-login input[type=text]{
 	width: 250px;
 	height: 30px;
 	background: transparent;
@@ -74,7 +70,7 @@ div.header span{
 	padding: 4px;
 }
 
-.login input[type=password]{
+.login-login input[type=password]{
 	width: 250px;
 	height: 30px;
 	background: transparent;
@@ -88,8 +84,8 @@ div.header span{
 	margin-top: 10px;
 }
 
-.login input[type=submit]{
-	width: 260px;
+.login-login input[type=submit]{
+	width: 250px;
 	height: 35px;
 	background: #fff;
 	border: 1px solid #fff;
@@ -103,32 +99,28 @@ div.header span{
 	margin-top: 10px;
 }
 
-.login input[type=submit]:hover{
+.login-login input[type=submit]:hover{
 	opacity: 0.8;
 }
 
-.login input[type=submit]:active{
+.login-login input[type=submit]:active{
 	opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.login-login input[type=text]:focus{
 	outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=password]:focus{
+.login-login input[type=password]:focus{
 	outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=submit]:focus{
+.login-login input[type=submit]:focus{
 	outline: none;
 }
 
 ::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }

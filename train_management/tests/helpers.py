@@ -1,10 +1,12 @@
 from datetime import date
 
-from train_management.models import DayPlanning, DvzoFunction, Train, TrainConfiguration, Vehicle
+from train_management.models import (DayPlanning, DvzoFunction, Station, Train, TrainConfiguration,
+                                     TrainTimetableTemplate, Vehicle,)
 
 
 class SetupHelper:
     def __init__(self):
+        # Vehicle
         self.elisabeth_lok = None
         self.peter_waggon = None
         self.emma_waggon = None
@@ -13,6 +15,7 @@ class SetupHelper:
         self.C6109 = None
         self.WR109 = None
         self.F202 = None
+        # DvzoFunction
         self.Bw_Neuthal = None
         self.Bw_Baeretswil = None
         self.Kobe_Baeretswil = None
@@ -27,6 +30,16 @@ class SetupHelper:
         self.Sw_Bauma = None
         self.Wr = None
         self.RoWa_Bauma = None
+        # Station
+        self.hinwil = None
+        self.ettenhausen = None
+        self.baeretswil_tobel = None
+        self.baeretswil = None
+        self.neuthal = None
+        self.bauma = None
+        # TrainTimetableTemplate
+        self.train428K = None
+        self.train431K = None
 
     @staticmethod
     def get_day_planning(date_str="2021-02-13", label="Default label dayplanning"):
@@ -359,3 +372,63 @@ class SetupHelper:
             function_type=DvzoFunction.FunctionType.BAUMA,
         )
         self.RoWa_Bauma.save()
+
+    def create_station(self):
+        self.hinwil = Station(
+            label="Hinwil",
+            label_short="HI",
+        )
+        self.hinwil.save()
+
+        self.ettenhausen = Station(
+            label="Ettenhausen-Emmetschloo",
+            label_short="ETH"
+        )
+        self.ettenhausen.save()
+
+        self.baeretswil_tobel = Station(
+            label="Bäretswil Tobel",
+            label_short="BAET"
+        )
+        self.baeretswil_tobel.save()
+
+        self.baeretswil = Station(
+            label="Bäretswil",
+            label_short="BAEW"
+        )
+        self.baeretswil.save()
+
+        self.neuthal = Station(
+            label="Neuthal",
+            label_short="NEU"
+        )
+        self.neuthal.save()
+
+        self.bauma = Station(
+            label="Bauma",
+            label_short="BMA"
+        )
+        self.bauma.save()
+
+    def create_train_timetable_template(self):
+        self.train428K = TrainTimetableTemplate(
+            template_name="2021_FaSo_428K",
+            label="428K",
+            start_station=self.bauma,
+            destination_station=self.hinwil,
+            start_time="09:30",
+            destination_time="10:10",
+            active=TrainTimetableTemplate.Active.YES
+        )
+        self.train428K.save()
+
+        self.train431K = TrainTimetableTemplate(
+            template_name="2021_FaSo_431K",
+            label="431K",
+            start_station=self.hinwil,
+            destination_station=self.bauma,
+            start_time="10:30",
+            destination_time="11:10",
+            active=TrainTimetableTemplate.Active.YES
+        )
+        self.train431K.save()

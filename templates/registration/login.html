@@ -1,4 +1,3 @@
-{% load sass_tags %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -6,14 +5,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{% sass_src 'css/login.scss' %}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'main.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'auxiliary.min.css' %}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
   <title>DVZO.app</title>
 </head>
 <body>
-<div class="body"></div>
-<div class="grad"></div>
-<div class="login">
-  <div class="header">dvzo<span>.app</span></div>
+<div class="login-body"></div>
+<div class="login-grad"></div>
+<div class="login-login">
+  <div class="login-header">dvzo<span>.app</span></div>
 
   <br>
   <form method="post">{% csrf_token %}

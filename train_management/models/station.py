@@ -10,7 +10,7 @@ class Station(models.Model):
     didok_nr = models.CharField(_("DIDOK Nr."), blank=True, max_length=200)
     label_short = models.CharField(_("label short"), max_length=5)
     label = models.CharField(_("label"), max_length=200)
-    neighbours = models.ManyToManyField("self")
+    neighbours = models.ManyToManyField("self", blank=True)
 
     def __str__(self):
         return self.label

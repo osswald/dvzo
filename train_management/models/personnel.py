@@ -20,7 +20,7 @@ class Personnel(models.Model):
         UNKNOWN = "unknown", _("Unknown")
 
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    mobile_phone = PhoneNumberField(_("mobile phone"))
+    mobile_phone = PhoneNumberField(_("mobile phone"), blank=True)
     status = models.CharField(_("status"),
                               max_length=80, choices=PersonnelStatus.choices)
     mobile_phone_public = models.CharField(_("mobile phone publicly available"), max_length=80,

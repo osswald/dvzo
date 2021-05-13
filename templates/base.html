@@ -13,7 +13,6 @@
     {% block header_scripts %}{% endblock header_scripts %}
   </head>
   <body>
-    <script src="{% static 'index-bundle.js' %}"></script>
     <div id="topbar">
       <a href="javascript:void(0)" class="open-close-btn open-btn" onclick="openNav()">
         <span class="material-icons">menu</span>
@@ -49,5 +48,6 @@
         document.getElementById("topbar").style.display = "flex"
       }
     </script>
+    <script src="{% static 'index-bundle.js' %}"></script>
   </body>
 </html>

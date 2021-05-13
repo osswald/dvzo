@@ -16,6 +16,7 @@ window.Sortable = Sortable;
 
 // Custom resources
 import './javascript/resource-calendar';
+import './javascript/reservation-calendar'
 
 
 

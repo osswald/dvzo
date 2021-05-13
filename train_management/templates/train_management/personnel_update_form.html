@@ -36,4 +36,14 @@
   </div>
 </div>
 
+<script>
+  $(document).ready(function(){
+    const multipleCancelButton = new Choices('#id_groups', {
+      removeItemButton: true,
+      searchResultLimit:5,
+      renderChoiceLimit:5
+    });
+  });
+</script>
+
 {% endblock content %}

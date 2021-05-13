@@ -47,7 +47,7 @@
               </tr>
               <tr>
                 <th>{% translate "Text" %}</th>
-                <td>{{object.text}}</td>
+                <td>{{object.text|linebreaksbr|truncatewords:40}}</td>
               </tr>
               </tbody>
             </table>

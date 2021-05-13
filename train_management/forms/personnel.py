@@ -25,6 +25,7 @@ class UserForm(BootstrapTapeformMixin, ModelForm):
         fields = ['username',
                   'last_name',
                   'first_name',
+                  'groups',
                   'is_active',
                   'email'
                   ]

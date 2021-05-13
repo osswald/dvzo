@@ -8,8 +8,8 @@ from train_management.models import DayPlanning, TrainConfiguration, Vehicle
 
 class Availability(models.Model):
     class Meta:
-        verbose_name = _("Availability")
-        verbose_name_plural = _("Availabilities")
+        verbose_name = _("availability.singular")
+        verbose_name_plural = _("availability.plural")
 
     class AvailabilityStatus(models.TextChoices):
         IN_USE = "in_use", _("availability.availability_status.in_use")
@@ -21,7 +21,7 @@ class Availability(models.Model):
     dayplanning = models.ForeignKey(DayPlanning, on_delete=models.DO_NOTHING, null=True)
     start = models.DateField(_("availability.start"))
     end = models.DateField(_("availability.end"))
-    availability_status = models.CharField(_("Status"),
+    availability_status = models.CharField(_("availability.status"),
                                            max_length=80,
                                            choices=AvailabilityStatus.choices,
                                            default=AvailabilityStatus.SERVICE)

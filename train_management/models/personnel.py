@@ -7,25 +7,25 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Personnel(models.Model):
 
     class Meta:
-        verbose_name = _("Personnel")
-        verbose_name_plural = _("Personnel")
+        verbose_name = _("personnel.singular")
+        verbose_name_plural = _("personnel.plural")
 
     class PersonnelStatus(models.TextChoices):
-        ACTIVE = "active", _("Active")
-        INACTIVE = "inactive", _("Inactive")
+        ACTIVE = "active", _("personnel.personnel_status.active")
+        INACTIVE = "inactive", _("personnel.personnel_status.inactive")
 
     class PersonnelMobilePublic(models.TextChoices):
-        YES = "yes", _("Yes")
-        NO = "no", _("No")
-        UNKNOWN = "unknown", _("Unknown")
+        YES = "yes", _("personnel.personnel_mobile_public.yes")
+        NO = "no", _("personnel.personnel_mobile_public.no")
+        UNKNOWN = "unknown", _("personnel.personnel_mobile_public.unknown")
 
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    mobile_phone = PhoneNumberField(_("mobile phone"), blank=True)
-    status = models.CharField(_("status"),
+    mobile_phone = PhoneNumberField(_("personnel.mobile_phone"), blank=True)
+    status = models.CharField(_("personnel.status"),
                               max_length=80, choices=PersonnelStatus.choices)
-    mobile_phone_public = models.CharField(_("mobile phone publicly available"), max_length=80,
+    mobile_phone_public = models.CharField(_("personnel.personnel_mobile_public"), max_length=80,
                                            choices=PersonnelMobilePublic.choices, default=PersonnelMobilePublic.UNKNOWN)
-    date_of_birth = models.DateField(_("date of birth"), null=True, blank=True)
+    date_of_birth = models.DateField(_("personnel.date_of_birth"), null=True, blank=True)
 
     def __str__(self):
         return "%s, %s" % (self.first_name, self.last_name)

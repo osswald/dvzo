@@ -5,21 +5,20 @@ from django.utils.translation import gettext_lazy as _
 class DvzoFunction(models.Model):
 
     class Meta:
-        verbose_name = _("Function")
-        verbose_name_plural = _("Functions")
+        verbose_name = _("dvzo_function.singular")
+        verbose_name_plural = _("dvzo_function.plural")
 
     class FunctionType(models.TextChoices):
-        TRAIN = "train", _("Train")
-        BAUMA = "bauma", _("Bauma")
-        NEUTHAL = "neuthal", _("Neuthal")
-        BAERETSWIL = "baeretswil", _("Bäretswil")
-        HINWIL = "hinwil", _("Hinwil")
+        TRAIN = "train", _("dvzo_function.function_type.train")
+        BAUMA = "bauma", _("dvzo_function.function_type.bauma")
+        NEUTHAL = "neuthal", _("dvzo_function.function_type.neuthal")
+        BAERETSWIL = "baeretswil", _("dvzo_function.function_type.baeretswil")
+        HINWIL = "hinwil", _("dvzo_function.function_type.hinwil")
 
-    label = models.CharField(_("label"), max_length=200)
-    label_short = models.CharField(_("label short"), max_length=80)
-    sorting = models.IntegerField(null=True, blank=True)
-    function_type = models.CharField(_("function_type"),
-                                     max_length=80, choices=FunctionType.choices)
+    label = models.CharField(_("dvzo_function.label"), max_length=200)
+    label_short = models.CharField(_("dvzo_function.label_short"), max_length=80)
+    sorting = models.IntegerField(_("dvzo_function.sorting"), null=True, blank=True)
+    function_type = models.CharField(_("dvzo_function.function_type"), max_length=80, choices=FunctionType.choices)
 
     def __str__(self):
         return self.label

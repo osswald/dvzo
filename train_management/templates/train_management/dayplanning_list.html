@@ -32,7 +32,7 @@
                   <th data-field="state" data-checkbox="true">State</th>
                   <th data-field="id" data-visible="false">ID</th>
                   <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="date" data-sortable="true">{% translate "Date" %}</th>
+                  <th data-field="date" data-sortable="true" data-sorter="window.dateSorter">{% translate "Date" %}</th>
                   <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
                   <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
@@ -86,20 +86,16 @@
     </div>
   </div>
 </div>
+{% endblock content %}
 
+{% block scripts %}
   <script>
-  var $table = $('#dayPlanningListTable');
-  var $button = $('#daySelectionBtn');
-
+  const $table = $('#dayPlanningListTable');
+  const $button = $('#daySelectionBtn');
   $(function() {
-      $button.click(function () {
-          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
-        })
+    $button.click(function () {
+      alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
     })
-
-
-
-
-
+  })
   </script>
-  {% endblock content %}
+{% endblock scripts %}

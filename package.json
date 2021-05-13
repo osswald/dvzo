@@ -41,6 +41,7 @@
     "choices.js": "^9.0.1",
     "jquery": "^3.6.0",
     "js-year-calendar": "^1.0.2",
+    "moment": "^2.29.1",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.13.0"
   }

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Day planning funtions" %}{% endblock %}
+{% block title %}{% translate "template.dayplanning_functions.title" %}{% endblock %}
 
 {% block content %}
 
@@ -26,7 +26,7 @@
 
         {% endfor %}
       {% endfor %}
-      <input type="submit" value="submit">
+      <input type="submit" value="template.dayplanning_functions.submit" class="btn btn-sm btn-success">
     </form>
   </div>
 

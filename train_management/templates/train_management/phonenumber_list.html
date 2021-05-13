@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Phone numbers" %}{% endblock %}
+{% block title %}{% translate "template.phone_number.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Phone number" %}
+    {% translate "template.phone_number.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -30,11 +30,11 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="phone_number" data-sortable="true">{% translate "Number" %}</th>
-                  <th data-field="phone_number_type" data-sortable="true">{% translate "Type" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.state" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "phone_number.label" %}</th>
+                  <th data-field="phone_number" data-sortable="true">{% translate "phone_number.phone_number" %}</th>
+                  <th data-field="phone_number_type" data-sortable="true">{% translate "phone_number.type" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -48,10 +48,10 @@
                   </td>
                   <td>{{ phone_number.get_phone_number_type_display }}</td>
                   <td>
-                    <a href='{% url "phone-delete" pk=phone_number.id %}'>
+                    <a href="{% url 'phone-delete' pk=phone_number.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "phone-detail" pk=phone_number.id %}'>
+                    <a href="{% url 'phone-detail' pk=phone_number.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -63,9 +63,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href='{% url "phone-create" %}' class="btn btn-primary btn-sm my-1 me-1 ">
+          <a href="{% url 'phone-create' %}" class="btn btn-primary btn-sm my-1 me-1 ">
             <i class="fas fa-plus"></i>
-            {% translate "New phone number" %}
+            {% translate "template.phone_number.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-primary btn-sm my-1 me-1">tmpGetSelections</button>
         </div>

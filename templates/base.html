@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'main.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'auxiliary.min.css' %}" type="text/css">
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
-    <title>DVZO.app - {% block title %}DVZO Betriebsplanung{% endblock %}</title>
+    <title>{% translate "app.title" %}{% block title %}{% translate "app.title.placeholder" %}{% endblock %}</title>
 
   </head>
   <body>

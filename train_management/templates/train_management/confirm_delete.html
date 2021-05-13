@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Delete?" %}{% endblock %}
+{% block title %}{% translate "app.delete.title" %}{% endblock %}
 
 {% block content %}
 
@@ -15,14 +15,14 @@
         <form method="post">
           <div class="card my-2">
             <div class="card-body">
-              <div class="card-title">{% translate "Delete?" %}</div>
+              <div class="card-title">{% translate "app.delete.question" %}</div>
               <div class="card-text">
                 {% csrf_token %}
               </div>
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="Submit" class="btn btn-danger btn-sm">
+            <input type="submit" value="{% translate 'app.delete.submit' %}" class="btn btn-danger btn-sm">
           </div>
         </form>
       </div>

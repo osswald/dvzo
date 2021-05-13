@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "Train timetable template" %}{% endblock %}
+{% block title %}{% translate "template.train_timetable_template.update.title" %}{% endblock %}
 
 {% block content %}
 
@@ -25,9 +25,9 @@
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="{% translate 'Submit' %}" class="btn btn-primary btn-sm">
+            <input type="submit" value="{% translate 'template.train_timetable_template.submit' %}" class="btn btn-primary btn-sm">
             <a href="{% url 'train-timetable-template-list' %}" class="btn btn-primary btn-sm">
-              {% translate "Back to list" %}
+              {% translate "app.back_list" %}
             </a>
           </div>
         </form>

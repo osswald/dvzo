@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Carriages" %}{% endblock %}
+{% block title %}{% translate "template.carriage.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% translate "Carriage" %}
+    {% translate "template.carriage.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -31,12 +31,12 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="carriage_type" data-sortable="true">{% translate "Carriage type" %}</th>
-                  <th data-field="status" data-sortable="true">{% translate "Status" %}</th>
-                  <th data-field="seats" data-sortable="false">{% translate "Seats" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "vehicle.label" %}</th>
+                  <th data-field="carriage_type" data-sortable="true">{% translate "vehicle.carriage_type" %}</th>
+                  <th data-field="status" data-sortable="true">{% translate "vehicle.status" %}</th>
+                  <th data-field="seats" data-sortable="false">{% translate "vehicle.seats" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -56,10 +56,10 @@
                   </td>
                   <td>{{ carriage.seats }}</td>
                   <td>
-                    <a href='{% url "carriage-delete" pk=carriage.id %}'>
+                    <a href="{% url 'carriage-delete' pk=carriage.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "carriage-detail" pk=carriage.id %}'>
+                    <a href="{% url 'carriage-detail' pk=carriage.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -73,7 +73,7 @@
         <div class="dvzo-buttons-bottom">
           <a href='{% url "carriage-create" %}' class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
-            {% translate "New carriage" %}
+            {% translate "template.carriage.new" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-secondary btn-sm disabled">tmpGetSelections</button>
         </div>

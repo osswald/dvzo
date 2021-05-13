@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Functions" %}{% endblock %}
+{% block title %}{% translate "template.dvzo_function.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Function" %}
+    {% translate "template.dvzo_function.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -30,11 +30,11 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label_short" data-sortable="true">{% translate "Short name" %}</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="function_type" data-sortable="true">{% translate "Type" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label_short" data-sortable="true">{% translate "dvzo_function.label_short" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "dvzo_function.label" %}</th>
+                  <th data-field="function_type" data-sortable="true">{% translate "dvzo_function.type" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -47,10 +47,10 @@
                   <td>{{ function.label }}</td>
                   <td>{{ function.get_function_type_display }}</td>
                   <td>
-                    <a href='{% url "function-delete" pk=function.id %}'>
+                    <a href="{% url 'function-delete' pk=function.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "function-detail" pk=function.id %}'>
+                    <a href="{% url 'function-detail' pk=function.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -64,7 +64,7 @@
         <div class="dvzo-buttons-bottom">
           <a href='{% url "function-create" %}' class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
-            {% translate "New function" %}
+            {% translate "template.dvzo_function.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
         </div>

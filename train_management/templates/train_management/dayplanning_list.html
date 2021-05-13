@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Day plannings" %}{% endblock %}
+{% block title %}{% translate "template.dayplanning.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Day Planning" %}
+    {% translate "template.dayplanning.list.header" %}
   </div>
   <div class="dvzo-content">
     <div class="row">
@@ -29,12 +29,12 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="date" data-sortable="true" data-sorter="window.dateSorter">{% translate "Date" %}</th>
-                  <th data-field="type" data-sortable="true">{% translate "Type" %}</th>
-                  <th data-field="vehicles" data-sortable="false">{% translate "Vehicles" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "dayplanning.label" %}</th>
+                  <th data-field="date" data-sortable="true" data-sorter="window.dateSorter">{% translate "dayplanning.date" %}</th>
+                  <th data-field="type" data-sortable="true">{% translate "dayplanning.type" %}</th>
+                  <th data-field="vehicles" data-sortable="false">{% translate "dayplanning.vehicles" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -44,7 +44,7 @@
                   <td></td>
                   <td>{{ day_planning.id }}</td>
                   <td>
-                    <a href='{% url "day-planning-detail" pk=day_planning.id %}'>
+                    <a href="{% url 'day-planning-detail' pk=day_planning.id %}">
                       {{ day_planning.label }}
                     </a>
                   </td>
@@ -58,7 +58,7 @@
                   </td>
                   <td>
                     {% if perms.train_management.delete_dayplanning %}
-                    <a href='{% url "day-planning-delete" pk=day_planning.id %}'>
+                    <a href="{% url 'day-planning-delete' pk=day_planning.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>
                     {% endif %}
@@ -72,14 +72,14 @@
         </div>
         <div class="dvzo-buttons-bottom">
           {% if perms.train_management.add_dayplanning %}
-          <a href='{% url "day-planning-create" %}' class="btn btn-primary btn-sm">
+          <a href="{% url 'day-planning-create' %}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
-            {% translate "New day planning" %}
+            {% translate "template.dayplanning.add" %}
           </a>
           {% endif %}
           <button id="daySelectionBtn" class="btn btn-secondary disabled btn-sm">
             <i class="fas fa-print"></i>
-            {% translate "Bulletin" %}
+            {% translate "template.dayplanning.bulletin" %}
           </button>
         </div>
       </div>

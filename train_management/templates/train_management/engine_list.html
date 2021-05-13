@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Engines" %}{% endblock %}
+{% block title %}{% translate "template.engine.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Engine" %}
+    {% translate "template.engine.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -30,12 +30,12 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="historic_name" data-sortable="true">{% translate "Historic name" %}</th>
-                  <th data-field="status" data-sortable="true">{% translate "Status" %}</th>
-                  <th data-field="power_unit" data-sortable="false">{% translate "Power unit" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "vehicle.label" %}</th>
+                  <th data-field="historic_name" data-sortable="true">{% translate "vehicle.historic_name" %}</th>
+                  <th data-field="status" data-sortable="true">{% translate "vehicle.status" %}</th>
+                  <th data-field="power_unit" data-sortable="false">{% translate "vehicle.power_unit" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -55,10 +55,10 @@
                   </td>
                   <td>{{ engine.get_power_unit_display }}</td>
                   <td>
-                    <a href='{% url "engine-delete" pk=engine.id %}'>
+                    <a href="{% url 'engine-delete' pk=engine.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "engine-detail" pk=engine.id %}'>
+                    <a href="{% url 'engine-detail' pk=engine.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -70,9 +70,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href='{% url "engine-create" %}' class="btn btn-primary btn-sm my-1 me-1">
+          <a href="{% url 'engine-create' %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="fas fa-plus"></i>
-            {% translate "New engine" %}
+            {% translate "template.engine.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-primary btn-sm my-1 me-1disabled">tmpGetSelections</button>
         </div>

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "Update Function" %}{% endblock %}
+{% block title %}{% translate "template.dvzo_function.update.title" %}{% endblock %}
 
 {% block content %}
 
@@ -24,9 +24,9 @@
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="{% translate 'Submit' %}" class="btn btn-primary btn-sm me-1 my-1">
+            <input type="submit" value="{% translate 'template.dvzo_function.submit' %}" class="btn btn-primary btn-sm me-1 my-1">
             <a href="{% url 'function-list' %}" class="btn btn-primary btn-sm me-1 my-1">
-              {% translate "Back to list" %}
+              {% translate "app.back_list" %}
             </a>
           </div>
         </form>

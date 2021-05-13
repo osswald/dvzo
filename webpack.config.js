@@ -25,7 +25,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { outputPath: './', name: '[name].min.css'}
+            options: {outputPath: './', name: '[name].min.css'}
           },
           'sass-loader'
         ]
@@ -33,8 +33,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {loader: MiniCssExtractPlugin.loader},
+          {loader: 'css-loader', options: {importLoaders: 1}},
         ]
       },
     ]

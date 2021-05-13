@@ -10,10 +10,8 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
     <title>DVZO.app - {% block title %}DVZO Betriebsplanung{% endblock %}</title>
 
-    {% block header_scripts %}{% endblock header_scripts %}
   </head>
   <body>
-    <script src="{% static 'index-bundle.js' %}"></script>
     <div id="topbar">
       <a href="javascript:void(0)" class="open-close-btn open-btn" onclick="openNav()">
         <span class="material-icons">menu</span>
@@ -37,6 +35,7 @@
       </div>
     </div>
 
+    <script src="{% static 'index-bundle.js' %}"></script>
     <script type="text/javascript">
       function openNav() {
         document.getElementById("sidenav").style.display = "flex";
@@ -49,5 +48,6 @@
         document.getElementById("topbar").style.display = "flex"
       }
     </script>
+    {% block scripts %}{% endblock scripts %}
   </body>
 </html>

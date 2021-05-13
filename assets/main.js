@@ -4,6 +4,7 @@ import 'jquery';
 import 'bootstrap';
 import 'bootstrap-table';
 import '@fortawesome/fontawesome-free/js/all.js';
+
 import $ from 'jquery';
 import Choices from "choices.js";
 import Sortable from "sortablejs";
@@ -16,6 +17,7 @@ window.Sortable = Sortable;
 
 // Custom resources
 import './javascript/resource-calendar';
+import './javascript/reservation-calendar'
+import dateSorter from "./javascript/date-sorter";
 
-
-
+window.dateSorter = (a, b) => dateSorter(a, b);

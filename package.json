@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
-    "watch": "chokidar \",assets/**/*.js\", \",assets/**/*.scss)\" -c \"npm run dev\""
+    "watch": "chokidar \"assets/**/*.js\" \"assets/**/*.scss)\" -c \"npm run prod\"",
+    "watch:dev": "chokidar \"assets/**/*.js\" \"assets/**/*.scss)\" -c \"npm run dev\""
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,8 @@
     "bootstrap-table": "^1.18.3",
     "choices.js": "^9.0.1",
     "jquery": "^3.6.0",
+    "js-year-calendar": "^1.0.2",
+    "moment": "^2.29.1",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.13.0"
   }

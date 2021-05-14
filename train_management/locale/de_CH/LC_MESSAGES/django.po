@@ -1,11 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: DVZO\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-14 19:39+0200\n"
+"Language: de-ch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: DVZO\n"
-"Language: de-ch\n"
 
 #: forms/dayplanning.py:33
 msgid "form.dayplanning.master_data"
@@ -166,12 +168,12 @@ msgid "dayplanning.status"
 msgstr "Status"
 
 #: models/dayplanning.py:52
-#: templates/train_management/dayplanning_detail_form.html:105
+#: templates/train_management/dayplanning_detail_form.html:101
 msgid "dayplanning.paid"
 msgstr "Bezahlt"
 
 #: models/dayplanning.py:54
-#: templates/train_management/dayplanning_detail_form.html:49
+#: templates/train_management/dayplanning_detail_form.html:125
 msgid "dayplanning.text"
 msgstr "Text"
 
@@ -180,28 +182,48 @@ msgid "slot ordered"
 msgstr "Bestellt"
 
 #: models/dayplanning.py:58
-#: templates/train_management/dayplanning_detail_form.html:73
+#: templates/train_management/dayplanning_detail_form.html:69
 msgid "dayplanning.personnel_disposition"
 msgstr "Einteilung"
 
 #: models/dayplanning.py:61
-#: templates/train_management/dayplanning_detail_form.html:97
+#: templates/train_management/dayplanning_detail_form.html:93
 msgid "dayplanning.customers"
 msgstr "Anzahl Reisende"
 
 #: models/dayplanning.py:62
-#: templates/train_management/dayplanning_detail_form.html:101
+#: templates/train_management/dayplanning_detail_form.html:97
 msgid "dayplanning.price"
 msgstr "Preis"
 
 #: models/dayplanning.py:63
-#: templates/train_management/dayplanning_detail_form.html:93
+#: templates/train_management/dayplanning_detail_form.html:89
 msgid "dayplanning.booking_status"
 msgstr "Buchungsstatus"
 
 #: models/dayplanning.py:66
 msgid "dayplanning.comment"
 msgstr "Kommentar"
+
+#: models/dayplanning.py:75
+msgid "dayplanning_text.singular"
+msgstr "Text"
+
+#: models/dayplanning.py:76
+msgid "dayplanning_text.plural"
+msgstr "Texte"
+
+#: models/dayplanning.py:78
+msgid "dayplanning_text.label"
+msgstr "Bezeichnung"
+
+#: models/dayplanning.py:79
+msgid "dayplanning_text.text"
+msgstr "Text"
+
+#: models/dayplanning.py:80
+msgid "dayplanning_text.sorting"
+msgstr "Sortierung"
 
 #: models/dvzofunction.py:8
 msgid "dvzo_function.singular"
@@ -922,65 +944,69 @@ msgstr "Stammdaten"
 msgid "dayplanning.type"
 msgstr "Typ"
 
-#: templates/train_management/dayplanning_detail_form.html:60
+#: templates/train_management/dayplanning_detail_form.html:56
 msgid "template.dayplanning.planning"
 msgstr "Planung"
 
-#: templates/train_management/dayplanning_detail_form.html:69
+#: templates/train_management/dayplanning_detail_form.html:65
 msgid "dayplanning.slot_ordered"
 msgstr "Trassenbestellung"
 
-#: templates/train_management/dayplanning_detail_form.html:84
+#: templates/train_management/dayplanning_detail_form.html:80
 msgid "template.dayplanning.booking"
 msgstr "Buchung"
 
-#: templates/train_management/dayplanning_detail_form.html:117
+#: templates/train_management/dayplanning_detail_form.html:113
 msgid "app.edit_master_data"
 msgstr "Stammdaten bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:121
+#: templates/train_management/dayplanning_detail_form.html:117
 msgid "template.dayplanning.add_train_tour"
 msgstr "Umlauf hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:129
+#: templates/train_management/dayplanning_detail_form.html:146
+msgid "template.dayplanning.add_dayplanning_text"
+msgstr "Text"
+
+#: templates/train_management/dayplanning_detail_form.html:151
 msgid "template.dayplanning.functions"
 msgstr "Funktionen"
 
-#: templates/train_management/dayplanning_detail_form.html:135
-#: templates/train_management/dayplanning_detail_form.html:179
+#: templates/train_management/dayplanning_detail_form.html:157
+#: templates/train_management/dayplanning_detail_form.html:201
 msgid "template.dayplanning.functions.function"
 msgstr "Funktion"
 
-#: templates/train_management/dayplanning_detail_form.html:136
-#: templates/train_management/dayplanning_detail_form.html:180
+#: templates/train_management/dayplanning_detail_form.html:158
+#: templates/train_management/dayplanning_detail_form.html:202
 msgid "template.dayplanning.functions.person"
 msgstr "Person"
 
-#: templates/train_management/dayplanning_detail_form.html:159
+#: templates/train_management/dayplanning_detail_form.html:181
 msgid "template.dayplanning.edit_functions"
 msgstr "Funktionen bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:174
+#: templates/train_management/dayplanning_detail_form.html:196
 msgid "template.dayplanning.train.formation"
 msgstr "Formation"
 
-#: templates/train_management/dayplanning_detail_form.html:250
+#: templates/train_management/dayplanning_detail_form.html:272
 msgid "template.dayplanning.train.edit_formation"
 msgstr "Formation bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:255
+#: templates/train_management/dayplanning_detail_form.html:277
 msgid "template.dayplanning.train.edit_functions"
 msgstr "Funktionen bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:261
+#: templates/train_management/dayplanning_detail_form.html:283
 msgid "template.dayplanning.train.add_schedule"
 msgstr "Zug hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:274
+#: templates/train_management/dayplanning_detail_form.html:296
 msgid "template.dayplanning.train.add_from_template"
 msgstr "Aus Vorlage hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:291
+#: templates/train_management/dayplanning_detail_form.html:313
 msgid "template.dayplanning.reservations"
 msgstr "Reservationen"
 
@@ -1019,6 +1045,18 @@ msgstr "Speichern"
 #: templates/train_management/dayplanning_update_form.html:28
 msgid "app.cancel"
 msgstr "Abbrechen"
+
+#: templates/train_management/dayplanningtext_update_form.html:5
+msgid "template.dayplanning_text.update.title"
+msgstr "Text bearbeiten"
+
+#: templates/train_management/dayplanningtext_update_form.html:15
+msgid "template.dayplanning_text.update.header"
+msgstr "Neuer Text"
+
+#: templates/train_management/dayplanningtext_update_form.html:32
+msgid "template.dayplanning_text.submit"
+msgstr "Speichern"
 
 #: templates/train_management/dvzofunction_create_form.html:5
 msgid "template.dvzo_function.create.title"
@@ -1337,4 +1375,3 @@ msgstr "Zug-Vorlage bearbeiten"
 #: templates/train_management/traintimetabletemplate_update_form.html:28
 msgid "template.train_timetable_template.submit"
 msgstr "Speichern"
-

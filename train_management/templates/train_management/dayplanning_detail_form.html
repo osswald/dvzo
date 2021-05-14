@@ -45,10 +45,6 @@
                 <th>{% translate "dayplanning.type" %}</th>
                 <td>{{object.get_day_planning_type_display}}</td>
               </tr>
-              <tr>
-                <th>{% translate "dayplanning.text" %}</th>
-                <td>{{object.text|linebreaksbr|truncatewords:40}}</td>
-              </tr>
               </tbody>
             </table>
           </div>
@@ -124,6 +120,37 @@
     </div>
 
     <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "dayplanning.text" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-75">
+              <tbody>
+              {% for dayplanning_text in dayplanning_texts %}
+              <tr>
+                <td>{{dayplanning_text.label}}</td>
+                <td>
+                  <a href="{% url 'day-planning-text-delete' pk=dayplanning_text.id %}">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                  </a>&nbsp;
+                  <a href="{% url 'day-planning-text-update' pk=dayplanning_text.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="dvzo-button-bottom mb-4">
+        <a href="{% url 'day-planning-text-create' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
+          <i class="fas fa-plus"></i>
+          {% translate "template.dayplanning.add_dayplanning_text" %}
+        </a>
+      </div>
       <div class="card my-2">
         <div class="card-body">
           <div class="card-title">{% translate "template.dayplanning.functions" %}</div>

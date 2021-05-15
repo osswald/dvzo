@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Availabilities" %}{% endblock %}
+{% block title %}{% translate "template.availability.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% translate "Carriage" %}
+    {% translate "template.availability.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -31,13 +31,13 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="dayplanning" data-sortable="true">{% translate "Day planning" %}</th>
-                  <th data-field="vehicle" data-sortable="true">{% translate "Vehicle" %}</th>
-                  <th data-field="start" data-sortable="true">{% translate "Start" %}</th>
-                  <th data-field="end" data-sortable="false">{% translate "End" %}</th>
-                  <th data-field="availability_status" data-sortable="false">{% translate "Status" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="dayplanning" data-sortable="true">{% translate "template.availability.dayplanning" %}</th>
+                  <th data-field="vehicle" data-sortable="true">{% translate "template.availability.vehicle" %}</th>
+                  <th data-field="start" data-sortable="true">{% translate "template.availability.start" %}</th>
+                  <th data-field="end" data-sortable="false">{% translate "template.availability.end" %}</th>
+                  <th data-field="availability_status" data-sortable="false">{% translate "template.availability.availability_status" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Train timetable templates" %}{% endblock %}
+{% block title %}{% translate "template.train_timetable_template.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% translate "Train timetable templates" %}
+    {% translate "template.train_timetable_template.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -31,14 +31,14 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="template_name" data-sortable="true">{% translate "Template name" %}</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
-                  <th data-field="start_station" data-sortable="true">{% translate "Start station" %}</th>
-                  <th data-field="start_time" data-sortable="true">{% translate "Start time" %}</th>
-                  <th data-field="destination_station" data-sortable="false">{% translate "Destination station" %}</th>
-                  <th data-field="destination_time" data-sortable="true">{% translate "Destination time" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="template_name" data-sortable="true">{% translate "train_timetable_template.template_name" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "train_timetable_template.label" %}</th>
+                  <th data-field="start_station" data-sortable="true">{% translate "train_timetable_template.start_station" %}</th>
+                  <th data-field="start_time" data-sortable="true">{% translate "train_timetable_template.start_time" %}</th>
+                  <th data-field="destination_station" data-sortable="false">{% translate "train_timetable_template.destination_station" %}</th>
+                  <th data-field="destination_time" data-sortable="true">{% translate "train_timetable_template.destination_time" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -54,10 +54,10 @@
                   <td>{{ template.destination_station }}</td>
                   <td>{{ template.destination_time }}</td>
                   <td>
-                    <a href='{% url "train-timetable-template-delete" pk=template.id %}'>
+                    <a href="{% url 'train-timetable-template-delete' pk=template.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "train-timetable-template-detail" pk=template.id %}'>
+                    <a href="{% url 'train-timetable-template-detail' pk=template.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -69,9 +69,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href='{% url "train-timetable-template-create" %}' class="btn btn-primary btn-sm">
+          <a href="{% url 'train-timetable-template-create' %}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
-            {% translate "New train timetable template" %}
+            {% translate "template.train_timetable_template.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
         </div>

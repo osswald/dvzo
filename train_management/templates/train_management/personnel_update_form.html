@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "Update Personnel" %}{% endblock %}
+{% block title %}{% translate "template.personnel.update.title" %}{% endblock %}
 
 {% block content %}
 
@@ -25,9 +25,9 @@
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="Submit" class="btn btn-primary btn-sm my-1 me-1">
+            <input type="submit" value="{% translate 'template.personnel.submit' %}" class="btn btn-primary btn-sm my-1 me-1">
             <a href="{% url 'personnel-list' %}" class="btn btn-primary btn-sm my-1 me-1">
-              {% translate "Back to list" %}
+              {% translate "app.back_list" %}
             </a>
           </div>
         </form>

@@ -2,7 +2,7 @@
 {% load i18n %}
 
 
-{% block title %}{% translate "reservation_calendar_trains.title" %}{% endblock %}
+{% block title %}{% translate "template.reservation_calendar.trains.title" %}{% endblock %}
 
 {% block content %}
 
@@ -43,7 +43,7 @@
                   <!-- TODO: Once routes are properly implemented, show the route instead of start_station and destination_station
                   -->
                   <td>
-                    <a href='{% url "reservation-create" pk=traintimetable.id %}'>
+                    <a href="{% url 'reservation-create' pk=traintimetable.id %}">
                       +Res
                     </a>
                   </td>

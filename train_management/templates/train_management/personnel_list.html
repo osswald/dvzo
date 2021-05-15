@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Personnel" %}{% endblock %}
+{% block title %}{% translate "template.personnel.list.title" %}{% endblock %}
 
 {% block content %}
 
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Personnel" %}
+    {% translate "template.personnel.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -31,13 +31,13 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="last_name" data-sortable="true">{% translate "Lastname" %}</th>
-                  <th data-field="first_name" data-sortable="true">{% translate "Firstname" %}</th>
-                  <th data-field="status" data-sortable="true">{% translate "Status" %}</th>
-                  <th data-field="email" data-sortable="false">{% translate "E-Mail" %}</th>
-                  <th data-field="mobile_phone" data-sortable="false">{% translate "Mobile Phone" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="last_name" data-sortable="true">{% translate "personnel.lastname" %}</th>
+                  <th data-field="first_name" data-sortable="true">{% translate "personnel.firstname" %}</th>
+                  <th data-field="status" data-sortable="true">{% translate "personnel.status" %}</th>
+                  <th data-field="email" data-sortable="false">{% translate "personnel.email" %}</th>
+                  <th data-field="mobile_phone" data-sortable="false">{% translate "personnel.mobile_phone" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -60,10 +60,10 @@
                   <td>{{ personnel.email }}</td>
                   <td>{{ personnel.mobile_phone.as_national }}</td>
                   <td>
-                    <a href='{% url "personnel-delete" pk=personnel.id %}'>
+                    <a href="{% url 'personnel-delete' pk=personnel.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "personnel-detail" pk=personnel.id %}'>
+                    <a href="{% url 'personnel-detail' pk=personnel.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -75,9 +75,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href='{% url "personnel-create" %}' class="btn btn-primary btn-sm my-1 me-1">
+          <a href="{% url 'personnel-create' %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="fas fa-plus"></i>
-            {% translate "New personnel" %}
+            {% translate "template.personnel.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-secondary btn-sm my-1 me-1 disabled">tmpGetSelections</button>
         </div>
@@ -95,9 +95,6 @@
           alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
         })
     })
-
-
-
 
 </script>
 {% endblock content %}

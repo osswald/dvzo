@@ -7,7 +7,7 @@ from train_management.models import Station, Train
 class TrainTimetable(models.Model):
 
     class Meta:
-        verbose_name = _("train_timetable.single")
+        verbose_name = _("train_timetable.singular")
         verbose_name_plural = _("train_timetable.plural")
 
     class ReservationPossible(models.TextChoices):

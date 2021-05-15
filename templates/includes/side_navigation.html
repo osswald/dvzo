@@ -1,15 +1,51 @@
+{% load i18n %}
+
 <a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
-  <i class="fas fa-window-close"></i>Close</a>
-<a href="{% url 'dashboard' %}"><i class="fas fa-home"></i>Home</a>
-<a href="{% url 'calendar' %}"><i class="fas fa-calendar"></i>Kalender</a>
+  <i class="fas fa-window-close"></i>
+  {% translate "side_navigation.close" %}
+</a>
+<a href="{% url 'dashboard' %}">
+  <i class="fas fa-home"></i>
+  {% translate "side_navigation.home" %}
+</a>
+<a href="{% url 'calendar' %}">
+  <i class="fas fa-calendar"></i>
+  {% translate "side_navigation.calendar" %}
+</a>
 {% if perms.train_management.view_dayplanning %}
-<a href="{% url 'day-planning-list' %}"><i class="fas fa-clipboard-list"></i>Tagesplanung</a>
+<a href="{% url 'day-planning-list' %}">
+  <i class="fas fa-clipboard-list"></i>
+  {% translate "side_navigation.dayplanning" %}
+</a>
 {% endif %}
-<a href="{% url 'engine-list' %}"><i class="fas fa-subway"></i>Triebfahrzeuge</a>
-<a href="{% url 'carriage-list' %}"><i class="fas fa-subway"></i>Wagen</a>
-<a href="{% url 'personnel-list' %}"><i class="fas fa-user"></i>Personal</a>
-<a href="{% url 'function-list' %}"><i class="fas fa-building"></i>Funktionen</a>
-<a href="{% url 'reservation-list' %}"><i class="fab fa-tiktok"></i>Reservationen</a>
-<a href="{% url 'phone-list' %}"><i class="fas fa-phone"></i>Telefonnummern</a>
-<a href="{% url 'station-list' %}"><i class="fas fa-house-user"></i>Betriebspunkte</a>
-<a href="{% url 'train-timetable-template-list' %}"><i class="fas fa-clock"></i>Fahrten-Vorlagen</a>
+<a href="{% url 'engine-list' %}">
+  <i class="fas fa-subway"></i>
+  {% translate "side_navigation.engines" %}
+</a>
+<a href="{% url 'carriage-list' %}">
+  <i class="fas fa-subway"></i>
+  {% translate "side_navigation.carriages" %}
+</a>
+<a href="{% url 'personnel-list' %}">
+  <i class="fas fa-user"></i>
+  {% translate "side_navigation.personnel" %}
+</a>
+<a href="{% url 'function-list' %}">
+  <i class="fas fa-building"></i>
+  {% translate "side_navigation.functions" %}
+</a>
+<a href="{% url 'reservation-list' %}">
+  <i class="fab fa-tiktok"></i>
+  {% translate "side_navigation.reservations" %}
+</a>
+<a href="{% url 'phone-list' %}">
+  <i class="fas fa-phone"></i>
+  {% translate "side_navigation.phone_numbers" %}
+</a>
+<a href="{% url 'station-list' %}">
+  <i class="fas fa-house-user"></i>
+  {% translate "side_navigation.stations" %}</a>
+<a href="{% url 'train-timetable-template-list' %}">
+  <i class="fas fa-clock"></i>
+  {% translate "side_navigation.train_timetable_templates" %}
+</a>

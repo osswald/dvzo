@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Phone numbers" %} - {{ phone_number.get_phone_number_type_display }}{% endblock %}
+{% block title %}{% translate "template.phone_number.title" %} - {{ phone_number.get_phone_number_type_display }}{% endblock %}
 
 {% block content %}
 
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Phone numbers" %} {{ phone_number.get_phone_number_type_display }}
+    {% translate "template.phone_number.type.header" %} {{ phone_number.get_phone_number_type_display }}
   </div>
   <div class="dvzo-content">
     <div class="d-grid gap-2 d-md-block">

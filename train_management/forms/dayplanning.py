@@ -30,7 +30,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
     fieldsets = (
         {
             'extra': {
-                'title': _("Master data"),
+                'title': _("form.dayplanning.master_data"),
                 'css_class': 'csssss'
             },
             'fields': (
@@ -41,7 +41,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'text'),
         }, {
             'extra': {
-                'title': _("Planning"),
+                'title': _("form.dayplanning.planning"),
                 'css_class': 'csssss',
             },
             'fields': (
@@ -49,7 +49,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'personnel_disposition'),
         }, {
             'extra': {
-                'title': _("Booking"),
+                'title': _("form.dayplanning.booking"),
                 'css_class': 'csssss',
             },
             'fields': (

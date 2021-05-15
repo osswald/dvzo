@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "Update station" %}{% endblock %}
+{% block title %}{% translate "template.station.update.title" %}{% endblock %}
 
 {% block content %}
 
@@ -25,9 +25,9 @@
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="Submit" class="btn btn-primary btn-sm my-1 me-1">
-            <a href='{% url "station-list" %}' class="btn btn-primary btn-sm my-1 me-1">
-              {% translate "Back to list" %}
+            <input type="submit" value="{% translate 'template.station.submit' %}" class="btn btn-primary btn-sm my-1 me-1">
+            <a href="{% url 'station-list' %}" class="btn btn-primary btn-sm my-1 me-1">
+              {% translate "app.back_list" %}
             </a>
           </div>
         </form>

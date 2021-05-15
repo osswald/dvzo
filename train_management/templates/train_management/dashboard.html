@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %} {% translate "template.dashboard.title" %} {% endblock %}
 
 {% block content %}
-<h1>DVZO Dashboard</h1>
+<h1>{% translate "template.dashboard.header" %}</h1>
 
 <div class="container white-container">
   <h2>Was ist neu?</h2>

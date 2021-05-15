@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Stations" %}{% endblock %}
+{% block title %}{% translate "template.station.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Stations" %}
+    {% translate "template.station.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -30,11 +30,11 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="didok_nr" data-sortable="true">{% translate "DIDOK Nr." %}</th>
-                  <th data-field="label_short" data-sortable="true">{% translate "Label short" %}</th>
-                  <th data-field="label" data-sortable="true">{% translate "Label" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="didok_nr" data-sortable="true">{% translate "station.didok_nr" %}</th>
+                  <th data-field="label_short" data-sortable="true">{% translate "station.label_short" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "station.label" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -47,10 +47,10 @@
                   <td>{{ station.label_short }}</td>
                   <td>{{ station.label }}</td>
                   <td>
-                    <a href='{% url "station-delete" pk=station.id %}'>
+                    <a href="{% url 'station-delete' pk=station.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "station-detail" pk=station.id %}'>
+                    <a href="{% url 'station-detail' pk=station.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -62,9 +62,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href='{% url "station-create" %}' class="btn btn-primary btn-sm">
+          <a href="{% url 'station-create' %}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
-            {% translate "New station" %}
+            {% translate "template.station.add" %}
           </a>
           <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
         </div>

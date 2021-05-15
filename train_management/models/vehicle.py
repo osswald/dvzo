@@ -5,69 +5,69 @@ from django.utils.translation import gettext_lazy as _
 class Vehicle(models.Model):
 
     class Meta:
-        verbose_name = _("Vehicle")
-        verbose_name_plural = _("Vehicles")
+        verbose_name = _("vehicle.singular")
+        verbose_name_plural = _("vehicle.plural")
 
     class VehicleType(models.TextChoices):
-        ENGINE = "engine", _("Engine")
-        CARRIAGE = "carriage", _("Carriage")
+        ENGINE = "engine", _("vehicle.type.engine")
+        CARRIAGE = "carriage", _("vehicle.type.carriage")
 
     class Status(models.TextChoices):
-        AVAILABLE = "available", _("Available")
-        SERVICE = "servicing", _("In Servicing")
-        ASK = "ask", _("Ask")
+        AVAILABLE = "available", _("vehicle.status.available")
+        SERVICE = "servicing", _("vehicle.status.servicing")
+        ASK = "ask", _("vehicle.status.ask")
 
     class CarriageType(models.TextChoices):
-        SEAT = "seat", _("Seating Car")
-        GASTRO = "gastro", _("Waggon Restaurant")
-        LUGGAGE = "luggage", _("Luggage")
-        CARGO = "cargo", _("Cargo")
+        SEAT = "seat", _("vehicle.carriage_type.seat")
+        GASTRO = "gastro", _("vehicle.carriage_type.gastro")
+        LUGGAGE = "luggage", _("vehicle.carriage_type.luggage")
+        CARGO = "cargo", _("vehicle.carriage_type.cargo")
 
     class Home(models.TextChoices):
-        BAUMA = "bauma", _("Bauma")
-        USTER = "uster", _("Uster")
-        WALD = "wald", _("Wald ZH")
+        BAUMA = "bauma", _("vehicle.home.bauma")
+        USTER = "uster", _("vehicle.home.uster")
+        WALD = "wald", _("vehicle.home.wald")
 
     class PowerUnit(models.TextChoices):
-        STEAM = "steam", _("Steam")
-        DIESEL = "diesel", _("Diesel")
-        ELECTRIC = "electric", _("Electric")
-        DIESEL_ELECTRIC = "dieselelectric", _("Diesel/Electric")
+        STEAM = "steam", _("vehicle.power_unit.steam")
+        DIESEL = "diesel", _("vehicle.power_unit.diesel")
+        ELECTRIC = "electric", _("vehicle.power_unit.electric")
+        DIESEL_ELECTRIC = "dieselelectric", _("vehicle.power_unit.dieselelectric")
 
     class SteamHeating(models.TextChoices):
-        NO = "no", _("No")
-        FRONT = "front", _("Front")
-        BACK = "back", _("Back")
-        FRONT_BACK = "both", _("Front and Back")
+        NO = "no", _("vehicle.steam_heating.no")
+        FRONT = "front", _("vehicle.steam_heating.front")
+        BACK = "back", _("vehicle.steam_heating.back")
+        FRONT_BACK = "both", _("vehicle.steam_heating.both")
 
-    label = models.CharField(_("label"), max_length=200)
-    historic_name = models.CharField(_("historic_name"), max_length=200, blank=True)
-    description = models.TextField(_("description"), blank=True)
-    uic = models.CharField(_("UIC"), max_length=200, blank=True)
-    image = models.ImageField(_("image"), blank=True, null=True)
-    gross_weight = models.FloatField(_("gross_weight"), blank=True, null=True)
-    seats = models.IntegerField(_("seats"), blank=True, null=True)
-    vehicle_type = models.CharField(_("vehicle type"),
+    label = models.CharField(_("vehicle.label"), max_length=200)
+    historic_name = models.CharField(_("vehicle.historic_name"), max_length=200, blank=True)
+    description = models.TextField(_("vehicle.description"), blank=True)
+    uic = models.CharField(_("vehicle.uic"), max_length=200, blank=True)
+    image = models.ImageField(_("vehicle.image"), blank=True, null=True)
+    gross_weight = models.FloatField(_("vehicle.gross_weight"), blank=True, null=True)
+    seats = models.IntegerField(_("vehicle.seats"), blank=True, null=True)
+    vehicle_type = models.CharField(_("vehicle.type"),
                                     max_length=80, choices=VehicleType.choices)
-    status = models.CharField(_("status"),
+    status = models.CharField(_("vehicle.status"),
                               max_length=80, choices=Status.choices, default=Status.AVAILABLE)
-    carriage_type = models.CharField(_("carriage_type"),
+    carriage_type = models.CharField(_("vehiclecarriage_type"),
                                      max_length=80, choices=CarriageType.choices, blank=True)
-    home = models.CharField(_("home"),
+    home = models.CharField(_("vehicle.home"),
                             max_length=80, choices=Home.choices)
-    start_year = models.IntegerField(_("start year"), blank=True, null=True)
-    last_revision = models.DateField(_("last revision"), blank=True, null=True)
-    next_revision = models.DateField(_("next revision"), blank=True, null=True)
-    axles_distance = models.FloatField(_("axles distance"), blank=True, null=True)
-    length = models.FloatField(_("length"), blank=True, null=True)
-    manufacturer = models.CharField(_("manufacturer"), max_length=200, blank=True)
-    traction_25 = models.IntegerField(_("traction 25 permille"), blank=True, null=True)
-    traction_30 = models.IntegerField(_("traction 30 permille"), blank=True, null=True)
-    power_unit = models.CharField(_("power_unit"),
+    start_year = models.IntegerField(_("vehicle.start_year"), blank=True, null=True)
+    last_revision = models.DateField(_("vehicle.last_revision"), blank=True, null=True)
+    next_revision = models.DateField(_("vehicle.next_revision"), blank=True, null=True)
+    axles_distance = models.FloatField(_("vehicles.axles_distance"), blank=True, null=True)
+    length = models.FloatField(_("vehicles.length"), blank=True, null=True)
+    manufacturer = models.CharField(_("vehicles.manufacturer"), max_length=200, blank=True)
+    traction_25 = models.IntegerField(_("vehicles.traction_25"), blank=True, null=True)
+    traction_30 = models.IntegerField(_("vehicles.traction_30"), blank=True, null=True)
+    power_unit = models.CharField(_("vehicles.power_unit"),
                                   max_length=80, choices=PowerUnit.choices)
-    steam_heating = models.CharField(_("steam_heating"),
+    steam_heating = models.CharField(_("vehicles.steam_heating"),
                                      max_length=80, choices=SteamHeating.choices)
-    max_speed = models.IntegerField(_("maximum speed"), blank=True, null=True)
+    max_speed = models.IntegerField(_("vehicles.maximum_speed"), blank=True, null=True)
 
     def __str__(self):
         return self.label

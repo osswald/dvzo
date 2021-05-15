@@ -7,11 +7,11 @@ from train_management.models import Train
 class Mileage(models.Model):
 
     class Meta:
-        verbose_name = _("Mileage")
-        verbose_name_plural = _("Mileages")
+        verbose_name = _("mileage.singular")
+        verbose_name_plural = _("mileage.plural")
 
-    date = models.DateField(_("date"))
-    label = models.CharField(_("label"), max_length=200, blank=True)
+    date = models.DateField(_("mileage.date"))
+    label = models.CharField(_("mileage.label"), max_length=200, blank=True)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)
 
     def __str__(self):

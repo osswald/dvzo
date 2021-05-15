@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Reservations" %}{% endblock %}
+{% block title %}{% translate "template.reservation.list.title" %}{% endblock %}
 
 {% block content %}
 
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% translate "Reservations" %}
+    {% translate "template.reservation.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -32,14 +32,14 @@
               >
                 <thead>
                 <tr>
-                  <th data-field="state" data-checkbox="true">State</th>
-                  <th data-field="id" data-visible="false">ID</th>
-                  <th data-field="label" data-sortable="true">{% translate "label" %}</th>
-                  <th data-field="dayplanning" data-sortable="true">{% translate "Day planning" %}</th>
-                  <th data-field="traintimetable" data-sortable="true">{% translate "train timetable" %}</th>
-                  <th data-field="amount" data-sortable="true">{% translate "amount" %}</th>
-                  <th data-field="email" data-sortable="false">{% translate "E-Mail" %}</th>
-                  <th data-field="phone" data-sortable="false">{% translate "Phone" %}</th>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.state" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "reservation.label" %}</th>
+                  <th data-field="dayplanning" data-sortable="true">{% translate "reservation.dayplanning" %}</th>
+                  <th data-field="traintimetable" data-sortable="true">{% translate "reservation.train_timetable" %}</th>
+                  <th data-field="amount" data-sortable="true">{% translate "reservation.amount" %}</th>
+                  <th data-field="email" data-sortable="false">{% translate "reservation.email" %}</th>
+                  <th data-field="phone" data-sortable="false">{% translate "reservation.phone" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -58,10 +58,10 @@
                   <td>{{ reservation.email }}</td>
                   <td>{{ reservation.phone.as_national }}</td>
                   <td>
-                    <a href='{% url "reservation-delete" pk=reservation.id %}'>
+                    <a href="{% url 'reservation-delete' pk=reservation.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href='{% url "reservation-update" pk=reservation.id %}'>
+                    <a href="{% url 'reservation-update' pk=reservation.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>

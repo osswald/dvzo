@@ -1,21 +1,31 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Phone number overview" %}{% endblock %}
+{% block title %}{% translate "template.phone_number.overview.title" %}{% endblock %}
 
 {% block content %}
 
 <div class="dvzo-container">
   <div class="dvzo-header">
-    {% translate "Phone numbers" %}
+    {% translate "template.phone_number.overview.header" %}
   </div>
   <div class="dvzo-content">
     <div class="d-grid gap-2 d-md-block">
-      <a href="{% url 'phonenumber-detail' %}?type=emergency" class="btn btn-lg btn-danger my-1 me-1">{% translate "Emergency" %}</a>
-      <a href="{% url 'phonenumber-member-detail' %}" class="btn btn-lg btn-secondary my-1 me-1">{% translate "Members" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=dvzo" class="btn btn-lg btn-primary my-1 me-1">{% translate "DVZO" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=sbb" class="btn btn-lg btn-primary my-1 me-1">{% translate "SBB" %}</a>
-      <a href="{% url 'phonenumber-detail' %}?type=other" class="btn btn-lg btn-primary my-1 me-1">{% translate "Other" %}</a>
+      <a href="{% url 'phonenumber-detail' %}?type=emergency" class="btn btn-lg btn-danger my-1 me-1">
+        {% translate "phone_number.type.emergency" %}
+      </a>
+      <a href="{% url 'phonenumber-member-detail' %}" class="btn btn-lg btn-secondary my-1 me-1">
+        {% translate "phone_number.type.member" %}
+      </a>
+      <a href="{% url 'phonenumber-detail' %}?type=dvzo" class="btn btn-lg btn-primary my-1 me-1">
+        {% translate "phone_number.type.dvzo" %}
+      </a>
+      <a href="{% url 'phonenumber-detail' %}?type=sbb" class="btn btn-lg btn-primary my-1 me-1">
+        {% translate "phone_number.type.sbb" %}
+      </a>
+      <a href="{% url 'phonenumber-detail' %}?type=other" class="btn btn-lg btn-primary my-1 me-1">
+        {% translate "phone_number.type.other" %}
+      </a>
     </div>
   </div>
 </div>

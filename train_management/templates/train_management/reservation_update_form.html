@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "Reservation" %}{% endblock %}
+{% block title %}{% translate "template.reservation.update.title" %}{% endblock %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
     {% if object %}
     {{ object.label }}
     {% else %}
-    {% translate "Add reservation" %}
+    {% translate "template.reservation.update.header" %}
     {% endif %}
   </div>
 
@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="{% translate 'Submit' %}" class="btn btn-primary btn-sm">
+            <input type="submit" value="{% translate 'template.reservation.submit' %}" class="btn btn-primary btn-sm">
           </div>
         </form>
       </div>

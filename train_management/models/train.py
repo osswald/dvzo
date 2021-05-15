@@ -7,11 +7,11 @@ from train_management.models import DayPlanning, FunctionPersons, Vehicle
 class Train(models.Model):
 
     class Meta:
-        verbose_name = _("Train tour")
-        verbose_name_plural = _("Train tours")
+        verbose_name = _("train.singular")
+        verbose_name_plural = _("train.plural")
 
-    label = models.CharField(_("label"), max_length=200)
-    km = models.IntegerField(_("km"), blank=True)
+    label = models.CharField(_("train.label"), max_length=200)
+    km = models.IntegerField(_("train.km"), blank=True)
     day_planning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="train")
 
@@ -32,9 +32,9 @@ class Train(models.Model):
 class TrainConfiguration(models.Model):
 
     class Meta:
-        verbose_name = _("Train configuration")
-        verbose_name_plural = _("Train configurations")
+        verbose_name = _("train_configuration.singular")
+        verbose_name_plural = _("train_configuration.plural")
 
     vehicle = models.ForeignKey(Vehicle, null=True, on_delete=models.CASCADE)
     train = models.ForeignKey(Train, on_delete=models.CASCADE)
-    sorting = models.IntegerField(_("sorting"), blank=True, null=True)
+    sorting = models.IntegerField(_("train_configuration.sorting"), blank=True, null=True)

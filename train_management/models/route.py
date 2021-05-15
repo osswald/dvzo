@@ -7,8 +7,8 @@ from train_management.models import Station, TrainTimetable
 class Route(models.Model):
 
     class Meta:
-        verbose_name = _("Route")
-        verbose_name_plural = _("Routes")
+        verbose_name = _("route.singular")
+        verbose_name_plural = _("route.plural")
         
     class Reason(models.TextChoices):
         NO_STOP = "no_stop", _("route.reason.no_stop")

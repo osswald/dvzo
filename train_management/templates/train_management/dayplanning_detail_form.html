@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "Day planning" %} - {{ object.label }}{% endblock %}
+{% block title %}{% translate "template.dayplanning.detail.title" %} - {{ object.label }}{% endblock %}
 
 {% block content %}
 
@@ -12,13 +12,13 @@
       <div class="card my-2">
         <div class="card-body">
           <div class="card-text">
-            <a href='{% url "day-planning-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+            <a href="{% url 'day-planning-list' %}" class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-list"></i>
-              {% translate "Back to list" %}
+              {% translate "app.back_list" %}
             </a>
-            <a href='{% url "briefing-pdf" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+            <a href="{% url 'briefing-pdf' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-print"></i>
-              {% translate "Briefing" %}
+              {% translate "template.dayplanning.briefing" %}
             </a>
           </div>
         </div>
@@ -29,7 +29,7 @@
     <div class="col">
       <div class="card my-2">
         <div class="card-body">
-          <div class="card-title">{% translate "Master data" %}</div>
+          <div class="card-title">{% translate "app.master_data" %}</div>
           <div class="card-text">
             <table class="table table-sm dvzo-50">
               <thead>
@@ -38,15 +38,15 @@
               </thead>
               <tbody>
               <tr>
-                <th>{% translate "Date" %}</th>
+                <th>{% translate "dayplanning.date" %}</th>
                 <td>{{object.date}}</td>
               </tr>
               <tr>
-                <th>{% translate "Type" %}</th>
+                <th>{% translate "dayplanning.type" %}</th>
                 <td>{{object.get_day_planning_type_display}}</td>
               </tr>
               <tr>
-                <th>{% translate "Text" %}</th>
+                <th>{% translate "dayplanning.text" %}</th>
                 <td>{{object.text|linebreaksbr|truncatewords:40}}</td>
               </tr>
               </tbody>
@@ -57,7 +57,7 @@
 
       <div class="card my-2">
         <div class="card-body">
-          <div class="card-title">{% translate "Planning" %}</div>
+          <div class="card-title">{% translate "template.dayplanning.planning" %}</div>
           <div class="card-text">
             <table class="table table-sm dvzo-50">
               <thead>
@@ -66,11 +66,11 @@
               </thead>
               <tbody>
               <tr>
-                <th>{% translate "Slot ordered" %}</th>
+                <th>{% translate "dayplanning.slot_ordered" %}</th>
                 <td>{{object.get_slot_ordered_display}}</td>
               </tr>
               <tr>
-                <th>{% translate "Personnel disposition" %}</th>
+                <th>{% translate "dayplanning.personnel_disposition" %}</th>
                 <td>{{object.get_personnel_disposition_display}}</td>
               </tr>
               </tbody>
@@ -81,7 +81,7 @@
 
       <div class="card my-2">
         <div class="card-body">
-          <div class="card-title">{% translate "Booking" %}</div>
+          <div class="card-title">{% translate "template.dayplanning.booking" %}</div>
           <div class="card-text">
             <table class="table table-sm dvzo-50">
               <thead>
@@ -90,19 +90,19 @@
               </thead>
               <tbody>
               <tr>
-                <th>{% translate "Booking status" %}</th>
+                <th>{% translate "dayplanning.booking_status" %}</th>
                 <td>{{object.get_booking_status_display}}</td>
               </tr>
               <tr>
-                <th>{% translate "Customers" %}</th>
+                <th>{% translate "dayplanning.customers" %}</th>
                 <td>{{object.customers}}</td>
               </tr>
               <tr>
-                <th>{% translate "Price" %}</th>
+                <th>{% translate "dayplanning.price" %}</th>
                 <td>{{object.price}}</td>
               </tr>
               <tr>
-                <th>{% translate "Paid" %}</th>
+                <th>{% translate "dayplanning.paid" %}</th>
                 <td>{{object.get_paid_display}}</td>
               </tr>
               </tbody>
@@ -112,13 +112,13 @@
       </div>
 
       <div class="dvzo-button-bottom mb-4">
-        <a href='{% url "day-planning-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+        <a href="{% url 'day-planning-update' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
-          {% translate "Edit master data" %}
+          {% translate "app.edit_master_data" %}
         </a>
-        <a href='{% url "train-composition-create" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+        <a href="{% url 'train-composition-create' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="fas fa-plus"></i>
-          {% translate "Add new train tour" %}
+          {% translate "template.dayplanning.add_train_tour" %}
         </a>
       </div>
     </div>
@@ -126,18 +126,18 @@
     <div class="col">
       <div class="card my-2">
         <div class="card-body">
-          <div class="card-title">{% translate "dayplanning.title.Functions" %}</div>
+          <div class="card-title">{% translate "template.dayplanning.functions" %}</div>
           <div class="card-text">
             {% for function_type, functions in dayplanning_functions.items %}
             <h4>{{function_type}}</h4>
             <table class="table table-sm dvzo-50">
               <thead>
-              <th>{% translate "Function" %}</th>
-              <th>{% translate "Person" %}</th>
+              <th>{% translate "template.dayplanning.functions.function" %}</th>
+              <th>{% translate "template.dayplanning.functions.person" %}</th>
               </thead>
               <tbody>
+              {% for function, persons in functions.items %}
               <tr>
-                {% for function, persons in functions.items %}
                 <td>{{function}}</td>
                 <td>
                   {% for person in persons %}
@@ -145,8 +145,8 @@
                   {% if not forloop.last %}<br>{% endif %}
                   {% endfor %}
                 </td>
-                {% endfor %}
               </tr>
+              {% endfor %}
               </tbody>
             </table>
             {% endfor %}
@@ -156,7 +156,7 @@
       <div class="dvzo-button-bottom">
         <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
-          {% translate "Edit functions" %}
+          {% translate "template.dayplanning.edit_functions" %}
         </a>
       </div>
     </div>
@@ -171,13 +171,13 @@
         <div class="card-body">
           <div class="card-title">{{train}}</div>
           <div class="card-text">
-            <h4>{% translate "Formation" %}</h4>
+            <h4>{% translate "template.dayplanning.train.formation" %}</h4>
             {% include 'includes/train.html' %}
 
             <table class="table table-sm dvzo-25">
               <thead>
-              <th>{% translate "Function" %}</th>
-              <th>{% translate "Person" %}</th>
+              <th>{% translate "template.dayplanning.functions.function" %}</th>
+              <th>{% translate "template.dayplanning.functions.person" %}</th>
               </thead>
               <tbody>
               {% for function, persons in train_data.functions.items %}
@@ -219,13 +219,13 @@
                   <span>{{ traintimetable.destination_time }}</span>
                 </td>
                 <td>
-                  <a href='{% url "train-timetable-delete" pk=traintimetable.id %}'>
+                  <a href="{% url 'train-timetable-delete' pk=traintimetable.id %}">
                     <i class="fas fa-trash-alt text-danger"></i>
                   </a>&nbsp;
-                  <a href='{% url "train-timetable-update" pk=traintimetable.id %}'>
+                  <a href="{% url 'train-timetable-update' pk=traintimetable.id %}">
                     <i class="far fa-edit"></i>
                   </a>
-                  <a href='{% url "reservation-create" pk=traintimetable.id %}'>
+                  <a href="{% url 'reservation-create' pk=traintimetable.id %}">
                     +Res
                   </a>
                 </td>
@@ -245,20 +245,20 @@
       </div>
 
         <div class="dvzo-button-bottom">
-          <a href='{% url "train-composition-update" pk=train.id %}' class="btn btn-primary btn-sm my-1 me-1">
+          <a href="{% url 'train-composition-update' pk=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="far fa-edit"></i>
-            {% translate "Edit train formation" %}
+            {% translate "template.dayplanning.train.edit_formation" %}
           </a>
 
-          <a href='{% url "edit-train-functions" train_id=train.id %}' class="btn btn-primary btn-sm my-1 me-1">
+          <a href="{% url 'edit-train-functions' train_id=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="far fa-edit"></i>
-            {% translate "Edit functions" %}
+            {% translate "template.dayplanning.train.edit_functions" %}
           </a>
 
           <div class="btn-group my-1 me-1">
-            <a href='{% url "train-timetable-create" pk=train.id %}' class="btn btn-primary btn-sm">
+            <a href="{% url 'train-timetable-create' pk=train.id %}" class="btn btn-primary btn-sm">
               <i class="far fa-edit"></i>
-              {% translate "Add schedule" %}
+              {% translate "template.dayplanning.train.add_schedule" %}
             </a>
             <button type="button"
                     class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split"
@@ -269,9 +269,9 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item disabled"
-                   href='{% url "train-timetable-template-list" %}?train={{ train.id }}&active=True'>
+                   href="{% url 'train-timetable-template-list' %}?train={{ train.id }}&active=True">
                   <i class="far fa-id-card"></i>
-                  {% translate "Add from Template" %}
+                  {% translate "template.dayplanning.train.add_from_template" %}
                 </a>
               </li>
             </ul>
@@ -288,7 +288,7 @@
     <div class="col">
       <div class="card my-2">
         <div class="card-body">
-          <div class="card-title">{% translate "Reservations" %}</div>
+          <div class="card-title">{% translate "template.dayplanning.reservations" %}</div>
           <div class="card-text">
             <table class="table table-sm dvzo-25">
               <thead>

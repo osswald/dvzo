@@ -6,7 +6,7 @@ from django.views import generic
 
 from train_management.forms import DayPlanningFieldsetForm
 from train_management.models import (DayPlanning, DayPlanningText, DvzoFunction, FunctionPersons, Personnel, Train,
-                                     TrainTimetable)
+                                     TrainTimetable,)
 
 
 @method_decorator(login_required, name='dispatch')

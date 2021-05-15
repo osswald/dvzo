@@ -29,6 +29,11 @@ urlpatterns = [
     path('dayplanning/add/', views.DayPlanningCreateView.as_view(), name='day-planning-create'),
     path('dayplanning/<int:pk>/delete/', views.DayPlanningDeleteView.as_view(), name='day-planning-delete'),
 
+    path('dayplanning/text/add/<int:pk>/', views.DayPlanningTextCreateView.as_view(), name='day-planning-text-create'),
+    path('dayplanning/text/<int:pk>/', views.DayPlanningTextUpdateView.as_view(), name='day-planning-text-update'),
+    path('dayplanning/text/delete/<int:pk>/',
+         views.DayPlanningTextDeleteView.as_view(), name='day-planning-text-delete'),
+
     path('dayplanning/<int:pk>/briefing/', views.briefing_pdf, name='briefing-pdf'),
     path('dayplanning/bulletin/', views.bulletin_pdf, name='bulletin-pdf'),
 

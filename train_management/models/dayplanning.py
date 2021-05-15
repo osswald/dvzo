@@ -67,3 +67,18 @@ class DayPlanning(models.Model):
 
     def __str__(self):
         return self.label
+
+
+class DayPlanningText(models.Model):
+
+    class Meta:
+        verbose_name = _("dayplanning_text.singular")
+        verbose_name_plural = _("dayplanning_text.plural")
+
+    label = models.CharField(_("dayplanning_text.label"), max_length=200)
+    text = models.TextField(_("dayplanning_text.text"))
+    sorting = models.IntegerField(_("dayplanning_text.sorting"), blank=True, null=True)
+    dayplanning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.label

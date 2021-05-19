@@ -1,0 +1,33 @@
+@import "variables";
+
+@import url('https://rsms.me/inter/inter.css');
+@supports (font-variation-settings: normal) {
+  .pdf {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+.pdf {
+  font-family: 'Inter', sans-serif;
+  background-color: $backgroundWhite;
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  table {
+    background-color: $backgroundWhite;
+  }
+}

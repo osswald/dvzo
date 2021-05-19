@@ -14,6 +14,7 @@ class Train(models.Model):
     km = models.IntegerField(_("train.km"), blank=True)
     day_planning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="train")
+    frequency = models.IntegerField(_("train.frequency"), null=True, blank=True)
 
     def __str__(self):
         return self.label

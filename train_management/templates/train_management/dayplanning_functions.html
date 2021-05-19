@@ -29,7 +29,8 @@
       <input type="submit" value="template.dayplanning_functions.submit" class="btn btn-sm btn-success">
     </form>
   </div>
-
+{% endblock content %}
+{% block scripts %}
 <script>
 $(document).ready(function(){
   {% for function in functions %}
@@ -41,4 +42,4 @@ $(document).ready(function(){
   {% endfor %}
 });
 </script>
-{% endblock content %}
+{% endblock scripts %}

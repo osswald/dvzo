@@ -63,13 +63,17 @@
     </div>
   </div>
 </div>
-
+{% endblock content %}
+{% block scripts %}
 <script>
     var trainSortable = new Sortable.create(train, {
-        group: 'train_group'
+        group: 'train_group',
+        animation: 150,
     });
     new Sortable.create(vehicles, {
-        group: 'train_group'});
+        group: 'train_group',
+        animation: 150,
+    });
 
     const saveOrderingButton = document.getElementById('saveOrdering');
     const orderingForm = document.getElementById('orderingForm');
@@ -82,4 +86,4 @@
     saveOrderingButton.addEventListener('click', saveOrdering);
 
 </script>
-{% endblock content %}
+{% endblock scripts %}

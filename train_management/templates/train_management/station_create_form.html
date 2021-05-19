@@ -32,7 +32,8 @@
     </div>
   </div>
 </div>
-
+{% endblock content %}
+{% block scripts %}
 <script>
   $(document).ready(function(){
     const multipleCancelButton = new Choices('#id_neighbours', {
@@ -42,5 +43,5 @@
     });
   });
 </script>
+{% endblock scripts %}
 
-{% endblock content %}

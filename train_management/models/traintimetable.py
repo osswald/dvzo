@@ -28,6 +28,7 @@ class TrainTimetable(models.Model):
     reservation_external = models.CharField(_("train_timetable.reservation_external"), max_length=80,
                                             choices=ReservationPossible.choices,
                                             default=ReservationPossible.NOT_POSSIBLE)
+    frequency = models.IntegerField(_("train_timetable.frequency"), null=True, blank=True)
 
     def __str__(self):
         return self.label

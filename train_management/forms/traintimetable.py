@@ -11,6 +11,7 @@ class TrainTimetableForm(BootstrapTapeformMixin, ModelForm):
         model = TrainTimetable
         fields = ['label',
                   'comment',
+                  'frequency',
                   'start_station',
                   'start_time',
                   'destination_station',

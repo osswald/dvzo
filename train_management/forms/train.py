@@ -10,5 +10,6 @@ class TrainForm(BootstrapTapeformMixin, ModelForm):
     class Meta:
         model = Train
         fields = ['km',
-                  'label'
+                  'label',
+                  'frequency'
                   ]

@@ -39,7 +39,8 @@
     </div>
   </div>
 </div>
-
+{% endblock content %}
+{% block scripts %}
 <script>
 $(document).ready(function(){
   {% for function in functions %}
@@ -51,5 +52,4 @@ $(document).ready(function(){
   {% endfor %}
 });
 </script>
-
-{% endblock content %}
+{% endblock scripts %}

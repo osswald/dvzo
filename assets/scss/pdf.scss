@@ -7,6 +7,16 @@
   }
 }
 
+.top-logo-pdf {
+  width: 2.5cm;
+}
+
+.top-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6em;
+  padding-left: 0.7cm;
+}
+
 .pdf {
   font-family: 'Inter', sans-serif;
   background-color: $backgroundWhite;
@@ -29,5 +39,6 @@
 
   table {
     background-color: $backgroundWhite;
+    font-size: 0.7em;
   }
 }

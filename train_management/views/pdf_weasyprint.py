@@ -1,9 +1,7 @@
 import functools
 import ssl
 
-from django.conf import settings
 from django.utils import timezone
-from django.views.generic import DetailView
 
 from django_weasyprint import WeasyTemplateResponseMixin
 from django_weasyprint.utils import django_url_fetcher
@@ -22,7 +20,7 @@ class CustomWeasyTemplateResponse(WeasyTemplateResponse):
         return functools.partial(django_url_fetcher, ssl_context=context)
 
 
-class MyModelPrintView(WeasyTemplateResponseMixin, DayPlanningDetailView):
+class BriefingPrintView(WeasyTemplateResponseMixin, DayPlanningDetailView):
     # output of MyModelView rendered as PDF with hardcoded CSS
     # show pdf in-line (default: True, show download dialog)
     pdf_attachment = False

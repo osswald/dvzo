@@ -34,10 +34,8 @@ urlpatterns = [
     path('dayplanning/text/delete/<int:pk>/',
          views.DayPlanningTextDeleteView.as_view(), name='day-planning-text-delete'),
 
-    path('dayplanning/<int:pk>/briefing/', views.briefing_pdf, name='briefing-pdf'),
-    path('dayplanning/<int:pk>/briefing2/',
-         views.MyModelPrintView.as_view(template_name="train_management/dayplanning_pdf.html"),
-         name='briefing-pdf2'),
+    path('dayplanning/<int:pk>/briefing/', views.BriefingPrintView.as_view(template_name="pdf/briefing.html"),
+         name='briefing-pdf'),
     path('dayplanning/bulletin/', views.bulletin_pdf, name='bulletin-pdf'),
 
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),

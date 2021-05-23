@@ -1,5 +1,6 @@
 from train_management.views.availability import *  # noqa
 from train_management.views.calendar import *  # noqa
+from train_management.views.copy_recipient import *  # noqa
 from train_management.views.dashboard import *  # noqa
 from train_management.views.dayplanning import *  # noqa
 from train_management.views.dayplanning_text import *  # noqa

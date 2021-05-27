@@ -80,7 +80,9 @@
     </td>
     <td>
       {% for person in persons %}
-      {{ person.mobile_phone.as_national }}
+      {% if person.mobile_phone_public == "yes" %}
+      {{person.mobile_phone.as_national}}
+      {% endif %}
       {% if not forloop.last %}<br>{% endif %}
       {% endfor %}
     </td>
@@ -103,7 +105,9 @@
     </td>
     <td>
       {% for person in persons %}
+      {% if person.mobile_phone_public == "yes" %}
       {{person.mobile_phone.as_national}}
+      {% endif %}
       {% if not forloop.last %}<br>{% endif %}
       {% endfor %}
     </td>

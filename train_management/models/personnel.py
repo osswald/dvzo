@@ -28,7 +28,7 @@ class Personnel(models.Model):
     date_of_birth = models.DateField(_("personnel.date_of_birth"), null=True, blank=True)
 
     def __str__(self):
-        return "%s, %s" % (self.first_name, self.last_name)
+        return "%s %s" % (self.first_name, self.last_name)
 
     @property
     def username(self):

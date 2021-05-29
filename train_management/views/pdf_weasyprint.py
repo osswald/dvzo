@@ -7,7 +7,7 @@ from django_weasyprint import WeasyTemplateResponseMixin
 from django_weasyprint.utils import django_url_fetcher
 from django_weasyprint.views import CONTENT_TYPE_PNG, WeasyTemplateResponse
 
-from train_management.views import DayPlanningDetailView
+from train_management.views import DayPlanningBulletinView, DayPlanningDetailView
 
 
 class CustomWeasyTemplateResponse(WeasyTemplateResponse):
@@ -21,6 +21,14 @@ class CustomWeasyTemplateResponse(WeasyTemplateResponse):
 
 
 class BriefingPrintView(WeasyTemplateResponseMixin, DayPlanningDetailView):
+    # output of MyModelView rendered as PDF with hardcoded CSS
+    # show pdf in-line (default: True, show download dialog)
+    pdf_attachment = False
+    # custom response class to configure url-fetcher
+    response_class = CustomWeasyTemplateResponse
+
+
+class BulletinPrintView(WeasyTemplateResponseMixin, DayPlanningBulletinView):
     # output of MyModelView rendered as PDF with hardcoded CSS
     # show pdf in-line (default: True, show download dialog)
     pdf_attachment = False

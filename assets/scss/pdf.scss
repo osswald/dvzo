@@ -41,5 +41,14 @@
     background-color: $backgroundWhite;
     font-size: 0.7em;
     page-break-inside: avoid;
+
+    .table-bulletin {
+      th:first-child {
+        width: 5cm;
+      }
+      th:nth-child(3) {
+        width: 5cm;
+      }
+    }
   }
 }

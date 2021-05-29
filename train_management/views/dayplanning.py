@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
@@ -15,6 +17,15 @@ class DayPlanningListView(generic.ListView):
 
     def get_queryset(self):
         return DayPlanning.objects.all()
+
+
+@method_decorator(login_required, name='dispatch')
+class DayPlanningBulletinView(generic.ListView):
+    context_object_name = "day_plannings"
+
+    def get_queryset(self):
+        today = date.today()
+        return DayPlanning.objects.filter(date__gte=today).order_by("date")
 
 
 @method_decorator(login_required, name='dispatch')

@@ -7,7 +7,6 @@
 db.sqlite3
 CODE_OF_CONDUCT.md
 LICENSE
-README.md
 /ansible/
 azure-pipelines.yml
 /build/

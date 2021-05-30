@@ -1,4 +1,5 @@
 from train_management.forms.availability import *  # noqa
+from train_management.forms.copy_recipient import *  # noqa
 from train_management.forms.dayplanning import *  # noqa
 from train_management.forms.dayplanning_text import *  # noqa
 from train_management.forms.dvzofunction import *  # noqa

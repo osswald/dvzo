@@ -119,5 +119,10 @@ urlpatterns = [
     path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete'),
 
     path('reservation-calendar/', views.reservation_calendar, name='reservation-calendar'),
-    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains')
+    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains'),
+
+    path('copy-recipient/', views.CopyRecipientListView.as_view(), name='copy-recipient-list'),
+    path('copy-recipient/<int:pk>/', views.CopyRecipientUpdateView.as_view(), name='copy-recipient-detail'),
+    path('copy-recipient/add/', views.CopyRecipientCreateView.as_view(), name='copy-recipient-create'),
+    path('copy-recipient/<int:pk>/delete/', views.CopyRecipientDeleteView.as_view(), name='copy-recipient-delete'),
 ]

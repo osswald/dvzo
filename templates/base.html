@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'auxiliary.min.css' %}" type="text/css">
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
     <title>{% translate "app.title" %}{% block title %}{% translate "app.title.placeholder" %}{% endblock %}</title>
-
+    {% block head %}{% endblock head %}
   </head>
   <body>
     <div id="topbar">

@@ -58,16 +58,16 @@ class Vehicle(models.Model):
     start_year = models.IntegerField(_("vehicle.start_year"), blank=True, null=True)
     last_revision = models.DateField(_("vehicle.last_revision"), blank=True, null=True)
     next_revision = models.DateField(_("vehicle.next_revision"), blank=True, null=True)
-    axles_distance = models.FloatField(_("vehicles.axles_distance"), blank=True, null=True)
-    length = models.FloatField(_("vehicles.length"), blank=True, null=True)
-    manufacturer = models.CharField(_("vehicles.manufacturer"), max_length=200, blank=True)
-    traction_25 = models.IntegerField(_("vehicles.traction_25"), blank=True, null=True)
-    traction_30 = models.IntegerField(_("vehicles.traction_30"), blank=True, null=True)
-    power_unit = models.CharField(_("vehicles.power_unit"),
+    axles_distance = models.FloatField(_("vehicle.axles_distance"), blank=True, null=True)
+    length = models.FloatField(_("vehicle.length"), blank=True, null=True)
+    manufacturer = models.CharField(_("vehicle.manufacturer"), max_length=200, blank=True)
+    traction_25 = models.IntegerField(_("vehicle.traction_25"), blank=True, null=True)
+    traction_30 = models.IntegerField(_("vehicle.traction_30"), blank=True, null=True)
+    power_unit = models.CharField(_("vehicle.power_unit"),
                                   max_length=80, choices=PowerUnit.choices)
     steam_heating = models.CharField(_("vehicles.steam_heating"),
                                      max_length=80, choices=SteamHeating.choices)
-    max_speed = models.IntegerField(_("vehicles.maximum_speed"), blank=True, null=True)
+    max_speed = models.IntegerField(_("vehicle.maximum_speed"), blank=True, null=True)
 
     def __str__(self):
         return self.label

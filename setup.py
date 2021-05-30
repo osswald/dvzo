@@ -20,6 +20,7 @@ REQUIRED = [
     'whitenoise[brotli]',
     'django-phonenumber-field[phonenumbers]',
     'django-tapeforms',
+    'django-weasyprint',
     'Django'
 ]
 TEST_REQUIRE = [

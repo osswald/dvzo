@@ -14,8 +14,146 @@
           <div class="card-text">
             <a href='{% url "carriage-list" %}' class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-list"></i>
-              {% translate "app.back_list" %}
+              {% translate "Back to list" %}
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body">
+      <div class="card-title">{% translate "app.master_data" %}</div>
+      <div class="card-text">
+        <table class="table table-sm dvzo-25">
+          <thead>
+          <th></th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{% translate "vehicle.label" %}</th>
+            <td>{{object.label}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.historic_name" %}</th>
+            <td>{{object.historic_name}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.description" %}</th>
+            <td>{{object.description}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.uic" %}</th>
+            <td>{{object.uic}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.image" %}</th>
+            <td>{{object.image}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.gross_weight" %}</th>
+            <td>{{object.gross_weight}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.seats" %}</th>
+            <td>{{object.seats}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.status" %}</th>
+            <td>{{object.get_status_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.home" %}</th>
+            <td>{{object.get_home_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.start_year" %}</th>
+            <td>{{object.start_year}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.last_revision" %}</th>
+            <td>{{object.last_revision}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.next_revision" %}</th>
+            <td>{{object.next_revision}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.axles_distance" %}</th>
+            <td>{{object.axles_distance}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.length" %}</th>
+            <td>{{object.length}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.manufacturer" %}</th>
+            <td>{{object.manufacturer}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.traction_25" %}</th>
+            <td>{{object.traction_25}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.traction_30" %}</th>
+            <td>{{object.traction_30}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.power_unit" %}</th>
+            <td>{{object.get_power_unit_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.steam_heating" %}</th>
+            <td>{{object.get_steam_heating_display}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "vehicle.max_speed" %}</th>
+            <td>{{object.max_speed}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="dvzo-button-bottom mb-4">
+    <a href='{% url "carriage-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "Edit" %}
+    </a>
+    <a href='{% url "availability-carriage-create" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "Add availability" %}
+    </a>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Availability" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>Status</th>
+              <th>Start</th>
+              <th>End</th>
+              </thead>
+              <tbody>
+              {% for availability in availabilities %}
+              <tr>
+                <td>{{ availability.get_availability_status_display }}</td>
+                <td>{{ availability.start }}</td>
+                <td>{{ availability.end }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

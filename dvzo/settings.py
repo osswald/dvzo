@@ -130,6 +130,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'templates/locale'),]
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,

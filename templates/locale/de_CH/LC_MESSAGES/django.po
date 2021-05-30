@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-30 16:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: base.html:12
+msgid "app.title"
+msgstr "DVZO.app - "
+
+#: base.html:12
+msgid "app.title.placeholder"
+msgstr ""
+
+#: includes/side_navigation.html:5
+msgid "side_navigation.close"
+msgstr "Schliessen"
+
+#: includes/side_navigation.html:9
+msgid "side_navigation.home"
+msgstr "Home"
+
+#: includes/side_navigation.html:13
+msgid "side_navigation.calendar"
+msgstr "Kalender"
+
+#: includes/side_navigation.html:18
+msgid "side_navigation.dayplanning"
+msgstr "Tagesplanung"
+
+#: includes/side_navigation.html:23
+msgid "side_navigation.engines"
+msgstr "Triebfahrzeuge"
+
+#: includes/side_navigation.html:27
+msgid "side_navigation.carriages"
+msgstr "Wagen"
+
+#: includes/side_navigation.html:31
+msgid "side_navigation.personnel"
+msgstr "Personal"
+
+#: includes/side_navigation.html:35
+msgid "side_navigation.functions"
+msgstr "Funktionen"
+
+#: includes/side_navigation.html:39
+msgid "side_navigation.reservations"
+msgstr "Reservationen"
+
+#: includes/side_navigation.html:43
+msgid "side_navigation.phone_numbers"
+msgstr "Telefonnummern"
+
+#: includes/side_navigation.html:47
+msgid "side_navigation.stations"
+msgstr "Betriebspunkte"
+
+#: includes/side_navigation.html:50
+msgid "side_navigation.train_timetable_templates"
+msgstr "Fahrten-Vorlagen"
+
+#: includes/top_navigation.html:16
+msgid "top_nav.phone_numbers"
+msgstr "Telefonnummern"
+
+#: includes/top_navigation.html:22
+msgid "top_nav.my_bookings"
+msgstr "Meine Einsätze"
+
+#: includes/top_navigation.html:28
+msgid "top_nav.frequencies"
+msgstr "Frequenzen"
+
+#: includes/top_navigation.html:35
+msgid "top_nav.profile"
+msgstr "Profil"
+
+#: includes/top_navigation.html:41
+msgid "top_nav.logout"
+msgstr "Logout"

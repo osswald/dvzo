@@ -23,18 +23,19 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_tex',
-    'phonenumber_field',
-    'tapeforms',
-    'compressor',
-] + PROJECT_APPS
+                     'whitenoise.runserver_nostatic',
+                     'django.contrib.admin',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     'django_tex',
+                     'phonenumber_field',
+                     'tapeforms',
+                     'tinymce',
+                     'compressor',
+                 ] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,6 +132,36 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = [BASE_DIR / 'templates/locale']
+
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/mzzbdds45pytc0srczsext77st8du79k6rp4840guy0jdayk/tinymce/5/tinymce.min.js'
+TINYMCE_COMPRESSOR = False
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "320px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link charmap preview anchor searchreplace visualblocks code "
+               "fullscreen insertdatetime template table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontsizeselect formatselect | alignleft "
+               "aligncenter alignright alignjustify | outdent indent | table | numlist bullist checklist | forecolor "
+               "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+               "fullscreen | template link anchor | "
+               "code",
+    "custom_undo_redo_levels": 10,
+    "templates": [
+        {
+            "title": "Abstellplanung",
+            "description": "Fügt eine Tabelle für die Abstellplanung ein.",
+            "content": "<h3>Parkordnung</h3><p>&nbsp;</p><table class='table table-striped table-sm'><tbody><tr>"
+                       "<td style='background-color: #000000;'><strong><span style='color: #ecf0f1;'>Gleis</span>"
+                       "</strong></td><td style='background-color: #000000;'><span style='color: #ecf0f1;'>"
+                       "<strong>Belegung</strong></span></td></tr><tr><td>101</td>"
+                       "<td>K3, K1, Hebamme, C107, BC, C6109, FZ203</td></tr><tr><td>102</td>"
+                       "<td>Kohlewagen, L4/X402, Kranwagen, HoWa, FiWa, JaWa, F405, Olma</td></tr><tr><td>103</td>"
+                       "<td>Dampfl&auml;deli, Bierwagen OK151, C105, WR109, C106, C4, F204</td></tr><tr><td>223</td>"
+                       "<td>#16363, #354</td></tr><tr><td>224</td><td>P3 #4, P2 #9, P1 #2</td></tr><tr><td>225</td>"
+                       "<td>P5 &amp; 6 C6075, P4 Shell</td></tr></tbody></table>",
+        },
+    ]
+}
 
 LOGGING = {
     "version": 1,

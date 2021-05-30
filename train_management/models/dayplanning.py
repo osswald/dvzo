@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from tinymce import models as tinymce_models
 
 from train_management.models import FunctionPersons
 
@@ -76,7 +77,7 @@ class DayPlanningText(models.Model):
         verbose_name_plural = _("dayplanning_text.plural")
 
     label = models.CharField(_("dayplanning_text.label"), max_length=200)
-    text = models.TextField(_("dayplanning_text.text"))
+    text = tinymce_models.HTMLField(_("dayplanning_text.text"))
     sorting = models.IntegerField(_("dayplanning_text.sorting"), blank=True, null=True)
     dayplanning = models.ForeignKey(DayPlanning, on_delete=models.CASCADE)
 

@@ -35,19 +35,3 @@ class BulletinPrintView(WeasyTemplateResponseMixin, DayPlanningBulletinView):
     pdf_attachment = False
     # custom response class to configure url-fetcher
     response_class = CustomWeasyTemplateResponse
-
-
-class MyModelDownloadView(WeasyTemplateResponseMixin, DayPlanningDetailView):
-    # suggested filename (is required for attachment/download!)
-    pdf_filename = 'foo.pdf'
-
-
-class MyModelImageView(WeasyTemplateResponseMixin, DayPlanningDetailView):
-    # generate a PNG image instead
-    content_type = CONTENT_TYPE_PNG
-
-    # dynamically generate filename
-    def get_pdf_filename(self):
-        return 'foo-{at}.pdf'.format(
-            at=timezone.now().strftime('%Y%m%d-%H%M'),
-        )

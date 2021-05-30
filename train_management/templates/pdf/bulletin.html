@@ -1,0 +1,100 @@
+{% extends "base_pdf.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.dayplanning.detail.title" %} - {{ object.label }}{% endblock %}
+
+{% block style %}
+<style>
+  @page  {
+    size: landscape;
+
+    @top-right {
+          color: #a9a;
+          content: '{% now "SHORT_DATETIME_FORMAT" %}';
+          font-family: 'Inter var', sans-serif;
+          font-size: 9pt;
+        }
+  }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<h1>Bulletin</h1>
+
+{% for day_planning in day_plannings %}
+<b>{{day_planning.date}} {{day_planning}}</b>
+<table class="table table-sm table-bulletin">
+  <thead class="table-dark">
+    <th style="width: 5cm;">Buchung</th>
+    <th>Fahrten</th>
+    <th style="width: 10cm;">Bemerkungen</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td>Buchungsstatus:</td>
+            <td>{{day_planning.get_booking_status_display}}</td>
+          </tr>
+          <tr>
+            <td>PAX:</td>
+            <td>{{day_planning.customers}}</td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          {% for train in day_planning.train_set.all %}
+          <tr>
+            <td>
+              {{train}}
+            </td>
+            <td>
+              {% for vehicle in train.vehicles %}
+              {% if vehicle.vehicle_type == "engine" %}
+              <span class="badge bg-primary">{{ vehicle.label }}</span>
+              {% elif vehicle.vehicle_type == "carriage" %}
+              {% if vehicle.carriage_type == "seat" %}
+              <span class="badge bg-secondary">{{ vehicle.label }}</span>
+              {% elif vehicle.carriage_type == "gastro" %}
+              <span class="badge bg-danger">{{ vehicle.label }}</span>
+              {% else %}
+              <span class="badge bg-dark">{{ vehicle.label }}</span>
+              {% endif %}
+              {% else %}
+              peter
+              {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+          {% for timetable in train.traintimetable_set.all %}
+          <tr>
+            <td>
+              <div class="badge bg-secondary">
+                    {{ timetable.label }}
+                  </div>
+            </td>
+            <td>
+              <span class="fw-bold">{{ timetable.start_station }}</span>
+                  <span>{{ timetable.start_time }}</span>
+                  - <span class="fw-bold">{{ timetable.destination_station }}</span>
+                  <span>{{ timetable.destination_time }}</span>
+            </td>
+          </tr>
+          {% endfor %}
+          {% endfor %}
+        </table>
+      </td>
+      <td>Bemerkungen</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+{% endfor %}
+
+{% endblock content %}

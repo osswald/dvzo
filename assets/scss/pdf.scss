@@ -1,0 +1,54 @@
+@import "variables";
+
+@import url('https://rsms.me/inter/inter.css');
+@supports (font-variation-settings: normal) {
+  .pdf {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+.top-logo-pdf {
+  width: 2.5cm;
+}
+
+.top-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6em;
+  padding-left: 0.7cm;
+}
+
+.pdf {
+  font-family: 'Inter', sans-serif;
+  background-color: $backgroundWhite;
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  table {
+    background-color: $backgroundWhite;
+    font-size: 0.7em;
+    page-break-inside: avoid;
+
+    .table-bulletin {
+      th:first-child {
+        width: 5cm;
+      }
+      th:nth-child(3) {
+        width: 5cm;
+      }
+    }
+  }
+}

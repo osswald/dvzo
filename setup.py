@@ -4,13 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 NAME = 'dvzo'
-VERSION = '0.1.0'
+VERSION = '0.9.0'
 AUTHOR = 'osswald'
 EMAIL = 'christoph.osswald@dvzo.ch'
 DESCRIPTION = 'Betriebsplanung'
 URL = 'https://github.com/osswald/dvzo'
 REQUIRED = [
     'Pillow',
+    'weasyprint==52.5',  # use specific version of weasyprint since the following version is broken.
     'gunicorn',
     'django-compressor',
     'django_tex',
@@ -20,6 +21,7 @@ REQUIRED = [
     'whitenoise[brotli]',
     'django-phonenumber-field[phonenumbers]',
     'django-tapeforms',
+    'django-weasyprint',
     'Django'
 ]
 TEST_REQUIRE = [

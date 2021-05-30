@@ -1,0 +1,159 @@
+{% extends "base_pdf.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.dayplanning.detail.title" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+<h1>Briefing {{object.label}} - {{object.date}}</h1>
+
+<!-- Textblöcke -->
+{% for dayplanning_text in dayplanning_texts %}
+{% autoescape off %}
+<p>
+  {{dayplanning_text.text}}
+</p>
+{% endautoescape %}
+{% endfor %}
+
+
+<!-- Zugformation -->
+<h3>Zugformation</h3>
+<table class="table table-sm">
+  <thead class="table-dark">
+  {% for train_data in trains_data %}
+  {% with train=train_data.train %}
+  <th>{{train}}</th>
+  {% endwith %}
+  {% empty %}
+  {% endfor %}
+  </thead>
+  <tbody>
+  <tr>
+    {% for train_data in trains_data %}
+    {% with train=train_data.train %}
+    <td>
+      {% for vehicle in train.vehicles %}
+      {% if vehicle.vehicle_type == "engine" %}
+      <span class="badge bg-primary">{{ vehicle.label }}</span>
+      {% elif vehicle.vehicle_type == "carriage" %}
+      {% if vehicle.carriage_type == "seat" %}
+      <span class="badge bg-secondary">{{ vehicle.label }}</span>
+      {% elif vehicle.carriage_type == "gastro" %}
+      <span class="badge bg-danger">{{ vehicle.label }}</span>
+      {% else %}
+      <span class="badge bg-dark">{{ vehicle.label }}</span>
+      {% endif %}
+      {% else %}
+      peter
+      {% endif %}<br>
+      {% endfor %}
+    </td>
+    {% endwith %}
+    {% empty %}
+    {% endfor %}
+  </tr>
+  </tbody>
+</table>
+
+<!-- Personal -->
+
+<h3>Personal</h3>
+<table class="table table-sm">
+  <thead class="table-dark">
+  <th>Einsatzort</th>
+  <th>Funktion</th>
+  <th>Name</th>
+  <th>Telefon</th>
+  </thead>
+  <tbody>
+  {% for train_data in trains_data %}
+  {% with train=train_data.train %}
+  <tr>
+    <td rowspan="{{train_data.functions.items|length}}">{{train}}</td>
+    {% for function, persons in train_data.functions.items %}
+    <td>{{function}}</td>
+    <td>
+      {% for person in persons %}
+      {{ person }}
+      {% if not forloop.last %}<br>{% endif %}
+      {% endfor %}
+    </td>
+    <td>
+      {% for person in persons %}
+      {% if person.mobile_phone_public == "yes" %}
+      {{person.mobile_phone.as_national}}
+      {% endif %}
+      {% if not forloop.last %}<br>{% endif %}
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+  {% endwith %}
+  {% empty %}
+  {% endfor %}
+
+  {% for function_type, functions in dayplanning_functions.items %}
+  <tr>
+    <td rowspan="{{functions.items|length}}">{{function_type}}</td>
+    {% for function, persons in functions.items %}
+    <td>{{function}}</td>
+    <td>
+      {% for person in persons %}
+      {{person}}
+      {% if not forloop.last %}<br>{% endif %}
+      {% endfor %}
+    </td>
+    <td>
+      {% for person in persons %}
+      {% if person.mobile_phone_public == "yes" %}
+      {{person.mobile_phone.as_national}}
+      {% endif %}
+      {% if not forloop.last %}<br>{% endif %}
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+  {% endfor %}
+  </tbody>
+</table>
+
+
+<!-- Reservationen -->
+<h3>Reservationen</h3>
+<table class="table table-sm">
+  <thead class="table-dark">
+  <th>Fahrt</th>
+  <th>Von - bis</th>
+  <th>PAX</th>
+  <th>Kontakt</th>
+  <th>Bemerkungen</th>
+  </thead>
+  <tbody>
+  {% for traintimetable in traintimetables %}
+  {% with reservations=traintimetable.reservation_set.all %}
+  {% if reservations|length > 0 %}
+  <tr>
+    <td rowspan={{reservations|length}}>
+      <div class="badge bg-secondary">
+        {{ traintimetable.label }}
+      </div>
+    </td>
+    {% endif %}
+    {% for reservation in reservations %}
+    <td>
+      <span class="fw-bold">{{ traintimetable.start_station.label_short }}</span>
+      <span>{{ traintimetable.start_time }}</span>
+      - <span class="fw-bold">{{ traintimetable.destination_station.label_short }}</span>
+      <span>{{ traintimetable.destination_time }}</span>
+    </td>
+    <td>{{reservation.amount}}</td>
+    <td>{{reservation.label}} ({{reservation.phone.as_national}})</td>
+    <td></td>
+  </tr>
+  {% endfor %}
+  {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

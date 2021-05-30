@@ -10,6 +10,7 @@ RUN apk add --no-cache bash postgresql-libs
 RUN apk add --no-cache jpeg-dev zlib-dev libjpeg
 RUN apk add --no-cache --virtual build-deps gcc python3-dev postgresql-dev musl-dev g++ gettext
 RUN apk add --no-cache --update --virtual node nodejs npm
+RUN apk add --no-cache --update gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
 
 # Copy project
 COPY . /home/dvzo/app

@@ -1,12 +1,9 @@
 import functools
 import ssl
 
-from django.conf import settings
-from django.utils import timezone
-
 from django_weasyprint import WeasyTemplateResponseMixin
 from django_weasyprint.utils import django_url_fetcher
-from django_weasyprint.views import CONTENT_TYPE_PNG, WeasyTemplateResponse
+from django_weasyprint.views import WeasyTemplateResponse
 
 from train_management.views import DayPlanningBulletinView, DayPlanningDetailView
 

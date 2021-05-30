@@ -22,6 +22,7 @@ REQUIRED = [
     'django-phonenumber-field[phonenumbers]',
     'django-tapeforms',
     'django-weasyprint',
+    'django-tinymce'
     'Django'
 ]
 TEST_REQUIRE = [

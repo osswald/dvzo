@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 16:23+0200\n"
+"POT-Creation-Date: 2021-05-31 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,22 +54,26 @@ msgid "side_navigation.personnel"
 msgstr "Personal"
 
 #: includes/side_navigation.html:35
+msgid "side_navigation.copy_recipient"
+msgstr "Empfänger CC"
+
+#: includes/side_navigation.html:39
 msgid "side_navigation.functions"
 msgstr "Funktionen"
 
-#: includes/side_navigation.html:39
+#: includes/side_navigation.html:43
 msgid "side_navigation.reservations"
 msgstr "Reservationen"
 
-#: includes/side_navigation.html:43
+#: includes/side_navigation.html:47
 msgid "side_navigation.phone_numbers"
 msgstr "Telefonnummern"
 
-#: includes/side_navigation.html:47
+#: includes/side_navigation.html:51
 msgid "side_navigation.stations"
 msgstr "Betriebspunkte"
 
-#: includes/side_navigation.html:50
+#: includes/side_navigation.html:54
 msgid "side_navigation.train_timetable_templates"
 msgstr "Fahrten-Vorlagen"
 

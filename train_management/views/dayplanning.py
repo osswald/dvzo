@@ -7,8 +7,8 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from train_management.forms import DayPlanningFieldsetForm
-from train_management.models import (DayPlanning, DayPlanningText, DvzoFunction, FunctionPersons, Personnel, Train,
-                                     TrainTimetable,)
+from train_management.models import (CopyRecipient, DayPlanning, DayPlanningText, DvzoFunction, FunctionPersons,
+                                     Personnel, Train, TrainTimetable,)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -49,7 +49,7 @@ class DayPlanningDetailView(generic.DetailView):
             function_types[function_type] = function_type_data
 
         trains_data = []
-        for train in Train.objects.filter(day_planning=self.object):
+        for train in Train.objects.filter(day_planning=self.object).order_by('pk'):
             functions = {}
             for function in _get_dvzo_functions_train().filter(functionpersons__train=train):
                 functions[function] = Personnel.objects.filter(
@@ -87,6 +87,27 @@ class DayPlanningCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.id})
+
+
+@method_decorator(login_required, name='dispatch')
+class DayPlanningRecipientView(generic.DetailView):
+    model = DayPlanning
+    form_class = DayPlanningFieldsetForm
+    template_name_suffix = "_recipient_form"
+
+    def get_context_data(self, **kwargs):
+        copy_recipients = CopyRecipient.objects.all()
+        all_active_personnel = _get_personnel()
+        working_personnel_train = Personnel.objects.filter(functionpersons__train__in=self.object.train_set.all())
+        working_personnel_stationary = Personnel.objects.filter(functionpersons__dayplanning=self.object)
+        all_working_personnel = working_personnel_train | working_personnel_stationary
+        all_working_personnel_distinct = all_working_personnel.distinct()
+
+        return super().get_context_data(
+            copy_recipients=copy_recipients,
+            all_active_personnel=all_active_personnel,
+            all_working_personnel=all_working_personnel_distinct,
+            **kwargs)
 
 
 @method_decorator(login_required, name='dispatch')

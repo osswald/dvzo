@@ -1,6 +1,6 @@
-from django_currentuser.db.models import CurrentUserField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_currentuser.db.models import CurrentUserField
 
 
 class AbstractDvzoModel(models.Model):

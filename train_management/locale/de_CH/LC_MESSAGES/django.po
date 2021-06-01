@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DVZO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 10:03+0200\n"
+"POT-Creation-Date: 2021-06-01 13:24+0200\n"
 "Language: de-ch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,14 @@ msgstr "Planung"
 #: forms/dayplanning.py:52
 msgid "form.dayplanning.booking"
 msgstr "Buchung"
+
+#: models/abstract_dvzo_model.py:8
+msgid "create_timestamp"
+msgstr "Erstellt am"
+
+#: models/abstract_dvzo_model.py:10
+msgid "update_timestamp"
+msgstr "Aktualisiert am"
 
 #: models/availability.py:11
 msgid "availability.singular"
@@ -56,6 +64,28 @@ msgstr "Ende"
 #: models/availability.py:24
 msgid "availability.status"
 msgstr "Status"
+
+#: models/copy_recipient.py:7
+#, fuzzy
+#| msgid "train.singular"
+msgid "copy_recipient.singular"
+msgstr "Umlauf"
+
+#: models/copy_recipient.py:8
+#, fuzzy
+#| msgid "train.plural"
+msgid "copy_recipient.plural"
+msgstr "Umläufe"
+
+#: models/copy_recipient.py:10
+#: templates/train_management/copyrecipient_list.html:35
+msgid "copy_recipient.label"
+msgstr ""
+
+#: models/copy_recipient.py:11
+#: templates/train_management/copyrecipient_list.html:36
+msgid "copy_recipient.email"
+msgstr ""
 
 #: models/dayplanning.py:10
 msgid "dayplanning.singular"
@@ -463,23 +493,23 @@ msgstr "Halteart"
 msgid "route.ordering"
 msgstr "Sortierung"
 
-#: models/station.py:7
+#: models/station.py:9
 msgid "station.singular"
 msgstr "Betriebspunkt"
 
-#: models/station.py:8
+#: models/station.py:10
 msgid "station.plural"
 msgstr "Betriebspunkte"
 
-#: models/station.py:10 templates/train_management/station_list.html:35
+#: models/station.py:12 templates/train_management/station_list.html:35
 msgid "station.didok_nr"
 msgstr "DIDOK Nr."
 
-#: models/station.py:11 templates/train_management/station_list.html:36
+#: models/station.py:13 templates/train_management/station_list.html:36
 msgid "station.label_short"
 msgstr "Kurzbezeichnung"
 
-#: models/station.py:12 templates/train_management/station_list.html:37
+#: models/station.py:14 templates/train_management/station_list.html:37
 msgid "station.label"
 msgstr "Bezeichnung"
 
@@ -801,6 +831,11 @@ msgstr "Dampfheizung"
 msgid "vehicle.maximum_speed"
 msgstr "vMax"
 
+#: templates/pdf/briefing.html:4 templates/pdf/bulletin.html:4
+#: templates/train_management/dayplanning_detail_form.html:4
+msgid "template.dayplanning.detail.title"
+msgstr "Tagesplanung"
+
 #: templates/train_management/availability_list.html:4
 msgid "template.availability.list.title"
 msgstr "Verfügbarkeiten"
@@ -811,6 +846,7 @@ msgstr "Verfügbarkeiten"
 
 #: templates/train_management/availability_list.html:34
 #: templates/train_management/carriage_list.html:34
+#: templates/train_management/copyrecipient_list.html:33
 #: templates/train_management/dayplanning_list.html:32
 #: templates/train_management/dvzofunction_list.html:33
 #: templates/train_management/engine_list.html:33
@@ -826,6 +862,7 @@ msgstr "Status"
 
 #: templates/train_management/availability_list.html:35
 #: templates/train_management/carriage_list.html:35
+#: templates/train_management/copyrecipient_list.html:34
 #: templates/train_management/dayplanning_list.html:33
 #: templates/train_management/dvzofunction_list.html:34
 #: templates/train_management/engine_list.html:34
@@ -949,7 +986,7 @@ msgstr "Speichern"
 #: templates/train_management/dvzofunction_update_form.html:29
 #: templates/train_management/personnel_update_form.html:30
 #: templates/train_management/phonenumber_update_form.html:29
-#: templates/train_management/station_update_form.html:30
+#: templates/train_management/station_update_form.html:46
 #: templates/train_management/traintimetabletemplate_update_form.html:30
 msgid "app.back_list"
 msgstr "Zurück zur Liste"
@@ -965,6 +1002,38 @@ msgstr "Löschen?"
 #: templates/train_management/confirm_delete.html:25
 msgid "app.delete.submit"
 msgstr "Löschen"
+
+#: templates/train_management/copyrecipient_list.html:4
+msgid "template.copy_recipient.list.title"
+msgstr "Empfänger CC"
+
+#: templates/train_management/copyrecipient_list.html:9
+msgid "template.copy_recipient.list.header"
+msgstr "Empfänger CC"
+
+#: templates/train_management/copyrecipient_list.html:65
+#, fuzzy
+#| msgid "template.engine.add"
+msgid "template.copy_recipient.add"
+msgstr "Triebfahrzeug hinzufügen"
+
+#: templates/train_management/copyrecipient_update_form.html:5
+#, fuzzy
+#| msgid "template.train.update.title"
+msgid "template.copy_recipient.update.title"
+msgstr "Zug bearbeiten"
+
+#: templates/train_management/copyrecipient_update_form.html:14
+#, fuzzy
+#| msgid "template.train.update.header"
+msgid "template.copy_recipient.update.header"
+msgstr "Zug bearbeiten"
+
+#: templates/train_management/copyrecipient_update_form.html:31
+#, fuzzy
+#| msgid "template.carriage.update.submit"
+msgid "template.copy_recipient.update.submit"
+msgstr "Speichern"
 
 #: templates/train_management/dashboard.html:4
 msgid "template.dashboard.title"
@@ -985,10 +1054,6 @@ msgstr "Neue Tagesplanung"
 #: templates/train_management/dayplanning_create_form.html:27
 msgid "Submit"
 msgstr "Speichern"
-
-#: templates/train_management/dayplanning_detail_form.html:4
-msgid "template.dayplanning.detail.title"
-msgstr "Tagesplanung"
 
 #: templates/train_management/dayplanning_detail_form.html:21
 msgid "template.dayplanning.briefing"
@@ -1327,7 +1392,7 @@ msgid "template.station.create.header"
 msgstr "Neuer Betriebspunkt"
 
 #: templates/train_management/station_create_form.html:28
-#: templates/train_management/station_update_form.html:28
+#: templates/train_management/station_update_form.html:44
 msgid "template.station.submit"
 msgstr "Speichern"
 
@@ -1346,6 +1411,22 @@ msgstr "Neuer Betriebspunkt"
 #: templates/train_management/station_update_form.html:5
 msgid "template.station.update.title"
 msgstr "Betriebspunkt bearbeiten"
+
+#: templates/train_management/station_update_form.html:29
+msgid "app.create_user"
+msgstr "Erstellt von"
+
+#: templates/train_management/station_update_form.html:31
+msgid "app.update_user"
+msgstr "Aktualisiert von"
+
+#: templates/train_management/station_update_form.html:35
+msgid "app.create_timestamp"
+msgstr "Erstellt am"
+
+#: templates/train_management/station_update_form.html:37
+msgid "app.update_timestamp"
+msgstr "Aktualisiert am"
 
 #: templates/train_management/train_functions.html:4
 msgid "template.train_functions.title"

@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from train_management.models import AbstractDvzoModel
 
-class Station(models.Model):
+
+class Station(AbstractDvzoModel):
     class Meta:
         verbose_name = _("station.singular")
         verbose_name_plural = _("station.plural")

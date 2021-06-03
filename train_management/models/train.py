@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import DayPlanning, FunctionPersons, Vehicle
+from train_management.models import AbstractDvzoModel, DayPlanning, FunctionPersons, Vehicle
 
 
-class Train(models.Model):
+class Train(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("train.singular")
@@ -30,7 +30,7 @@ class Train(models.Model):
             TrainConfiguration(train=self, vehicle=vehicle, sorting=sorting).save()
 
 
-class TrainConfiguration(models.Model):
+class TrainConfiguration(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("train_configuration.singular")

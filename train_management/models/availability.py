@@ -3,10 +3,10 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import DayPlanning, TrainConfiguration, Vehicle
+from train_management.models import AbstractDvzoModel, DayPlanning, TrainConfiguration, Vehicle
 
 
-class Availability(models.Model):
+class Availability(AbstractDvzoModel):
     class Meta:
         verbose_name = _("availability.singular")
         verbose_name_plural = _("availability.plural")

@@ -1,6 +1,6 @@
 from django.db import models
 
-from train_management.models import DvzoFunction, Personnel
+from train_management.models import AbstractDvzoModel, DvzoFunction, Personnel
 
 
 class FunctionPersons(models.Model):

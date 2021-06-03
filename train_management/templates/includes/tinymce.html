@@ -2,9 +2,10 @@
   tinymce.init({
     height: '600px',
     selector: '{{selector |default:"textarea"}}',
+    content_css: '/static/main.min.css',
     plugins: 'advlist lists charmap template table',
     menubar: 'edit insert format tools table',
-    toolbar: 'undo redo | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter ' +
+    toolbar: 'undo redo | bold italic underline strikethrough | styleselect| alignleft aligncenter ' +
       'alignright alignjustify | outdent indent | table | numlist bullist checklist | forecolor backcolor removeformat' +
       ' | charmap | template',
     custom_undo_redo_levels: 10,
@@ -12,6 +13,16 @@
       title: 'Abstellplanung',
       description: 'Fügt eine Tabelle für die Abstellplanung ein.',
       url: '/static/tinymce_templates/parking.html'
-    }]
+    }],
+    style_formats: [
+    {title: 'Fahrzeuge', items: [
+      {title: 'Lok', inline: 'span', classes: 'badge bg-primary'},
+      {title: 'Sitzplatzwagen', inline: 'span', classes: 'badge bg-success'},
+      {title: 'Gastro', inline: 'span', classes: 'badge bg-danger'},
+      {title: 'Amor-Express', inline: 'span', classes: 'badge bg-warning'},
+      {title: 'Gepäckwagen', inline: 'span', classes: 'badge bg-secondary'},
+      {title: 'Andere', inline: 'span', classes: 'badge bg-dark'},
+      ]},
+  ]
   });
 </script>

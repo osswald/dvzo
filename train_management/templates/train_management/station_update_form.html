@@ -23,22 +23,7 @@
                 {% form form %}
               </div>
             </div>
-            <div class="card-footer text-muted">
-              <table class="create-update">
-                <tr>
-                  <td>{% translate "app.create_user" %}</td>
-                  <td>{{object.create_user}}</td>
-                  <td>{% translate "app.update_user" %}</td>
-                  <td>{{object.update_user}}</td>
-                </tr>
-                <tr>
-                  <td>{% translate "app.create_timestamp" %}</td>
-                  <td>{{object.create_timestamp}}</td>
-                  <td>{% translate "app.update_timestamp" %}</td>
-                  <td>{{object.update_timestamp}}</td>
-                </tr>
-              </table>
-            </div>
+            {% include 'includes/card_footer.html' %}
           </div>
           <div class="dvzo-buttons-bottom">
             <input type="submit" value="{% translate 'template.station.submit' %}" class="btn btn-primary btn-sm my-1 me-1">

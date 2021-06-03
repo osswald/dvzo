@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<div class="card-footer text-muted">
+  <table class="create-update">
+    <tr>
+      <td>{% translate "app.create_user" %}</td>
+      <td>{{object.create_user}}</td>
+      <td>{% translate "app.update_user" %}</td>
+      <td>{{object.update_user}}</td>
+    </tr>
+    <tr>
+      <td>{% translate "app.create_timestamp" %}</td>
+      <td>{{object.create_timestamp}}</td>
+      <td>{% translate "app.update_timestamp" %}</td>
+      <td>{{object.update_timestamp}}</td>
+    </tr>
+  </table>
+</div>

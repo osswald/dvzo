@@ -1,0 +1,17 @@
+<script>
+  tinymce.init({
+    height: '600px',
+    selector: '{{selector |default:"textarea"}}',
+    plugins: 'advlist lists charmap template table',
+    menubar: 'edit insert format tools table',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter ' +
+      'alignright alignjustify | outdent indent | table | numlist bullist checklist | forecolor backcolor removeformat' +
+      ' | charmap | template',
+    custom_undo_redo_levels: 10,
+    templates: [{
+      title: 'Abstellplanung',
+      description: 'Fügt eine Tabelle für die Abstellplanung ein.',
+      url: '/static/tinymce_templates/parking.html'
+    }]
+  });
+</script>

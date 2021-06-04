@@ -37,9 +37,13 @@
       <span class="badge bg-primary">{{ vehicle.label }}</span>
       {% elif vehicle.vehicle_type == "carriage" %}
       {% if vehicle.carriage_type == "seat" %}
-      <span class="badge bg-secondary">{{ vehicle.label }}</span>
+      <span class="badge bg-success">{{ vehicle.label }}</span>
       {% elif vehicle.carriage_type == "gastro" %}
       <span class="badge bg-danger">{{ vehicle.label }}</span>
+      {% elif vehicle.carriage_type == "amor" %}
+      <span class="badge bg-warning">{{ vehicle.label }}</span>
+      {% elif vehicle.carriage_type == "luggage" %}
+      <span class="badge bg-secondary">{{ vehicle.label }}</span>
       {% else %}
       <span class="badge bg-dark">{{ vehicle.label }}</span>
       {% endif %}

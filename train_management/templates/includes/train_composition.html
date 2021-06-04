@@ -4,11 +4,19 @@
   </li>
 {% elif vehicle.vehicle_type == "carriage" %}
   {% if vehicle.carriage_type == "seat" %}
-    <li data-id="{{vehicle.id}}" class="list-group-item bg-secondary fw-bold text-light">
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-success fw-bold text-light">
       {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
     </li>
   {% elif vehicle.carriage_type == "gastro" %}
     <li data-id="{{vehicle.id}}" class="list-group-item bg-danger fw-bold text-light">
+      {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+    </li>
+  {% elif vehicle.carriage_type == "amor" %}
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-warning fw-bold text-light">
+      {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
+    </li>
+  {% elif vehicle.carriage_type == "luggage" %}
+    <li data-id="{{vehicle.id}}" class="list-group-item bg-secondary fw-bold text-light">
       {{vehicle}} | <small> {{vehicle.gross_weight}}t</small>
     </li>
   {% else %}

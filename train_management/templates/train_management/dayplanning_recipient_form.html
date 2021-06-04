@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.dayplanning.recipient.title" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ object.label }} - {% translate "template.dayplanning.recipient.recipients" %}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href="{% url 'day-planning-detail' pk=object.id%}" class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "app.back" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-lg-2 gy-4">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "template.dayplanning.recipient.working_personnel" %}</div>
+          <div class="card-text">
+            <table>
+                <tbody>
+                {% for working_personnel in all_working_personnel %}
+                <tr>
+                  <td>{{ working_personnel.email }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "template.dayplanning.recipient.all_personnel" %}</div>
+          <div class="card-text">
+            <table>
+                <tbody>
+                {% for active_personnel in all_active_personnel %}
+                <tr>
+                  <td>{{ active_personnel.email }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "template.dayplanning.recipient.copy_recipients" %}</div>
+          <div class="card-text">
+            <table>
+                <tbody>
+                {% for copy in copy_recipients %}
+                <tr>
+                  <td>{{ copy.email }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+{% endblock content %}

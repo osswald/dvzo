@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('dayplanning/', views.DayPlanningListView.as_view(), name='day-planning-list'),
     path('dayplanning/detail/<int:pk>/', views.DayPlanningDetailView.as_view(), name='day-planning-detail'),
+    path('dayplanning/detail/<int:pk>/recipients', views.DayPlanningRecipientView.as_view(),
+         name='day-planning-recipients'),
     path('dayplanning/update/<int:pk>/', views.DayPlanningUpdateView.as_view(), name='day-planning-update'),
     path('dayplanning/add/', views.DayPlanningCreateView.as_view(), name='day-planning-create'),
     path('dayplanning/<int:pk>/delete/', views.DayPlanningDeleteView.as_view(), name='day-planning-delete'),
@@ -124,6 +126,9 @@ urlpatterns = [
     path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains'),
 
     path('copy-recipient/', views.CopyRecipientListView.as_view(), name='copy-recipient-list'),
+    path('copy-recipient/table',
+         views.CopyRecipientListView.as_view(template_name="train_management/copyrecipient_table.html"),
+         name='copy-recipient-table'),
     path('copy-recipient/<int:pk>/', views.CopyRecipientUpdateView.as_view(), name='copy-recipient-detail'),
     path('copy-recipient/add/', views.CopyRecipientCreateView.as_view(), name='copy-recipient-create'),
     path('copy-recipient/<int:pk>/delete/', views.CopyRecipientDeleteView.as_view(), name='copy-recipient-delete'),

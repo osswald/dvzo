@@ -64,7 +64,10 @@
             <i class="fas fa-plus"></i>
             {% translate "template.copy_recipient.add" %}
           </a>
-          <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
+          <a href="{% url 'copy-recipient-table' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-users"></i>
+            {% translate "template.copy_recipient.table" %}
+          </a>
         </div>
       </div>
     </div>

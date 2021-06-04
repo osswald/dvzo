@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import Train
+from train_management.models import AbstractDvzoModel, Train
 
 
-class Mileage(models.Model):
+class Mileage(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("mileage.singular")

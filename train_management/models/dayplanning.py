@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import FunctionPersons
+from train_management.models import AbstractDvzoModel, FunctionPersons
 
 
-class DayPlanning(models.Model):
+class DayPlanning(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("dayplanning.singular")
@@ -69,7 +69,7 @@ class DayPlanning(models.Model):
         return self.label
 
 
-class DayPlanningText(models.Model):
+class DayPlanningText(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("dayplanning_text.singular")

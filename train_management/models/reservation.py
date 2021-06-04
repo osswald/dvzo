@@ -2,10 +2,10 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
-from train_management.models import TrainTimetable
+from train_management.models import AbstractDvzoModel, TrainTimetable
 
 
-class Reservation(models.Model):
+class Reservation(AbstractDvzoModel):
     class Meta:
         verbose_name = _("reservation.singular")
         verbose_name_plural = _("reservation.plural")

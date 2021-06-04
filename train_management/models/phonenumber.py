@@ -2,8 +2,10 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
+from train_management.models import AbstractDvzoModel
 
-class PhoneNumber(models.Model):
+
+class PhoneNumber(AbstractDvzoModel):
 
     class Meta:
         verbose_name = _("phone_number.singular")

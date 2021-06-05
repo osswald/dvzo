@@ -18,12 +18,15 @@ class Vehicle(AbstractDvzoModel):
         AVAILABLE = "available", _("vehicle.status.available")
         SERVICE = "servicing", _("vehicle.status.servicing")
         ASK = "ask", _("vehicle.status.ask")
+        LOCKED = "locked", _("vehicle.status.locked")
+        NOT_IN_SERVICE = "not_in_service", _("vehicle.status.not_in_service")
 
     class CarriageType(models.TextChoices):
         SEAT = "seat", _("vehicle.carriage_type.seat")
         GASTRO = "gastro", _("vehicle.carriage_type.gastro")
         LUGGAGE = "luggage", _("vehicle.carriage_type.luggage")
         CARGO = "cargo", _("vehicle.carriage_type.cargo")
+        AMOR = "amor", _("vehicle.carriage_type.amor")
 
     class Home(models.TextChoices):
         BAUMA = "bauma", _("vehicle.home.bauma")

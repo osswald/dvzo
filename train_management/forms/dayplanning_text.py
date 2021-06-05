@@ -12,3 +12,8 @@ class DayPlanningTextForm(BootstrapTapeformMixin, ModelForm):
         fields = ['label',
                   'text'
                   ]
+
+    def __init__(self, *args, **kwargs):
+        super(DayPlanningTextForm, self).__init__(*args, **kwargs)
+
+        self.fields['text'].widget.attrs['class'] = 'tinymce-textarea'

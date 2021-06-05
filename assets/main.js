@@ -19,5 +19,6 @@ window.Sortable = Sortable;
 import './javascript/resource-calendar';
 import './javascript/reservation-calendar'
 import dateSorter from "./javascript/date-sorter";
+import './javascript/tinymce'
 
 window.dateSorter = (a, b) => dateSorter(a, b);

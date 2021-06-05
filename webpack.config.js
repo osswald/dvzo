@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -51,6 +52,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new copyWebpackPlugin({
+        patterns: [
+            { from: 'node_modules/tinymce/skins', to: 'tinymce/skins' }
+        ]
     }),
   ]
 };

@@ -22,6 +22,7 @@
   "homepage": "https://github.com/osswald/dvzo#readme",
   "devDependencies": {
     "chokidar-cli": "^2.1.0",
+    "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.4",
     "css-minimizer-webpack-plugin": "^2.0.0",
     "file-loader": "^6.2.0",
@@ -43,6 +44,7 @@
     "js-year-calendar": "^1.0.2",
     "moment": "^2.29.1",
     "popper.js": "^1.16.1",
-    "sortablejs": "^1.13.0"
+    "sortablejs": "^1.13.0",
+    "tinymce": "^5.8.1"
   }
 }

@@ -1,8 +1,9 @@
 # node
 /node_modules/
-/static/*.css
-/static/*.js
-/static/*.txt
+/static/**/*.css
+/static/**/*.js
+/static/**/*.txt
+/static/**/*.woff
 
 # for now ignore all migrations
 /staticfiles/

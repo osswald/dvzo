@@ -13,7 +13,6 @@ html {
   background-color: $backgroundWhite;
   border-radius: 2px;
   box-shadow: $boxShadowDefault;
-  box-shadow: $boxShadowDefault;
   padding: 20px;
 }
 
@@ -173,4 +172,8 @@ tbody a {
 
 svg.svg-inline--fa{
   padding-right: $fa-icon-space-right;
+}
+
+.tinymce-textarea {
+  background-color: $backgroundWhite;
 }

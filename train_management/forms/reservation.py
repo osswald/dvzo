@@ -13,6 +13,9 @@ class ReservationForm(BootstrapTapeformMixin, ModelForm):
                   'phone',
                   'email',
                   'amount',
+                  'start',
+                  'end',
                   'reservation_type',
                   'reservation_status',
+                  'comment',
                   ]

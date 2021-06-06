@@ -322,14 +322,15 @@
         <div class="card-body">
           <div class="card-title">{% translate "template.dayplanning.reservations" %}</div>
           <div class="card-text">
-            <table class="table table-sm dvzo-25">
+            <table class="table table-sm">
               <thead>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th>{% translate "template.dayplanning.reservations.traintimetable" %}</th>
+              <th>{% translate "template.dayplanning.reservations.start_end" %}</th>
+              <th>{% translate "template.dayplanning.reservations.name" %}</th>
+              <th>{% translate "template.dayplanning.reservations.customers" %}</th>
+              <th>{% translate "template.dayplanning.reservations.type" %}</th>
+              <th>{% translate "template.dayplanning.reservations.status" %}</th>
+              <th>{% translate "template.dayplanning.reservations.comment" %}</th>
               </thead>
               <tbody>
               {% for traintimetable in traintimetables %}
@@ -340,19 +341,22 @@
                   <div class="badge bg-secondary">
                     {{ traintimetable.label }}
                   </div>
-                </td>
-                {% endif %}
-                {% for reservation in reservations %}
-                <td>
                   <span class="fw-bold">{{ traintimetable.start_station.label_short }}</span>
                   <span>{{ traintimetable.start_time }}</span>
                   - <span class="fw-bold">{{ traintimetable.destination_station.label_short }}</span>
                   <span>{{ traintimetable.destination_time }}</span>
                 </td>
+                {% endif %}
+                {% for reservation in reservations %}
+                <td>
+                  <span class="fw-bold">{{reservation.start.label_short}}</span>
+                  - <span class="fw-bold">{{reservation.end.label_short}}</span>
+                </td>
                 <td>{{reservation.label}}</td>
                 <td>{{reservation.amount}}</td>
                 <td>{{reservation.get_reservation_type_display}}</td>
                 <td>{{reservation.get_reservation_status_display}}</td>
+                <td>{{reservation.comment}}</td>
               </tr>
               {% endfor %}
               {% endwith %}

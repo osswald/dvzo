@@ -124,7 +124,7 @@
 
 <!-- Reservationen -->
 <h3>Reservationen</h3>
-<table class="table table-sm">
+<table class="table table-sm dvzo-25">
   <thead class="table-dark">
   <th>Fahrt</th>
   <th>Von - bis</th>
@@ -141,18 +141,20 @@
       <div class="badge bg-secondary">
         {{ traintimetable.label }}
       </div>
-    </td>
-    {% endif %}
-    {% for reservation in reservations %}
-    <td>
       <span class="fw-bold">{{ traintimetable.start_station.label_short }}</span>
       <span>{{ traintimetable.start_time }}</span>
       - <span class="fw-bold">{{ traintimetable.destination_station.label_short }}</span>
       <span>{{ traintimetable.destination_time }}</span>
     </td>
+    {% endif %}
+    {% for reservation in reservations %}
+    <td>
+      <span class="fw-bold">{{reservation.start.label_short}}</span>
+                  - <span class="fw-bold">{{reservation.end.label_short}}</span>
+    </td>
     <td>{{reservation.amount}}</td>
     <td>{{reservation.label}} ({{reservation.phone.as_national}})</td>
-    <td></td>
+    <td>{{reservation.comment}}</td>
   </tr>
   {% endfor %}
   {% endwith %}

@@ -324,13 +324,13 @@
           <div class="card-text">
             <table class="table table-sm">
               <thead>
-              <th>Fahrt</th>
-              <th>von-bis</th>
-              <th>Name</th>
-              <th>PAX</th>
-              <th>Typ</th>
-              <th>Status</th>
-              <th>Bemerkungen</th>
+              <th>{% translate "template.dayplanning.reservations.traintimetable" %}</th>
+              <th>{% translate "template.dayplanning.reservations.start_end" %}</th>
+              <th>{% translate "template.dayplanning.reservations.name" %}</th>
+              <th>{% translate "template.dayplanning.reservations.customers" %}</th>
+              <th>{% translate "template.dayplanning.reservations.type" %}</th>
+              <th>{% translate "template.dayplanning.reservations.status" %}</th>
+              <th>{% translate "template.dayplanning.reservations.comment" %}</th>
               </thead>
               <tbody>
               {% for traintimetable in traintimetables %}

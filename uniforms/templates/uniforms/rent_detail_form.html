@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.rent.detail.title" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ rent.label }}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href='{% url "renter-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "app.back_list" %}
+            </a>
+            <a href="{% url 'rent-print' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-print"></i>
+              {% translate "template.rent.print" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body">
+      <div class="card-title">{% translate "app.master_data" %}</div>
+      <div class="card-text">
+        <table class="table table-sm dvzo-25">
+          <thead>
+          <th></th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{% translate "rent.renter" %}</th>
+            <td>
+              {{rent.renter.name}}<br>
+              {{rent.renter.street}}<br>
+              {{rent.renter.zip}} {{rent.renter.city}}<br>
+            </td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.start" %}</th>
+            <td>{{rent.start}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.end" %}</th>
+            <td>{{rent.end}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.duration" %}</th>
+            <td>{{rent.duration}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.returned" %}</th>
+            <td>{{rent.returned}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.billed" %}</th>
+            <td>{{rent.billed}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.total_per_month" %}</th>
+            <td>{{rent.total_per_month}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.total" %}</th>
+            <td>{{rent.total}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% include 'includes/card_footer.html' %}
+  </div>
+
+
+
+  <div class="dvzo-button-bottom mb-4">
+    <a href='{% url "renter-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "Edit" %}
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "template.rent.positions" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>{% translate "template.renter.label" %}</th>
+              <th>{% translate "template.renter.amount" %}</th>
+              <th>{% translate "template.renter.price_per_unit_month" %}</th>
+              <th>{% translate "template.renter.price_total" %}</th>
+              <th></th>
+              </thead>
+              <tbody>
+              {% for article_rent in article_rents %}
+              <tr>
+                <td>{{ article_rent.article }}</td>
+                <td>{{ article_rent.amount }}</td>
+                <td>{{ article_rent.article.price }}</td>
+                <td>{{ article_rent.total_per_month }}</td>
+                <td>
+                  <a href="{% url 'rent-article-delete' pk=article_rent.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'rent-article-update' pk=article_rent.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dvzo-button-bottom mb-4">
+    <a href='{% url "rent-article-create" pk=rent.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "template.rent.add_position" %}
+    </a>
+  </div>
+
+</div>
+
+{% endblock content %}

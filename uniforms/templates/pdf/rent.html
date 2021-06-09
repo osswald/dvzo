@@ -1,0 +1,61 @@
+{% extends "base_pdf.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.rent.print.title" %} - {{ object.label }}{% endblock %}
+
+{% block style %}
+<style>
+  @page {
+    @bottom-right {
+      color: #a9a;
+      content: 'DVZO Uniformen - uniformen@dvzo.ch - dvzo.app';
+      font-family: 'Inter var', sans-serif;
+      font-size: 9pt;
+    }
+  }
+</style>
+{% endblock style %}
+
+{% block content %}
+<h1>{% translate "template.rent.print.title" %}</h1>
+<br>
+<b>{% translate "rent.renter" %}</b>
+      <p>
+        {{rent.renter.name}}<br>
+        {{rent.renter.street}}<br>
+        {{rent.renter.zip}} {{rent.renter.city}}
+      </p>
+<p>
+  {% translate "rent.start" %}: {{rent.start}}<br>
+  {% translate "rent.end" %}: {{rent.end}}<br>
+  {% translate "rent.duration" %}: {{rent.duration}} {% translate "months" %}
+</p>
+
+<table class="table table-sm dvzo-25">
+  <thead>
+  <th>{% translate "template.renter.label" %}</th>
+  <th class="text-end">{% translate "template.renter.amount" %}</th>
+  <th class="text-end">{% translate "template.renter.price_per_unit_month" %}</th>
+  <th class="text-end">{% translate "template.renter.price_total_month" %}</th>
+  <th class="text-end">{% translate "template.renter.price_total" %}</th>
+  </thead>
+  <tbody>
+  {% for article_rent in article_rents %}
+  <tr>
+    <td>{{ article_rent.article }}</td>
+    <td class="text-end">{{ article_rent.amount }}</td>
+    <td class="text-end">CHF {{ article_rent.article.price }}</td>
+    <td class="text-end">CHF {{ article_rent.total_per_month }}</td>
+    <td class="text-end">CHF {{ article_rent.total_position }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"><b>Total</b></td>
+      <td class="text-end"><b>CHF {{ rent.total }}</b></td>
+    </tr>
+  </tfoot>
+</table>
+
+{% endblock content %}

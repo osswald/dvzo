@@ -49,5 +49,13 @@
         width: 5cm;
       }
     }
+    .pdf-address-head {
+      border: 1px solid crimson;
+      width: 100%;
+      vertical-align: top;
+      td:first-child {
+        width: 50%;
+      }
+    }
   }
 }

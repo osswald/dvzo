@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.article.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+
+  <div class="dvzo-header">
+    {% translate "template.article.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="articleListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "article.label" %}</th>
+                  <th data-field="category" data-sortable="true">{% translate "article.category" %}</th>
+                  <th data-field="amount" data-sortable="true">{% translate "article.amount" %}</th>
+                  <th data-field="price" data-sortable="true">{% translate "article.price" %}</th>
+                  <th data-field="status" data-sortable="true">{% translate "article.status" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                <tr>
+                  <td></td>
+                  <td>{{ article.id }}</td>
+                  <td>{{ article.label }}</td>
+                  <td>
+                    <span class="badge bg-secondary"> {{ article.get_category_display }}</span>
+                  </td>
+                  <td>{{ article.amount }}</td>
+                  <td>{{ article.price }}</td>
+                  <td>
+                    {% if article.status == "active" %}
+                    <span class="badge bg-success">{{ article.get_status_display }}</span>
+                    {% elif article.status == "inactive" %}
+                    <span class="badge bg-danger">{{ article.get_status_display }}</span>
+                    {% else %}
+                    {{ article.status }}
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if article.category == "coat" %}
+                    <a href="{% url 'article-coat-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="newArticleButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-plus"></i>
+              {% translate "template.article.new" %}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="newArticleButton">
+              <li><a class="dropdown-item" href="{% url 'article-coat-create' %}">{% translate "template.article.new.coat" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.hat" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.misc" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.shirt" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.shoes" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.vest" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.tie" %}</a></li>
+              <li><a class="dropdown-item" href="#">{% translate "template.article.new.trousers" %}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var $table = $('#articleListTable');
+  var $button = $('#daySelectionBtn');
+
+  $(function () {
+    $button.click(function () {
+      alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+    })
+  })
+
+
+</script>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.rent.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+
+  <div class="dvzo-header">
+    {% translate "template.rent.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="renterListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="name"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="renter" data-sortable="true">{% translate "rent.renter" %}</th>
+                  <th data-field="start" data-sortable="true">{% translate "rent.start" %}</th>
+                  <th data-field="end" data-sortable="true">{% translate "rent.end" %}</th>
+                  <th data-field="billed" data-sortable="true">{% translate "rent.billed" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rent in rents %}
+                <tr>
+                  <td></td>
+                  <td>{{ rent.id }}</td>
+                  <td>{{ rent.renter }}</td>
+                  <td>{{ rent.start }}</td>
+                  <td>{{ rent.end }}</td>
+                  <td>{{ rent.billed }}</td>
+                  <td>
+                    <a href="{% url 'rent-delete' pk=rent.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'rent-update' pk=rent.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <a href="{% url 'rent-create' %}" class="btn btn-primary btn-sm my-1 me-1">
+            <i class="fas fa-plus"></i>
+            {% translate "template.rent.add" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var $table = $('#renterListTable');
+  var $button = $('#daySelectionBtn');
+
+  $(function () {
+    $button.click(function () {
+      alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+    })
+  })
+
+
+</script>
+{% endblock content %}

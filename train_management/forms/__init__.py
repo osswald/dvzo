@@ -4,6 +4,7 @@ from train_management.forms.dayplanning import *  # noqa
 from train_management.forms.dayplanning_text import *  # noqa
 from train_management.forms.dvzofunction import *  # noqa
 from train_management.forms.personnel import *  # noqa
+from train_management.forms.personnel_category import *  # noqa
 from train_management.forms.phonenumber import *  # noqa
 from train_management.forms.reservation import *  # noqa
 from train_management.forms.station import *  # noqa

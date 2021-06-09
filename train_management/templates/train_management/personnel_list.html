@@ -35,6 +35,7 @@
                   <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
                   <th data-field="last_name" data-sortable="true">{% translate "personnel.lastname" %}</th>
                   <th data-field="first_name" data-sortable="true">{% translate "personnel.firstname" %}</th>
+                  <th data-field="category" data-sortable="true">{% translate "personnel.category" %}</th>
                   <th data-field="status" data-sortable="true">{% translate "personnel.status" %}</th>
                   <th data-field="email" data-sortable="true">{% translate "personnel.email" %}</th>
                   <th data-field="mobile_phone" data-sortable="false">{% translate "personnel.mobile_phone" %}</th>
@@ -48,6 +49,11 @@
                   <td>{{ personnel.username }}</td>
                   <td>{{ personnel.last_name }}</td>
                   <td>{{ personnel.first_name }}</td>
+                  <td>
+                    {% for category in personnel.category.all %}
+                    {% include 'includes/personnel_category_type.html' with output=category.label %}
+                    {% endfor %}
+                  </td>
                   <td>
                     {% if personnel.status == "active" %}
                     <span class="badge bg-success">{{ personnel.get_status_display }}</span>

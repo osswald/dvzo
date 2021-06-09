@@ -2,24 +2,20 @@
 {% load i18n %}
 {% load tapeforms %}
 
-{% block title %}{% translate "template.dayplanning_text.update.title" %}{% endblock %}
+{% block title %}{% translate "template.personnel_category.update.title" %}{% endblock %}
 
 {% block content %}
 
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% if object %}
     {{ object.label }}
-    {% else %}
-    {% translate "template.dayplanning_text.update.header" %}
-    {% endif %}
   </div>
 
   <div class="dvzo-content">
     <div class="row">
       <div class="col">
-        <form action="" method="post" novalidate>
+        <form action="{% url 'personnel-category-list'%}" method="post">
           <div class="card my-2">
             <div class="card-body">
               <div class="card-text">
@@ -30,12 +26,14 @@
             {% include 'includes/card_footer.html' %}
           </div>
           <div class="dvzo-buttons-bottom">
-            <input type="submit" value="{% translate 'template.dayplanning_text.submit' %}" class="btn btn-primary btn-sm">
+            <input type="submit" value="{% translate 'template.personnel_category.submit' %}" class="btn btn-primary btn-sm my-1 me-1">
+            <a href="{% url 'personnel-category-list' %}" class="btn btn-primary btn-sm my-1 me-1">
+              {% translate "app.back_list" %}
+            </a>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock content %}

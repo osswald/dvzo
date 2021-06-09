@@ -1,4 +1,5 @@
 from train_management.models.abstract_dvzo_model import *  # noqa  # isort:skip
+from train_management.models.personnel_category import *  # noqa  # isort:skip
 from train_management.models.personnel import *  # noqa  # isort:skip
 from train_management.models.dvzofunction import *  # noqa  # isort:skip
 from train_management.models.functionpersons import *  # noqa  # isort:skip

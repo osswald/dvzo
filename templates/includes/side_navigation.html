@@ -11,29 +11,29 @@
         </button>
         <div class="collapse show" id="user-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link text-light" href="{% url 'phonenumber-list' %}">
-                {% translate "top_nav.phone_numbers" %}
+                {% translate "side_nav.phone_numbers" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
-                {% translate "top_nav.my_bookings" %}
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.my_bookings" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
-                {% translate "top_nav.frequencies" %}
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.frequencies" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
-                {% translate "top_nav.profile" %}
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.profile" %}
               </a>
             </li>
             <li>
               <a class="link-light rounded" href="{% url 'logout' %}">
-                {% translate "top_nav.logout" %}
+                {% translate "side_nav.logout" %}
               </a>
             </li>
           </ul>
@@ -43,10 +43,10 @@
 
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#planning-collapse" aria-expanded="false">
-          Betriebsplanung
+                data-bs-target="#planning-collapse" aria-expanded="true">
+          {% translate "side_nav.production_planning" %}
         </button>
-        <div class="collapse" id="planning-collapse">
+        <div class="collapse show" id="planning-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
             <li>
               <a class="link-light rounded" href="{% url 'dashboard' %}">
@@ -75,10 +75,10 @@
 
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#personnel-collapse" aria-expanded="false">
-          Personal
+                data-bs-target="#personnel-collapse" aria-expanded="true">
+          {% translate "side_navigation.personnel" %}
         </button>
-        <div class="collapse" id="personnel-collapse">
+        <div class="collapse show" id="personnel-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
             <li>
               <a class="link-light rounded" href="{% url 'personnel-list' %}">
@@ -95,10 +95,10 @@
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#orders-collapse" aria-expanded="false">
-          Uniformen
+                data-bs-target="#orders-collapse" aria-expanded="true">
+          {% translate "side_navigation.uniforms" %}
         </button>
-        <div class="collapse" id="orders-collapse">
+        <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
           </ul>
         </div>
@@ -110,10 +110,10 @@
 
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#account-collapse" aria-expanded="false">
-          Stammdaten
+                data-bs-target="#account-collapse" aria-expanded="true">
+          {% translate "side_navigation.settings" %}
         </button>
-        <div class="collapse" id="account-collapse">
+        <div class="collapse show" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
             <li>
               <a class="link-light rounded" href="{% url 'engine-list' %}">

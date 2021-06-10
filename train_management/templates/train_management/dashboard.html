@@ -4,20 +4,211 @@
 {% block title %} {% translate "template.dashboard.title" %} {% endblock %}
 
 {% block content %}
-<h1>{% translate "template.dashboard.header" %}</h1>
 
-<div class="container white-container">
-  <h2>Was ist neu?</h2>
-  <ul>
-    <li>
-      Erstellen und bearbeiten von <a href="{% url 'day-planning-list' %}">Tagesplanungen.</a>
-      <ul>
-        <li>Züge können mit Formation hinzugefügt und bearbeitet werden.</li>
-        <li>Funktionen können hinzugefügt und bearbeitet werden.</li>
-        <li>Das Briefing kann erstellt werden.</li>
-      </ul>
-    </li>
-  </ul>
+<div class="dvzo-container">
+
+  <div class="dvzo-content">
+
+    <div class="row mb-2">
+
+      <div class="col">
+        <div class="card h-100 my-2">
+          <div class="card-body">
+            <div class="card-title">Nächste Fahrsonntage</div>
+            <div class="card-text">
+              {% if next_sundays|length %}
+              <table>
+                {% for next_sunday in next_sundays %}
+                <tr>
+                  <td class="pe-2">{{ next_sunday.date }}</td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_sunday.id %}">{{ next_sunday }}</a></td>
+                </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+              Keine Fahrsonntage vorhanden
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 my-2">
+          <div class="card-body">
+            <div class="card-title">Nächste Extrafahrten</div>
+            <div class="card-text">
+              {% if next_extras|length %}
+              <table>
+                {% for next_extra in next_extras %}
+                <tr>
+                  <td class="pe-2">{{ next_extra.date }}</td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_extra.id %}">{{ next_extra }}</a></td>
+                </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+              Keine Fahrsonntage vorhanden
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 my-2">
+          <div class="card-body">
+            <div class="card-title">Andere Fahrten</div>
+            <div class="card-text">
+              {% if next_others|length %}
+              <table>
+                {% for next_other in next_others %}
+                <tr>
+                  <td class="pe-2">{{ next_other.date }}</td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_other.id %}">{{ next_other }}</a></td>
+                </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+              Keine Fahrsonntage vorhanden
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row mb-2">
+
+      <div class="col">
+        <div class="card h-100 my-2">
+          <div class="card-body">
+            <div class="card-title">Frequenzen 2021</div>
+            <div class="card-text">
+              <canvas id="frequencyChart" data-url="{% url 'frequency-chart' %}"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 my-2 bg-warning-light">
+          <div class="card-body">
+            <div class="card-title">Fehlende Einteilung</div>
+            <div class="card-text">
+              {% if personnel_missing|length %}
+              <table>
+                {% for dayplanning_personnel in personnel_missing %}
+                <tr>
+                  <td class="pe-2">{{ dayplanning_personnel.date }}</td>
+                  <td>
+                    <a href="{% url 'day-planning-detail' pk=dayplanning_personnel.id %}">{{ dayplanning_personnel }}</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+              Alle Einteilungen vollständig
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 my-2 bg-danger-light">
+          <div class="card-body">
+            <div class="card-title">Fehlende Trassenbestellung</div>
+            <div class="card-text">
+              {% if slot_missing|length %}
+              <table>
+                {% for dayplanning_slot in slot_missing %}
+                <tr>
+                  <td class="pe-2">{{ dayplanning_slot.date }}</td>
+                  <td class="pe-2">
+                    <a href="{% url 'day-planning-detail' pk=dayplanning_slot.id %}">{{ dayplanning_slot }}</a>
+                  </td>
+                  <td>{{ dayplanning_slot.get_slot_ordered_display }}</td>
+                </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+              Alle Trassen vorhanden
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-title">Was ist neu?</div>
+            <div class="card-text">
+              <ul>
+                <li>
+                  Erstellen und bearbeiten von <a href="{% url 'day-planning-list' %}">Tagesplanungen.</a>
+                  <ul>
+                    <li>Züge können mit Formation hinzugefügt und bearbeitet werden.</li>
+                    <li>Funktionen können hinzugefügt und bearbeitet werden.</li>
+                    <li>Das Briefing kann erstellt werden.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
 </div>
 
+
 {% endblock content %}
+{% block scripts %}
+<script>
+  $(function () {
+    const $frequencyChart = $("#frequencyChart");
+    $.ajax({
+      url: $frequencyChart.data("url"),
+      success: function (data) {
+
+        const ctx = document.getElementById('frequencyChart');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Frequenzen Fahrsonntag',
+              data: data.data,
+              backgroundColor: 'red',
+              borderColor: 'red',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+    })
+  })
+
+
+</script>
+
+{% endblock scripts %}

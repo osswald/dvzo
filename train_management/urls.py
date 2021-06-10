@@ -19,6 +19,8 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
+    path('frequency-chart/', views.get_frequency_chart_data, name='frequency-chart'),
+
     path('calendar/', views.calendar, name='calendar'),
     path('calendar/event_data', views.get_availability_data, name='event-data'),
     path('calendar/resource_data', views.get_resource_data, name='resource-data'),

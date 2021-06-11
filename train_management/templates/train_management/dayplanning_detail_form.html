@@ -204,7 +204,8 @@
           <div class="card-title">{{train}}</div>
           <div class="card-text">
             <h4>{% translate "template.dayplanning.train.formation" %}</h4>
-            {% include 'includes/train.html' %}
+            {% include 'includes/train.html' %}<br><br>
+            <b>{% translate "template.dayplanning.train.frequency" %}</b> {{ train.frequency }}<br>
 
             <table class="table table-sm dvzo-25">
               <thead>
@@ -231,6 +232,7 @@
               <thead>
               <th>Fahrt</th>
               <th></th>
+              <th>{% translate "template.dayplanning.traintimetable.frequency" %}</th>
               <th></th>
               </thead>
               <tbody>
@@ -250,6 +252,7 @@
                   - <span class="fw-bold">{{ traintimetable.destination_station }}</span>
                   <span>{{ traintimetable.destination_time }}</span>
                 </td>
+                <td>{{ traintimetable.frequency }}</td>
                 <td>
                   <a href="{% url 'train-timetable-delete' pk=traintimetable.id %}">
                     <i class="fas fa-trash-alt text-danger"></i>

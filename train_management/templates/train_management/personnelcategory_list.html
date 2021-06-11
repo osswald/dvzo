@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.personnel_category.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "template.personnel_category.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="personnelCategoryListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "personnel_category.label" %}</th>
+                  <th data-field="type" data-sortable="true">{% translate "personnel_category.type" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in personnel_categories %}
+                <tr>
+                  <td></td>
+                  <td>{{ category.id }}</td>
+                  <td>{{ category.label }}</td>
+                  <td>
+                    {% include 'includes/personnel_category_type.html' with output=category.get_type_display %}
+                  </td>
+                  <td>
+                    <a href="{% url 'personnel-category-delete' pk=category.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'personnel-category-detail' pk=category.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <a href="{% url 'personnel-category-create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "template.personnel_category.add" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+  const $table = $('#personnelCategoryListTable');
+</script>
+{% endblock scripts %}

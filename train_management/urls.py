@@ -19,6 +19,8 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
+    path('frequency-chart/', views.get_frequency_chart_data, name='frequency-chart'),
+
     path('calendar/', views.calendar, name='calendar'),
     path('calendar/event_data', views.get_availability_data, name='event-data'),
     path('calendar/resource_data', views.get_resource_data, name='resource-data'),
@@ -123,7 +125,8 @@ urlpatterns = [
     path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete'),
 
     path('reservation-calendar/', views.reservation_calendar, name='reservation-calendar'),
-    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains'),
+    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(),
+         name='reservation-calendar-trains'),
 
     path('copy-recipient/', views.CopyRecipientListView.as_view(), name='copy-recipient-list'),
     path('copy-recipient/table',
@@ -132,4 +135,10 @@ urlpatterns = [
     path('copy-recipient/<int:pk>/', views.CopyRecipientUpdateView.as_view(), name='copy-recipient-detail'),
     path('copy-recipient/add/', views.CopyRecipientCreateView.as_view(), name='copy-recipient-create'),
     path('copy-recipient/<int:pk>/delete/', views.CopyRecipientDeleteView.as_view(), name='copy-recipient-delete'),
+
+    path('personnel-category/', views.PersonnelCategoryListView.as_view(), name='personnel-category-list'),
+    path('personnel-category/<int:pk>/', views.PersonnelCategoryUpdateView.as_view(), name='personnel-category-detail'),
+    path('personnel-category/add/', views.PersonnelCategoryCreateView.as_view(), name='personnel-category-create'),
+    path('personnel-category/<int:pk>/delete/', views.PersonnelCategoryDeleteView.as_view(),
+         name='personnel-category-delete'),
 ]

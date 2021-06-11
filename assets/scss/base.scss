@@ -72,7 +72,6 @@ svg.svg-inline--fa{
   background-color: $backgroundWhite;
 }
 
-
 body {
   font-size: .875rem;
 }
@@ -202,4 +201,11 @@ body {
   &:hover, &:focus {
     background-color: $navLinkFocusColor;
   }
+  
+.bg-warning-light {
+  background-color: $warningLight;
+}
+
+.bg-danger-light {
+  background-color: $dangerLight;
 }

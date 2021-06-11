@@ -13,3 +13,8 @@ class TrainForm(BootstrapTapeformMixin, ModelForm):
                   'label',
                   'frequency'
                   ]
+
+    def __init__(self, *args, **kwargs):
+        super(TrainForm, self).__init__(*args, **kwargs)
+
+        self.fields['frequency'].widget.attrs['readonly'] = True

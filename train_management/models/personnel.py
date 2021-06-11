@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
-from train_management.models import AbstractDvzoModel
+from train_management.models import AbstractDvzoModel, PersonnelCategory
 
 
 class Personnel(AbstractDvzoModel):
@@ -28,6 +28,7 @@ class Personnel(AbstractDvzoModel):
     mobile_phone_public = models.CharField(_("personnel.personnel_mobile_public"), max_length=80,
                                            choices=PersonnelMobilePublic.choices, default=PersonnelMobilePublic.UNKNOWN)
     date_of_birth = models.DateField(_("personnel.date_of_birth"), null=True, blank=True)
+    category = models.ManyToManyField(PersonnelCategory)
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.last_name)

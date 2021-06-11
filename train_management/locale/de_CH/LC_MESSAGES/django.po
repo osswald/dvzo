@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DVZO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-09 11:13+0200\n"
+"POT-Creation-Date: 2021-06-09 14:48+0200\n"
 "Language: de-ch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -341,11 +341,11 @@ msgstr "Nein"
 msgid "personnel.personnel_mobile_public.unknown"
 msgstr "Unbekannt"
 
-#: models/personnel.py:25 templates/train_management/personnel_list.html:40
+#: models/personnel.py:25 templates/train_management/personnel_list.html:41
 msgid "personnel.mobile_phone"
 msgstr "Mobiltelefon"
 
-#: models/personnel.py:26 templates/train_management/personnel_list.html:38
+#: models/personnel.py:26 templates/train_management/personnel_list.html:39
 msgid "personnel.status"
 msgstr "Status"
 
@@ -356,6 +356,44 @@ msgstr "Telefonnummer darf publiziert werden"
 #: models/personnel.py:30
 msgid "personnel.date_of_birth"
 msgstr "Geburtsdatum"
+
+#: models/personnel_category.py:10
+msgid "personnel_category.singular"
+msgstr "Personal-Kategorie"
+
+#: models/personnel_category.py:11
+msgid "personnel_category.plural"
+msgstr "Personal-Kategorien"
+
+#: models/personnel_category.py:14
+msgid "personnel_category.type.engine"
+msgstr "Lokpersonal"
+
+#: models/personnel_category.py:15
+msgid "personnel_category.type.train"
+msgstr "Zugpersonal"
+
+#: models/personnel_category.py:16
+msgid "personnel_category.type.gastro"
+msgstr "Gastropersonal"
+
+#: models/personnel_category.py:17
+msgid "personnel_category.type.station"
+msgstr "Stationspersonal"
+
+#: models/personnel_category.py:18
+msgid "personnel_category.type.other"
+msgstr "Andere"
+
+#: models/personnel_category.py:20
+#: templates/train_management/personnelcategory_list.html:35
+msgid "personnel_category.label"
+msgstr "Bezeichnung"
+
+#: models/personnel_category.py:21
+#: templates/train_management/personnelcategory_list.html:36
+msgid "personnel_category.type"
+msgstr "Typ"
 
 #: models/phonenumber.py:11
 msgid "phone_number.singular"
@@ -879,6 +917,7 @@ msgstr "Verfügbarkeiten"
 #: templates/train_management/dvzofunction_list.html:33
 #: templates/train_management/engine_list.html:33
 #: templates/train_management/personnel_list.html:34
+#: templates/train_management/personnelcategory_list.html:33
 #: templates/train_management/phonenumber_list.html:33
 #: templates/train_management/phonenumber_list.html:34
 #: templates/train_management/reservation_list.html:35
@@ -895,6 +934,7 @@ msgstr "Status"
 #: templates/train_management/dvzofunction_list.html:34
 #: templates/train_management/engine_list.html:34
 #: templates/train_management/personnel_list.html:35
+#: templates/train_management/personnelcategory_list.html:34
 #: templates/train_management/station_list.html:34
 #: templates/train_management/traintimetabletemplate_list.html:35
 msgid "table.id"
@@ -1013,6 +1053,7 @@ msgstr "Speichern"
 #: templates/train_management/dayplanning_detail_form.html:17
 #: templates/train_management/dvzofunction_update_form.html:30
 #: templates/train_management/personnel_update_form.html:31
+#: templates/train_management/personnelcategory_update_form.html:31
 #: templates/train_management/phonenumber_update_form.html:30
 #: templates/train_management/station_update_form.html:31
 #: templates/train_management/traintimetabletemplate_update_form.html:31
@@ -1377,17 +1418,50 @@ msgstr "Nachname"
 msgid "personnel.firstname"
 msgstr "Vorname"
 
-#: templates/train_management/personnel_list.html:39
+#: templates/train_management/personnel_list.html:38
+msgid "personnel.category"
+msgstr "Kategorie"
+
+#: templates/train_management/personnel_list.html:40
 msgid "personnel.email"
 msgstr "E-Mail"
 
-#: templates/train_management/personnel_list.html:80
+#: templates/train_management/personnel_list.html:86
 msgid "template.personnel.add"
 msgstr "Personal hinzufügen"
 
 #: templates/train_management/personnel_update_form.html:5
 msgid "template.personnel.update.title"
 msgstr "Personal bearbeiten"
+
+#: templates/train_management/personnelcategory_create_form.html:5
+msgid "template.personnel_category.create.title"
+msgstr "Neue Personal-Kategorie"
+
+#: templates/train_management/personnelcategory_create_form.html:12
+msgid "template.personnel_category.create.header"
+msgstr "Neue Personal-Kategorie"
+
+#: templates/train_management/personnelcategory_create_form.html:28
+#: templates/train_management/personnelcategory_update_form.html:29
+msgid "template.personnel_category.submit"
+msgstr "Speichern"
+
+#: templates/train_management/personnelcategory_list.html:4
+msgid "template.personnel_category.list.title"
+msgstr "Personal-Kategorien"
+
+#: templates/train_management/personnelcategory_list.html:9
+msgid "template.personnel_category.list.header"
+msgstr "Personal-Kategorien"
+
+#: templates/train_management/personnelcategory_list.html:67
+msgid "template.personnel_category.add"
+msgstr "Personal-Kategorie hinzufügen"
+
+#: templates/train_management/personnelcategory_update_form.html:5
+msgid "template.personnel_category.update.title"
+msgstr "Personal-Kategorie bearbeiten"
 
 #: templates/train_management/phonenumber_create_form.html:5
 #: templates/train_management/phonenumber_update_form.html:5

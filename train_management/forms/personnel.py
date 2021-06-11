@@ -10,7 +10,8 @@ class PersonnelForm(BootstrapTapeformMixin, ModelForm):
 
     class Meta:
         model = Personnel
-        fields = ['status',
+        fields = ['category',
+                  'status',
                   'mobile_phone',
                   'mobile_phone_public',
                   'date_of_birth'

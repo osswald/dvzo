@@ -101,7 +101,7 @@ body {
   box-shadow: $boxShadowDefault;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: $mobileViewportBreakpoint) {
   .sidebar {
     top: 2rem;
   }

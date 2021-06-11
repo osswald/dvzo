@@ -47,6 +47,7 @@ p {
 
 .create-update {
   font-size: 0.7em;
+
   td {
     padding-right: 5px;
   }
@@ -64,7 +65,7 @@ tbody a {
   font-size: 1.5em;
 }
 
-svg.svg-inline--fa{
+svg.svg-inline--fa {
   padding-right: $fa-icon-space-right;
 }
 
@@ -201,9 +202,10 @@ body {
   &:hover, &:focus {
     background-color: $navLinkFocusColor;
   }
-  
+}
+
 .bg-warning-light {
-  background-color: $warningLight;
+    background-color: $warningLight;
 }
 
 .bg-danger-light {

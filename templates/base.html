@@ -3,52 +3,31 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'main.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'auxiliary.min.css' %}" type="text/css">
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
-    <title>{% translate "app.title" %}{% block title %}{% translate "app.title.placeholder" %}{% endblock %}</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'main.min.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'auxiliary.min.css' %}" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="{% static 'assets/lok.svg' %}"/>
+  <title>{% translate "app.title" %}{% block title %}{% translate "app.title.placeholder" %}{% endblock %}</title>
 
-  </head>
-  <body>
-    <div id="topbar">
-      <a href="javascript:void(0)" class="open-close-btn open-btn" onclick="openNav()">
-        <i class="fas fa-bars"></i>
-      </a>
-      <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
-    </div>
-    <div id="main-container">
+</head>
+<body>
 
-      <div id="sidenav">
-        <img class="top-logo" src="{% static 'assets/dvzo-logo.png' %}" alt="dvzo logo">
-        {% include 'includes/side_navigation.html'%}
-      </div>
 
-      <div id="main">
-        <div id="top-nav">
-          <ul class="nav justify-content-end pe-4 pt-3">
-            {% include 'includes/top_navigation.html'%}
-          </ul>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    {% include 'includes/top_navigation.html'%}
+    {% include 'includes/side_navigation.html'%}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+
         {% block content %}{% endblock %}
-      </div>
-    </div>
+    </main>
+  </div>
+</div>
 
-    <script src="{% static 'index-bundle.js' %}"></script>
-    <script type="text/javascript">
-      function openNav() {
-        document.getElementById("sidenav").style.display = "flex";
-        document.getElementById("main").style.display = "none"
-        document.getElementById("topbar").style.display = "none"
-      }
-      function closeNav() {
-        document.getElementById("sidenav").style.display = "none";
-        document.getElementById("main").style.display = "flex"
-        document.getElementById("topbar").style.display = "flex"
-      }
-    </script>
-    {% block scripts %}{% endblock scripts %}
-  </body>
+
+<script src="{% static 'index-bundle.js' %}"></script>
+{% block scripts %}{% endblock scripts %}
+</body>
 </html>

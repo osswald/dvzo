@@ -9,119 +9,6 @@ html {
   background-color: $backgroundDefault;
 }
 
-.white-container {
-  background-color: $backgroundWhite;
-  border-radius: 2px;
-  box-shadow: $boxShadowDefault;
-  padding: 20px;
-}
-
-#topbar {
-  background-color: $backgroundDefault;
-  display: none;
-  height: 100px;
-  width: 100%;
-
-  .top-logo {
-    height: 50px;
-    margin: 40px 40px 10px 40px;
-  }
-}
-
-#main-container {
-  display: flex;
-  flex-direction: row;
-
-  #sidenav {
-    background-color: $backgroundSideBar;
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh);
-    padding: $nav-padding;
-    width: $nav-width;
-
-    .top-logo {
-      height: 50px;
-      margin-bottom: 25px;
-      width: 160px;
-    }
-
-    a {
-      align-items: center;
-      color: rgba(233,236,239,.5);
-      display: flex;
-      font-size: 15px; 
-      line-height: 2.5em;
-      margin-bottom: 5px;
-      text-decoration: none;
-
-      &.open-close-btn {
-        display: none;
-      }
-
-      .material-icons {
-        margin-right: 10px;
-      }
-    }
-  }
-
-  #main {
-    background-color: $backgroundDefault;
-    padding: $nav-padding;
-    width: calc(100% - #{$nav-width});
-
-    #top-nav {
-      background-color: #fff; 
-      height: 70px;
-      margin: -40px 0 40px -40px;
-      width: calc(100% + 2 * 40px);
-    }
-  }
-}
-
-.open-close-btn {
-  display: none; 
-}
-
-@media only screen and (max-height: 812px) {
-  #topbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 60px;
-
-    .top-logo {
-      margin: 5px 20px 5px 20px;
-      height: 50px;
-    }
-
-    a {
-      font-size: 20px; 
-      text-decoration: none;
-      color: $dark-grey;
-      margin-left: 20px;
-    }
-  }
-  #main-container {
-    #sidenav {
-      width: 100%;
-      display: none;
-      padding: 20px;
-
-      a.open-close-btn {
-        display: flex;
-      }
-    }
-    #main {
-      width: 100%;
-    }
-  }
-
-  .open-close-btn {
-    display: flex; 
-  }
-}
-
 h1 {
   font-size: 2em;
 }
@@ -185,6 +72,136 @@ svg.svg-inline--fa{
   background-color: $backgroundWhite;
 }
 
+body {
+  font-size: .875rem;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+
+  /* rtl:remove */
+  left: 0;
+  z-index: 100;
+
+  /* Behind the navbar */
+  padding: 48px 0 0;
+
+  /* Height of navbar */
+  box-shadow: $boxShadowDefault;
+}
+
+@media (max-width: $mobileViewportBreakpoint) {
+  .sidebar {
+    top: 2rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: $navLinkColor;
+
+  &.active {
+    color: $navLinkActiveColor;
+  }
+
+  &:hover .feather, &.active .feather {
+    color: inherit;
+  }
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: $black25;
+  box-shadow: $boxShadowDefault;
+}
+
+.navbar {
+  .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+  }
+
+  .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+  }
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: $lighter-grey;
+  background-color: transparent;
+  border: 0;
+
+  &:hover, &:focus {
+    color: $lighter-grey;
+    background-color: $navLinkActiveColor;
+  }
+
+  &::before {
+    width: 1.25em;
+    line-height: 0;
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgb%28220,220,220%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    transition: transform .35s ease;
+    transform-origin: .5em 50%;
+  }
+
+  &[aria-expanded="true"] {
+    color: $lighter-grey;
+
+    &::before {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    background-color: $navLinkFocusColor;
+  }
+  
 .bg-warning-light {
   background-color: $warningLight;
 }

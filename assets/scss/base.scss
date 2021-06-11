@@ -9,119 +9,6 @@ html {
   background-color: $backgroundDefault;
 }
 
-.white-container {
-  background-color: $backgroundWhite;
-  border-radius: 2px;
-  box-shadow: $boxShadowDefault;
-  padding: 20px;
-}
-
-#topbar {
-  background-color: $backgroundDefault;
-  display: none;
-  height: 100px;
-  width: 100%;
-
-  .top-logo {
-    height: 50px;
-    margin: 40px 40px 10px 40px;
-  }
-}
-
-#main-container {
-  display: flex;
-  flex-direction: row;
-
-  #sidenav {
-    background-color: $backgroundSideBar;
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh);
-    padding: $nav-padding;
-    width: $nav-width;
-
-    .top-logo {
-      height: 50px;
-      margin-bottom: 25px;
-      width: 160px;
-    }
-
-    a {
-      align-items: center;
-      color: rgba(233,236,239,.5);
-      display: flex;
-      font-size: 15px; 
-      line-height: 2.5em;
-      margin-bottom: 5px;
-      text-decoration: none;
-
-      &.open-close-btn {
-        display: none;
-      }
-
-      .material-icons {
-        margin-right: 10px;
-      }
-    }
-  }
-
-  #main {
-    background-color: $backgroundDefault;
-    padding: $nav-padding;
-    width: calc(100% - #{$nav-width});
-
-    #top-nav {
-      background-color: #fff; 
-      height: 70px;
-      margin: -40px 0 40px -40px;
-      width: calc(100% + 2 * 40px);
-    }
-  }
-}
-
-.open-close-btn {
-  display: none; 
-}
-
-@media only screen and (max-height: 812px) {
-  #topbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 60px;
-
-    .top-logo {
-      margin: 5px 20px 5px 20px;
-      height: 50px;
-    }
-
-    a {
-      font-size: 20px; 
-      text-decoration: none;
-      color: $dark-grey;
-      margin-left: 20px;
-    }
-  }
-  #main-container {
-    #sidenav {
-      width: 100%;
-      display: none;
-      padding: 20px;
-
-      a.open-close-btn {
-        display: flex;
-      }
-    }
-    #main {
-      width: 100%;
-    }
-  }
-
-  .open-close-btn {
-    display: flex; 
-  }
-}
-
 h1 {
   font-size: 2em;
 }
@@ -190,12 +77,6 @@ body {
   font-size: .875rem;
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
 /*
  * Sidebar
  */
@@ -217,7 +98,7 @@ body {
   padding: 48px 0 0;
 
   /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: $boxShadowDefault;
 }
 
 @media (max-width: 767.98px) {
@@ -239,15 +120,10 @@ body {
 
 .sidebar .nav-link {
   font-weight: 500;
-  color: #333;
-
-  .feather {
-    margin-right: 4px;
-    color: #727272;
-  }
+  color: $navLinkColor;
 
   &.active {
-    color: #2470dc;
+    color: $navLinkActiveColor;
   }
 
   &:hover .feather, &.active .feather {
@@ -268,8 +144,8 @@ body {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+  background-color: $black25;
+  box-shadow: $boxShadowDefault;
 }
 
 .navbar {
@@ -285,17 +161,6 @@ body {
   }
 }
 
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
-
-  &:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
-  }
-}
-
 .btn-toggle {
   display: inline-flex;
   align-items: center;
@@ -307,7 +172,7 @@ body {
 
   &:hover, &:focus {
     color: $lighter-grey;
-    background-color: dodgerblue;
+    background-color: $navLinkActiveColor;
   }
 
   &::before {
@@ -335,6 +200,6 @@ body {
   text-decoration: none;
 
   &:hover, &:focus {
-    background-color: #555555;
+    background-color: $navLinkFocusColor;
   }
 }

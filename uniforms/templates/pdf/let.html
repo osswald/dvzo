@@ -1,0 +1,46 @@
+{% extends "base_pdf.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.let.print.title" %} - {{ object.label }}{% endblock %}
+
+{% block style %}
+<style>
+  @page {
+    @bottom-right {
+      color: #a9a;
+      content: 'DVZO Uniformen - uniformen@dvzo.ch - dvzo.app';
+      font-family: 'Inter var', sans-serif;
+      font-size: 9pt;
+    }
+  }
+</style>
+{% endblock style %}
+
+{% block content %}
+<h1>{% translate "template.let.print.title" %}</h1>
+<br>
+<b>{% translate "let.personnel" %}</b>
+      <p>
+        {{let.personnel}}
+      </p>
+<p>
+  {% translate "let.start" %}: {{let.start}}<br>
+  {% translate "let.end" %}: {{let.end}}<br>
+</p>
+
+<table class="table table-sm dvzo-25">
+  <thead>
+  <th>{% translate "template.renter.label" %}</th>
+  <th class="text-end">{% translate "template.renter.amount" %}</th>
+  </thead>
+  <tbody>
+  {% for article_let in article_lets %}
+  <tr>
+    <td>{{ article_let.article }}</td>
+    <td class="text-end">{{ article_let.amount }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

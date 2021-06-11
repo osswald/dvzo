@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.let.detail.title" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ let.label }}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href='{% url "let-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "app.back_list" %}
+            </a>
+            <a href="{% url 'let-print' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-print"></i>
+              {% translate "template.let.print" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body">
+      <div class="card-title">{% translate "app.master_data" %}</div>
+      <div class="card-text">
+        <table class="table table-sm dvzo-25">
+          <thead>
+          <th></th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{% translate "let.personnel" %}</th>
+            <td>
+              {{let.personnel}}
+            </td>
+          </tr>
+          <tr>
+            <th>{% translate "let.start" %}</th>
+            <td>{{let.start}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "let.end" %}</th>
+            <td>{{let.end}}</td>
+          </tr>
+          <tr>
+            <th>{% translate "rent.returned" %}</th>
+            <td>{{rent.returned}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% include 'includes/card_footer.html' %}
+  </div>
+
+
+
+  <div class="dvzo-button-bottom mb-4">
+    <a href='{% url "let-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "Edit" %}
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "template.let.positions" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>{% translate "template.let.label" %}</th>
+              <th>{% translate "template.let.amount" %}</th>
+              <th></th>
+              </thead>
+              <tbody>
+              {% for article_let in article_lets %}
+              <tr>
+                <td>{{ article_let.article }}</td>
+                <td>{{ article_let.amount }}</td>
+                <td>
+                  <a href="{% url 'let-article-delete' pk=article_let.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'let-article-update' pk=article_let.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dvzo-button-bottom mb-4">
+    <a href='{% url "let-article-create" pk=let.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "template.let.add_position" %}
+    </a>
+  </div>
+
+</div>
+
+{% endblock content %}

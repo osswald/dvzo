@@ -16,7 +16,7 @@ class Let(models.Model):
 
     personnel = models.ForeignKey(Personnel, on_delete=models.DO_NOTHING)
     start = models.DateField(_("let.start"))
-    end = models.DateField(_("let.end"))
+    end = models.DateField(_("let.end"), null=True, blank=True)
     returned = models.CharField(_("let.returned"), max_length=80, choices=LetReturned.choices, default=LetReturned.NO)
 
 

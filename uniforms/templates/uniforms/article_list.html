@@ -66,6 +66,34 @@
                     <a href="{% url 'article-coat-update' pk=article.id %}">
                       <i class="far fa-edit"></i>
                     </a>
+                    {% elif article.category == "hat" %}
+                    <a href="{% url 'article-hat-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "misc" %}
+                    <a href="{% url 'article-misc-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "shirt" %}
+                    <a href="{% url 'article-shirt-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "shoes" %}
+                    <a href="{% url 'article-shoes-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "vest" %}
+                    <a href="{% url 'article-vest-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "tie" %}
+                    <a href="{% url 'article-tie-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% elif article.category == "trousers" %}
+                    <a href="{% url 'article-trousers-update' pk=article.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
                     {% endif %}
                   </td>
                 </tr>
@@ -84,13 +112,13 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="newArticleButton">
               <li><a class="dropdown-item" href="{% url 'article-coat-create' %}">{% translate "template.article.new.coat" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.hat" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.misc" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.shirt" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.shoes" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.vest" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.tie" %}</a></li>
-              <li><a class="dropdown-item" href="#">{% translate "template.article.new.trousers" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-hat-create' %}">{% translate "template.article.new.hat" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-misc-create' %}">{% translate "template.article.new.misc" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-shirt-create' %}">{% translate "template.article.new.shirt" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-shoes-create' %}">{% translate "template.article.new.shoes" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-vest-create' %}">{% translate "template.article.new.vest" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-tie-create' %}">{% translate "template.article.new.tie" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'article-trousers-create' %}">{% translate "template.article.new.trousers" %}</a></li>
             </ul>
           </div>
         </div>

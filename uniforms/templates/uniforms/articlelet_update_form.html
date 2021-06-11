@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load tapeforms %}
+
+{% block title %}{% translate "template.let_article.update.title" %}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {{ object.label }}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <form action="{% url 'let-article-update' pk=object.id %}" method="post">
+          <div class="card my-2">
+            <div class="card-body">
+              <div class="card-text">
+                {% csrf_token %}
+                {% form form %}
+              </div>
+            </div>
+            {% include 'includes/card_footer.html' %}
+          </div>
+          <div class="dvzo-buttons-bottom">
+            <input type="submit" value="{% translate 'template.let_article.submit' %}" class="btn btn-primary btn-sm my-1 me-1">
+            <a href="{% url 'let-detail' object.let.pk %}" class="btn btn-primary btn-sm my-1 me-1">
+              {% translate "Back to list" %}
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+    const multipleCancelButton = new Choices('#id_article', {
+      removeItemButton: true,
+      searchResultLimit:5,
+      renderChoiceLimit:5
+    });
+  });
+</script>
+{% endblock scripts %}

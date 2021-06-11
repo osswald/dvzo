@@ -117,3 +117,183 @@ class TrousersFieldsetForm(TapeformFieldsetsMixin, TrousersArticleForm):
                 'length',
             ),
         })
+
+
+class MiscArticleForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
+    class Meta:
+        model = MiscArticle
+        fields = [
+            'label',
+            'status',
+            'amount',
+            'price',
+            'type'
+        ]
+
+
+class MiscFieldsetForm(TapeformFieldsetsMixin, MiscArticleForm):
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("form.master_data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'status',
+                'amount',
+                'price'),
+        }, {
+            'extra': {
+                'title': _("form.special_fields"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'type',),
+        })
+
+
+class ShirtArticleForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
+    class Meta:
+        model = ShirtArticle
+        fields = [
+            'label',
+            'status',
+            'amount',
+            'price',
+            'size'
+        ]
+
+
+class ShirtFieldsetForm(TapeformFieldsetsMixin, ShirtArticleForm):
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("form.master_data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'status',
+                'amount',
+                'price'),
+        }, {
+            'extra': {
+                'title': _("form.special_fields"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'size',),
+        })
+
+
+class VestArticleForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
+    class Meta:
+        model = VestArticle
+        fields = [
+            'label',
+            'status',
+            'amount',
+            'price',
+            'size'
+        ]
+
+
+class VestFieldsetForm(TapeformFieldsetsMixin, VestArticleForm):
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("form.master_data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'status',
+                'amount',
+                'price'),
+        }, {
+            'extra': {
+                'title': _("form.special_fields"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'size',),
+        })
+
+
+class TieArticleForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
+    class Meta:
+        model = TieArticle
+        fields = [
+            'label',
+            'status',
+            'amount',
+            'price',
+            'length'
+        ]
+
+
+class TieFieldsetForm(TapeformFieldsetsMixin, TieArticleForm):
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("form.master_data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'status',
+                'amount',
+                'price'),
+        }, {
+            'extra': {
+                'title': _("form.special_fields"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'size',),
+        })
+
+
+class ShoesArticleForm(BootstrapTapeformMixin, ModelForm):
+    field_container_css_class = 'mb-3'
+
+    class Meta:
+        model = ShoesArticle
+        fields = [
+            'label',
+            'status',
+            'amount',
+            'price',
+            'size'
+        ]
+
+
+class ShoesFieldsetForm(TapeformFieldsetsMixin, ShoesArticleForm):
+    fieldsets = (
+        {
+            'extra': {
+                'title': _("form.master_data"),
+                'css_class': 'csssss'
+            },
+            'fields': (
+                'label',
+                'status',
+                'amount',
+                'price'),
+        }, {
+            'extra': {
+                'title': _("form.special_fields"),
+                'css_class': 'csssss',
+            },
+            'fields': (
+                'size',),
+        })

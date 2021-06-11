@@ -5,7 +5,7 @@ from django_weasyprint import WeasyTemplateResponseMixin
 from django_weasyprint.utils import django_url_fetcher
 from django_weasyprint.views import WeasyTemplateResponse
 
-from uniforms.views import RentDetailView
+from uniforms.views import LetDetailView, RentDetailView
 
 
 class CustomWeasyTemplateResponse(WeasyTemplateResponse):
@@ -23,9 +23,6 @@ class RentPdfView(WeasyTemplateResponseMixin, RentDetailView):
     response_class = CustomWeasyTemplateResponse
 
 
-# class LetPdfView(WeasyTemplateResponseMixin, LetDetailView):
-#     # output of MyModelView rendered as PDF with hardcoded CSS
-#     # show pdf in-line (default: True, show download dialog)
-#     pdf_attachment = False
-#     # custom response class to configure url-fetcher
-#     response_class = CustomWeasyTemplateResponse
+class LetPdfView(WeasyTemplateResponseMixin, LetDetailView):
+    pdf_attachment = False
+    response_class = CustomWeasyTemplateResponse

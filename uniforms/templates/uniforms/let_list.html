@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate "template.rent.list.title" %}{% endblock %}
+{% block title %}{% translate "template.let.list.title" %}{% endblock %}
 
 {% block content %}
 <div class="dvzo-container">
 
   <div class="dvzo-header">
-    {% translate "template.rent.list.header" %}
+    {% translate "template.let.list.header" %}
   </div>
 
   <div class="dvzo-content">
@@ -17,7 +17,7 @@
           <div class="card-body">
             <div class="card-text">
               <table
-                id="rentListTable"
+                id="letListTable"
                 data-toggle="table"
                 data-classes="table table-hover table-condensed"
                 data-striped="true"
@@ -33,27 +33,25 @@
                 <tr>
                   <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
                   <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
-                  <th data-field="renter" data-sortable="true">{% translate "rent.renter" %}</th>
-                  <th data-field="start" data-sortable="true">{% translate "rent.start" %}</th>
-                  <th data-field="end" data-sortable="true">{% translate "rent.end" %}</th>
-                  <th data-field="billed" data-sortable="true">{% translate "rent.billed" %}</th>
+                  <th data-field="personnel" data-sortable="true">{% translate "let.personnel" %}</th>
+                  <th data-field="start" data-sortable="true">{% translate "let.start" %}</th>
+                  <th data-field="end" data-sortable="true">{% translate "let.end" %}</th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for rent in rents %}
+                {% for let in lets %}
                 <tr>
                   <td></td>
-                  <td>{{ rent.id }}</td>
-                  <td>{{ rent.renter }}</td>
-                  <td>{{ rent.start }}</td>
-                  <td>{{ rent.end }}</td>
-                  <td>{{ rent.billed }}</td>
+                  <td>{{ let.id }}</td>
+                  <td>{{ let.personnel }}</td>
+                  <td>{{ let.start }}</td>
+                  <td>{{ let.end }}</td>
                   <td>
-                    <a href="{% url 'rent-delete' pk=rent.id %}">
+                    <a href="{% url 'let-delete' pk=let.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
                     </a>&nbsp;
-                    <a href="{% url 'rent-update' pk=rent.id %}">
+                    <a href="{% url 'let-update' pk=let.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                   </td>
@@ -65,9 +63,9 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
-          <a href="{% url 'rent-create' %}" class="btn btn-primary btn-sm my-1 me-1">
+          <a href="{% url 'let-create' %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="fas fa-plus"></i>
-            {% translate "template.rent.add" %}
+            {% translate "template.let.add" %}
           </a>
         </div>
       </div>
@@ -76,7 +74,7 @@
 </div>
 
 <script>
-  var $table = $('#rentListTable');
+  var $table = $('#letListTable');
   var $button = $('#daySelectionBtn');
 
   $(function () {

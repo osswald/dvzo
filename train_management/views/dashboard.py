@@ -31,7 +31,8 @@ def get_frequency_chart_data(self):
     labels = []
     data = []
 
-    sunday_2021 = DayPlanning.objects.filter(date__lte=date.today()).filter(date__gte=date(2021, 1, 1)).order_by('date')
+    sunday_2021 = DayPlanning.objects.filter(date__lte=date.today(), day_planning_type='sunday').\
+        filter(date__gte=date(2021, 1, 1)).order_by('date')
     for sundays in sunday_2021:
         trains = Train.objects.filter(day_planning=sundays).aggregate(Sum('frequency'))
         date_formatted = dateformat.format(sundays.date, formats.get_format('DATE_FORMAT'))

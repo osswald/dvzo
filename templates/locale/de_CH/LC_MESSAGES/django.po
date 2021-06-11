@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-10 11:20+0200\n"
+"POT-Creation-Date: 2021-06-11 16:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,19 +88,17 @@ msgid "side_navigation.stations"
 msgstr "Betriebspunkte"
 
 #: includes/side_navigation.html:134
+msgid "side_navigation.personnel_category"
+msgstr "Personal-Kategorie"
+
+#: includes/side_navigation.html:139
 msgid "side_navigation.functions"
 msgstr "Funktionen"
 
-#: includes/side_navigation.html:139
+#: includes/side_navigation.html:144
 msgid "side_navigation.phone_numbers"
 msgstr "Telefonnummern"
 
-#: includes/side_navigation.html:144
+#: includes/side_navigation.html:149
 msgid "side_navigation.train_timetable_templates"
 msgstr "Fahrten-Vorlagen"
-
-#~ msgid "side_navigation.close"
-#~ msgstr "Schliessen"
-
-#~ msgid "top_nav.phone_numbers"
-#~ msgstr "Telefonnummern"

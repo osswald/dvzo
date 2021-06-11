@@ -39,6 +39,7 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0",
     "bootstrap-table": "^1.18.3",
+    "chart.js": "^3.3.2",
     "choices.js": "^9.0.1",
     "jquery": "^3.6.0",
     "js-year-calendar": "^1.0.2",

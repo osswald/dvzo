@@ -1,0 +1,9 @@
+from training.forms.attendance import *  # noqa
+from training.forms.medical_fitness import *  # noqa
+from training.forms.participant import *  # noqa
+from training.forms.periodic_exam import *  # noqa
+from training.forms.personnel_qualification import *  # noqa
+from training.forms.qualification import *  # noqa
+from training.forms.requirement import *  # noqa
+from training.forms.training import *  # noqa
+from training.forms.training_module import *  # noqa

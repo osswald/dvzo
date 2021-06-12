@@ -24,20 +24,21 @@ tinymce.init({
         'alignright alignjustify | outdent indent | table | numlist bullist checklist | forecolor backcolor removeformat' +
         ' | charmap | template',
     custom_undo_redo_levels: 10,
-    templates: [{
-        title: 'Abstellplanung',
-        description: 'Fügt eine Tabelle für die Abstellplanung ein.',
-        url: '/static/tinymce/templates/parking.html'
+    templates: [
+        {
+            title: 'Abstellplanung',
+            description: 'Fügt eine Tabelle für die Abstellplanung ein.',
+            url: '/static/tinymce/templates/parking.html'
         },
         {
-        title: 'Tourenplan vorhanden',
-        description: 'Verwenden, wenn der Tourenplan vorhanden ist und mit dem Briefing mitgeschickt werden kann.',
-        url: '/static/tinymce/templates/shifts_plan.html'
+            title: 'Tourenplan vorhanden',
+            description: 'Verwenden, wenn der Tourenplan vorhanden ist und mit dem Briefing mitgeschickt werden kann.',
+            url: '/static/tinymce/templates/shifts_plan.html'
         },
         {
-        title: 'Tourenplan nicht vorhanden',
-        description: 'Verwenden, wenn der Tourenplan noch nicht vorhanden ist und nachgereicht wird.',
-        url: '/static/tinymce/templates/shifts_no_plan.html'
+            title: 'Tourenplan nicht vorhanden',
+            description: 'Verwenden, wenn der Tourenplan noch nicht vorhanden ist und nachgereicht wird.',
+            url: '/static/tinymce/templates/shifts_no_plan.html'
         }],
     style_formats: [
         {

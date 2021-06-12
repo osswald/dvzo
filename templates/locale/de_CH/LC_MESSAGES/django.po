@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 16:31+0200\n"
+"POT-Creation-Date: 2021-06-12 17:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,38 +67,58 @@ msgstr "Personal"
 msgid "side_navigation.copy_recipient"
 msgstr "Empfänger CC"
 
-#: includes/side_navigation.html:99
+#: includes/side_navigation.html:100
+msgid "side_navigation.training"
+msgstr "Ausbildung/Qualifikation"
+
+#: includes/side_navigation.html:106
+msgid "side_navigation.dashboard"
+msgstr "Übersicht"
+
+#: includes/side_navigation.html:111
+msgid "side_navigation.courses"
+msgstr "Kurse"
+
+#: includes/side_navigation.html:116
+msgid "side_navigation.modules"
+msgstr "Module"
+
+#: includes/side_navigation.html:121
+msgid "side_navigation.requirements"
+msgstr "Anforderungen"
+
+#: includes/side_navigation.html:132
 msgid "side_navigation.uniforms"
 msgstr "Uniformen"
 
-#: includes/side_navigation.html:114
+#: includes/side_navigation.html:147
 msgid "side_navigation.settings"
 msgstr "Stammdaten"
 
-#: includes/side_navigation.html:120
+#: includes/side_navigation.html:153
 msgid "side_navigation.engines"
 msgstr "Triebfahrzeuge"
 
-#: includes/side_navigation.html:125
+#: includes/side_navigation.html:158
 msgid "side_navigation.carriages"
 msgstr "Wagen"
 
-#: includes/side_navigation.html:130
+#: includes/side_navigation.html:163
 msgid "side_navigation.stations"
 msgstr "Betriebspunkte"
 
-#: includes/side_navigation.html:134
+#: includes/side_navigation.html:167
 msgid "side_navigation.personnel_category"
 msgstr "Personal-Kategorie"
 
-#: includes/side_navigation.html:139
+#: includes/side_navigation.html:172
 msgid "side_navigation.functions"
 msgstr "Funktionen"
 
-#: includes/side_navigation.html:144
+#: includes/side_navigation.html:177
 msgid "side_navigation.phone_numbers"
 msgstr "Telefonnummern"
 
-#: includes/side_navigation.html:149
+#: includes/side_navigation.html:182
 msgid "side_navigation.train_timetable_templates"
 msgstr "Fahrten-Vorlagen"

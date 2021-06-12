@@ -19,7 +19,8 @@ ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS"), ]
 
 PROJECT_APPS = [
     'train_management',
-    'users'
+    'users',
+    'training'
 ]
 
 INSTALLED_APPS = [

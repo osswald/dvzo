@@ -1,0 +1,9 @@
+from training.models.training_module import *  # noqa  # isort:skip
+from training.models.training import *  # noqa  # isort:skip
+from training.models.participant import *  # noqa  # isort:skip
+from training.models.attendance import *  # noqa  # isort:skip
+from training.models.medical_fitness import *  # noqa  # isort:skip
+from training.models.qualification import *  # noqa  # isort:skip
+from training.models.personnel_qualification import *  # noqa  # isort:skip
+from training.models.periodic_exam import *  # noqa  # isort:skip
+from training.models.requirement import *  # noqa  # isort:skip

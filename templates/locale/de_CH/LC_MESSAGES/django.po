@@ -81,7 +81,7 @@ msgstr "Kurse"
 
 #: includes/side_navigation.html:116
 msgid "side_navigation.modules"
-msgstr "Module"
+msgstr "TrainingModule"
 
 #: includes/side_navigation.html:121
 msgid "side_navigation.requirements"

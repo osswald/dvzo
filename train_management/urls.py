@@ -19,11 +19,11 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
-    path('frequency-chart/', views.get_frequency_chart_data, name='frequency-chart'),
+    path('frequency-chart/', views.FrequencyChartData.as_view(), name='frequency-chart'),
 
-    path('calendar/', views.calendar, name='calendar'),
-    path('calendar/event_data', views.get_availability_data, name='event-data'),
-    path('calendar/resource_data', views.get_resource_data, name='resource-data'),
+    path('calendar/', views.Calendar.as_view(), name='calendar'),
+    path('calendar/event_data', views.CalendarAvailabilityData.as_view(), name='event-data'),
+    path('calendar/resource_data', views.CalendarResourceData.as_view(), name='resource-data'),
 
     path('dayplanning/', views.DayPlanningListView.as_view(), name='day-planning-list'),
     path('dayplanning/detail/<int:pk>/', views.DayPlanningDetailView.as_view(), name='day-planning-detail'),
@@ -124,7 +124,7 @@ urlpatterns = [
          views.AvailabilityCarriageCreateView.as_view(), name='availability-carriage-create'),
     path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete'),
 
-    path('reservation-calendar/', views.reservation_calendar, name='reservation-calendar'),
+    path('reservation-calendar/', views.ReservationCalendar.as_view(), name='reservation-calendar'),
     path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(),
          name='reservation-calendar-trains'),
 

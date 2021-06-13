@@ -5,6 +5,7 @@ from django.db.models import Q, Sum
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import dateformat, formats
+from django.views import View
 
 from train_management.models import DayPlanning, Train
 
@@ -27,16 +28,17 @@ def dashboard(request):
                   })
 
 
-def get_frequency_chart_data(self):
-    labels = []
-    data = []
+class FrequencyChartData(View):
+    def get(self, request):
+        labels = []
+        data = []
 
-    sunday_2021 = DayPlanning.objects.filter(date__lte=date.today(), day_planning_type='sunday').\
-        filter(date__gte=date(2021, 1, 1)).order_by('date')
-    for sundays in sunday_2021:
-        trains = Train.objects.filter(day_planning=sundays).aggregate(Sum('frequency'))
-        date_formatted = dateformat.format(sundays.date, formats.get_format('DATE_FORMAT'))
-        labels.append(date_formatted)
-        data.append(trains['frequency__sum'])
+        sunday_2021 = DayPlanning.objects.filter(date__lte=date.today(), day_planning_type='sunday').\
+            filter(date__gte=date(2021, 1, 1)).order_by('date')
+        for sundays in sunday_2021:
+            trains = Train.objects.filter(day_planning=sundays).aggregate(Sum('frequency'))
+            date_formatted = dateformat.format(sundays.date, formats.get_format('DATE_FORMAT'))
+            labels.append(date_formatted)
+            data.append(trains['frequency__sum'])
 
-    return JsonResponse(data={'labels': labels, 'data': data}, safe=False)
+        return JsonResponse(data={'labels': labels, 'data': data}, safe=False)

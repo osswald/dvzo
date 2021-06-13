@@ -1,14 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
-from django.views import generic
+from django.views import generic, View
 
 from train_management.models import DayPlanning, TrainTimetable
 
 
-@login_required
-def reservation_calendar(request):
-    return render(request, "train_management/reservation_calendar.html")
+class ReservationCalendar(View):
+    def get(self, request):
+        return render(request, "train_management/reservation_calendar.html")
 
 
 @method_decorator(login_required, name='dispatch')

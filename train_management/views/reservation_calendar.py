@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
-from django.views import generic, View
+from django.views import View, generic
 
 from train_management.models import DayPlanning, TrainTimetable
 

@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth import get_user_model
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
@@ -16,6 +17,10 @@ class PersonnelForm(BootstrapTapeformMixin, ModelForm):
                   'mobile_phone_public',
                   'date_of_birth'
                   ]
+
+    date_of_birth = forms.DateField(
+        widget=forms.DateInput(format='%Y-%m-%d')
+    )
 
 
 class UserForm(BootstrapTapeformMixin, ModelForm):

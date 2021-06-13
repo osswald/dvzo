@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.views import generic
-from django.views import View
+from django.views import View, generic
 
 
 class DvzoMixin(LoginRequiredMixin, PermissionRequiredMixin):

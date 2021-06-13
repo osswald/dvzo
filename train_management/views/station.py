@@ -1,22 +1,20 @@
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
 from train_management.forms import StationForm
 from train_management.models import Station
 
 
-@method_decorator(login_required, name='dispatch')
-class StationListView(generic.ListView):
+class StationListView(DvzoListView):
+    permission_required = ''
     context_object_name = "stations"
 
     def get_queryset(self):
         return Station.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class StationUpdateView(generic.UpdateView):
+class StationUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Station
     form_class = StationForm
     template_name_suffix = "_update_form"
@@ -25,8 +23,8 @@ class StationUpdateView(generic.UpdateView):
         return reverse_lazy("station-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class StationCreateView(generic.CreateView):
+class StationCreateView(DvzoCreateView):
+    permission_required = ''
     model = Station
     form_class = StationForm
     template_name_suffix = "_create_form"
@@ -35,8 +33,8 @@ class StationCreateView(generic.CreateView):
         return reverse_lazy("station-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class StationDeleteView(generic.DeleteView):
+class StationDeleteView(DvzoDeleteView):
+    permission_required = ''
     model = Station
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("station-list")

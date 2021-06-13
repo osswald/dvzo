@@ -1,21 +1,19 @@
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoDetailView, DvzoListView, DvzoUpdateView
 from train_management.forms import CarriageForm, EngineForm
 from train_management.models import Availability, Vehicle
 
 
-@method_decorator(login_required, name='dispatch')
-class CarriageListView(generic.ListView):
+class CarriageListView(DvzoListView):
+    permission_required = ''
     context_object_name = "carriages"
     queryset = Vehicle.objects.filter(vehicle_type="carriage")
     template_name = "train_management/carriage_list.html"
 
 
-@method_decorator(login_required, name='dispatch')
-class CarriageUpdateView(generic.UpdateView):
+class CarriageUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_update_form.html"
@@ -24,8 +22,8 @@ class CarriageUpdateView(generic.UpdateView):
         return reverse_lazy("carriage-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class CarriageDetailView(generic.DetailView):
+class CarriageDetailView(DvzoDetailView):
+    permission_required = ''
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_detail_form.html"
@@ -35,8 +33,8 @@ class CarriageDetailView(generic.DetailView):
         return super().get_context_data(availabilities=availabilities, **kwargs)
 
 
-@method_decorator(login_required, name='dispatch')
-class CarriageCreateView(generic.CreateView):
+class CarriageCreateView(DvzoCreateView):
+    permission_required = ''
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_create_form.html"
@@ -49,22 +47,22 @@ class CarriageCreateView(generic.CreateView):
         return reverse_lazy("carriage-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class CarriageDeleteView(generic.DeleteView):
+class CarriageDeleteView(DvzoDeleteView):
+    permission_required = ''
     model = Vehicle
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("carriage-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class EngineListView(generic.ListView):
+class EngineListView(DvzoListView):
+    permission_required = ''
     context_object_name = "engines"
     queryset = Vehicle.objects.filter(vehicle_type="engine")
     template_name = "train_management/engine_list.html"
 
 
-@method_decorator(login_required, name='dispatch')
-class EngineUpdateView(generic.UpdateView):
+class EngineUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_update_form.html"
@@ -73,8 +71,8 @@ class EngineUpdateView(generic.UpdateView):
         return reverse_lazy("engine-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class EngineDetailView(generic.DetailView):
+class EngineDetailView(DvzoDetailView):
+    permission_required = ''
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_detail_form.html"
@@ -84,8 +82,8 @@ class EngineDetailView(generic.DetailView):
         return super().get_context_data(availabilities=availabilities, **kwargs)
 
 
-@method_decorator(login_required, name='dispatch')
-class EngineCreateView(generic.CreateView):
+class EngineCreateView(DvzoCreateView):
+    permission_required = ''
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_create_form.html"
@@ -98,8 +96,8 @@ class EngineCreateView(generic.CreateView):
         return reverse_lazy("engine-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class EngineDeleteView(generic.DeleteView):
+class EngineDeleteView(DvzoDeleteView):
+    permission_required = ''
     model = Vehicle
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("engine-list")

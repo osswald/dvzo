@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoUpdateView
 from train_management.forms import TrainForm
 from train_management.models import DayPlanning, Train, Vehicle
 
 
-@method_decorator(login_required, name='dispatch')
-class TrainCompositionUpdateView(generic.UpdateView):
+class TrainCompositionUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"
@@ -30,8 +28,8 @@ class TrainCompositionUpdateView(generic.UpdateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class TrainCompositionCreateView(generic.CreateView):
+class TrainCompositionCreateView(DvzoCreateView):
+    permission_required = ''
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"

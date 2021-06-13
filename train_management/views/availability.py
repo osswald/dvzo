@@ -1,23 +1,21 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
 from train_management.forms import AvailabilityForm
 from train_management.models import Availability, Vehicle
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityListView(generic.ListView):
+class AvailabilityListView(DvzoListView):
+    permission_required = ''
     context_object_name = "availabilities"
 
     def get_queryset(self):
         return Availability.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityEngineCreateView(generic.CreateView):
+class AvailabilityEngineCreateView(DvzoCreateView):
+    permission_required = ''
     model = Availability
     form_class = AvailabilityForm
     template_name = "train_management/availability_update_form.html"
@@ -39,8 +37,8 @@ class AvailabilityEngineCreateView(generic.CreateView):
         return reverse_lazy("engine-detail", kwargs={'pk': self.object.vehicle.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityCarriageCreateView(generic.CreateView):
+class AvailabilityCarriageCreateView(DvzoCreateView):
+    permission_required = ''
     model = Availability
     form_class = AvailabilityForm
     template_name = "train_management/availability_update_form.html"
@@ -62,8 +60,8 @@ class AvailabilityCarriageCreateView(generic.CreateView):
         return reverse_lazy("carriage-detail", kwargs={'pk': self.object.vehicle.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityEngineUpdateView(generic.UpdateView):
+class AvailabilityEngineUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Availability
     form_class = AvailabilityForm
     template_name = "train_management/availability_update_form.html"
@@ -72,8 +70,8 @@ class AvailabilityEngineUpdateView(generic.UpdateView):
         return reverse_lazy("engine-detail", kwargs={'pk': self.object.vehicle.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityCarriageUpdateView(generic.UpdateView):
+class AvailabilityCarriageUpdateView(DvzoUpdateView):
+    permission_required = ''
     model = Availability
     form_class = AvailabilityForm
     template_name = "train_management/availability_update_form.html"
@@ -82,8 +80,8 @@ class AvailabilityCarriageUpdateView(generic.UpdateView):
         return reverse_lazy("carriage-detail", kwargs={'pk': self.object.vehicle.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class AvailabilityDeleteView(generic.DeleteView):
+class AvailabilityDeleteView(DvzoDeleteView):
+    permission_required = ''
     model = Availability
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("availability-list")

@@ -9,9 +9,9 @@ class TrainingModule(AbstractDvzoModel):
         verbose_name = _("module.singular")
         verbose_name_plural = _("module.plural")
 
-    label = models.CharField(_("module.label"), blank=True, max_length=200)
+    label = models.CharField(_("module.label"), max_length=200)
     label_short = models.CharField(_("module.label_short"), max_length=5)
-    description = models.TextField(_("module.description"))
+    description = models.TextField(_("module.description"), blank=True)
 
     def __str__(self):
         return self.label

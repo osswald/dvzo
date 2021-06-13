@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.training_module.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "template.training_module.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="trainingModuleListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label_short" data-sortable="true">{% translate "training_module.label_short" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "training_module.label" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for training_module in training_modules %}
+                <tr>
+                  <td></td>
+                  <td>{{ training_module.id }}</td>
+                  <td>{{ training_module.label_short }}</td>
+                  <td>{{ training_module.label }}</td>
+                  <td>
+                    <a href="{% url 'training-module-delete' pk=training_module.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'training-module-update' pk=training_module.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <a href="{% url 'training-module-create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "template.training_module.add" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $table = $('#trainingModuleListTable');
+</script>
+{% endblock content %}

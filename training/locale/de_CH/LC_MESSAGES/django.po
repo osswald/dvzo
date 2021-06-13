@@ -1,0 +1,345 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-13 10:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models/attendance.py:10
+msgid "attendance.singular"
+msgstr "Teilnahme"
+
+#: models/attendance.py:11
+msgid "attendance.plural"
+msgstr "Teilnahmen"
+
+#: models/attendance.py:15
+msgid "attendance.attended"
+msgstr "Teilgenommen"
+
+#: models/medical_fitness.py:10
+msgid "medical_fitness_level.singular"
+msgstr "Anforderungsstufe"
+
+#: models/medical_fitness.py:11
+msgid "medical_fitness_level.plural"
+msgstr "Anforderungsstufen"
+
+#: models/medical_fitness.py:13
+msgid "medical_fitness_level.label"
+msgstr "Bezeichnung"
+
+#: models/medical_fitness.py:21
+msgid "medical_fitness.singular"
+msgstr "Medizinische Tauglichkeit"
+
+#: models/medical_fitness.py:22
+msgid "medical_fitness.plural"
+msgstr "Medizinische Tauglichkeit"
+
+#: models/medical_fitness.py:26
+msgid "medical_fitness.date"
+msgstr "Datum"
+
+#: models/participant.py:10
+msgid "participant.singular"
+msgstr "Teilnehmer"
+
+#: models/participant.py:11
+msgid "participant.plural"
+msgstr "Teilnehmer"
+
+#: models/participant.py:15
+msgid "participant.attended"
+msgstr "Teilgenommen"
+
+#: models/participant.py:16
+msgid "participant.passed"
+msgstr "Bestanden"
+
+#: models/periodic_exam.py:10
+msgid "periodic_exam.singular"
+msgstr "Periodische Prüfung"
+
+#: models/periodic_exam.py:11
+msgid "periodic_exam.plural"
+msgstr "Periodische Prüfungen"
+
+#: models/periodic_exam.py:15
+msgid "periodic_exam.date"
+msgstr "Datum"
+
+#: models/personnel_qualification.py:10
+msgid "personnel_qualification.singular"
+msgstr "Qualifikation"
+
+#: models/personnel_qualification.py:11
+msgid "personnel_qualification.plural"
+msgstr "Qualifikationen"
+
+#: models/personnel_qualification.py:15
+msgid "personnel_qualification.valid_until"
+msgstr "Gültig bis"
+
+#: models/personnel_qualification.py:16
+msgid "personnel_qualification.automatically_added"
+msgstr "automatisch hinzugefügt"
+
+#: models/qualification.py:9
+msgid "qualification.singular"
+msgstr "Qualifikation"
+
+#: models/qualification.py:10
+msgid "qualification.plural"
+msgstr "Qualifikationen"
+
+#: models/qualification.py:13
+msgid "qualification.type.vte"
+msgstr "VTE"
+
+#: models/qualification.py:14
+msgid "qualification.type.zstebv"
+msgstr "ZSTBV"
+
+#: models/qualification.py:15
+msgid "qualification.type.dvzo"
+msgstr "DVZO"
+
+#: models/qualification.py:17
+msgid "qualification.label"
+msgstr "Bezeichnung"
+
+#: models/qualification.py:18
+msgid "qualification.description"
+msgstr "Beschreibung"
+
+#: models/qualification.py:19
+msgid "qualification.type"
+msgstr "Typ"
+
+#: models/qualification.py:20
+msgid "qualification.valid_years"
+msgstr "Gültig (Jahre)"
+
+#: models/requirement.py:10
+msgid "requirement.singular"
+msgstr "Anforderung"
+
+#: models/requirement.py:11
+msgid "requirement.plural"
+msgstr "Anforderungen"
+
+#: models/training.py:10
+msgid "training.singular"
+msgstr "Kurs"
+
+#: models/training.py:11
+msgid "training.plural"
+msgstr "Kurs"
+
+#: models/training.py:13 templates/training/training_detail_form.html:38
+#: templates/training/training_list.html:36
+msgid "training.label"
+msgstr "Kürzel"
+
+#: models/training.py:14 templates/training/training_detail_form.html:42
+#: templates/training/training_list.html:35
+msgid "training.course_label"
+msgstr "Bezeichnung"
+
+#: models/training.py:17 templates/training/training_detail_form.html:54
+#: templates/training/training_list.html:38
+msgid "training.start_date"
+msgstr "Start"
+
+#: models/training.py:18 templates/training/training_detail_form.html:58
+#: templates/training/training_list.html:39
+msgid "training.end_date"
+msgstr "Ende"
+
+#: models/training.py:26
+msgid "training_date.singular"
+msgstr "Kursdatum"
+
+#: models/training.py:27
+msgid "training_date.plural"
+msgstr "Kursdaten"
+
+#: models/training.py:29
+msgid "training_date.label"
+msgstr "Bezeichnung"
+
+#: models/training.py:31
+msgid "training_date.start_date"
+msgstr "Start"
+
+#: models/training.py:32
+msgid "training_date.end_date"
+msgstr "Ende"
+
+#: models/training_module.py:9
+msgid "module.singular"
+msgstr "Modul"
+
+#: models/training_module.py:10
+msgid "module.plural"
+msgstr "Module"
+
+#: models/training_module.py:12
+msgid "module.label"
+msgstr "Bezeichnung"
+
+#: models/training_module.py:13
+msgid "module.label_short"
+msgstr "Kürzel"
+
+#: models/training_module.py:14
+msgid "module.description"
+msgstr "Beschreibung"
+
+#: templates/training/training_create_form.html:5
+msgid "template.training.create.title"
+msgstr "Neuer Kurs"
+
+#: templates/training/training_create_form.html:12
+msgid "template.training.create.header"
+msgstr "Neuer Kurs"
+
+#: templates/training/training_create_form.html:28
+#: templates/training/training_update_form.html:29
+msgid "template.training.submit"
+msgstr "Speichern"
+
+#: templates/training/training_detail_form.html:4
+msgid "template.training.detail.title"
+msgstr "Kurs"
+
+#: templates/training/training_detail_form.html:17
+msgid "Back to list"
+msgstr "Zurück zur Liste"
+
+#: templates/training/training_detail_form.html:29
+msgid "app.master_data"
+msgstr "Stammdaten"
+
+#: templates/training/training_detail_form.html:46
+#: templates/training/training_list.html:37
+msgid "training.module"
+msgstr "Modul"
+
+#: templates/training/training_detail_form.html:50
+msgid "training.responsible"
+msgstr "Verantwortlich"
+
+#: templates/training/training_detail_form.html:71
+msgid "template.training.training_dates"
+msgstr "Daten"
+
+#: templates/training/training_detail_form.html:75
+msgid "training.training_date.date"
+msgstr "Datum"
+
+#: templates/training/training_detail_form.html:76
+msgid "training.training_date.label"
+msgstr "Bezeichnung"
+
+#: templates/training/training_detail_form.html:77
+msgid "training.training_date.responsible"
+msgstr "Verantwortlich"
+
+#: templates/training/training_detail_form.html:98
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/training/training_detail_form.html:107
+msgid "template.training.participants"
+msgstr "Teilnehmer"
+
+#: templates/training/training_detail_form.html:111
+msgid "template.training.participant"
+msgstr "Teilnehmer"
+
+#: templates/training/training_detail_form.html:112
+msgid "template.training.attended"
+msgstr "Teilgenommen"
+
+#: templates/training/training_detail_form.html:113
+msgid "template.training.passed"
+msgstr "Bestanden"
+
+#: templates/training/training_list.html:4
+msgid "template.training.list.title"
+msgstr "Kurse"
+
+#: templates/training/training_list.html:9
+msgid "template.training.list.header"
+msgstr "Kurse"
+
+#: templates/training/training_list.html:33
+#: templates/training/trainingmodule_list.html:33
+msgid "table.state"
+msgstr "Status"
+
+#: templates/training/training_list.html:34
+#: templates/training/trainingmodule_list.html:34
+msgid "table.id"
+msgstr "ID"
+
+#: templates/training/training_list.html:71
+msgid "template.training.add"
+msgstr "Kurs hinzufügen"
+
+#: templates/training/training_update_form.html:5
+msgid "template.training.update.title"
+msgstr "Kurs bearbeiten"
+
+#: templates/training/training_update_form.html:31
+msgid "app.back"
+msgstr "Zurück"
+
+#: templates/training/trainingmodule_create_form.html:5
+msgid "template.training_module.create.title"
+msgstr "Modul hinzufügen"
+
+#: templates/training/trainingmodule_create_form.html:12
+msgid "template.training_module.create.header"
+msgstr "Modul hinzufügen"
+
+#: templates/training/trainingmodule_create_form.html:28
+#: templates/training/trainingmodule_update_form.html:29
+msgid "template.training_module.submit"
+msgstr "Speichern"
+
+#: templates/training/trainingmodule_list.html:4
+msgid "template.training_module.list.title"
+msgstr "Module"
+
+#: templates/training/trainingmodule_list.html:9
+msgid "template.training_module.list.header"
+msgstr "Module"
+
+#: templates/training/trainingmodule_list.html:35
+msgid "training_module.label_short"
+msgstr "Kürzel"
+
+#: templates/training/trainingmodule_list.html:36
+msgid "training_module.label"
+msgstr "Bezeichnung"
+
+#: templates/training/trainingmodule_list.html:65
+msgid "template.training_module.add"
+msgstr "Modul hinzufügen"
+
+#: templates/training/trainingmodule_update_form.html:5
+msgid "template.training_module.update.title"
+msgstr "Modul bearbeiten"
+
+#: templates/training/trainingmodule_update_form.html:31
+msgid "app.back_list"
+msgstr "Zurück zur Liste"

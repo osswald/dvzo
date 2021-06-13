@@ -1,0 +1,10 @@
+from training.views.attendance import *  # noqa
+from training.views.medical_fitness import *  # noqa
+from training.views.participant import *  # noqa
+from training.views.periodic_exam import *  # noqa
+from training.views.personnel_qualification import *  # noqa
+from training.views.qualification import *  # noqa
+from training.views.requirement import *  # noqa
+from training.views.training import *  # noqa
+from training.views.training_date import *  # noqa
+from training.views.training_module import *  # noqa

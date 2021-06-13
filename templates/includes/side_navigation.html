@@ -102,22 +102,22 @@
         <div class="collapse show" id="training-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
             <li>
-              <a class="link-light rounded" href="#">
+              <a class="link-secondary rounded" href="#">
                 {% translate "side_navigation.dashboard" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
+              <a class="link-light rounded" href="{% url 'training-list' %}">
                 {% translate "side_navigation.courses" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
+              <a class="link-light rounded" href="{% url 'training-module-list' %}">
                 {% translate "side_navigation.modules" %}
               </a>
             </li>
             <li>
-              <a class="link-light rounded" href="#">
+              <a class="link-secondary rounded" href="#">
                 {% translate "side_navigation.requirements" %}
               </a>
             </li>

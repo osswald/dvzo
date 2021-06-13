@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.training.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "template.training.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="trainingListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="course_label" data-sortable="true">{% translate "training.course_label" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "training.label" %}</th>
+                  <th data-field="module" data-sortable="true">{% translate "training.module" %}</th>
+                  <th data-field="start_date" data-sortable="true">{% translate "training.start_date" %}</th>
+                  <th data-field="end_date" data-sortable="true">{% translate "training.end_date" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for training in trainings %}
+                <tr>
+                  <td></td>
+                  <td>{{ training.id }}</td>
+                  <td><a href="{% url 'training-detail' pk=training.id %}">{{ training.course_label }}</a></td>
+                  <td>{{ training.label }}</td>
+                  <td>{{ training.module }}</td>
+                  <td>{{ training.start_date }}</td>
+                  <td>{{ training.end_date }}</td>
+                  <td>
+                    <a href="{% url 'training-delete' pk=training.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>&nbsp;
+                    <a href="{% url 'training-update' pk=training.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          <a href="{% url 'training-create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "template.training.add" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $table = $('#trainingListTable');
+</script>
+{% endblock content %}

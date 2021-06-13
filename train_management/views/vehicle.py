@@ -6,14 +6,14 @@ from train_management.models import Availability, Vehicle
 
 
 class CarriageListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_vehicle'
     context_object_name = "carriages"
     queryset = Vehicle.objects.filter(vehicle_type="carriage")
     template_name = "train_management/carriage_list.html"
 
 
 class CarriageUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_vehicle'
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_update_form.html"
@@ -23,7 +23,7 @@ class CarriageUpdateView(DvzoUpdateView):
 
 
 class CarriageDetailView(DvzoDetailView):
-    permission_required = ''
+    permission_required = 'train_management.view_vehicle'
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_detail_form.html"
@@ -34,7 +34,7 @@ class CarriageDetailView(DvzoDetailView):
 
 
 class CarriageCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_vehicle'
     model = Vehicle
     form_class = CarriageForm
     template_name = "train_management/carriage_create_form.html"
@@ -48,21 +48,21 @@ class CarriageCreateView(DvzoCreateView):
 
 
 class CarriageDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_vehicle'
     model = Vehicle
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("carriage-list")
 
 
 class EngineListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_vehicle'
     context_object_name = "engines"
     queryset = Vehicle.objects.filter(vehicle_type="engine")
     template_name = "train_management/engine_list.html"
 
 
 class EngineUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_vehicle'
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_update_form.html"
@@ -72,7 +72,7 @@ class EngineUpdateView(DvzoUpdateView):
 
 
 class EngineDetailView(DvzoDetailView):
-    permission_required = ''
+    permission_required = 'train_management.view_vehicle'
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_detail_form.html"
@@ -83,7 +83,7 @@ class EngineDetailView(DvzoDetailView):
 
 
 class EngineCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_vehicle'
     model = Vehicle
     form_class = EngineForm
     template_name = "train_management/engine_create_form.html"
@@ -97,7 +97,7 @@ class EngineCreateView(DvzoCreateView):
 
 
 class EngineDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_vehicle'
     model = Vehicle
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("engine-list")

@@ -66,12 +66,16 @@
                   <td>{{ personnel.email }}</td>
                   <td>{{ personnel.mobile_phone.as_national }}</td>
                   <td>
+                    {% if perms.train_management.delete_personnel %}
                     <a href="{% url 'personnel-delete' pk=personnel.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
-                    </a>&nbsp;
+                    </a>
+                    {% endif %}
+                    {% if perms.train_management.change_personnel %}
                     <a href="{% url 'personnel-detail' pk=personnel.id %}">
                       <i class="far fa-edit"></i>
                     </a>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -81,10 +85,12 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_personnel %}
           <a href="{% url 'personnel-create' %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="fas fa-plus"></i>
             {% translate "template.personnel.add" %}
           </a>
+          {% endif %}
           <button id="daySelectionBtn" class="btn btn-secondary btn-sm my-1 me-1 disabled">tmpGetSelections</button>
         </div>
       </div>

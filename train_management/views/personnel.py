@@ -7,7 +7,7 @@ from train_management.models import Personnel
 
 
 class PersonnelListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_personnel'
     model = Personnel
     context_object_name = "personnels"
 
@@ -16,7 +16,7 @@ class PersonnelListView(DvzoListView):
 
 
 class PersonnelUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_personnel'
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_update_form"
@@ -46,7 +46,7 @@ class PersonnelUpdateView(DvzoUpdateView):
 
 
 class PersonnelCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_personnel'
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_create_form"
@@ -81,7 +81,7 @@ class PersonnelCreateView(DvzoCreateView):
 
 
 class PersonnelDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_personnel'
     model = Personnel
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("personnel-list")

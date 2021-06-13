@@ -7,7 +7,7 @@ from train_management.models import Reservation, TrainTimetable
 
 
 class ReservationListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_reservation'
     model = Reservation
     context_object_name = "reservations"
 
@@ -16,7 +16,7 @@ class ReservationListView(DvzoListView):
 
 
 class ReservationCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.view_reservation'
     model = Reservation
     form_class = ReservationForm
     template_name_suffix = "_update_form"
@@ -39,7 +39,7 @@ class ReservationCreateView(DvzoCreateView):
 
 
 class ReservationUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_reservation'
     model = Reservation
     form_class = ReservationForm
     template_name_suffix = "_update_form"
@@ -49,7 +49,7 @@ class ReservationUpdateView(DvzoUpdateView):
 
 
 class ReservationDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_reservation'
     model = Reservation
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")

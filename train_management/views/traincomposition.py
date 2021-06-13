@@ -7,7 +7,7 @@ from train_management.models import DayPlanning, Train, Vehicle
 
 
 class TrainCompositionUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_train'
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"
@@ -29,7 +29,7 @@ class TrainCompositionUpdateView(DvzoUpdateView):
 
 
 class TrainCompositionCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_train'
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"

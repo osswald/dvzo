@@ -10,7 +10,7 @@ from train_management.models import DayPlanning, Train
 
 
 class Dashboard(DvzoView):
-    permission_required = ''
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
         future_dayplannings = DayPlanning.objects.filter(date__gte=date.today())
         next_sundays = future_dayplannings.filter(day_planning_type='sunday').order_by('date')[:3]
@@ -30,7 +30,7 @@ class Dashboard(DvzoView):
 
 
 class FrequencyChartData(DvzoView):
-    permission_required = ''
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
         labels = []
         data = []

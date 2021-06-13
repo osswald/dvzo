@@ -6,7 +6,7 @@ from train_management.models import Personnel, PhoneNumber
 
 
 class PhoneNumberListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_phonenumber'
     context_object_name = "phone_numbers"
 
     def get_queryset(self):
@@ -14,7 +14,7 @@ class PhoneNumberListView(DvzoListView):
 
 
 class PhoneNumberUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_phonenumber'
     model = PhoneNumber
     form_class = PhoneNumberForm
     template_name_suffix = "_update_form"
@@ -24,7 +24,7 @@ class PhoneNumberUpdateView(DvzoUpdateView):
 
 
 class PhoneNumberCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_phonenumber'
     model = PhoneNumber
     form_class = PhoneNumberForm
     template_name_suffix = "_create_form"
@@ -34,7 +34,7 @@ class PhoneNumberCreateView(DvzoCreateView):
 
 
 class PhoneNumberDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_phonenumber'
     model = PhoneNumber
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("phone-list")

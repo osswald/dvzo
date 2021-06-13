@@ -47,12 +47,16 @@
                   <td>{{ station.label_short }}</td>
                   <td>{{ station.label }}</td>
                   <td>
+                    {% if perms.train_management.delete_station %}
                     <a href="{% url 'station-delete' pk=station.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
-                    </a>&nbsp;
+                    </a>
+                    {% endif %}
+                    {% if perms.train_management.change_station %}
                     <a href="{% url 'station-detail' pk=station.id %}">
                       <i class="far fa-edit"></i>
                     </a>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -62,10 +66,12 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_station %}
           <a href="{% url 'station-create' %}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
             {% translate "template.station.add" %}
           </a>
+          {% endif %}
           <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
         </div>
       </div>

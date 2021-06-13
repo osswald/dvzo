@@ -7,7 +7,7 @@ from train_management.models import Train, TrainTimetable
 
 
 class TrainTimetableCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_traintimetable'
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
@@ -30,7 +30,7 @@ class TrainTimetableCreateView(DvzoCreateView):
 
 
 class TrainTimetableUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_traintimetable'
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
@@ -40,7 +40,7 @@ class TrainTimetableUpdateView(DvzoUpdateView):
 
 
 class TrainTimetableDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_traintimetable'
     model = TrainTimetable
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")

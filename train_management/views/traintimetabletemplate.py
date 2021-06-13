@@ -6,7 +6,7 @@ from train_management.models import TrainTimetableTemplate
 
 
 class TrainTimetableTemplateListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_traintimetabletemplate'
     context_object_name = "templates"
 
     def get_queryset(self):
@@ -14,7 +14,7 @@ class TrainTimetableTemplateListView(DvzoListView):
 
 
 class TrainTimetableTemplateUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_traintimetabletemplate'
     model = TrainTimetableTemplate
     form_class = TrainTimetableTemplateForm
     template_name_suffix = "_update_form"
@@ -24,7 +24,7 @@ class TrainTimetableTemplateUpdateView(DvzoUpdateView):
 
 
 class TrainTimetableTemplateCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_traintimetabletemplate'
     model = TrainTimetableTemplate
     form_class = TrainTimetableTemplateForm
     template_name_suffix = "_create_form"
@@ -34,7 +34,7 @@ class TrainTimetableTemplateCreateView(DvzoCreateView):
 
 
 class TrainTimetableTemplateDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_traintimetabletemplate'
     model = TrainTimetableTemplate
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("train-timetable-template-list")

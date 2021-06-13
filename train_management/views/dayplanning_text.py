@@ -7,7 +7,7 @@ from train_management.models import DayPlanning, DayPlanningText
 
 
 class DayPlanningTextUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_dayplanningtext'
     model = DayPlanningText
     form_class = DayPlanningTextForm
     template_name_suffix = "_update_form"
@@ -17,7 +17,7 @@ class DayPlanningTextUpdateView(DvzoUpdateView):
 
 
 class DayPlanningTextCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_dayplanningtext'
     model = DayPlanningText
     form_class = DayPlanningTextForm
     template_name_suffix = "_update_form"
@@ -40,7 +40,7 @@ class DayPlanningTextCreateView(DvzoCreateView):
 
 
 class DayPlanningTextDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_dayplanningtext'
     model = DayPlanningText
 
     def get(self, request, *args, **kwargs):

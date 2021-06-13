@@ -6,7 +6,7 @@ from train_management.models import Station
 
 
 class StationListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_station'
     context_object_name = "stations"
 
     def get_queryset(self):
@@ -14,7 +14,7 @@ class StationListView(DvzoListView):
 
 
 class StationUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_station'
     model = Station
     form_class = StationForm
     template_name_suffix = "_update_form"
@@ -24,7 +24,7 @@ class StationUpdateView(DvzoUpdateView):
 
 
 class StationCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_station'
     model = Station
     form_class = StationForm
     template_name_suffix = "_create_form"
@@ -34,7 +34,7 @@ class StationCreateView(DvzoCreateView):
 
 
 class StationDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_station'
     model = Station
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("station-list")

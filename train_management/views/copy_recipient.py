@@ -6,7 +6,7 @@ from train_management.models import CopyRecipient
 
 
 class CopyRecipientListView(DvzoListView):
-    permission_required = ''
+    permission_required = 'train_management.view_copyrecipient'
     context_object_name = "copy_recipients"
 
     def get_queryset(self):
@@ -14,7 +14,7 @@ class CopyRecipientListView(DvzoListView):
 
 
 class CopyRecipientUpdateView(DvzoUpdateView):
-    permission_required = ''
+    permission_required = 'train_management.change_copyrecipient'
     model = CopyRecipient
     form_class = CopyRecipientForm
     template_name_suffix = "_update_form"
@@ -24,7 +24,7 @@ class CopyRecipientUpdateView(DvzoUpdateView):
 
 
 class CopyRecipientCreateView(DvzoCreateView):
-    permission_required = ''
+    permission_required = 'train_management.add_copyrecipient'
     model = CopyRecipient
     form_class = CopyRecipientForm
     template_name_suffix = "_update_form"
@@ -34,7 +34,7 @@ class CopyRecipientCreateView(DvzoCreateView):
 
 
 class CopyRecipientDeleteView(DvzoDeleteView):
-    permission_required = ''
+    permission_required = 'train_management.delete_copyrecipient'
     model = CopyRecipient
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("copy-recipient-list")

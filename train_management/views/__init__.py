@@ -5,7 +5,6 @@ from train_management.views.dashboard import *  # noqa
 from train_management.views.dayplanning import *  # noqa
 from train_management.views.dayplanning_text import *  # noqa
 from train_management.views.dvzofunction import *  # noqa
-from train_management.views.pdf import *  # noqa
 from train_management.views.pdf_weasyprint import *  # noqa
 from train_management.views.personnel import *  # noqa
 from train_management.views.personnel_category import *  # noqa

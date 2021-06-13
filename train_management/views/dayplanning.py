@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -12,7 +13,8 @@ from train_management.models import (CopyRecipient, DayPlanning, DayPlanningText
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningListView(generic.ListView):
+class DayPlanningListView(PermissionRequiredMixin, generic.ListView):
+    permission_required = 'train_management.view_dayplanning'
     context_object_name = "day_plannings"
 
     def get_queryset(self):
@@ -20,7 +22,8 @@ class DayPlanningListView(generic.ListView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningBulletinView(generic.ListView):
+class DayPlanningBulletinView(PermissionRequiredMixin, generic.ListView):
+    permission_required = 'train_management.view_dayplanning'
     context_object_name = "day_plannings"
 
     def get_queryset(self):
@@ -29,7 +32,8 @@ class DayPlanningBulletinView(generic.ListView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningDetailView(generic.DetailView):
+class DayPlanningDetailView(PermissionRequiredMixin, generic.DetailView):
+    permission_required = 'train_management.view_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_detail_form"
@@ -70,7 +74,8 @@ class DayPlanningDetailView(generic.DetailView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningUpdateView(generic.UpdateView):
+class DayPlanningUpdateView(PermissionRequiredMixin, generic.UpdateView):
+    permission_required = 'train_management.change_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_update_form"
@@ -80,7 +85,8 @@ class DayPlanningUpdateView(generic.UpdateView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningCreateView(generic.CreateView):
+class DayPlanningCreateView(PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'train_management.add_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_create_form"
@@ -90,7 +96,8 @@ class DayPlanningCreateView(generic.CreateView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningRecipientView(generic.DetailView):
+class DayPlanningRecipientView(PermissionRequiredMixin, generic.DetailView):
+    permission_required = 'train_management.view_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_recipient_form"
@@ -111,14 +118,16 @@ class DayPlanningRecipientView(generic.DetailView):
 
 
 @method_decorator(login_required, name='dispatch')
-class DayPlanningDeleteView(generic.DeleteView):
+class DayPlanningDeleteView(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'train_management.delete_dayplanning'
     model = DayPlanning
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")
 
 
 @method_decorator(login_required, name='dispatch')
-class EditTrainFunctions(generic.View):
+class EditTrainFunctions(PermissionRequiredMixin, generic.View):
+    permission_required = 'train_management.change_dayplanning'
 
     def get(self, request, train_id, **kwargs):
         train = get_object_or_404(Train, pk=train_id)
@@ -153,7 +162,8 @@ class EditTrainFunctions(generic.View):
 
 
 @method_decorator(login_required, name='dispatch')
-class EditDayPlanningFunctions(generic.View):
+class EditDayPlanningFunctions(PermissionRequiredMixin, generic.View):
+    permission_required = 'train_management.change_dayplanning'
 
     def get(self, request, dayplanning_id, **kwargs):
         dayplanning = get_object_or_404(DayPlanning, pk=dayplanning_id)

@@ -16,14 +16,18 @@
               <i class="fas fa-list"></i>
               {% translate "app.back_list" %}
             </a>
+            {% if perms.train_management.change_dayplanning %}
             <a href="{% url 'briefing-pdf' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-print"></i>
               {% translate "template.dayplanning.briefing" %}
             </a>
+            {% endif %}
+            {% if perms.train_management.view_personnel %}
             <a href="{% url 'day-planning-recipients' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-users"></i>
               {% translate "template.dayplanning.recipients" %}
             </a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -113,14 +117,18 @@
       </div>
 
       <div class="dvzo-button-bottom mb-4">
+        {% if perms.train_management.change_dayplanning %}
         <a href="{% url 'day-planning-update' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
           {% translate "app.edit_master_data" %}
         </a>
+        {% endif %}
+        {% if perms.train_management.add_train %}
         <a href="{% url 'train-composition-create' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="fas fa-plus"></i>
           {% translate "template.dayplanning.add_train_tour" %}
         </a>
+        {% endif %}
       </div>
     </div>
 
@@ -139,8 +147,8 @@
                     <i class="fas fa-trash-alt text-danger"></i>
                   </a>&nbsp;
                   <a href="{% url 'day-planning-text-update' pk=dayplanning_text.id %}">
-                      <i class="far fa-edit"></i>
-                    </a>
+                    <i class="far fa-edit"></i>
+                  </a>
                 </td>
               </tr>
               {% endfor %}
@@ -151,11 +159,14 @@
       </div>
 
       <div class="dvzo-button-bottom mb-4">
+        {% if perms.train_management.add_dayplanning_text %}
         <a href="{% url 'day-planning-text-create' pk=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
           <i class="fas fa-plus"></i>
           {% translate "template.dayplanning.add_dayplanning_text" %}
         </a>
+        {% endif %}
       </div>
+      {% if perms.train_management.view_dvzofunction %}
       <div class="card my-2">
         <div class="card-body">
           <div class="card-title">{% translate "template.dayplanning.functions" %}</div>
@@ -186,15 +197,19 @@
         </div>
       </div>
       <div class="dvzo-button-bottom">
-        <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}" class="btn btn-primary btn-sm my-1 me-1">
+        {% if perms.train_management.change_functionpersons %}
+        <a href="{% url 'edit-dayplanning-functions' dayplanning_id=object.id %}"
+           class="btn btn-primary btn-sm my-1 me-1">
           <i class="far fa-edit"></i>
           {% translate "template.dayplanning.edit_functions" %}
         </a>
+        {% endif %}
       </div>
+      {% endif %}
     </div>
   </div>
 
-
+  {% if perms.train_management.view_train %}
   <div class="row row-cols-lg-2 gy-4">
     {% for train_data in trains_data %}
     {% with train=train_data.train %}
@@ -207,6 +222,7 @@
             {% include 'includes/train.html' %}<br><br>
             <b>{% translate "template.dayplanning.train.frequency" %}</b> {{ train.frequency }}<br>
 
+            {% if perms.train_management.view_dvzofunction %}
             <table class="table table-sm dvzo-25">
               <thead>
               <th>{% translate "template.dayplanning.functions.function" %}</th>
@@ -226,6 +242,7 @@
               {% endfor %}
               </tbody>
             </table>
+            {% endif %}
 
             {% if train.traintimetable_set.all|length %}
             <table class="table table-sm dvzo-25">
@@ -254,15 +271,21 @@
                 </td>
                 <td>{{ traintimetable.frequency }}</td>
                 <td>
+                  {% if perms.train_management.delete_traintimetable %}
                   <a href="{% url 'train-timetable-delete' pk=traintimetable.id %}">
                     <i class="fas fa-trash-alt text-danger"></i>
-                  </a>&nbsp;
+                  </a>
+                  {% endif %}
+                  {% if perms.train_management.change_traintimetable %}
                   <a href="{% url 'train-timetable-update' pk=traintimetable.id %}">
                     <i class="far fa-edit"></i>
                   </a>
+                  {% endif %}
+                  {% if perms.train_management.add_reservation %}
                   <a href="{% url 'reservation-create' pk=traintimetable.id %}">
                     +Res
                   </a>
+                  {% endif %}
                 </td>
               </tr>
               {% endfor %}
@@ -279,38 +302,44 @@
         </div>
       </div>
 
-        <div class="dvzo-button-bottom">
-          <a href="{% url 'train-composition-update' pk=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
-            <i class="far fa-edit"></i>
-            {% translate "template.dayplanning.train.edit_formation" %}
-          </a>
+      <div class="dvzo-button-bottom">
+        {% if perms.train_management.change_train %}
+        <a href="{% url 'train-composition-update' pk=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
+          <i class="far fa-edit"></i>
+          {% translate "template.dayplanning.train.edit_formation" %}
+        </a>
+        {% endif %}
 
-          <a href="{% url 'edit-train-functions' train_id=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
-            <i class="far fa-edit"></i>
-            {% translate "template.dayplanning.train.edit_functions" %}
-          </a>
+        {% if perms.train_management.change_functionpersons %}
+        <a href="{% url 'edit-train-functions' train_id=train.id %}" class="btn btn-primary btn-sm my-1 me-1">
+          <i class="far fa-edit"></i>
+          {% translate "template.dayplanning.train.edit_functions" %}
+        </a>
+        {% endif %}
 
-          <div class="btn-group my-1 me-1">
-            <a href="{% url 'train-timetable-create' pk=train.id %}" class="btn btn-primary btn-sm">
-              <i class="far fa-edit"></i>
-              {% translate "template.dayplanning.train.add_schedule" %}
-            </a>
-            <button type="button"
-                    class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item disabled"
-                   href="{% url 'train-timetable-template-list' %}?train={{ train.id }}&active=True">
-                  <i class="far fa-id-card"></i>
-                  {% translate "template.dayplanning.train.add_from_template" %}
-                </a>
-              </li>
-            </ul>
+        {% if perms.train_management.add_traintimetable %}
+        <div class="btn-group my-1 me-1">
+          <a href="{% url 'train-timetable-create' pk=train.id %}" class="btn btn-primary btn-sm">
+            <i class="far fa-edit"></i>
+            {% translate "template.dayplanning.train.add_schedule" %}
+          </a>
+          <button type="button"
+                  class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item disabled"
+                 href="{% url 'train-timetable-template-list' %}?train={{ train.id }}&active=True">
+                <i class="far fa-id-card"></i>
+                {% translate "template.dayplanning.train.add_from_template" %}
+              </a>
+            </li>
+          </ul>
         </div>
+        {% endif %}
 
       </div>
     </div>
@@ -318,7 +347,9 @@
     {% empty %}
     {% endfor %}
   </div>
+  {% endif %}
 
+  {% if perms.train_management.view_reservation %}
   <div class="row">
     <div class="col">
       <div class="card my-2">
@@ -371,6 +402,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </div>
 
 {% endblock content %}

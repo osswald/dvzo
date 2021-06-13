@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
@@ -24,6 +25,9 @@ class DayPlanningForm(BootstrapTapeformMixin, ModelForm):
                   'booking_status',
                   'comment'
                   ]
+    date = forms.DateField(
+        widget=forms.DateInput(format='%Y-%m-%d')
+    )
 
 
 class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):

@@ -1,18 +1,20 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import dateformat, formats
-from django.views import View
 
+from dvzo.views import DvzoView
 from train_management.models import Availability, Vehicle
 
 
-class Calendar(View):
+class Calendar(DvzoView):
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
 
         return render(request, "train_management/calendar.html")
 
 
-class CalendarAvailabilityData(View):
+class CalendarAvailabilityData(DvzoView):
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
         availabilities_out = []
         availabilites = Availability.objects.all()
@@ -42,7 +44,8 @@ class CalendarAvailabilityData(View):
         return JsonResponse(availabilities_out, safe=False)
 
 
-class CalendarResourceData(View):
+class CalendarResourceData(DvzoView):
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
         resources_out = []
         resources = Vehicle.objects.all()

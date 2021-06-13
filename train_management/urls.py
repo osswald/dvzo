@@ -18,7 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
+    path('', views.Dashboard.as_view(), name='dashboard'),
     path('frequency-chart/', views.FrequencyChartData.as_view(), name='frequency-chart'),
 
     path('calendar/', views.Calendar.as_view(), name='calendar'),

@@ -54,12 +54,16 @@
                   <td>{{ template.destination_station }}</td>
                   <td>{{ template.destination_time }}</td>
                   <td>
+                    {% if perms.train_management.delete_traintimetabletemplate %}
                     <a href="{% url 'train-timetable-template-delete' pk=template.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
-                    </a>&nbsp;
+                    </a>
+                    {% endif %}
+                    {% if perms.train_management.change_traintimetabletemplate %}
                     <a href="{% url 'train-timetable-template-detail' pk=template.id %}">
                       <i class="far fa-edit"></i>
                     </a>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -69,10 +73,12 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_traintimetabletemplate %}
           <a href="{% url 'train-timetable-template-create' %}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
             {% translate "template.train_timetable_template.add" %}
           </a>
+          {% endif %}
           <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
         </div>
       </div>

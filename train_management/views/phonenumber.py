@@ -1,23 +1,20 @@
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
-from django.views.generic import TemplateView
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView, DvzoView
 from train_management.forms import PhoneNumberForm
 from train_management.models import Personnel, PhoneNumber
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberListView(generic.ListView):
+class PhoneNumberListView(DvzoListView):
+    permission_required = 'train_management.view_phonenumber'
     context_object_name = "phone_numbers"
 
     def get_queryset(self):
         return PhoneNumber.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberUpdateView(generic.UpdateView):
+class PhoneNumberUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_phonenumber'
     model = PhoneNumber
     form_class = PhoneNumberForm
     template_name_suffix = "_update_form"
@@ -26,8 +23,8 @@ class PhoneNumberUpdateView(generic.UpdateView):
         return reverse_lazy("phone-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberCreateView(generic.CreateView):
+class PhoneNumberCreateView(DvzoCreateView):
+    permission_required = 'train_management.add_phonenumber'
     model = PhoneNumber
     form_class = PhoneNumberForm
     template_name_suffix = "_create_form"
@@ -36,20 +33,20 @@ class PhoneNumberCreateView(generic.CreateView):
         return reverse_lazy("phone-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberDeleteView(generic.DeleteView):
+class PhoneNumberDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_phonenumber'
     model = PhoneNumber
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("phone-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberOverview(TemplateView):
+class PhoneNumberOverview(DvzoView):
+    permission_required = ''
     template_name = "train_management/phonenumber_overview.html"
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberDetail(generic.ListView):
+class PhoneNumberDetail(DvzoListView):
+    permission_required = ''
 
     def get_queryset(self):
         return PhoneNumber.objects.filter(phone_number_type=self.request.GET['type']).order_by("label")
@@ -57,8 +54,8 @@ class PhoneNumberDetail(generic.ListView):
     context_object_name = "phone_numbers"
 
 
-@method_decorator(login_required, name='dispatch')
-class PhoneNumberMemberList(generic.ListView):
+class PhoneNumberMemberList(DvzoListView):
+    permission_required = ''
     queryset = Personnel.objects.filter(status="active", mobile_phone_public="yes")\
         .exclude(mobile_phone="").order_by("user__last_name")
     template_name = "train_management/phonenumber_member.html"

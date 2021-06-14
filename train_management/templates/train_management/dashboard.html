@@ -17,7 +17,7 @@
             <div class="card-title">Nächste Fahrsonntage</div>
             <div class="card-text">
               {% if next_sundays|length %}
-              <table>
+              <table class="table-dashboard">
                 {% for next_sunday in next_sundays %}
                 <tr>
                   <td class="pe-2">{{ next_sunday.date }}</td>
@@ -39,7 +39,7 @@
             <div class="card-title">Nächste Extrafahrten</div>
             <div class="card-text">
               {% if next_extras|length %}
-              <table>
+              <table class="table-dashboard">
                 {% for next_extra in next_extras %}
                 <tr>
                   <td class="pe-2">{{ next_extra.date }}</td>
@@ -62,7 +62,7 @@
             <div class="card-title">Andere Fahrten</div>
             <div class="card-text">
               {% if next_others|length %}
-              <table>
+              <table class="table-dashboard">
                 {% for next_other in next_others %}
                 <tr>
                   <td class="pe-2">{{ next_other.date }}</td>
@@ -99,7 +99,7 @@
             <div class="card-title">Fehlende Einteilung</div>
             <div class="card-text">
               {% if personnel_missing|length %}
-              <table>
+              <table class="table-dashboard">
                 {% for dayplanning_personnel in personnel_missing %}
                 <tr>
                   <td class="pe-2">{{ dayplanning_personnel.date }}</td>
@@ -123,7 +123,7 @@
             <div class="card-title">Fehlende Trassenbestellung</div>
             <div class="card-text">
               {% if slot_missing|length %}
-              <table>
+              <table class="table-dashboard">
                 {% for dayplanning_slot in slot_missing %}
                 <tr>
                   <td class="pe-2">{{ dayplanning_slot.date }}</td>
@@ -152,11 +152,22 @@
             <div class="card-text">
               <ul>
                 <li>
-                  Erstellen und bearbeiten von <a href="{% url 'day-planning-list' %}">Tagesplanungen.</a>
+                  Personal:
                   <ul>
-                    <li>Züge können mit Formation hinzugefügt und bearbeitet werden.</li>
-                    <li>Funktionen können hinzugefügt und bearbeitet werden.</li>
-                    <li>Das Briefing kann erstellt werden.</li>
+                    <li>Personal kann Gruppen zugeordnet werden. Die Gruppen geben im System Berechtigungen.</li>
+                    <li>Personal kann Kategorien zugeordnet werden. Dies erleichtert zu sehen, welche Personen welche Funktionen einnehmen können.</li>
+                  </ul>
+                </li>
+                <li>
+                  Bulletin:
+                  <ul>
+                    <li>Das Bulletin kann ab Tagesplanung ausgegeben werden.</li>
+                  </ul>
+                </li>
+                <li>
+                  Bugfix:
+                  <ul>
+                    <li>Beim Bearbeiten einer Tagesplanung bleibt das Datum drin.</li>
                   </ul>
                 </li>
               </ul>

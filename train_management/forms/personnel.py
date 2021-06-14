@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib.auth import get_user_model
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin

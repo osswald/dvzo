@@ -15,12 +15,7 @@ class PersonnelForm(BootstrapTapeformMixin, ModelForm):
                   'status',
                   'mobile_phone',
                   'mobile_phone_public',
-                  'date_of_birth'
                   ]
-
-    date_of_birth = forms.DateField(
-        widget=forms.DateInput(format='%Y-%m-%d')
-    )
 
 
 class UserForm(BootstrapTapeformMixin, ModelForm):

@@ -53,6 +53,15 @@ p {
   }
 }
 
+table.table-dashboard {
+  tr {
+    td {
+      vertical-align: top;
+      white-space: nowrap;
+    }
+  }
+}
+
 tbody a {
   text-decoration: none;
 }

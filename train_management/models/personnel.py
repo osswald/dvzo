@@ -27,7 +27,6 @@ class Personnel(AbstractDvzoModel):
                               max_length=80, choices=PersonnelStatus.choices)
     mobile_phone_public = models.CharField(_("personnel.personnel_mobile_public"), max_length=80,
                                            choices=PersonnelMobilePublic.choices, default=PersonnelMobilePublic.UNKNOWN)
-    date_of_birth = models.DateField(_("personnel.date_of_birth"), null=True, blank=True)
     category = models.ManyToManyField(PersonnelCategory, blank=True)
 
     def __str__(self):

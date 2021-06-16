@@ -55,6 +55,8 @@
               </tr>
               </tbody>
             </table>
+            <b>{% translate "dayplanning.post_mortem" %}:</b>
+            <p>{{object.post_mortem|truncatewords:20}}</p>
           </div>
         </div>
       </div>
@@ -108,6 +110,10 @@
               <tr>
                 <th>{% translate "dayplanning.paid" %}</th>
                 <td>{{object.get_paid_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "dayplanning.comment" %}</th>
+                <td>{{object.comment}}</td>
               </tr>
               </tbody>
             </table>

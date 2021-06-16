@@ -21,7 +21,9 @@
               <div class="card-title">{{ fieldset.extra.title }}</div>
               <div class="card-text">{% form fieldset %}</div>
             </div>
+            {% if forloop.last %}
             {% include 'includes/card_footer.html' %}
+            {% endif %}
           </div>
           {% endfor %}
           <div class="dvzo-buttons-bottom">

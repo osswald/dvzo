@@ -51,7 +51,6 @@ class DayPlanning(AbstractDvzoModel):
     status = models.CharField(_("dayplanning.status"), max_length=80, choices=DayPlanningStatus.choices)
     paid = models.TextField(_("dayplanning.paid"), max_length=80, choices=DayPlanningPaid.choices,
                             default=DayPlanningPaid.NOT_APPLICABLE)
-    text = models.TextField(_("dayplanning.text"), max_length=5000, blank=True)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="dayplanning")
     slot_ordered = models.CharField(_("slot ordered"), max_length=80, choices=DayPlanningSlot.choices,
                                     default=DayPlanningSlot.NOT_APPLICABLE)
@@ -64,6 +63,7 @@ class DayPlanning(AbstractDvzoModel):
                                       choices=DayPlanningBookingStatus.choices,
                                       default=DayPlanningBookingStatus.NOT_APPLICABLE)
     comment = models.TextField(_("dayplanning.comment"), blank=True)
+    post_mortem = models.TextField(_("dayplanning.post_mortem"), blank=True)
 
     def __str__(self):
         return self.label

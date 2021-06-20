@@ -17,13 +17,13 @@ class DayPlanningForm(BootstrapTapeformMixin, ModelForm):
                   'day_planning_type',
                   'status',
                   'paid',
-                  'text',
                   'slot_ordered',
                   'personnel_disposition',
                   'customers',
                   'price',
                   'booking_status',
-                  'comment'
+                  'comment',
+                  'post_mortem'
                   ]
     date = forms.DateField(
         widget=forms.DateInput(format='%Y-%m-%d')
@@ -42,7 +42,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'date',
                 'day_planning_type',
                 'status',
-                'text'),
+                'post_mortem'),
         }, {
             'extra': {
                 'title': _("form.dayplanning.planning"),
@@ -60,5 +60,6 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'booking_status',
                 'customers',
                 'price',
-                'paid'),
+                'paid',
+                'comment'),
         })

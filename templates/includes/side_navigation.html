@@ -58,11 +58,13 @@
                 {% translate "side_navigation.calendar" %}
               </a>
             </li>
+            {% if perms.train_management.view_dayplanning %}
             <li>
               <a class="link-light rounded" href="{% url 'day-planning-list' %}">
                 {% translate "side_navigation.dayplanning" %}
               </a>
             </li>
+            {% endif %}
             <li>
               <a class="link-light rounded" href="{% url 'reservation-list' %}">
                 {% translate "side_navigation.reservations" %}
@@ -72,7 +74,7 @@
         </div>
       </li>
 
-
+      {% if perms.train_management.view_personnel %}
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                 data-bs-target="#personnel-collapse" aria-expanded="true">
@@ -103,7 +105,7 @@
           </ul>
         </div>
       </li>
-
+      {% endif %}
 
       <li class="border-top my-3"></li>
 
@@ -115,6 +117,7 @@
         </button>
         <div class="collapse show" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            {% if perms.train_management.view_vehicle %}
             <li>
               <a class="link-light rounded" href="{% url 'engine-list' %}">
                 {% translate "side_navigation.engines" %}
@@ -125,30 +128,41 @@
                 {% translate "side_navigation.carriages" %}
               </a>
             </li>
+            {% endif %}
+            {% if perms.train_management.view_station %}
             <li>
               <a class="link-light rounded" href="{% url 'station-list' %}">
                 {% translate "side_navigation.stations" %}</a>
             </li>
+            {% endif %}
+            {% if perms.train_management.view_personnel_category %}
             <li>
               <a class="link-light rounded" href="{% url 'personnel-category-list' %}">
                 {% translate "side_navigation.personnel_category" %}
               </a>
             </li>
+            {% endif %}
+            {% if perms.train_management.view_dvzofunction %}
             <li>
               <a class="link-light rounded" href="{% url 'function-list' %}">
                 {% translate "side_navigation.functions" %}
               </a>
             </li>
+            {% endif %}
+            {% if perms.train_management.view_phonenumber %}
             <li>
               <a class="link-light rounded" href="{% url 'phone-list' %}">
                 {% translate "side_navigation.phone_numbers" %}
               </a>
             </li>
+            {% endif %}
+            {% if perms.train_management.view_traintimetabletemplate %}
             <li>
               <a class="link-light rounded" href="{% url 'train-timetable-template-list' %}">
                 {% translate "side_navigation.train_timetable_templates" %}
               </a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </li>

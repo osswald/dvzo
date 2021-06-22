@@ -35,6 +35,7 @@
                   <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
                   <th data-field="last_name" data-sortable="true">{% translate "personnel.lastname" %}</th>
                   <th data-field="first_name" data-sortable="true">{% translate "personnel.firstname" %}</th>
+                  <th data-field="category" data-sortable="true">{% translate "personnel.category" %}</th>
                   <th data-field="status" data-sortable="true">{% translate "personnel.status" %}</th>
                   <th data-field="email" data-sortable="true">{% translate "personnel.email" %}</th>
                   <th data-field="mobile_phone" data-sortable="false">{% translate "personnel.mobile_phone" %}</th>
@@ -49,6 +50,11 @@
                   <td>{{ personnel.last_name }}</td>
                   <td>{{ personnel.first_name }}</td>
                   <td>
+                    {% for category in personnel.category.all %}
+                    {% include 'includes/personnel_category_type.html' with output=category.label %}
+                    {% endfor %}
+                  </td>
+                  <td>
                     {% if personnel.status == "active" %}
                     <span class="badge bg-success">{{ personnel.get_status_display }}</span>
                     {% elif personnel.status == "inactive" %}
@@ -60,12 +66,16 @@
                   <td>{{ personnel.email }}</td>
                   <td>{{ personnel.mobile_phone.as_national }}</td>
                   <td>
+                    {% if perms.train_management.delete_personnel %}
                     <a href="{% url 'personnel-delete' pk=personnel.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
-                    </a>&nbsp;
+                    </a>
+                    {% endif %}
+                    {% if perms.train_management.change_personnel %}
                     <a href="{% url 'personnel-detail' pk=personnel.id %}">
                       <i class="far fa-edit"></i>
                     </a>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -75,10 +85,12 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_personnel %}
           <a href="{% url 'personnel-create' %}" class="btn btn-primary btn-sm my-1 me-1">
             <i class="fas fa-plus"></i>
             {% translate "template.personnel.add" %}
           </a>
+          {% endif %}
           <button id="daySelectionBtn" class="btn btn-secondary btn-sm my-1 me-1 disabled">tmpGetSelections</button>
         </div>
       </div>

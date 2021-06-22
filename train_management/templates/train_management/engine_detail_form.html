@@ -12,7 +12,7 @@
       <div class="card my-2">
         <div class="card-body">
           <div class="card-text">
-            <a href='{% url "carriage-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+            <a href='{% url "engine-list" %}' class="btn btn-primary btn-sm my-1 me-1">
               <i class="fas fa-list"></i>
               {% translate "Back to list" %}
             </a>
@@ -122,14 +122,18 @@
 
 
   <div class="dvzo-button-bottom mb-4">
+    {% if perms.train_management.change_vehicle %}
     <a href='{% url "engine-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
       <i class="far fa-edit"></i>
       {% translate "Edit" %}
     </a>
+    {% endif %}
+    {% if perms.train_management.add_availability %}
     <a href='{% url "availability-engine-create" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
       <i class="far fa-edit"></i>
       {% translate "Add availability" %}
     </a>
+    {% endif %}
   </div>
 
 

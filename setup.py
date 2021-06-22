@@ -14,7 +14,6 @@ REQUIRED = [
     'weasyprint==52.5',  # use specific version of weasyprint since the following version is broken.
     'gunicorn',
     'django-compressor',
-    'django_tex',
     'Django',
     'python-dotenv',
     'psycopg2-binary',

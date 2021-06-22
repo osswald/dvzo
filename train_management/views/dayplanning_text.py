@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoUpdateView
 from train_management.forms import DayPlanningTextForm
 from train_management.models import DayPlanning, DayPlanningText
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningTextUpdateView(generic.UpdateView):
+class DayPlanningTextUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_dayplanningtext'
     model = DayPlanningText
     form_class = DayPlanningTextForm
     template_name_suffix = "_update_form"
@@ -18,8 +16,8 @@ class DayPlanningTextUpdateView(generic.UpdateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.dayplanning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningTextCreateView(generic.CreateView):
+class DayPlanningTextCreateView(DvzoCreateView):
+    permission_required = 'train_management.add_dayplanningtext'
     model = DayPlanningText
     form_class = DayPlanningTextForm
     template_name_suffix = "_update_form"
@@ -41,9 +39,8 @@ class DayPlanningTextCreateView(generic.CreateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.dayplanning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(permission_required('delete_dayplanning_text', raise_exception=True), name='dispatch')
-class DayPlanningTextDeleteView(generic.DeleteView):
+class DayPlanningTextDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_dayplanningtext'
     model = DayPlanningText
 
     def get(self, request, *args, **kwargs):

@@ -44,6 +44,16 @@ class DayPlanning(AbstractDvzoModel):
         CANCELLED_CUSTOMER = "cancelled_customer", _("dayplanning.booking_status.cancelled_customer")
         NOT_APPLICABLE = "not_applicable", _("dayplanning.booking_status.not_applicable")
 
+    class DayPlanningEnginePlanningStatus(models.TextChoices):
+        OPEN = "open", _("dayplanning.vehicle_planning_status.open")
+        ASKED = "asked", _("dayplanning.vehicle_planning_status.asked")
+        OK = "ok", _("dayplanning.vehicle_planning_status.ok")
+
+    class DayPlanningCarriagePlanningStatus(models.TextChoices):
+        OPEN = "open", _("dayplanning.vehicle_planning_status.open")
+        ASKED = "asked", _("dayplanning.vehicle_planning_status.asked")
+        OK = "ok", _("dayplanning.vehicle_planning_status.ok")
+
     label = models.CharField(_("dayplanning.label"), max_length=200)
     day_planning_type = models.CharField(_("dayplanning.day_planning_type"), max_length=80,
                                          choices=DayPlanningType.choices)
@@ -51,7 +61,6 @@ class DayPlanning(AbstractDvzoModel):
     status = models.CharField(_("dayplanning.status"), max_length=80, choices=DayPlanningStatus.choices)
     paid = models.TextField(_("dayplanning.paid"), max_length=80, choices=DayPlanningPaid.choices,
                             default=DayPlanningPaid.NOT_APPLICABLE)
-    text = models.TextField(_("dayplanning.text"), max_length=5000, blank=True)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="dayplanning")
     slot_ordered = models.CharField(_("slot ordered"), max_length=80, choices=DayPlanningSlot.choices,
                                     default=DayPlanningSlot.NOT_APPLICABLE)
@@ -64,6 +73,13 @@ class DayPlanning(AbstractDvzoModel):
                                       choices=DayPlanningBookingStatus.choices,
                                       default=DayPlanningBookingStatus.NOT_APPLICABLE)
     comment = models.TextField(_("dayplanning.comment"), blank=True)
+    post_mortem = models.TextField(_("dayplanning.post_mortem"), blank=True)
+    engine_planning_status = models.CharField(_("dayplanning.engine_planning_status"), max_length=80,
+                                              choices=DayPlanningEnginePlanningStatus.choices,
+                                              default=DayPlanningEnginePlanningStatus.OPEN)
+    carriage_planning_status = models.CharField(_("dayplanning.carriage_planning_status"), max_length=80,
+                                                choices=DayPlanningCarriagePlanningStatus.choices,
+                                                default=DayPlanningCarriagePlanningStatus.OPEN)
 
     def __str__(self):
         return self.label

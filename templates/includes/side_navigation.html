@@ -1,55 +1,175 @@
 {% load i18n %}
 
-<a href="javascript:void(0)" class="open-close-btn close-btn" onclick="closeNav()">
-  <i class="fas fa-window-close"></i>
-  {% translate "side_navigation.close" %}
-</a>
-<a href="{% url 'dashboard' %}">
-  <i class="fas fa-home"></i>
-  {% translate "side_navigation.home" %}
-</a>
-<a href="{% url 'calendar' %}">
-  <i class="fas fa-calendar"></i>
-  {% translate "side_navigation.calendar" %}
-</a>
-{% if perms.train_management.view_dayplanning %}
-<a href="{% url 'day-planning-list' %}">
-  <i class="fas fa-clipboard-list"></i>
-  {% translate "side_navigation.dayplanning" %}
-</a>
-{% endif %}
-<a href="{% url 'engine-list' %}">
-  <i class="fas fa-subway"></i>
-  {% translate "side_navigation.engines" %}
-</a>
-<a href="{% url 'carriage-list' %}">
-  <i class="fas fa-subway"></i>
-  {% translate "side_navigation.carriages" %}
-</a>
-<a href="{% url 'personnel-list' %}">
-  <i class="fas fa-user"></i>
-  {% translate "side_navigation.personnel" %}
-</a>
-<a href="{% url 'copy-recipient-list' %}">
-  <i class="fas fa-user"></i>
-  {% translate "side_navigation.copy_recipient" %}
-</a>
-<a href="{% url 'function-list' %}">
-  <i class="fas fa-building"></i>
-  {% translate "side_navigation.functions" %}
-</a>
-<a href="{% url 'reservation-list' %}">
-  <i class="fab fa-tiktok"></i>
-  {% translate "side_navigation.reservations" %}
-</a>
-<a href="{% url 'phone-list' %}">
-  <i class="fas fa-phone"></i>
-  {% translate "side_navigation.phone_numbers" %}
-</a>
-<a href="{% url 'station-list' %}">
-  <i class="fas fa-house-user"></i>
-  {% translate "side_navigation.stations" %}</a>
-<a href="{% url 'train-timetable-template-list' %}">
-  <i class="fas fa-clock"></i>
-  {% translate "side_navigation.train_timetable_templates" %}
-</a>
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark text-white sidebar collapse">
+  <div class="position-sticky pt-3">
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse"
+                data-bs-target="#user-collapse" aria-expanded="true">
+          <i class="far fa-user"></i>
+          {{ user.first_name }} {{ user.last_name }}
+        </button>
+        <div class="collapse show" id="user-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="{% url 'phonenumber-list' %}">
+                {% translate "side_nav.phone_numbers" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.my_bookings" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.frequencies" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-secondary rounded" href="#">
+                {% translate "side_nav.profile" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-light rounded" href="{% url 'logout' %}">
+                {% translate "side_nav.logout" %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#planning-collapse" aria-expanded="true">
+          {% translate "side_nav.production_planning" %}
+        </button>
+        <div class="collapse show" id="planning-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            <li>
+              <a class="link-light rounded" href="{% url 'dashboard' %}">
+                {% translate "side_navigation.home" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-light rounded" href="{% url 'calendar' %}">
+                {% translate "side_navigation.calendar" %}
+              </a>
+            </li>
+            {% if perms.train_management.view_dayplanning %}
+            <li>
+              <a class="link-light rounded" href="{% url 'day-planning-list' %}">
+                {% translate "side_navigation.dayplanning" %}
+              </a>
+            </li>
+            {% endif %}
+            <li>
+              <a class="link-light rounded" href="{% url 'reservation-list' %}">
+                {% translate "side_navigation.reservations" %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      {% if perms.train_management.view_personnel %}
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#personnel-collapse" aria-expanded="true">
+          {% translate "side_navigation.personnel" %}
+        </button>
+        <div class="collapse show" id="personnel-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            <li>
+              <a class="link-light rounded" href="{% url 'personnel-list' %}">
+                {% translate "side_navigation.personnel" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-light rounded" href="{% url 'copy-recipient-list' %}">
+                {% translate "side_navigation.copy_recipient" %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% endif %}
+
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#orders-collapse" aria-expanded="true">
+          {% translate "side_navigation.uniforms" %}
+        </button>
+        <div class="collapse show" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="border-top my-3"></li>
+
+
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#account-collapse" aria-expanded="true">
+          {% translate "side_navigation.settings" %}
+        </button>
+        <div class="collapse show" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            {% if perms.train_management.view_vehicle %}
+            <li>
+              <a class="link-light rounded" href="{% url 'engine-list' %}">
+                {% translate "side_navigation.engines" %}
+              </a>
+            </li>
+            <li>
+              <a class="link-light rounded" href="{% url 'carriage-list' %}">
+                {% translate "side_navigation.carriages" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.train_management.view_station %}
+            <li>
+              <a class="link-light rounded" href="{% url 'station-list' %}">
+                {% translate "side_navigation.stations" %}</a>
+            </li>
+            {% endif %}
+            {% if perms.train_management.view_personnel_category %}
+            <li>
+              <a class="link-light rounded" href="{% url 'personnel-category-list' %}">
+                {% translate "side_navigation.personnel_category" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.train_management.view_dvzofunction %}
+            <li>
+              <a class="link-light rounded" href="{% url 'function-list' %}">
+                {% translate "side_navigation.functions" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.train_management.view_phonenumber %}
+            <li>
+              <a class="link-light rounded" href="{% url 'phone-list' %}">
+                {% translate "side_navigation.phone_numbers" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.train_management.view_traintimetabletemplate %}
+            <li>
+              <a class="link-light rounded" href="{% url 'train-timetable-template-list' %}">
+                {% translate "side_navigation.train_timetable_templates" %}
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>

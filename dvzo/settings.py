@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_tex',
     'phonenumber_field',
     'tapeforms',
     'compressor',
@@ -50,6 +49,8 @@ MIDDLEWARE = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGOUT_REDIRECT_URL = '/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
@@ -74,17 +75,8 @@ TEMPLATES = [
             ],
         },
     },
-    {
-        'NAME': 'tex',
-        'BACKEND': 'django_tex.engine.TeXEngine',
-        'APP_DIRS': True,
-    },
-]
 
-# django_tex resources
-LATEX_INTERPRETER = 'pdflatex'
-ASSET_DIR = BASE_DIR / 'static/assets'
-LATEX_GRAPHICSPATH = [ASSET_DIR.as_posix()]
+]
 
 WSGI_APPLICATION = 'dvzo.wsgi.application'
 

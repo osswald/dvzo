@@ -1,45 +1,15 @@
 {% load i18n %}
 
-<div class="btn-group" role="group">
-  <button id="topnavDropdown"
-          type="button"
-          class="btn btn-light dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false">
-    <i class="far fa-user"></i>
-    {{ user.first_name }} {{ user.last_name }}
+<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand bg-light col-md-3 col-lg-2 me-0 px-3" href="#">DVZO.app</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed"
+          type="button" data-bs-toggle="collapse"
+          data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="topnavDropdown">
-    <li>
-      <a class="dropdown-item" href="{% url 'phonenumber-list' %}">
-        <i class="fas fa-phone"></i>
-        {% translate "top_nav.phone_numbers" %}
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item" href="#">
-        <i class="fas fa-calendar-alt"></i>
-        {% translate "top_nav.my_bookings" %}
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item" href="#">
-        <i class="fas fa-chart-area"></i>
-        {% translate "top_nav.frequencies" %}
-      </a>
-    </li>
-    <li><hr class="dropdown-divider"></li>
-    <li>
-      <a class="dropdown-item" href="#">
-        <i class="far fa-id-card"></i>
-        {% translate "top_nav.profile" %}
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item" href="{% url 'logout' %}">
-        <i class="fas fa-sign-out-alt"></i>
-        {% translate "top_nav.logout" %}
-      </a>
-    </li>
-  </ul>
-</div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+    </div>
+  </div>
+</header>

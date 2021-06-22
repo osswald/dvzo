@@ -1,14 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 13:11+0200\n"
+"POT-Creation-Date: 2021-06-11 16:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,74 +19,86 @@ msgstr "DVZO.app - "
 msgid "app.title.placeholder"
 msgstr ""
 
-#: includes/side_navigation.html:5
-msgid "side_navigation.close"
-msgstr "Schliessen"
+#: includes/side_navigation.html:16
+msgid "side_nav.phone_numbers"
+msgstr "Telefonnummern"
 
-#: includes/side_navigation.html:9
+#: includes/side_navigation.html:21
+msgid "side_nav.my_bookings"
+msgstr "Meine Einsätze"
+
+#: includes/side_navigation.html:26
+msgid "side_nav.frequencies"
+msgstr "Frequenzen"
+
+#: includes/side_navigation.html:31
+msgid "side_nav.profile"
+msgstr "Profil"
+
+#: includes/side_navigation.html:36
+msgid "side_nav.logout"
+msgstr "Logout"
+
+#: includes/side_navigation.html:47
+msgid "side_nav.production_planning"
+msgstr "Betriebsplanung"
+
+#: includes/side_navigation.html:53
 msgid "side_navigation.home"
 msgstr "Home"
 
-#: includes/side_navigation.html:13
+#: includes/side_navigation.html:58
 msgid "side_navigation.calendar"
 msgstr "Kalender"
 
-#: includes/side_navigation.html:18
+#: includes/side_navigation.html:63
 msgid "side_navigation.dayplanning"
 msgstr "Tagesplanung"
 
-#: includes/side_navigation.html:23
-msgid "side_navigation.engines"
-msgstr "Triebfahrzeuge"
-
-#: includes/side_navigation.html:27
-msgid "side_navigation.carriages"
-msgstr "Wagen"
-
-#: includes/side_navigation.html:31
-msgid "side_navigation.personnel"
-msgstr "Personal"
-
-#: includes/side_navigation.html:35
-msgid "side_navigation.copy_recipient"
-msgstr "Empfänger CC"
-
-#: includes/side_navigation.html:39
-msgid "side_navigation.functions"
-msgstr "Funktionen"
-
-#: includes/side_navigation.html:43
+#: includes/side_navigation.html:68
 msgid "side_navigation.reservations"
 msgstr "Reservationen"
 
-#: includes/side_navigation.html:47
-msgid "side_navigation.phone_numbers"
-msgstr "Telefonnummern"
+#: includes/side_navigation.html:79 includes/side_navigation.html:85
+msgid "side_navigation.personnel"
+msgstr "Personal"
 
-#: includes/side_navigation.html:51
+#: includes/side_navigation.html:90
+msgid "side_navigation.copy_recipient"
+msgstr "Empfänger CC"
+
+#: includes/side_navigation.html:99
+msgid "side_navigation.uniforms"
+msgstr "Uniformen"
+
+#: includes/side_navigation.html:114
+msgid "side_navigation.settings"
+msgstr "Stammdaten"
+
+#: includes/side_navigation.html:120
+msgid "side_navigation.engines"
+msgstr "Triebfahrzeuge"
+
+#: includes/side_navigation.html:125
+msgid "side_navigation.carriages"
+msgstr "Wagen"
+
+#: includes/side_navigation.html:130
 msgid "side_navigation.stations"
 msgstr "Betriebspunkte"
 
-#: includes/side_navigation.html:54
-msgid "side_navigation.train_timetable_templates"
-msgstr "Fahrten-Vorlagen"
+#: includes/side_navigation.html:134
+msgid "side_navigation.personnel_category"
+msgstr "Personal-Kategorie"
 
-#: includes/top_navigation.html:16
-msgid "top_nav.phone_numbers"
+#: includes/side_navigation.html:139
+msgid "side_navigation.functions"
+msgstr "Funktionen"
+
+#: includes/side_navigation.html:144
+msgid "side_navigation.phone_numbers"
 msgstr "Telefonnummern"
 
-#: includes/top_navigation.html:22
-msgid "top_nav.my_bookings"
-msgstr "Meine Einsätze"
-
-#: includes/top_navigation.html:28
-msgid "top_nav.frequencies"
-msgstr "Frequenzen"
-
-#: includes/top_navigation.html:35
-msgid "top_nav.profile"
-msgstr "Profil"
-
-#: includes/top_navigation.html:41
-msgid "top_nav.logout"
-msgstr "Logout"
+#: includes/side_navigation.html:149
+msgid "side_navigation.train_timetable_templates"
+msgstr "Fahrten-Vorlagen"

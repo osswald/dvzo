@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
 from train_management.forms import PersonnelForm, UserForm
 from train_management.models import Personnel
 
 
-@method_decorator(login_required, name='dispatch')
-class PersonnelListView(generic.ListView):
+class PersonnelListView(DvzoListView):
+    permission_required = 'train_management.view_personnel'
     model = Personnel
     context_object_name = "personnels"
 
@@ -17,8 +15,8 @@ class PersonnelListView(generic.ListView):
         return Personnel.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class PersonnelUpdateView(generic.UpdateView):
+class PersonnelUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_personnel'
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_update_form"
@@ -47,8 +45,8 @@ class PersonnelUpdateView(generic.UpdateView):
         return reverse_lazy("personnel-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class PersonnelCreateView(generic.CreateView):
+class PersonnelCreateView(DvzoCreateView):
+    permission_required = 'train_management.add_personnel'
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_create_form"
@@ -82,8 +80,8 @@ class PersonnelCreateView(generic.CreateView):
         return reverse_lazy("personnel-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class PersonnelDeleteView(generic.DeleteView):
+class PersonnelDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_personnel'
     model = Personnel
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("personnel-list")

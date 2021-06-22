@@ -56,9 +56,11 @@
                   </td>
                   <td>{{ carriage.seats }}</td>
                   <td>
+                    {% if perms.train_management.delete_vehicle %}
                     <a href="{% url 'carriage-delete' pk=carriage.id %}">
                       <i class="fas fa-trash-alt text-danger"></i>
-                    </a>&nbsp;
+                    </a>
+                    {% endif %}
                     <a href="{% url 'carriage-detail' pk=carriage.id %}">
                       <i class="far fa-edit"></i>
                     </a>
@@ -71,10 +73,12 @@
           </div>
         </div>
         <div class="dvzo-buttons-bottom">
+          {% if perms.train_management.add_vehicle %}
           <a href='{% url "carriage-create" %}' class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
             {% translate "template.carriage.new" %}
           </a>
+          {% endif %}
           <button id="daySelectionBtn" class="btn btn-secondary btn-sm disabled">tmpGetSelections</button>
         </div>
       </div>

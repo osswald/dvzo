@@ -18,10 +18,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
-    path('calendar/', views.calendar, name='calendar'),
-    path('calendar/event_data', views.get_availability_data, name='event-data'),
-    path('calendar/resource_data', views.get_resource_data, name='resource-data'),
+    path('', views.Dashboard.as_view(), name='dashboard'),
+    path('frequency-chart/', views.FrequencyChartData.as_view(), name='frequency-chart'),
+
+    path('calendar/', views.Calendar.as_view(), name='calendar'),
+    path('calendar/event_data', views.CalendarAvailabilityData.as_view(), name='event-data'),
+    path('calendar/resource_data', views.CalendarResourceData.as_view(), name='resource-data'),
 
     path('dayplanning/', views.DayPlanningListView.as_view(), name='day-planning-list'),
     path('dayplanning/detail/<int:pk>/', views.DayPlanningDetailView.as_view(), name='day-planning-detail'),
@@ -38,7 +40,7 @@ urlpatterns = [
 
     path('dayplanning/<int:pk>/briefing/', views.BriefingPrintView.as_view(template_name="pdf/briefing.html"),
          name='briefing-pdf'),
-    path('dayplanning/bulletin/', views.BulletinPrintView.as_view(template_name="pdf/bulletin.html"),
+    path('bulletin/', views.BulletinPrintView.as_view(template_name="pdf/bulletin.html"),
          name='bulletin-pdf'),
 
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),
@@ -122,8 +124,9 @@ urlpatterns = [
          views.AvailabilityCarriageCreateView.as_view(), name='availability-carriage-create'),
     path('availability/<int:pk>/delete/', views.AvailabilityDeleteView.as_view(), name='availability-delete'),
 
-    path('reservation-calendar/', views.reservation_calendar, name='reservation-calendar'),
-    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(), name='reservation-calendar-trains'),
+    path('reservation-calendar/', views.ReservationCalendar.as_view(), name='reservation-calendar'),
+    path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(),
+         name='reservation-calendar-trains'),
 
     path('copy-recipient/', views.CopyRecipientListView.as_view(), name='copy-recipient-list'),
     path('copy-recipient/table',
@@ -132,4 +135,10 @@ urlpatterns = [
     path('copy-recipient/<int:pk>/', views.CopyRecipientUpdateView.as_view(), name='copy-recipient-detail'),
     path('copy-recipient/add/', views.CopyRecipientCreateView.as_view(), name='copy-recipient-create'),
     path('copy-recipient/<int:pk>/delete/', views.CopyRecipientDeleteView.as_view(), name='copy-recipient-delete'),
+
+    path('personnel-category/', views.PersonnelCategoryListView.as_view(), name='personnel-category-list'),
+    path('personnel-category/<int:pk>/', views.PersonnelCategoryUpdateView.as_view(), name='personnel-category-detail'),
+    path('personnel-category/add/', views.PersonnelCategoryCreateView.as_view(), name='personnel-category-create'),
+    path('personnel-category/<int:pk>/delete/', views.PersonnelCategoryDeleteView.as_view(),
+         name='personnel-category-delete'),
 ]

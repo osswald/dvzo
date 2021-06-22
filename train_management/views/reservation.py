@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
 from train_management.forms import ReservationForm
 from train_management.models import Reservation, TrainTimetable
 
 
-@method_decorator(login_required, name='dispatch')
-class ReservationListView(generic.ListView):
+class ReservationListView(DvzoListView):
+    permission_required = 'train_management.view_reservation'
     model = Reservation
     context_object_name = "reservations"
 
@@ -17,8 +15,8 @@ class ReservationListView(generic.ListView):
         return Reservation.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class ReservationCreateView(generic.CreateView):
+class ReservationCreateView(DvzoCreateView):
+    permission_required = 'train_management.view_reservation'
     model = Reservation
     form_class = ReservationForm
     template_name_suffix = "_update_form"
@@ -40,8 +38,8 @@ class ReservationCreateView(generic.CreateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train_timetable.train.day_planning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class ReservationUpdateView(generic.UpdateView):
+class ReservationUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_reservation'
     model = Reservation
     form_class = ReservationForm
     template_name_suffix = "_update_form"
@@ -50,8 +48,8 @@ class ReservationUpdateView(generic.UpdateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train_timetable.train.day_planning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class ReservationDeleteView(generic.DeleteView):
+class ReservationDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_reservation'
     model = Reservation
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")

@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoUpdateView
 from train_management.forms import TrainTimetableForm
 from train_management.models import Train, TrainTimetable
 
 
-@method_decorator(login_required, name='dispatch')
-class TrainTimetableCreateView(generic.CreateView):
+class TrainTimetableCreateView(DvzoCreateView):
+    permission_required = 'train_management.add_traintimetable'
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
@@ -31,8 +29,8 @@ class TrainTimetableCreateView(generic.CreateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class TrainTimetableUpdateView(generic.UpdateView):
+class TrainTimetableUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_traintimetable'
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
@@ -41,8 +39,8 @@ class TrainTimetableUpdateView(generic.UpdateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class TrainTimetableDeleteView(generic.DeleteView):
+class TrainTimetableDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_traintimetable'
     model = TrainTimetable
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")

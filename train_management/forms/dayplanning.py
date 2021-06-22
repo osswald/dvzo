@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
@@ -16,14 +17,19 @@ class DayPlanningForm(BootstrapTapeformMixin, ModelForm):
                   'day_planning_type',
                   'status',
                   'paid',
-                  'text',
                   'slot_ordered',
                   'personnel_disposition',
                   'customers',
                   'price',
                   'booking_status',
-                  'comment'
+                  'comment',
+                  'post_mortem',
+                  'engine_planning_status',
+                  'carriage_planning_status'
                   ]
+    date = forms.DateField(
+        widget=forms.DateInput(format='%Y-%m-%d')
+    )
 
 
 class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
@@ -38,7 +44,7 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'date',
                 'day_planning_type',
                 'status',
-                'text'),
+                'post_mortem'),
         }, {
             'extra': {
                 'title': _("form.dayplanning.planning"),
@@ -46,7 +52,9 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
             },
             'fields': (
                 'slot_ordered',
-                'personnel_disposition'),
+                'personnel_disposition',
+                'engine_planning_status',
+                'carriage_planning_status'),
         }, {
             'extra': {
                 'title': _("form.dayplanning.booking"),
@@ -56,5 +64,6 @@ class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
                 'booking_status',
                 'customers',
                 'price',
-                'paid'),
+                'paid',
+                'comment'),
         })

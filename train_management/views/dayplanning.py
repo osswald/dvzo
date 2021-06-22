@@ -1,26 +1,24 @@
 from datetime import date
 
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import generic
 
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoDetailView, DvzoListView, DvzoUpdateView, DvzoView
 from train_management.forms import DayPlanningFieldsetForm
 from train_management.models import (CopyRecipient, DayPlanning, DayPlanningText, DvzoFunction, FunctionPersons,
                                      Personnel, Train, TrainTimetable,)
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningListView(generic.ListView):
+class DayPlanningListView(DvzoListView):
+    permission_required = 'train_management.view_dayplanning'
     context_object_name = "day_plannings"
 
     def get_queryset(self):
         return DayPlanning.objects.all()
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningBulletinView(generic.ListView):
+class DayPlanningBulletinView(DvzoListView):
+    permission_required = 'train_management.view_dayplanning'
     context_object_name = "day_plannings"
 
     def get_queryset(self):
@@ -28,8 +26,8 @@ class DayPlanningBulletinView(generic.ListView):
         return DayPlanning.objects.filter(date__gte=today).order_by("date")
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningDetailView(generic.DetailView):
+class DayPlanningDetailView(DvzoDetailView):
+    permission_required = 'train_management.view_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_detail_form"
@@ -69,8 +67,8 @@ class DayPlanningDetailView(generic.DetailView):
             **kwargs)
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningUpdateView(generic.UpdateView):
+class DayPlanningUpdateView(DvzoUpdateView):
+    permission_required = 'train_management.change_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_update_form"
@@ -79,8 +77,8 @@ class DayPlanningUpdateView(generic.UpdateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningCreateView(generic.CreateView):
+class DayPlanningCreateView(DvzoCreateView):
+    permission_required = 'train_management.add_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_create_form"
@@ -89,8 +87,8 @@ class DayPlanningCreateView(generic.CreateView):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.id})
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningRecipientView(generic.DetailView):
+class DayPlanningRecipientView(DvzoDetailView):
+    permission_required = 'train_management.view_dayplanning'
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_recipient_form"
@@ -110,15 +108,15 @@ class DayPlanningRecipientView(generic.DetailView):
             **kwargs)
 
 
-@method_decorator(login_required, name='dispatch')
-class DayPlanningDeleteView(generic.DeleteView):
+class DayPlanningDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_dayplanning'
     model = DayPlanning
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")
 
 
-@method_decorator(login_required, name='dispatch')
-class EditTrainFunctions(generic.View):
+class EditTrainFunctions(DvzoView):
+    permission_required = 'train_management.change_dayplanning'
 
     def get(self, request, train_id, **kwargs):
         train = get_object_or_404(Train, pk=train_id)
@@ -152,8 +150,8 @@ class EditTrainFunctions(generic.View):
         return redirect("day-planning-detail", pk=train.day_planning.id)
 
 
-@method_decorator(login_required, name='dispatch')
-class EditDayPlanningFunctions(generic.View):
+class EditDayPlanningFunctions(DvzoView):
+    permission_required = 'train_management.change_dayplanning'
 
     def get(self, request, dayplanning_id, **kwargs):
         dayplanning = get_object_or_404(DayPlanning, pk=dayplanning_id)

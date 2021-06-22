@@ -96,7 +96,7 @@
         </div>
       </li>
       {% endif %}
-
+      {% if perms.uniforms.view_article %}
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                 data-bs-target="#orders-collapse" aria-expanded="true">
@@ -104,9 +104,36 @@
         </button>
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
+            <li>
+              <a class="link-light rounded" href="{% url 'article-list' %}">
+                {% translate "side_navigation.article" %}
+              </a>
+            </li>
+            {% if perms.uniforms.view_renter %}
+            <li>
+              <a class="link-light rounded" href="{% url 'renter-list' %}">
+                {% translate "side_navigation.renter" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.uniforms.view_rent %}
+            <li>
+              <a class="link-light rounded" href="{% url 'rent-list' %}">
+                {% translate "side_navigation.rent" %}
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.uniforms.view_let %}
+            <li>
+              <a class="link-light rounded" href="{% url 'let-list' %}">
+                {% translate "side_navigation.let" %}
+              </a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </li>
+      {% endif %}
 
 
       <li class="border-top my-3"></li>

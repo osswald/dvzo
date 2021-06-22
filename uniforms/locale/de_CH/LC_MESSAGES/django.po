@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-08 10:36+0200\n"
+"POT-Creation-Date: 2021-06-22 10:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: forms/article.py:28 forms/article.py:64 forms/article.py:101
+#: forms/article.py:140 forms/article.py:176 forms/article.py:212
+#: forms/article.py:248 forms/article.py:284
 msgid "form.master_data"
 msgstr "Stammdaten"
 
 #: forms/article.py:38 forms/article.py:74 forms/article.py:111
+#: forms/article.py:150 forms/article.py:186 forms/article.py:222
+#: forms/article.py:258 forms/article.py:294
 msgid "form.special_fields"
 msgstr "Zusätzliche Daten"
 
@@ -213,11 +217,15 @@ msgstr "Ja"
 msgid "let.returned.no"
 msgstr "Nein"
 
-#: models/let.py:18
+#: models/let.py:18 templates/pdf/let.html:27
+#: templates/uniforms/let_detail_form.html:46
+#: templates/uniforms/let_list.html:37
 msgid "let.start"
 msgstr "Ausleihdatum"
 
-#: models/let.py:19
+#: models/let.py:19 templates/pdf/let.html:28
+#: templates/uniforms/let_detail_form.html:50
+#: templates/uniforms/let_list.html:38
 msgid "let.end"
 msgstr "Rückgabedatum"
 
@@ -237,69 +245,74 @@ msgstr "Ausleihe-Artikel"
 msgid "article_let.amount"
 msgstr "Anzahl"
 
-#: models/rent.py:10
+#: models/rent.py:15
 msgid "rent.singular"
 msgstr "Miete"
 
-#: models/rent.py:11
+#: models/rent.py:16
 msgid "rent.plural"
 msgstr "Mieten"
 
-#: models/rent.py:14
+#: models/rent.py:19
 msgid "rent.returned.yes"
 msgstr "Ja"
 
-#: models/rent.py:15
+#: models/rent.py:20
 msgid "rent.returned.no"
 msgstr "Nein"
 
-#: models/rent.py:18 templates/pdf/rent.html:29
+#: models/rent.py:23 templates/pdf/rent.html:29
 #: templates/uniforms/rent_detail_form.html:48
 #: templates/uniforms/rent_list.html:37
 msgid "rent.start"
 msgstr "Mietbeginn"
 
-#: models/rent.py:19 templates/pdf/rent.html:30
+#: models/rent.py:24 templates/pdf/rent.html:30
 #: templates/uniforms/rent_detail_form.html:52
 #: templates/uniforms/rent_list.html:38
 msgid "rent.end"
 msgstr "Mietende"
 
-#: models/rent.py:20 templates/pdf/rent.html:31
+#: models/rent.py:25 templates/pdf/rent.html:31
 #: templates/uniforms/rent_detail_form.html:56
 #, fuzzy
 #| msgid "rent.plural"
 msgid "rent.duration"
 msgstr "Dauer"
 
-#: models/rent.py:21 templates/uniforms/rent_detail_form.html:60
+#: models/rent.py:26 templates/uniforms/let_detail_form.html:54
+#: templates/uniforms/rent_detail_form.html:60
 msgid "rent.returned"
 msgstr "Zurückgegeben"
 
-#: models/rent.py:23 templates/uniforms/rent_detail_form.html:64
+#: models/rent.py:28 templates/uniforms/rent_detail_form.html:64
 #: templates/uniforms/rent_list.html:39
 msgid "rent.billed"
 msgstr "Fakturiert"
 
-#: models/rent.py:24 templates/uniforms/rent_detail_form.html:68
+#: models/rent.py:29 templates/uniforms/rent_detail_form.html:68
 msgid "rent.total_per_month"
 msgstr "Total pro Monat"
 
-#: models/rent.py:25 templates/uniforms/rent_detail_form.html:72
+#: models/rent.py:30 templates/uniforms/rent_detail_form.html:72
 msgid "rent.total"
 msgstr "Total"
 
-#: models/rent.py:30
+#: models/rent.py:47
 msgid "article_rent.singular"
 msgstr "Miete-Artikel"
 
-#: models/rent.py:31
+#: models/rent.py:48
 msgid "article_rent.plural"
 msgstr "Miete-Artikel"
 
-#: models/rent.py:35
+#: models/rent.py:52
 msgid "article_rent.amount"
 msgstr "Anzahl"
+
+#: models/rent.py:53
+msgid "article_rent.total_per_month"
+msgstr "Total pro Monat"
 
 #: models/renter.py:10
 msgid "renter.singular"
@@ -339,6 +352,25 @@ msgstr "Telefon"
 msgid "renter.email"
 msgstr "E-Mail"
 
+#: templates/pdf/let.html:4 templates/pdf/let.html:20
+msgid "template.let.print.title"
+msgstr "Uniform-Ausleihe"
+
+#: templates/pdf/let.html:22 templates/uniforms/let_detail_form.html:40
+#: templates/uniforms/let_list.html:36
+msgid "let.personnel"
+msgstr "Person"
+
+#: templates/pdf/let.html:33 templates/pdf/rent.html:36
+#: templates/uniforms/rent_detail_form.html:99
+msgid "template.renter.label"
+msgstr "Mieter"
+
+#: templates/pdf/let.html:34 templates/pdf/rent.html:37
+#: templates/uniforms/rent_detail_form.html:100
+msgid "template.renter.amount"
+msgstr "Anzahl"
+
 #: templates/pdf/rent.html:4 templates/pdf/rent.html:20
 msgid "template.rent.print.title"
 msgstr "Uniform-Miete"
@@ -352,19 +384,15 @@ msgstr "Mieter"
 msgid "months"
 msgstr "Monate"
 
-#: templates/pdf/rent.html:36 templates/uniforms/rent_detail_form.html:99
-msgid "template.renter.label"
-msgstr "Mieter"
-
-#: templates/pdf/rent.html:37 templates/uniforms/rent_detail_form.html:100
-msgid "template.renter.amount"
-msgstr "Anzahl"
-
 #: templates/pdf/rent.html:38 templates/uniforms/rent_detail_form.html:101
 msgid "template.renter.price_per_unit_month"
 msgstr "Preis / Stück / Monat"
 
-#: templates/pdf/rent.html:39 templates/uniforms/rent_detail_form.html:102
+#: templates/pdf/rent.html:39
+msgid "template.renter.price_total_month"
+msgstr "Total pro Monat"
+
+#: templates/pdf/rent.html:40 templates/uniforms/rent_detail_form.html:102
 msgid "template.renter.price_total"
 msgstr "Jacke"
 
@@ -391,51 +419,76 @@ msgstr "Artikel"
 msgid "template.article.list.header"
 msgstr "Artikel"
 
-#: templates/uniforms/article_list.html:34 templates/uniforms/rent_list.html:34
-#: templates/uniforms/renter_list.html:34
+#: templates/uniforms/article_list.html:34 templates/uniforms/let_list.html:34
+#: templates/uniforms/rent_list.html:34 templates/uniforms/renter_list.html:34
 msgid "table.state"
 msgstr "Status"
 
-#: templates/uniforms/article_list.html:35 templates/uniforms/rent_list.html:35
-#: templates/uniforms/renter_list.html:35
+#: templates/uniforms/article_list.html:35 templates/uniforms/let_list.html:35
+#: templates/uniforms/rent_list.html:35 templates/uniforms/renter_list.html:35
 msgid "table.id"
 msgstr "ID"
 
-#: templates/uniforms/article_list.html:83
+#: templates/uniforms/article_list.html:111
 msgid "template.article.new"
 msgstr "Neuer Artikel"
 
-#: templates/uniforms/article_list.html:86
+#: templates/uniforms/article_list.html:114
 msgid "template.article.new.coat"
 msgstr "Jacke"
 
-#: templates/uniforms/article_list.html:87
+#: templates/uniforms/article_list.html:115
 msgid "template.article.new.hat"
 msgstr "Mütze"
 
-#: templates/uniforms/article_list.html:88
+#: templates/uniforms/article_list.html:116
 msgid "template.article.new.misc"
 msgstr "Diverses"
 
-#: templates/uniforms/article_list.html:89
+#: templates/uniforms/article_list.html:117
 msgid "template.article.new.shirt"
 msgstr "Hemd"
 
-#: templates/uniforms/article_list.html:90
+#: templates/uniforms/article_list.html:118
 msgid "template.article.new.shoes"
 msgstr "Schuh"
 
-#: templates/uniforms/article_list.html:91
+#: templates/uniforms/article_list.html:119
 msgid "template.article.new.vest"
 msgstr "Veston"
 
-#: templates/uniforms/article_list.html:92
+#: templates/uniforms/article_list.html:120
 msgid "template.article.new.tie"
 msgstr "Krawatte"
 
-#: templates/uniforms/article_list.html:93
+#: templates/uniforms/article_list.html:121
 msgid "template.article.new.trousers"
 msgstr "Hose"
+
+#: templates/uniforms/articlelet_create_form.html:5
+msgid "template.let_article.create.title"
+msgstr "Position hinzufügen"
+
+#: templates/uniforms/articlelet_create_form.html:12
+msgid "template.let_article.create.header"
+msgstr "Position hinzufügen"
+
+#: templates/uniforms/articlelet_create_form.html:28
+#: templates/uniforms/articlelet_update_form.html:28
+msgid "template.let_article.submit"
+msgstr "Speichern"
+
+#: templates/uniforms/articlelet_update_form.html:5
+msgid "template.let_article.update.title"
+msgstr "Position ändern"
+
+#: templates/uniforms/articlelet_update_form.html:30
+#: templates/uniforms/articlerent_update_form.html:30
+#: templates/uniforms/let_update_form.html:30
+#: templates/uniforms/rent_update_form.html:30
+#: templates/uniforms/renter_update_form.html:30
+msgid "Back to list"
+msgstr "Zurück zur Liste"
 
 #: templates/uniforms/articlerent_create_form.html:5
 msgid "template.rent_article.create.title"
@@ -454,12 +507,6 @@ msgstr "Speichern"
 msgid "template.rent_article.update.title"
 msgstr "Position ändern"
 
-#: templates/uniforms/articlerent_update_form.html:30
-#: templates/uniforms/rent_update_form.html:30
-#: templates/uniforms/renter_update_form.html:30
-msgid "Back to list"
-msgstr "Zurück zur Liste"
-
 #: templates/uniforms/confirm_delete.html:4
 msgid "app.delete.title"
 msgstr "Löschen"
@@ -472,6 +519,82 @@ msgstr "Löschen?"
 msgid "app.delete.submit"
 msgstr "Löschen"
 
+#: templates/uniforms/let_create_form.html:5
+msgid "template.let.create.title"
+msgstr "Ausleihe erfassen"
+
+#: templates/uniforms/let_create_form.html:12
+msgid "template.let.create.header"
+msgstr "Ausleihe erfassen"
+
+#: templates/uniforms/let_create_form.html:28
+msgid "template.let.submit"
+msgstr "Speichern"
+
+#: templates/uniforms/let_detail_form.html:4
+msgid "template.let.detail.title"
+msgstr "Ausleihe"
+
+#: templates/uniforms/let_detail_form.html:17
+#: templates/uniforms/rent_detail_form.html:17
+#: templates/uniforms/renter_detail_form.html:17
+msgid "app.back_list"
+msgstr "Zurück zur Liste"
+
+#: templates/uniforms/let_detail_form.html:21
+msgid "template.let.print"
+msgstr "Ausleihe drucken"
+
+#: templates/uniforms/let_detail_form.html:31
+#: templates/uniforms/rent_detail_form.html:31
+#: templates/uniforms/renter_detail_form.html:27
+msgid "app.master_data"
+msgstr "Stammdaten"
+
+#: templates/uniforms/let_detail_form.html:69
+#: templates/uniforms/rent_detail_form.html:87
+#: templates/uniforms/renter_detail_form.html:71
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/uniforms/let_detail_form.html:77
+msgid "template.let.positions"
+msgstr "Positionen"
+
+#: templates/uniforms/let_detail_form.html:81
+msgid "template.let.label"
+msgstr "Person"
+
+#: templates/uniforms/let_detail_form.html:82
+msgid "template.let.amount"
+msgstr "Anzahl"
+
+#: templates/uniforms/let_detail_form.html:110
+msgid "template.let.add_position"
+msgstr "Position hinzufügen"
+
+#: templates/uniforms/let_list.html:4
+msgid "template.let.list.title"
+msgstr "Ausleihe"
+
+#: templates/uniforms/let_list.html:10
+msgid "template.let.list.header"
+msgstr "Ausleihe"
+
+#: templates/uniforms/let_list.html:68
+msgid "template.let.add"
+msgstr "Ausleihe erfassen"
+
+#: templates/uniforms/let_update_form.html:5
+msgid "template.let.update.title"
+msgstr "Ausleihe ändern"
+
+#: templates/uniforms/let_update_form.html:28
+#: templates/uniforms/rent_create_form.html:28
+#: templates/uniforms/rent_update_form.html:28
+msgid "template.rent.submit"
+msgstr "Speichern"
+
 #: templates/uniforms/rent_create_form.html:5
 msgid "template.rent.create.title"
 msgstr "Miete erfassen"
@@ -480,39 +603,19 @@ msgstr "Miete erfassen"
 msgid "template.rent.create.header"
 msgstr "Miete erfassen"
 
-#: templates/uniforms/rent_create_form.html:28
-#: templates/uniforms/rent_update_form.html:28
-msgid "template.rent.submit"
-msgstr "Speichern"
-
 #: templates/uniforms/rent_detail_form.html:4
 msgid "template.rent.detail.title"
 msgstr "Miete"
-
-#: templates/uniforms/rent_detail_form.html:17
-#: templates/uniforms/renter_detail_form.html:17
-msgid "app.back_list"
-msgstr "Zurück zur Liste"
 
 #: templates/uniforms/rent_detail_form.html:21
 msgid "template.rent.print"
 msgstr "Miete drucken"
 
-#: templates/uniforms/rent_detail_form.html:31
-#: templates/uniforms/renter_detail_form.html:27
-msgid "app.master_data"
-msgstr "Stammdaten"
-
-#: templates/uniforms/rent_detail_form.html:87
-#: templates/uniforms/renter_detail_form.html:71
-msgid "Edit"
-msgstr "Bearbeiten"
-
 #: templates/uniforms/rent_detail_form.html:95
 msgid "template.rent.positions"
 msgstr "Positionen"
 
-#: templates/uniforms/rent_detail_form.html:123
+#: templates/uniforms/rent_detail_form.html:132
 msgid "template.rent.add_position"
 msgstr "Position hinzufügen"
 

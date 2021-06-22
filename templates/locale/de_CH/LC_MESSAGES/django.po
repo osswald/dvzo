@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 16:31+0200\n"
+"POT-Creation-Date: 2021-06-22 10:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,54 +51,70 @@ msgstr "Home"
 msgid "side_navigation.calendar"
 msgstr "Kalender"
 
-#: includes/side_navigation.html:63
+#: includes/side_navigation.html:64
 msgid "side_navigation.dayplanning"
 msgstr "Tagesplanung"
 
-#: includes/side_navigation.html:68
+#: includes/side_navigation.html:70
 msgid "side_navigation.reservations"
 msgstr "Reservationen"
 
-#: includes/side_navigation.html:79 includes/side_navigation.html:85
+#: includes/side_navigation.html:81 includes/side_navigation.html:87
 msgid "side_navigation.personnel"
 msgstr "Personal"
 
-#: includes/side_navigation.html:90
+#: includes/side_navigation.html:92
 msgid "side_navigation.copy_recipient"
 msgstr "Empfänger CC"
 
-#: includes/side_navigation.html:99
+#: includes/side_navigation.html:103
 msgid "side_navigation.uniforms"
 msgstr "Uniformen"
 
-#: includes/side_navigation.html:114
+#: includes/side_navigation.html:109
+msgid "side_navigation.article"
+msgstr "Artikel"
+
+#: includes/side_navigation.html:115
+msgid "side_navigation.renter"
+msgstr "Mieter"
+
+#: includes/side_navigation.html:122
+msgid "side_navigation.rent"
+msgstr "Miete"
+
+#: includes/side_navigation.html:129
+msgid "side_navigation.let"
+msgstr "Ausleihe"
+
+#: includes/side_navigation.html:145
 msgid "side_navigation.settings"
 msgstr "Stammdaten"
 
-#: includes/side_navigation.html:120
+#: includes/side_navigation.html:152
 msgid "side_navigation.engines"
 msgstr "Triebfahrzeuge"
 
-#: includes/side_navigation.html:125
+#: includes/side_navigation.html:157
 msgid "side_navigation.carriages"
 msgstr "Wagen"
 
-#: includes/side_navigation.html:130
+#: includes/side_navigation.html:164
 msgid "side_navigation.stations"
 msgstr "Betriebspunkte"
 
-#: includes/side_navigation.html:134
+#: includes/side_navigation.html:170
 msgid "side_navigation.personnel_category"
 msgstr "Personal-Kategorie"
 
-#: includes/side_navigation.html:139
+#: includes/side_navigation.html:177
 msgid "side_navigation.functions"
 msgstr "Funktionen"
 
-#: includes/side_navigation.html:144
+#: includes/side_navigation.html:184
 msgid "side_navigation.phone_numbers"
 msgstr "Telefonnummern"
 
-#: includes/side_navigation.html:149
+#: includes/side_navigation.html:191
 msgid "side_navigation.train_timetable_templates"
 msgstr "Fahrten-Vorlagen"

@@ -19,7 +19,7 @@ class Reservation(AbstractDvzoModel):
         CONFIRMED = "confirmed", _("reservation.status.confirmed")
 
     label = models.CharField(_("reservation.label"), max_length=200)
-    train_timetable = models.ForeignKey(TrainTimetable, on_delete=models.DO_NOTHING)
+    train_timetable = models.ForeignKey(TrainTimetable, on_delete=models.CASCADE)
     phone = PhoneNumberField(_("reservation.phone"), blank=True)
     email = models.EmailField(_("reservation.email"), blank=True)
     amount = models.IntegerField(_("reservation.amount"))

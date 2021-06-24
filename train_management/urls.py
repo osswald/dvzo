@@ -96,7 +96,7 @@ urlpatterns = [
     path('dayplanning/train/timetable/<int:pk>/',
          views.TrainTimetableUpdateView.as_view(), name='train-timetable-update'),
     path('dayplanning/train/timetable/delete/<int:pk>/',
-         views.TrainTimetableUpdateView.as_view(), name='train-timetable-delete'),
+         views.TrainTimetableDeleteView.as_view(), name='train-timetable-delete'),
 
     path('traintimetabletemplate/',
          views.TrainTimetableTemplateListView.as_view(), name='train-timetable-template-list'),
@@ -112,6 +112,7 @@ urlpatterns = [
     path('edit-dayplanning-functions/<int:dayplanning_id>',
          views.EditDayPlanningFunctions.as_view(), name='edit-dayplanning-functions'),
     path('traincomposition/add/<int:pk>/', views.TrainCompositionCreateView.as_view(), name='train-composition-create'),
+    path('traincomposition/delete/<int:pk>/', views.TrainDeleteView.as_view(), name='train-composition-delete'),
 
     path('availability/', views.AvailabilityListView.as_view(), name='availability-list'),
     path('availability/engine/<int:pk>/',

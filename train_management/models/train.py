@@ -55,7 +55,7 @@ class TrainTimetable(AbstractDvzoModel):
         POSSIBLE = "possible", _("train_timetable.reservation_possible.possible")
 
     label = models.CharField(_("train_timetable.label"), max_length=200)
-    train = models.ForeignKey(Train, on_delete=models.DO_NOTHING, null=True)
+    train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)
     start_station = models.ForeignKey(Station, related_name="start_station", on_delete=models.DO_NOTHING, null=True)
     destination_station = models.ForeignKey(Station, related_name="destination_station",
                                             on_delete=models.DO_NOTHING, null=True)

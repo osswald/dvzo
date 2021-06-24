@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoUpdateView
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoUpdateView
 from train_management.forms import TrainForm
 from train_management.models import DayPlanning, Train, Vehicle
 
@@ -50,6 +50,15 @@ class TrainCompositionCreateView(DvzoCreateView):
         return_value = super().form_valid(form)
         self.object.set_composition(self.vehicles)
         return return_value
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+
+
+class TrainDeleteView(DvzoDeleteView):
+    permission_required = 'train_management.delete_station'
+    model = Train
+    template_name = "train_management/confirm_delete.html"
 
     def get_success_url(self):
         return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})

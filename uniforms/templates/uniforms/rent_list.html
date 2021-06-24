@@ -45,7 +45,11 @@
                 <tr>
                   <td></td>
                   <td>{{ rent.id }}</td>
-                  <td>{{ rent.renter }}</td>
+                  <td>
+                    <a href="{% url 'rent-detail' pk=rent.id %}">
+                      {{ rent.renter }}
+                    </a>
+                  </td>
                   <td>{{ rent.start }}</td>
                   <td>{{ rent.end }}</td>
                   <td>{{ rent.billed }}</td>

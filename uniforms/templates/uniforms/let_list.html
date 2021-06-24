@@ -44,7 +44,11 @@
                 <tr>
                   <td></td>
                   <td>{{ let.id }}</td>
-                  <td>{{ let.personnel }}</td>
+                  <td>
+                    <a href="{% url 'let-detail' pk=let.id %}">
+                      {{ let.personnel }}
+                    </a>
+                  </td>
                   <td>{{ let.start }}</td>
                   <td>{{ let.end }}</td>
                   <td>

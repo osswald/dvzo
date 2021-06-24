@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from tapeforms.contrib.bootstrap import BootstrapTapeformMixin
 
@@ -15,6 +16,12 @@ class RentForm(BootstrapTapeformMixin, ModelForm):
                   'returned',
                   'billed',
                   ]
+    start = forms.DateField(
+        widget=forms.DateInput(format='%Y-%m-%d'), required=False
+    )
+    end = forms.DateField(
+        widget=forms.DateInput(format='%Y-%m-%d'), required=False
+    )
 
 
 class ArticleRentForm(BootstrapTapeformMixin, ModelForm):

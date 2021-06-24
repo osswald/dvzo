@@ -355,6 +355,13 @@
         </div>
         {% endif %}
 
+        {% if perms.train_management.delete_train %}
+        <a href="{% url 'train-composition-delete' pk=train.id %}" class="btn btn-danger btn-sm my-1 me-1">
+          <i class="fas fa-trash"></i>
+          {% translate "template.dayplanning.train.delete_formation" %}
+        </a>
+        {% endif %}
+
       </div>
     </div>
     {% endwith %}

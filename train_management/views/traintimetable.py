@@ -43,4 +43,6 @@ class TrainTimetableDeleteView(DvzoDeleteView):
     permission_required = 'train_management.delete_traintimetable'
     model = TrainTimetable
     template_name = "train_management/confirm_delete.html"
-    success_url = reverse_lazy("day-planning-list")
+
+    def get_success_url(self):
+        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})

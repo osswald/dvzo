@@ -296,9 +296,11 @@
                   </a>
                   {% endif %}
                   {% if perms.train_management.add_reservation %}
+                  {% if traintimetable.reservation_internal == "possible" %}
                   <a href="{% url 'reservation-create' pk=traintimetable.id %}">
                     +Res
                   </a>
+                  {% endif %}
                   {% endif %}
                 </td>
               </tr>

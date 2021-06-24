@@ -1,8 +1,9 @@
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView, DvzoView
 from train_management.forms import TrainTimetableTemplateForm
-from train_management.models import TrainTimetableTemplate
+from train_management.models import Train, TrainTimetableTemplate
 
 
 class TrainTimetableTemplateListView(DvzoListView):
@@ -38,3 +39,29 @@ class TrainTimetableTemplateDeleteView(DvzoDeleteView):
     model = TrainTimetableTemplate
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("train-timetable-template-list")
+
+
+class CreateTimetablesFromTemplateView(DvzoView):
+    permission_required = 'train_management_add_traintimetable'
+
+    def post(self, request, **kwargs):
+        timetable_ids = request.POST["timetables"].split(",")
+        train_id = request.POST["pk"]
+        timetables = [get_object_or_404(TrainTimetableTemplate, pk=pk) for pk in timetable_ids]
+        train = get_object_or_404(Train, pk=train_id)
+        train.add_traintimetable(timetables)
+        return redirect("day-planning-detail", pk=train.day_planning.id)
+
+
+class ChooseTimetableTemplatesView(DvzoListView):
+    permission_required = 'train_management.view_traintimetabletemplate'
+    context_object_name = "templates"
+    template_name = 'train_management/traintimetabletemplate_list.html'
+
+    def get_queryset(self):
+        return TrainTimetableTemplate.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(ChooseTimetableTemplatesView, self).get_context_data(**kwargs)
+        context['train'] = self.request.GET['train']
+        return context

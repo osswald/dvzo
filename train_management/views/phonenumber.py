@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView, DvzoView
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoTemplateView, DvzoUpdateView
 from train_management.forms import PhoneNumberForm
 from train_management.models import Personnel, PhoneNumber
 
@@ -40,7 +40,7 @@ class PhoneNumberDeleteView(DvzoDeleteView):
     success_url = reverse_lazy("phone-list")
 
 
-class PhoneNumberOverview(DvzoView):
+class PhoneNumberOverview(DvzoTemplateView):
     permission_required = ''
     template_name = "train_management/phonenumber_overview.html"
 

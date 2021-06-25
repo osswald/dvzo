@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views import View, generic
+from django.views.generic import TemplateView
 
 
 class DvzoMixin(LoginRequiredMixin, PermissionRequiredMixin):
@@ -7,6 +8,10 @@ class DvzoMixin(LoginRequiredMixin, PermissionRequiredMixin):
 
 
 class DvzoView(DvzoMixin, View):
+    pass
+
+
+class DvzoTemplateView(DvzoMixin, TemplateView):
     pass
 
 

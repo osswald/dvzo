@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView, DvzoDetailView
 from train_management.forms import PersonnelForm, UserForm
-from train_management.models import Personnel
+from train_management.models import FunctionPersons, Personnel, DayPlanning
 
 
 class PersonnelListView(DvzoListView):
@@ -13,6 +13,36 @@ class PersonnelListView(DvzoListView):
 
     def get_queryset(self):
         return Personnel.objects.all()
+
+
+class PersonnelDetailView(DvzoDetailView):
+    permission_required = 'train_management.view_vehicle'
+    model = Personnel
+    form_class = PersonnelForm
+    template_name = "train_management/personnel_detail_form.html"
+
+    def get_context_data(self, **kwargs):
+        function_persons = FunctionPersons.objects.filter(person=self.object.id)
+        shift_data = []
+        for function_person in function_persons:
+            if function_person.dayplanning.first() is not None:
+                dayplanning = function_person.dayplanning.first()
+            else:
+                dayplanning = function_person.train.first().day_planning
+            if function_person.train.first() is not None:
+                train = function_person.train.first()
+            else:
+                train = function_person.dvzo_function.get_function_type_display()
+            shift_data.append({
+                    'function': function_person.dvzo_function,
+                    'dayplanning': dayplanning,
+                    'date': dayplanning.date,
+                    'train': train
+                })
+            print(shift_data)
+            if function_person.train.first() is not None:
+                print(function_person.dvzo_function, function_person.train.first().day_planning, function_person.dayplanning.first())
+        return super().get_context_data(shift_data=shift_data, **kwargs)
 
 
 class PersonnelUpdateView(DvzoUpdateView):

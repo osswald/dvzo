@@ -49,7 +49,7 @@ class CreateTimetablesFromTemplateView(DvzoView):
         train_id = request.POST["pk"]
         timetables = [get_object_or_404(TrainTimetableTemplate, pk=pk) for pk in timetable_ids]
         train = get_object_or_404(Train, pk=train_id)
-        train.add_traintimetable(timetables)
+        train.add_traintimetables(timetables)
         return redirect("day-planning-detail", pk=train.day_planning.id)
 
 

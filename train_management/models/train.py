@@ -32,7 +32,7 @@ class Train(AbstractDvzoModel):
         for sorting, vehicle in enumerate(vehicles):
             TrainConfiguration(train=self, vehicle=vehicle, sorting=sorting).save()
 
-    def add_traintimetable(self, timetables):
+    def add_traintimetables(self, timetables):
 
         for timetable in timetables:
             template = TrainTimetableTemplate.objects.get(pk=timetable.pk)

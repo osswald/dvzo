@@ -113,10 +113,11 @@
   }
 
   function saveTimetable() {
-        formInput.value = getIdSelections();
-        timetableForm.submit();
-    }
-    saveTimetableButton.addEventListener('click', saveTimetable);
+    formInput.value = getIdSelections();
+    timetableForm.submit();
+  }
+
+  $(saveTimetableButton).on('click', function () { saveTimetable() });
 
 </script>
 {% endblock scripts %}

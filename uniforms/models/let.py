@@ -5,7 +5,7 @@ from train_management.models import AbstractDvzoModel, Personnel
 from uniforms.models import Article
 
 
-class Let(models.Model):
+class Let(AbstractDvzoModel):
     class Meta:
         verbose_name = _("let.singular")
         verbose_name_plural = _("let.plural")

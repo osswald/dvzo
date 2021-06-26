@@ -20,6 +20,11 @@ class CoatArticleForm(BootstrapTapeformMixin, ModelForm):
             'size'
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(CoatArticleForm, self).__init__(*args, **kwargs)
+
+        self.fields['amount'].widget.attrs['readonly'] = True
+
 
 class CoatFieldsetForm(TapeformFieldsetsMixin, CoatArticleForm):
     fieldsets = (

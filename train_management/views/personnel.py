@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
@@ -39,9 +40,6 @@ class PersonnelDetailView(DvzoDetailView):
                     'date': dayplanning.date,
                     'train': train
                 })
-            print(shift_data)
-            if function_person.train.first() is not None:
-                print(function_person.dvzo_function, function_person.train.first().day_planning, function_person.dayplanning.first())
         return super().get_context_data(shift_data=shift_data, **kwargs)
 
 

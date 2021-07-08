@@ -53,7 +53,7 @@
                   </td>
                   <td>
                     {% for category in personnel.category.all %}
-                    {% include 'includes/personnel_category_type.html' with output=category.label %}
+                    {% include 'includes/personnel_category_type.html' with output=category.label category=category.type %}
                     {% endfor %}
                   </td>
                   <td>

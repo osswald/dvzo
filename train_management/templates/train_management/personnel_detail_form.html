@@ -80,7 +80,7 @@
               <tr>
                 <th>{% translate "personnel.groups" %}</th>
                 <td>
-                  {% for group in object.groups.all %}
+                  {% for group in object.user.groups.all %}
                   {{group}}<br>
                   {% endfor %}
                 </td>
@@ -132,7 +132,7 @@
                 <td>{{ shift.dayplanning }}</td>
                 <td>{{ shift.train }}</td>
                 <td>
-                  {{ shift.function }}
+                  {% include 'includes/personnel_category_type.html' with output=shift.function category=shift.function.category.type %}
                 </td>
               </tr>
               {% endfor %}

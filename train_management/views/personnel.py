@@ -1,10 +1,9 @@
-from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoListView, DvzoUpdateView, DvzoDetailView
+from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoDetailView, DvzoListView, DvzoUpdateView
 from train_management.forms import PersonnelForm, UserForm
-from train_management.models import FunctionPersons, Personnel, DayPlanning
+from train_management.models import FunctionPersons, Personnel
 
 
 class PersonnelListView(DvzoListView):

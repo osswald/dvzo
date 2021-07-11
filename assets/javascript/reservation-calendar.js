@@ -7,8 +7,7 @@ let tooltip = null;
 if ($('#reservation-calendar').length > 0) {
     $(function () {
         function ConvertJsonDateToDateTime(date) {
-            let parsedDate = new Date(date);
-            return new Date(parsedDate);
+            return new Date(date);
         }
 
         const data = $.getJSON('/reservation-calendar-data/')

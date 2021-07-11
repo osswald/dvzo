@@ -9,6 +9,7 @@ import $ from 'jquery';
 import Choices from "choices.js";
 import Sortable from "sortablejs";
 import Chart from 'chart.js/auto';
+import tippy from 'tippy.js';
 
 // Ugly assign stuff on window to use in templates
 // Please remove me!
@@ -16,6 +17,7 @@ window.$ = $;
 window.Choices = Choices;
 window.Sortable = Sortable;
 window.Chart = Chart;
+window.tippy = tippy;
 
 // Custom resources
 import './javascript/resource-calendar';

@@ -128,6 +128,7 @@ urlpatterns = [
     path('reservation-calendar/', views.ReservationCalendar.as_view(), name='reservation-calendar'),
     path('reservation-calendar/<int:pk>', views.ReservationCalendarTrains.as_view(),
          name='reservation-calendar-trains'),
+    path('reservation-calendar-data/', views.ReservationCalendarData.as_view(), name='reservation-calendar-data'),
 
     path('copy-recipient/', views.CopyRecipientListView.as_view(), name='copy-recipient-list'),
     path('copy-recipient/table',

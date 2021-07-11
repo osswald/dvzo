@@ -101,6 +101,10 @@ urlpatterns = [
 
     path('traintimetabletemplate/',
          views.TrainTimetableTemplateListView.as_view(), name='train-timetable-template-list'),
+    path('traintimetabletemplate/choose/',
+         views.ChooseTimetableTemplatesView.as_view(), name='train-timetable-template-choose'),
+    path('traintimetabletemplate/use/',
+         views.CreateTimetablesFromTemplateView.as_view(), name='train-timetable-template-use'),
     path('traintimetabletemplate/<int:pk>/',
          views.TrainTimetableTemplateUpdateView.as_view(), name='train-timetable-template-detail'),
     path('traintimetabletemplate/add/',

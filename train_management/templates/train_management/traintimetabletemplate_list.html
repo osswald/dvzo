@@ -33,12 +33,17 @@
                 <tr>
                   <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
                   <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
-                  <th data-field="template_name" data-sortable="true">{% translate "train_timetable_template.template_name" %}</th>
+                  <th data-field="template_name" data-sortable="true">{% translate "train_timetable_template.template_name" %}
+                  </th>
                   <th data-field="label" data-sortable="true">{% translate "train_timetable_template.label" %}</th>
-                  <th data-field="start_station" data-sortable="true">{% translate "train_timetable_template.start_station" %}</th>
-                  <th data-field="start_time" data-sortable="true">{% translate "train_timetable_template.start_time" %}</th>
-                  <th data-field="destination_station" data-sortable="false">{% translate "train_timetable_template.destination_station" %}</th>
-                  <th data-field="destination_time" data-sortable="true">{% translate "train_timetable_template.destination_time" %}</th>
+                  <th data-field="start_station" data-sortable="true">{% translate "train_timetable_template.start_station" %}
+                  </th>
+                  <th data-field="start_time" data-sortable="true">{% translate "train_timetable_template.start_time" %}
+                  </th>
+                  <th data-field="destination_station" data-sortable="false">{% translate "train_timetable_template.destination_station" %}
+                  </th>
+                  <th data-field="destination_time" data-sortable="true">{% translate "train_timetable_template.destination_time" %}
+                  </th>
                   <th data-field="actions" data-sortable="false"></th>
                 </tr>
                 </thead>
@@ -79,22 +84,38 @@
             {% translate "template.train_timetable_template.add" %}
           </a>
           {% endif %}
-          <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
+          {% if train|length %}
+          <button id="saveTimetable" class="btn btn-primary btn-sm">Aus Vorlage erstellen</button>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
 </div>
+<form id="timetableForm" method="post" action="{% url 'train-timetable-template-use' %}">
+  {% csrf_token %}
+  <input type="hidden" id="timetableInput" name="timetables">
+  <input type="hidden" id="pk" name="pk" value="{{train}}">
+</form>
 
+
+{% endblock content %}
+{% block scripts %}
 <script>
-  var $table = $('#templateListTable');
-  var $button = $('#daySelectionBtn');
+  const $table = $('#templateListTable');
+  const saveTimetableButton = document.getElementById('saveTimetable');
+  const timetableForm = document.getElementById('timetableForm');
+  const formInput = timetableForm.querySelector('#timetableInput');
 
-  $(function() {
-      $button.click(function () {
-          alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
-        })
-    })
+  function saveTimetable() {
+    formInput.value = $table.bootstrapTable('getSelections').map(function (item){return item.id})
+    if(formInput.value.length > 0) {
+      timetableForm.submit();
+    }
+    else{alert("{% translate 'template.train_timetable_template.list.choose_templates' %}")}
+  }
+
+  $(saveTimetableButton).on('click', function () { saveTimetable() });
 
 </script>
-{% endblock content %}
+{% endblock scripts %}

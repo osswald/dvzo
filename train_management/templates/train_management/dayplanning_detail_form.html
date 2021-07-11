@@ -347,8 +347,8 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item disabled"
-                 href="{% url 'train-timetable-template-list' %}?train={{ train.id }}&active=True">
+              <a class="dropdown-item"
+                 href="{% url 'train-timetable-template-choose' %}?train={{ train.id }}">
                 <i class="far fa-id-card"></i>
                 {% translate "template.dayplanning.train.add_from_template" %}
               </a>

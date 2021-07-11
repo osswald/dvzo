@@ -12,5 +12,6 @@ class FunctionForm(BootstrapTapeformMixin, ModelForm):
         fields = ['label_short',
                   'label',
                   'function_type',
+                  'category',
                   'sorting'
                   ]

@@ -23,7 +23,7 @@
                 data-striped="true"
                 data-locale="de-DE"
                 data-search="true"
-                data-sort-name="last_name"
+                data-sort-name="name"
                 data-sort-order="asc"
                 data-pagination="true"
                 data-page-size="15"
@@ -33,8 +33,7 @@
                 <tr>
                   <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
                   <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
-                  <th data-field="last_name" data-sortable="true">{% translate "personnel.lastname" %}</th>
-                  <th data-field="first_name" data-sortable="true">{% translate "personnel.firstname" %}</th>
+                  <th data-field="name" data-sortable="true">{% translate "personnel.name" %}</th>
                   <th data-field="category" data-sortable="true">{% translate "personnel.category" %}</th>
                   <th data-field="status" data-sortable="true">{% translate "personnel.status" %}</th>
                   <th data-field="email" data-sortable="true">{% translate "personnel.email" %}</th>
@@ -47,11 +46,14 @@
                 <tr>
                   <td></td>
                   <td>{{ personnel.username }}</td>
-                  <td>{{ personnel.last_name }}</td>
-                  <td>{{ personnel.first_name }}</td>
+                  <td>
+                    <a href="{% url 'personnel-detail' pk=personnel.id %}">
+                      {{ personnel.last_name }} {{ personnel.first_name }}
+                    </a>
+                  </td>
                   <td>
                     {% for category in personnel.category.all %}
-                    {% include 'includes/personnel_category_type.html' with output=category.label %}
+                    {% include 'includes/personnel_category_type.html' with output=category.label category=category.type %}
                     {% endfor %}
                   </td>
                   <td>
@@ -72,7 +74,7 @@
                     </a>
                     {% endif %}
                     {% if perms.train_management.change_personnel %}
-                    <a href="{% url 'personnel-detail' pk=personnel.id %}">
+                    <a href="{% url 'personnel-update' pk=personnel.id %}">
                       <i class="far fa-edit"></i>
                     </a>
                     {% endif %}

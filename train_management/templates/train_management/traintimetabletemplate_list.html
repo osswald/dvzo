@@ -102,19 +102,17 @@
 {% endblock content %}
 {% block scripts %}
 <script>
+  const $table = $('#templateListTable');
   const saveTimetableButton = document.getElementById('saveTimetable');
   const timetableForm = document.getElementById('timetableForm');
   const formInput = timetableForm.querySelector('#timetableInput');
 
-  function getIdSelections() {
-    return $.map($("#templateListTable").bootstrapTable('getSelections'), function (row) {
-      return row.id
-    })
-  }
-
   function saveTimetable() {
-    formInput.value = getIdSelections();
-    timetableForm.submit();
+    formInput.value = $table.bootstrapTable('getSelections').map(function (item){return item.id})
+    if(formInput.value.length > 0) {
+      timetableForm.submit();
+    }
+    else{alert("{% translate 'template.train_timetable_template.list.choose_templates' %}")}
   }
 
   $(saveTimetableButton).on('click', function () { saveTimetable() });

@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Sum
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
+from django.forms import model_to_dict
 from django.utils.translation import gettext_lazy as _
 
 from train_management.models import AbstractDvzoModel, DayPlanning, FunctionPersons, Station, Vehicle
@@ -87,7 +88,7 @@ class TrainTimetable(AbstractDvzoModel):
         return self.label
 
 
-class TrainTimetableTemplate(AbstractDvzoModel):
+class TrainTimetableTemplate(TrainTimetable):
 
     class Meta:
         verbose_name = _("train_timetable_template.singular")
@@ -102,23 +103,8 @@ class TrainTimetableTemplate(AbstractDvzoModel):
         POSSIBLE = "possible", _("train_timetable.reservation_possible.possible")
 
     template_name = models.CharField(_("train_timetable_template.template_name"), max_length=200)
-    label = models.CharField(_("train_timetable_template.label"), max_length=200)
-    train = models.ForeignKey(Train, on_delete=models.DO_NOTHING, null=True)
-    start_station = models.ForeignKey(
-        Station, related_name="start_station_template", on_delete=models.DO_NOTHING, null=True)
-    destination_station = models.ForeignKey(
-        Station, related_name="destination_station_template", on_delete=models.DO_NOTHING, null=True)
-    start_time = models.TimeField(_("train_timetable_template.start_time"), null=True, blank=True)
-    destination_time = models.TimeField(_("train_timetable_template.destination_time"), null=True, blank=True)
-    comment = models.TextField(_("train_timetable_template.description"), blank=True)
     active = models.CharField(_("train_timetable_template.active"), max_length=50, choices=Active.choices,
                               default=Active.YES)
-    reservation_internal = models.CharField(_("train_timetable.reservation_internal"), max_length=80,
-                                            choices=ReservationPossible.choices,
-                                            default=ReservationPossible.NOT_POSSIBLE)
-    reservation_external = models.CharField(_("train_timetable.reservation_external"), max_length=80,
-                                            choices=ReservationPossible.choices,
-                                            default=ReservationPossible.NOT_POSSIBLE)
 
     def __str__(self):
         return self.template_name

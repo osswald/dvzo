@@ -12,10 +12,10 @@ if ($('#reservation-calendar').length > 0) {
 
         const data = $.getJSON('/reservation-calendar-data/')
             .done(function (responseData) {
-                for (let i = 0; i < responseData.length; i++) {
-                    responseData[i].startDate = ConvertJsonDateToDateTime(responseData[i].startDate);
-                    responseData[i].endDate = ConvertJsonDateToDateTime(responseData[i].endDate);
-                }
+                responseData.forEach((entry) => {
+                    entry.startDate = ConvertJsonDateToDateTime(entry.startDate);
+                    entry.endDate = ConvertJsonDateToDateTime(entry.endDate);
+                })
                 const calendar = new Calendar('#reservation-calendar', {
                     style: 'background',
                     language: 'de',

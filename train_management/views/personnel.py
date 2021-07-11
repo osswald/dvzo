@@ -27,12 +27,13 @@ class PersonnelDetailView(DvzoDetailView):
         for function_person in function_persons:
             if function_person.dayplanning.first() is not None:
                 dayplanning = function_person.dayplanning.first()
-            else:
+                train = function_person.dvzo_function.get_function_type_display()
+            elif function_person.train.first() is not None:
                 dayplanning = function_person.train.first().day_planning
-            if function_person.train.first() is not None:
                 train = function_person.train.first()
             else:
-                train = function_person.dvzo_function.get_function_type_display()
+                Exception("Error: Either a dayplanning or a train needs to be set for each function_person")
+
             shift_data.append({
                     'function': function_person.dvzo_function,
                     'dayplanning': dayplanning,

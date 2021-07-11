@@ -35,7 +35,7 @@ class ReservationCalendarData(DvzoView):
                     Q(booking_status=DayPlanning.DayPlanningBookingStatus.CANCELLED_DVZO))
 
         for dayplanning in dayplannings:
-            date_formatted = dayplanning.date.strftime("%Y, %m, %d")
+            date_formatted = dayplanning.date.isoformat()
             dayplanning_type = dayplanning.day_planning_type
 
             if dayplanning_type == "sunday":

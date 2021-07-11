@@ -54,8 +54,13 @@
               </a>
             </li>
             <li>
+              <a class="link-light rounded" href="{% url 'reservation-calendar' %}">
+                {% translate "side_navigation.year_calendar" %}
+              </a>
+            </li>
+            <li>
               <a class="link-light rounded" href="{% url 'calendar' %}">
-                {% translate "side_navigation.calendar" %}
+                {% translate "side_navigation.vehicle_calendar" %}
               </a>
             </li>
             {% if perms.train_management.view_dayplanning %}

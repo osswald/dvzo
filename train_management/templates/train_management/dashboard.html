@@ -21,7 +21,7 @@
                 {% for next_sunday in next_sundays %}
                 <tr>
                   <td class="pe-2">{{ next_sunday.date }}</td>
-                  <td><a href="{% url 'day-planning-detail' pk=next_sunday.id %}">{{ next_sunday }}</a></td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_sunday.id %}">{{ next_sunday|truncatechars:22 }}</a></td>
                 </tr>
                 {% endfor %}
               </table>
@@ -43,7 +43,7 @@
                 {% for next_extra in next_extras %}
                 <tr>
                   <td class="pe-2">{{ next_extra.date }}</td>
-                  <td><a href="{% url 'day-planning-detail' pk=next_extra.id %}">{{ next_extra }}</a></td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_extra.id %}">{{ next_extra|truncatechars:22 }}</a></td>
                 </tr>
                 {% endfor %}
               </table>
@@ -66,7 +66,7 @@
                 {% for next_other in next_others %}
                 <tr>
                   <td class="pe-2">{{ next_other.date }}</td>
-                  <td><a href="{% url 'day-planning-detail' pk=next_other.id %}">{{ next_other }}</a></td>
+                  <td><a href="{% url 'day-planning-detail' pk=next_other.id %}">{{ next_other|truncatechars:22 }}</a></td>
                 </tr>
                 {% endfor %}
               </table>
@@ -104,7 +104,7 @@
                 <tr>
                   <td class="pe-2">{{ dayplanning_personnel.date }}</td>
                   <td>
-                    <a href="{% url 'day-planning-detail' pk=dayplanning_personnel.id %}">{{ dayplanning_personnel }}</a>
+                    <a href="{% url 'day-planning-detail' pk=dayplanning_personnel.id %}">{{ dayplanning_personnel|truncatechars:22 }}</a>
                   </td>
                 </tr>
                 {% endfor %}
@@ -128,7 +128,7 @@
                 <tr>
                   <td class="pe-2">{{ dayplanning_slot.date }}</td>
                   <td class="pe-2">
-                    <a href="{% url 'day-planning-detail' pk=dayplanning_slot.id %}">{{ dayplanning_slot }}</a>
+                    <a href="{% url 'day-planning-detail' pk=dayplanning_slot.id %}">{{ dayplanning_slot|truncatechars:22 }}</a>
                   </td>
                   <td>{{ dayplanning_slot.get_slot_ordered_display }}</td>
                 </tr>

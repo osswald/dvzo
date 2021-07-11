@@ -38,7 +38,6 @@ if ($('#reservation-calendar').length > 0) {
                             tooltip = tippy(e.element, {
                                 placement: 'right',
                                 content: content,
-                                animateFill: false,
                                 animation: 'shift-away',
                                 arrow: true,
                                 allowHTML: true

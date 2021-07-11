@@ -44,7 +44,7 @@
                   <td>{{ category.id }}</td>
                   <td>{{ category.label }}</td>
                   <td>
-                    {% include 'includes/personnel_category_type.html' with output=category.get_type_display %}
+                    {% include 'includes/personnel_category_type.html' with output=category.get_type_display category=category.type%}
                   </td>
                   <td>
                     {% if perms.train_management.delete_personnelcategory %}

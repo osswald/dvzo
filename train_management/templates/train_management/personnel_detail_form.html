@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "personnel.detail.title" %} - {{ object.label }}{% endblock %}
+
+{% block content %}
+
+<div class="dvzo-container">
+  <div class="dvzo-header">{{ object }}</div>
+  <div class="dvzo-content">
+    <div class="dvzo-button-top">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-text">
+            <a href='{% url "personnel-list" %}' class="btn btn-primary btn-sm my-1 me-1">
+              <i class="fas fa-list"></i>
+              {% translate "Back to list" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "app.master_data" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "personnel.username" %}</th>
+                <td>{{object.username}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "personnel.name" %}</th>
+                <td>{{object.last_name}} {{object.first_name}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "personnel.mobile_phone" %}</th>
+                <td>
+                  <a href="tel:{{object.mobile_phone}}">
+                    {{object.mobile_phone.as_national}}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>{% translate "personnel.email" %}</th>
+                <td>{{object.email}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "personnel.status" %}</th>
+                <td>{{object.get_status_display}}</td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% include 'includes/card_footer.html' %}
+      </div>
+    </div>
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "personnel.category_permissions" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th></th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+                <th>{% translate "personnel.groups" %}</th>
+                <td>
+                  {% for group in object.user.groups.all %}
+                  {{group}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+                <th>{% translate "personnel.category" %}</th>
+                <td>
+                  {% for category in object.category.all %}
+                  {{category}}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="dvzo-button-bottom mb-4">
+    {% if perms.train_management.change_personnel %}
+    <a href='{% url "personnel-update" pk=object.id %}' class="btn btn-primary btn-sm my-1 me-1">
+      <i class="far fa-edit"></i>
+      {% translate "Edit" %}
+    </a>
+    {% endif %}
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="card-title">{% translate "Shifts" %}</div>
+          <div class="card-text">
+            <table class="table table-sm dvzo-25">
+              <thead>
+              <th>{% translate "Date" %}</th>
+              <th>{% translate "Label" %}</th>
+              <th>{% translate "Place/Train" %}</th>
+              <th>{% translate "Function" %}</th>
+              </thead>
+              <tbody>
+              {% for shift in shift_data|dictsortreversed:"date" %}
+              <tr>
+                <td>{{ shift.date }}</td>
+                <td>{{ shift.dayplanning }}</td>
+                <td>{{ shift.train }}</td>
+                <td>
+                  {% include 'includes/personnel_category_type.html' with output=shift.function category=shift.function.category.type %}
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

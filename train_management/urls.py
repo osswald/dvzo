@@ -44,7 +44,8 @@ urlpatterns = [
          name='bulletin-pdf'),
 
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),
-    path('personnel/<int:pk>/', views.PersonnelUpdateView.as_view(), name='personnel-detail'),
+    path('personnel/<int:pk>/', views.PersonnelDetailView.as_view(), name='personnel-detail'),
+    path('personnel/<int:pk>/edit', views.PersonnelUpdateView.as_view(), name='personnel-update'),
     path('personnel/add/', views.PersonnelCreateView.as_view(), name='personnel-create'),
     path('personnel/<int:pk>/delete/', views.PersonnelDeleteView.as_view(), name='personnel-delete'),
 

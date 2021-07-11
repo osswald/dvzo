@@ -1,10 +1,10 @@
-{% if category.type == "engine" %}
+{% if category == "engine" %}
   <span class="badge bg-primary">{{ output }}</span>
-{% elif category.type == "train" %}
+{% elif category == "train" %}
   <span class="badge bg-success">{{ output }}</span>
-{% elif category.type == "gastro" %}
+{% elif category == "gastro" %}
   <span class="badge bg-danger">{{ output }}</span>
-{% elif category.type == "station" %}
+{% elif category == "station" %}
   <span class="badge bg-warning">{{ output }}</span>
 {% else %}
   <span class="badge bg-secondary">{{ output }}</span>

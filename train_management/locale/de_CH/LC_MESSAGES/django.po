@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DVZO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 17:50+0200\n"
+"POT-Creation-Date: 2021-07-11 10:56+0200\n"
 "Language: de-ch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,15 +116,15 @@ msgid "dayplanning.type.other"
 msgstr "Andere"
 
 #: models/dayplanning.py:24
-msgid "dayplanning.paid.yes"
+msgid "dayplanning.billed.yes"
 msgstr "Ja"
 
 #: models/dayplanning.py:25
-msgid "dayplanning.paid.no"
+msgid "dayplanning.billed.no"
 msgstr "Nein"
 
 #: models/dayplanning.py:26
-msgid "dayplanning.paid.not_applicable"
+msgid "dayplanning.billed.not_applicable"
 msgstr "Nicht zutreffend"
 
 #: models/dayplanning.py:29
@@ -133,144 +133,171 @@ msgstr "Offen"
 
 #: models/dayplanning.py:30
 msgid "dayplanning.slot.ordered"
-msgstr "Bestellt"
+msgstr "Trasse bestellt"
 
-#: models/dayplanning.py:31 models/dayplanning.py:32
+#: models/dayplanning.py:31
+msgid "dayplanning.slot.reserved"
+msgstr "Trasse reserviert"
+
+#: models/dayplanning.py:32
 msgid "dayplanning.slot.received"
-msgstr "Erhalten"
+msgstr "Anordnung erhalten"
 
-#: models/dayplanning.py:35
+#: models/dayplanning.py:33
+msgid "dayplanning.slot.not_applicable"
+msgstr "Nicht zutreffend"
+
+#: models/dayplanning.py:36
 msgid "dayplanning.personnel_disposition.open"
 msgstr "Offen"
 
-#: models/dayplanning.py:36
+#: models/dayplanning.py:37
 msgid "dayplanning.personnel_disposition.disposed"
 msgstr "Eingeteilt"
 
-#: models/dayplanning.py:37
+#: models/dayplanning.py:38
 msgid "dayplanning.personnel_disposition.not_applicable"
 msgstr "Nicht zutreffend"
 
-#: models/dayplanning.py:40
+#: models/dayplanning.py:41
 msgid "dayplanning.booking_status.proposal"
 msgstr "Anfrage"
 
-#: models/dayplanning.py:41
+#: models/dayplanning.py:42
 msgid "dayplanning.booking_status.reservation"
 msgstr "Reserviert"
 
-#: models/dayplanning.py:42
+#: models/dayplanning.py:43
 msgid "dayplanning.booking_status.booked"
 msgstr "Gebucht"
 
-#: models/dayplanning.py:43
+#: models/dayplanning.py:44
 msgid "dayplanning.booking_status.cancelled_dvzo"
 msgstr "Absage DVZO"
 
-#: models/dayplanning.py:44
+#: models/dayplanning.py:45
 msgid "dayplanning.booking_status.cancelled_customer"
 msgstr "Absage Kunde"
 
-#: models/dayplanning.py:45
+#: models/dayplanning.py:46
 msgid "dayplanning.booking_status.not_applicable"
 msgstr "Nicht zutreffend"
 
-#: models/dayplanning.py:48 models/dayplanning.py:53
+#: models/dayplanning.py:49 models/dayplanning.py:54
 msgid "dayplanning.vehicle_planning_status.open"
 msgstr "Offen"
 
-#: models/dayplanning.py:49 models/dayplanning.py:54
+#: models/dayplanning.py:50 models/dayplanning.py:55
 msgid "dayplanning.vehicle_planning_status.asked"
 msgstr "Angefragt"
 
-#: models/dayplanning.py:50 models/dayplanning.py:55
+#: models/dayplanning.py:51 models/dayplanning.py:56
 msgid "dayplanning.vehicle_planning_status.ok"
 msgstr "OK"
 
-#: models/dayplanning.py:57 templates/train_management/dayplanning_list.html:34
+#: models/dayplanning.py:59
+msgid "dayplanning.railway_company.tr"
+msgstr "TransRail"
+
+#: models/dayplanning.py:60
+msgid "dayplanning.railway_company.sbb"
+msgstr "SBB"
+
+#: models/dayplanning.py:61
+msgid "dayplanning.railway_company.other"
+msgstr "Andere"
+
+#: models/dayplanning.py:63 templates/train_management/dayplanning_list.html:34
 msgid "dayplanning.label"
 msgstr "Bezeichnung"
 
-#: models/dayplanning.py:58
+#: models/dayplanning.py:64
 msgid "dayplanning.day_planning_type"
 msgstr "Typ"
 
-#: models/dayplanning.py:60
+#: models/dayplanning.py:66
 #: templates/train_management/dayplanning_detail_form.html:49
 #: templates/train_management/dayplanning_list.html:35
 msgid "dayplanning.date"
 msgstr "Datum"
 
-#: models/dayplanning.py:61
+#: models/dayplanning.py:67
 msgid "dayplanning.status"
 msgstr "Status"
 
-#: models/dayplanning.py:62
-#: templates/train_management/dayplanning_detail_form.html:119
-msgid "dayplanning.paid"
-msgstr "Bezahlt"
+#: models/dayplanning.py:68
+msgid "dayplanning.billed"
+msgstr "Fakturiert"
 
-#: models/dayplanning.py:65
-msgid "slot ordered"
-msgstr "Trasse bestellt"
+#: models/dayplanning.py:71
+msgid "dayplanning.slot_ordered_st"
+msgstr "Trassenbestellung ST"
 
-#: models/dayplanning.py:67
+#: models/dayplanning.py:73
+msgid "dayplanning.slot_ordered_sbb"
+msgstr "Trassenbestellung SBB"
+
+#: models/dayplanning.py:75
 #: templates/train_management/dayplanning_detail_form.html:79
 msgid "dayplanning.personnel_disposition"
 msgstr "Einteilung"
 
-#: models/dayplanning.py:70
+#: models/dayplanning.py:78
 #: templates/train_management/dayplanning_detail_form.html:111
 msgid "dayplanning.customers"
 msgstr "Anzahl Reisende"
 
-#: models/dayplanning.py:71
+#: models/dayplanning.py:79
 #: templates/train_management/dayplanning_detail_form.html:115
 msgid "dayplanning.price"
 msgstr "Preis"
 
-#: models/dayplanning.py:72
+#: models/dayplanning.py:80
 #: templates/train_management/dayplanning_detail_form.html:107
 msgid "dayplanning.booking_status"
 msgstr "Buchungsstatus"
 
-#: models/dayplanning.py:75
+#: models/dayplanning.py:83
 #: templates/train_management/dayplanning_detail_form.html:123
 msgid "dayplanning.comment"
 msgstr "Kommentar"
 
-#: models/dayplanning.py:76
+#: models/dayplanning.py:84
 #: templates/train_management/dayplanning_detail_form.html:58
 msgid "dayplanning.post_mortem"
 msgstr "Nachlese"
 
-#: models/dayplanning.py:77
+#: models/dayplanning.py:85
 #: templates/train_management/dayplanning_detail_form.html:83
 msgid "dayplanning.engine_planning_status"
 msgstr "Triebfahrzeug-Planung"
 
-#: models/dayplanning.py:80
+#: models/dayplanning.py:88
 #: templates/train_management/dayplanning_detail_form.html:87
 msgid "dayplanning.carriage_planning_status"
 msgstr "Wagen-Planung"
 
 #: models/dayplanning.py:91
+msgid "dayplanning.railway_company"
+msgstr "EVU"
+
+#: models/dayplanning.py:101
 msgid "dayplanning_text.singular"
 msgstr "Text"
 
-#: models/dayplanning.py:92
+#: models/dayplanning.py:102
 msgid "dayplanning_text.plural"
 msgstr "Texte"
 
-#: models/dayplanning.py:94
+#: models/dayplanning.py:104
 msgid "dayplanning_text.label"
 msgstr "Bezeichnung"
 
-#: models/dayplanning.py:95
+#: models/dayplanning.py:105
 msgid "dayplanning_text.text"
 msgstr "Text"
 
-#: models/dayplanning.py:96
+#: models/dayplanning.py:106
 msgid "dayplanning_text.sorting"
 msgstr "Sortierung"
 
@@ -1168,6 +1195,10 @@ msgstr "Trassenbestellung"
 msgid "template.dayplanning.booking"
 msgstr "Buchung"
 
+#: templates/train_management/dayplanning_detail_form.html:119
+msgid "dayplanning.paid"
+msgstr "Bezahlt"
+
 #: templates/train_management/dayplanning_detail_form.html:137
 msgid "app.edit_master_data"
 msgstr "Stammdaten bearbeiten"
@@ -1214,55 +1245,55 @@ msgstr "Frequenz"
 msgid "template.dayplanning.traintimetable.frequency"
 msgstr "Fq"
 
-#: templates/train_management/dayplanning_detail_form.html:323
+#: templates/train_management/dayplanning_detail_form.html:325
 msgid "template.dayplanning.train.edit_formation"
 msgstr "Formation bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:330
+#: templates/train_management/dayplanning_detail_form.html:332
 msgid "template.dayplanning.train.edit_functions"
 msgstr "Funktionen bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:338
+#: templates/train_management/dayplanning_detail_form.html:340
 msgid "template.dayplanning.train.add_schedule"
 msgstr "Zug hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:351
+#: templates/train_management/dayplanning_detail_form.html:353
 msgid "template.dayplanning.train.add_from_template"
 msgstr "Aus Vorlage hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:361
+#: templates/train_management/dayplanning_detail_form.html:363
 msgid "template.dayplanning.train.delete_formation"
 msgstr "Umlauf löschen"
 
-#: templates/train_management/dayplanning_detail_form.html:378
+#: templates/train_management/dayplanning_detail_form.html:380
 msgid "template.dayplanning.reservations"
 msgstr "Reservationen"
 
-#: templates/train_management/dayplanning_detail_form.html:382
+#: templates/train_management/dayplanning_detail_form.html:384
 msgid "template.dayplanning.reservations.traintimetable"
 msgstr "Fahrt"
 
-#: templates/train_management/dayplanning_detail_form.html:383
+#: templates/train_management/dayplanning_detail_form.html:385
 msgid "template.dayplanning.reservations.start_end"
 msgstr "von-bis"
 
-#: templates/train_management/dayplanning_detail_form.html:384
+#: templates/train_management/dayplanning_detail_form.html:386
 msgid "template.dayplanning.reservations.name"
 msgstr "Name"
 
-#: templates/train_management/dayplanning_detail_form.html:385
+#: templates/train_management/dayplanning_detail_form.html:387
 msgid "template.dayplanning.reservations.customers"
 msgstr "PAX"
 
-#: templates/train_management/dayplanning_detail_form.html:386
+#: templates/train_management/dayplanning_detail_form.html:388
 msgid "template.dayplanning.reservations.type"
 msgstr "Typ"
 
-#: templates/train_management/dayplanning_detail_form.html:387
+#: templates/train_management/dayplanning_detail_form.html:389
 msgid "template.dayplanning.reservations.status"
 msgstr "Status"
 
-#: templates/train_management/dayplanning_detail_form.html:388
+#: templates/train_management/dayplanning_detail_form.html:390
 msgid "template.dayplanning.reservations.comment"
 msgstr "Bemerkung"
 
@@ -1507,7 +1538,7 @@ msgstr "Telefonnummern"
 msgid "template.phone_number.list.header"
 msgstr "Telefonnummern"
 
-#: templates/train_management/phonenumber_list.html:72
+#: templates/train_management/phonenumber_list.html:73
 msgid "template.phone_number.add"
 msgstr "Telefonnummer hinzufügen"
 

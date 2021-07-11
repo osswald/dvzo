@@ -1,26 +1,65 @@
 import Calendar from "js-year-calendar";
+import 'js-year-calendar/locales/js-year-calendar.de';
 import $ from 'jquery';
 
+let tooltip = null;
+
 if ($('#reservation-calendar').length > 0) {
-  const calendar = new Calendar('#reservation-calendar', {
-    style:'background',
-    language: 'de',
-    dataSource: [
-      {
-        id: 0,
-        name: 'Testfahrt 1',
-        url: '/dayplanning/1',
-        startDate: new Date(2021, 4, 2),
-        endDate: new Date(2021, 4, 2),
-        color: '#ed174b'
-      },
-    ]
-  });
+    $(function () {
+        function ConvertJsonDateToDateTime(date) {
+            return new Date(date);
+        }
 
-  document.querySelector('#reservation-calendar').addEventListener('clickDay', function (e) {
-    window.location.pathname = ('/dayplanning/detail/2');
-  });
+        const data = $.getJSON('/reservation-calendar-data/')
+            .done(function (responseData) {
+                responseData.forEach((entry) => {
+                    entry.startDate = ConvertJsonDateToDateTime(entry.startDate);
+                    entry.endDate = ConvertJsonDateToDateTime(entry.endDate);
+                })
+                const calendar = new Calendar('#reservation-calendar', {
+                    style: 'background',
+                    language: 'de',
+                    dataSource: responseData,
+                    mouseOnDay: function (e) {
+                        if (e.events.length > 0) {
+                            let content = '';
 
-  const dateToDisable = new Date(2021, 9, 5);
-  calendar.setDisabledDays([dateToDisable]);
+                            for (const i in e.events) {
+                                content += '<div class="event-tooltip-content">'
+                                    + '<div class="event-name">' + e.events[i].name + '</div>'
+                                    + '</div>';
+                            }
+
+                            if (tooltip !== null) {
+                                tooltip.destroy();
+                                tooltip = null;
+                            }
+
+                            tooltip = tippy(e.element, {
+                                placement: 'right',
+                                content: content,
+                                animation: 'shift-away',
+                                arrow: true,
+                                allowHTML: true
+                            });
+                            tooltip.show();
+                        }
+                    },
+                    mouseOutDay: function () {
+                        if (tooltip !== null) {
+                            tooltip.destroy();
+                            tooltip = null;
+                        }
+                    }
+                });
+            })
+    })
+
+    document.querySelector('#reservation-calendar').addEventListener('clickDay', function (e) {
+        if (e.events.length > 0){
+            const id = e.events[0].id;
+            window.location.pathname = ('/dayplanning/detail/' + id);
+        }
+
+    });
 }

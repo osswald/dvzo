@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DVZO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-08 09:21+0200\n"
+"POT-Creation-Date: 2021-07-11 14:16+0200\n"
 "Language: de-ch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1221,55 +1221,55 @@ msgstr "Frequenz"
 msgid "template.dayplanning.traintimetable.frequency"
 msgstr "Fq"
 
-#: templates/train_management/dayplanning_detail_form.html:323
+#: templates/train_management/dayplanning_detail_form.html:325
 msgid "template.dayplanning.train.edit_formation"
 msgstr "Formation bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:330
+#: templates/train_management/dayplanning_detail_form.html:332
 msgid "template.dayplanning.train.edit_functions"
 msgstr "Funktionen bearbeiten"
 
-#: templates/train_management/dayplanning_detail_form.html:338
+#: templates/train_management/dayplanning_detail_form.html:340
 msgid "template.dayplanning.train.add_schedule"
 msgstr "Zug hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:351
+#: templates/train_management/dayplanning_detail_form.html:353
 msgid "template.dayplanning.train.add_from_template"
 msgstr "Aus Vorlage hinzufügen"
 
-#: templates/train_management/dayplanning_detail_form.html:361
+#: templates/train_management/dayplanning_detail_form.html:363
 msgid "template.dayplanning.train.delete_formation"
 msgstr "Umlauf löschen"
 
-#: templates/train_management/dayplanning_detail_form.html:378
+#: templates/train_management/dayplanning_detail_form.html:380
 msgid "template.dayplanning.reservations"
 msgstr "Reservationen"
 
-#: templates/train_management/dayplanning_detail_form.html:382
+#: templates/train_management/dayplanning_detail_form.html:384
 msgid "template.dayplanning.reservations.traintimetable"
 msgstr "Fahrt"
 
-#: templates/train_management/dayplanning_detail_form.html:383
+#: templates/train_management/dayplanning_detail_form.html:385
 msgid "template.dayplanning.reservations.start_end"
 msgstr "von-bis"
 
-#: templates/train_management/dayplanning_detail_form.html:384
+#: templates/train_management/dayplanning_detail_form.html:386
 msgid "template.dayplanning.reservations.name"
 msgstr "Name"
 
-#: templates/train_management/dayplanning_detail_form.html:385
+#: templates/train_management/dayplanning_detail_form.html:387
 msgid "template.dayplanning.reservations.customers"
 msgstr "PAX"
 
-#: templates/train_management/dayplanning_detail_form.html:386
+#: templates/train_management/dayplanning_detail_form.html:388
 msgid "template.dayplanning.reservations.type"
 msgstr "Typ"
 
-#: templates/train_management/dayplanning_detail_form.html:387
+#: templates/train_management/dayplanning_detail_form.html:389
 msgid "template.dayplanning.reservations.status"
 msgstr "Status"
 
-#: templates/train_management/dayplanning_detail_form.html:388
+#: templates/train_management/dayplanning_detail_form.html:390
 msgid "template.dayplanning.reservations.comment"
 msgstr "Bemerkung"
 
@@ -1549,7 +1549,7 @@ msgstr "Telefonnummern"
 msgid "template.phone_number.list.header"
 msgstr "Telefonnummern"
 
-#: templates/train_management/phonenumber_list.html:72
+#: templates/train_management/phonenumber_list.html:73
 msgid "template.phone_number.add"
 msgstr "Telefonnummer hinzufügen"
 
@@ -1587,8 +1587,8 @@ msgid "template.reservation_calendar.title"
 msgstr "Reservierungs-Kalender"
 
 #: templates/train_management/reservation_calendar.html:10
-msgid "template.reservation_calendar.header"
-msgstr "Reservierungs-Kalender"
+msgid "template.year_calendar.header"
+msgstr "Jahreskalender"
 
 #: templates/train_management/reservation_calendar_trains.html:5
 msgid "template.reservation_calendar.trains.title"
@@ -1730,3 +1730,6 @@ msgstr "Zug-Vorlage bearbeiten"
 #: templates/train_management/traintimetabletemplate_update_form.html:29
 msgid "template.train_timetable_template.submit"
 msgstr "Speichern"
+
+#~ msgid "template.reservation_calendar.header"
+#~ msgstr "Reservierungs-Kalender"

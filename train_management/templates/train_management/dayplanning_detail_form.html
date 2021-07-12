@@ -72,8 +72,16 @@
               </thead>
               <tbody>
               <tr>
-                <th>{% translate "dayplanning.slot_ordered" %}</th>
-                <td>{{object.get_slot_ordered_display}}</td>
+                <th>{% translate "dayplanning.railway_company" %}</th>
+                <td>{{object.get_railway_company_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "dayplanning.slot_ordered_st" %}</th>
+                <td>{{object.get_slot_ordered_st_display}}</td>
+              </tr>
+              <tr>
+                <th>{% translate "dayplanning.slot_ordered_sbb" %}</th>
+                <td>{{object.get_slot_ordered_sbb_display}}</td>
               </tr>
               <tr>
                 <th>{% translate "dayplanning.personnel_disposition" %}</th>
@@ -116,8 +124,8 @@
                 <td>{{object.price}}</td>
               </tr>
               <tr>
-                <th>{% translate "dayplanning.paid" %}</th>
-                <td>{{object.get_paid_display}}</td>
+                <th>{% translate "dayplanning.billed" %}</th>
+                <td>{{object.get_billed_display}}</td>
               </tr>
               <tr>
                 <th>{% translate "dayplanning.comment" %}</th>
@@ -278,7 +286,7 @@
                     {{ traintimetable.label }}
                   </div>
                   {% if traintimetable.reservation_set.all|length > 0 %}
-                  <div class="badge bg-dark">R</div>
+                  <div class="badge bg-success">R</div>
                   {% endif %}
                 </td>
                 <td>
@@ -415,7 +423,7 @@
                 </td>
                 <td>{{reservation.label}}</td>
                 <td>{{reservation.amount}}</td>
-                <td>{{reservation.get_reservation_type_display}}</td>
+                <td><span class="badge bg-success">{{reservation.get_reservation_type_display}}</span></td>
                 <td>{{reservation.get_reservation_status_display}}</td>
                 <td>{{reservation.comment}}</td>
               </tr>

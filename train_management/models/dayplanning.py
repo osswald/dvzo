@@ -20,16 +20,17 @@ class DayPlanning(AbstractDvzoModel):
         EXTRA = "extra", _("dayplanning.type.extra")
         OTHER = "other", _("dayplanning.type.other")
 
-    class DayPlanningPaid(models.TextChoices):
-        YES = "yes", _("dayplanning.paid.yes")
-        NO = "no", _("dayplanning.paid.no")
-        NOT_APPLICABLE = "not_applicable", _("dayplanning.paid.not_applicable")
+    class DayPlanningBilled(models.TextChoices):
+        YES = "yes", _("dayplanning.billed.yes")
+        NO = "no", _("dayplanning.billed.no")
+        NOT_APPLICABLE = "not_applicable", _("dayplanning.billed.not_applicable")
 
     class DayPlanningSlot(models.TextChoices):
         OPEN = "open", _("dayplanning.slot.open")
         ORDERED = "ordered", _("dayplanning.slot.ordered")
+        RESERVED = "reserved", _("dayplanning.slot.reserved")
         RECEIVED = "received", _("dayplanning.slot.received")
-        NOT_APPLICABLE = "not_applicable", _("dayplanning.slot.received")
+        NOT_APPLICABLE = "not_applicable", _("dayplanning.slot.not_applicable")
 
     class DayPlanningPersonnelDisposition(models.TextChoices):
         OPEN = "open", _("dayplanning.personnel_disposition.open")
@@ -54,16 +55,23 @@ class DayPlanning(AbstractDvzoModel):
         ASKED = "asked", _("dayplanning.vehicle_planning_status.asked")
         OK = "ok", _("dayplanning.vehicle_planning_status.ok")
 
+    class DayPlanningRailwayCompany(models.TextChoices):
+        TR = "tr", _("dayplanning.railway_company.tr")
+        SBB = "sbb", _("dayplanning.railway_company.sbb")
+        OTHER = "other", _("dayplanning.railway_company.other")
+
     label = models.CharField(_("dayplanning.label"), max_length=200)
     day_planning_type = models.CharField(_("dayplanning.day_planning_type"), max_length=80,
                                          choices=DayPlanningType.choices)
     date = models.DateField(_("dayplanning.date"))
     status = models.CharField(_("dayplanning.status"), max_length=80, choices=DayPlanningStatus.choices)
-    paid = models.TextField(_("dayplanning.paid"), max_length=80, choices=DayPlanningPaid.choices,
-                            default=DayPlanningPaid.NOT_APPLICABLE)
+    billed = models.TextField(_("dayplanning.billed"), max_length=80, choices=DayPlanningBilled.choices,
+                              default=DayPlanningBilled.NOT_APPLICABLE)
     function_persons = models.ManyToManyField(FunctionPersons, related_name="dayplanning")
-    slot_ordered = models.CharField(_("slot ordered"), max_length=80, choices=DayPlanningSlot.choices,
-                                    default=DayPlanningSlot.NOT_APPLICABLE)
+    slot_ordered_st = models.CharField(_("dayplanning.slot_ordered_st"), max_length=80, choices=DayPlanningSlot.choices,
+                                       default=DayPlanningSlot.NOT_APPLICABLE)
+    slot_ordered_sbb = models.CharField(_("dayplanning.slot_ordered_sbb"), max_length=80,
+                                        choices=DayPlanningSlot.choices, default=DayPlanningSlot.NOT_APPLICABLE)
     personnel_disposition = models.CharField(_("dayplanning.personnel_disposition"), max_length=80,
                                              choices=DayPlanningPersonnelDisposition.choices,
                                              default=DayPlanningPersonnelDisposition.OPEN)
@@ -80,6 +88,8 @@ class DayPlanning(AbstractDvzoModel):
     carriage_planning_status = models.CharField(_("dayplanning.carriage_planning_status"), max_length=80,
                                                 choices=DayPlanningCarriagePlanningStatus.choices,
                                                 default=DayPlanningCarriagePlanningStatus.OPEN)
+    railway_company = models.CharField(_("dayplanning.railway_company"), max_length=80,
+                                       choices=DayPlanningRailwayCompany.choices, default=DayPlanningRailwayCompany.TR)
 
     def __str__(self):
         return self.label

@@ -157,12 +157,16 @@
               <tr>
                 <td>{{dayplanning_text.label}}</td>
                 <td>
+                  {% if perms.train_management.change_dayplanning_text %}
                   <a href="{% url 'day-planning-text-delete' pk=dayplanning_text.id %}">
                     <i class="fas fa-trash-alt text-danger"></i>
-                  </a>&nbsp;
+                  </a>
+                  {% endif %}
+                  {% if perms.train_management.delete_dayplanning_text %}&nbsp;
                   <a href="{% url 'day-planning-text-update' pk=dayplanning_text.id %}">
                     <i class="far fa-edit"></i>
                   </a>
+                  {% endif %}
                 </td>
               </tr>
               {% endfor %}
@@ -180,7 +184,7 @@
         </a>
         {% endif %}
       </div>
-      {% if perms.train_management.view_dvzofunction %}
+      {% if perms.train_management.view_functionpersons %}
       <div class="card my-2">
         <div class="card-body">
           <div class="card-title">{% translate "template.dayplanning.functions" %}</div>

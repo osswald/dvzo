@@ -8,7 +8,7 @@ from train_management.models import DayPlanning, TrainTimetable
 
 
 class ReservationCalendar(DvzoView):
-    permission_required = ''
+    permission_required = 'train_management.view_dayplanning'
     def get(self, request):
         return render(request, "train_management/reservation_calendar.html")
 

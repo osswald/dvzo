@@ -1,0 +1,64 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main.min.css' %}" type="text/css">
+    <style>
+      html {
+        background-color: #ffffff;
+      }
+      @page {
+        margin: 3cm 1.5cm 1.5cm;
+
+        @top-left {
+          content: element(pageHeader);
+        }
+
+        @bottom-right {
+          color: #a9a;
+          content: 'DVZO Betriebsplanung - betriebsplanung@dvzo.ch - dvzo.app';
+          font-family: 'Inter var', sans-serif;
+          font-size: 9pt;
+        }
+
+        @bottom-left{
+          content: "Seite " counter(page) " von " counter(pages);
+          font-family: 'Inter var', sans-serif;
+          font-size: 9pt;
+        }
+      }
+      #pageHeader{
+        position: running(pageHeader);
+      }
+    </style>
+    {% block style %}{% endblock %}
+    <title>PDF</title>
+
+  </head>
+  <body>
+    <div id="pageHeader">
+      <table>
+        <tr>
+          <td>
+            <img class="top-logo-pdf" src="file://localhost/static/assets/dvzo-logo.png" alt="dvzo logo">
+          </td>
+          <td>
+            <div class="top-address">
+              Dampfbahn-Verein Zürcher Oberland<br>
+              Postfach, 8494 Bauma, info@dvzo.ch, www.dvzo.ch<br>
+              CHE-104.143.432 MWST
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="pdf">
+
+        {% block content %}{% endblock %}
+
+    </div>
+  </body>
+</html>

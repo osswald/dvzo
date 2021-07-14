@@ -42,6 +42,8 @@ urlpatterns = [
          name='briefing-pdf'),
     path('bulletin/', views.BulletinPrintView.as_view(template_name="pdf/bulletin.html"),
          name='bulletin-pdf'),
+    path('bulletin-html/', views.DayPlanningBulletinView.as_view(template_name="pdf/bulletin_html.html"),
+         name='bulletin-html'),
 
     path('personnel/', views.PersonnelListView.as_view(), name='personnel-list'),
     path('personnel/<int:pk>/', views.PersonnelDetailView.as_view(), name='personnel-detail'),

@@ -51,6 +51,8 @@ class Vehicle(AbstractDvzoModel):
     uic = models.CharField(_("vehicle.uic"), max_length=200, blank=True)
     image = models.ImageField(_("vehicle.image"), blank=True, null=True)
     gross_weight = models.FloatField(_("vehicle.gross_weight"), blank=True, null=True)
+    empty_weight = models.FloatField(_("vehicle.empty_weight"), blank=True, null=True)
+    added_weight = models.FloatField(_("vehicle.added_weight"), blank=True, null=True)
     seats = models.IntegerField(_("vehicle.seats"), blank=True, null=True)
     vehicle_type = models.CharField(_("vehicle.type"),
                                     max_length=80, choices=VehicleType.choices)

@@ -18,7 +18,8 @@ class Dashboard(DvzoView):
         next_others = future_dayplannings.filter(day_planning_type='other').order_by('date')[:3]
         personnel_missing = future_dayplannings.filter(personnel_disposition='open').order_by('date')[:5]
         slot_missing = future_dayplannings.filter(
-            Q(slot_ordered='open') | Q(slot_ordered='ordered')).order_by('date')[:5]
+            Q(slot_ordered_st='open') | Q(slot_ordered_st='ordered') |
+            Q(slot_ordered_sbb='open') | Q(slot_ordered_sbb='ordered')).order_by('date')[:5]
         return render(request, "train_management/dashboard.html",
                       {
                           'next_sundays': next_sundays,

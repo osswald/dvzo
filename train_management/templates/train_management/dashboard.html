@@ -130,7 +130,6 @@
                   <td class="pe-2">
                     <a href="{% url 'day-planning-detail' pk=dayplanning_slot.id %}">{{ dayplanning_slot|truncatechars:22 }}</a>
                   </td>
-                  <td>{{ dayplanning_slot.get_slot_ordered_display }}</td>
                 </tr>
                 {% endfor %}
               </table>

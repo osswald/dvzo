@@ -24,8 +24,7 @@ class DvzoTestCase(TestCase):
         self.user.save()
 
     def login(self):
-        """Login the test user.
-        """
+        """Login the test user."""
         self.client.login(**self.credentials)
 
     def add_permissions(self, permissions):

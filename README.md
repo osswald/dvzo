@@ -39,6 +39,9 @@ flake8 .
 # run isort checks (import sorting/ordering)
 isort . [--check]
 
+# run black checks (opinionated formatting)
+black . [--check]
+
 # check vulnerabilities
 bandit --ini .bandit -r
 ```

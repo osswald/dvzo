@@ -1,9 +1,13 @@
 from django.db import models
-from django.db.models.signals import post_delete, post_save
+from django.db.models.signals import post_delete
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import AbstractDvzoModel, DayPlanning, TrainConfiguration, Vehicle
+from train_management.models import AbstractDvzoModel
+from train_management.models import DayPlanning
+from train_management.models import TrainConfiguration
+from train_management.models import Vehicle
 
 
 class Availability(AbstractDvzoModel):
@@ -21,10 +25,9 @@ class Availability(AbstractDvzoModel):
     dayplanning = models.ForeignKey(DayPlanning, on_delete=models.DO_NOTHING, null=True)
     start = models.DateField(_("availability.start"))
     end = models.DateField(_("availability.end"))
-    availability_status = models.CharField(_("availability.status"),
-                                           max_length=80,
-                                           choices=AvailabilityStatus.choices,
-                                           default=AvailabilityStatus.SERVICE)
+    availability_status = models.CharField(
+        _("availability.status"), max_length=80, choices=AvailabilityStatus.choices, default=AvailabilityStatus.SERVICE
+    )
 
     def __str__(self):
         return self.vehicle.label
@@ -44,5 +47,6 @@ def train_configuration_post_create(sender, instance, created, *args, **kwargs):
     availability_status = Availability.AvailabilityStatus.IN_USE
     date = day_planning.date
     if created:
-        Availability(vehicle=vehicle, dayplanning=day_planning,
-                     start=date, end=date, availability_status=availability_status).save()
+        Availability(
+            vehicle=vehicle, dayplanning=day_planning, start=date, end=date, availability_status=availability_status
+        ).save()

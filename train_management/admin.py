@@ -1,10 +1,12 @@
 from django.contrib import admin
 
-from .models import DayPlanning, Train, Vehicle
+from .models import DayPlanning
+from .models import Train
+from .models import Vehicle
 
 
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('label', 'vehicle_type', 'uic', 'status')
+    list_display = ("label", "vehicle_type", "uic", "status")
 
 
 admin.site.register(Vehicle, VehicleAdmin)

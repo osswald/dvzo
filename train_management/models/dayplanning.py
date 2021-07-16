@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import AbstractDvzoModel, FunctionPersons
+from train_management.models import AbstractDvzoModel
+from train_management.models import FunctionPersons
 
 
 class DayPlanning(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("dayplanning.singular")
         verbose_name_plural = _("dayplanning.plural")
@@ -61,42 +61,70 @@ class DayPlanning(AbstractDvzoModel):
         OTHER = "other", _("dayplanning.railway_company.other")
 
     label = models.CharField(_("dayplanning.label"), max_length=200)
-    day_planning_type = models.CharField(_("dayplanning.day_planning_type"), max_length=80,
-                                         choices=DayPlanningType.choices)
+    day_planning_type = models.CharField(
+        _("dayplanning.day_planning_type"), max_length=80, choices=DayPlanningType.choices
+    )
     date = models.DateField(_("dayplanning.date"))
     status = models.CharField(_("dayplanning.status"), max_length=80, choices=DayPlanningStatus.choices)
-    billed = models.TextField(_("dayplanning.billed"), max_length=80, choices=DayPlanningBilled.choices,
-                              default=DayPlanningBilled.NOT_APPLICABLE)
+    billed = models.TextField(
+        _("dayplanning.billed"),
+        max_length=80,
+        choices=DayPlanningBilled.choices,
+        default=DayPlanningBilled.NOT_APPLICABLE,
+    )
     function_persons = models.ManyToManyField(FunctionPersons, related_name="dayplanning")
-    slot_ordered_st = models.CharField(_("dayplanning.slot_ordered_st"), max_length=80, choices=DayPlanningSlot.choices,
-                                       default=DayPlanningSlot.NOT_APPLICABLE)
-    slot_ordered_sbb = models.CharField(_("dayplanning.slot_ordered_sbb"), max_length=80,
-                                        choices=DayPlanningSlot.choices, default=DayPlanningSlot.NOT_APPLICABLE)
-    personnel_disposition = models.CharField(_("dayplanning.personnel_disposition"), max_length=80,
-                                             choices=DayPlanningPersonnelDisposition.choices,
-                                             default=DayPlanningPersonnelDisposition.OPEN)
+    slot_ordered_st = models.CharField(
+        _("dayplanning.slot_ordered_st"),
+        max_length=80,
+        choices=DayPlanningSlot.choices,
+        default=DayPlanningSlot.NOT_APPLICABLE,
+    )
+    slot_ordered_sbb = models.CharField(
+        _("dayplanning.slot_ordered_sbb"),
+        max_length=80,
+        choices=DayPlanningSlot.choices,
+        default=DayPlanningSlot.NOT_APPLICABLE,
+    )
+    personnel_disposition = models.CharField(
+        _("dayplanning.personnel_disposition"),
+        max_length=80,
+        choices=DayPlanningPersonnelDisposition.choices,
+        default=DayPlanningPersonnelDisposition.OPEN,
+    )
     customers = models.IntegerField(_("dayplanning.customers"), blank=True, null=True)
     price = models.DecimalField(_("dayplanning.price"), blank=True, max_digits=8, decimal_places=2, null=True)
-    booking_status = models.CharField(_("dayplanning.booking_status"), max_length=80,
-                                      choices=DayPlanningBookingStatus.choices,
-                                      default=DayPlanningBookingStatus.NOT_APPLICABLE)
+    booking_status = models.CharField(
+        _("dayplanning.booking_status"),
+        max_length=80,
+        choices=DayPlanningBookingStatus.choices,
+        default=DayPlanningBookingStatus.NOT_APPLICABLE,
+    )
     comment = models.TextField(_("dayplanning.comment"), blank=True)
     post_mortem = models.TextField(_("dayplanning.post_mortem"), blank=True)
-    engine_planning_status = models.CharField(_("dayplanning.engine_planning_status"), max_length=80,
-                                              choices=DayPlanningEnginePlanningStatus.choices,
-                                              default=DayPlanningEnginePlanningStatus.OPEN)
-    carriage_planning_status = models.CharField(_("dayplanning.carriage_planning_status"), max_length=80,
-                                                choices=DayPlanningCarriagePlanningStatus.choices,
-                                                default=DayPlanningCarriagePlanningStatus.OPEN)
-    railway_company = models.CharField(_("dayplanning.railway_company"), max_length=80,
-                                       choices=DayPlanningRailwayCompany.choices, default=DayPlanningRailwayCompany.TR)
+    engine_planning_status = models.CharField(
+        _("dayplanning.engine_planning_status"),
+        max_length=80,
+        choices=DayPlanningEnginePlanningStatus.choices,
+        default=DayPlanningEnginePlanningStatus.OPEN,
+    )
+    carriage_planning_status = models.CharField(
+        _("dayplanning.carriage_planning_status"),
+        max_length=80,
+        choices=DayPlanningCarriagePlanningStatus.choices,
+        default=DayPlanningCarriagePlanningStatus.OPEN,
+    )
+    railway_company = models.CharField(
+        _("dayplanning.railway_company"),
+        max_length=80,
+        choices=DayPlanningRailwayCompany.choices,
+        default=DayPlanningRailwayCompany.TR,
+    )
 
     def __str__(self):
         return self.label
 
 
 class DayPlanningText(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("dayplanning_text.singular")
         verbose_name_plural = _("dayplanning_text.plural")

@@ -5,16 +5,13 @@ from train_management.models import Train
 
 
 class TrainForm(BootstrapTapeformMixin, ModelForm):
-    field_container_css_class = 'mb-3'
+    field_container_css_class = "mb-3"
 
     class Meta:
         model = Train
-        fields = ['km',
-                  'label',
-                  'frequency'
-                  ]
+        fields = ["km", "label", "frequency"]
 
     def __init__(self, *args, **kwargs):
         super(TrainForm, self).__init__(*args, **kwargs)
 
-        self.fields['frequency'].widget.attrs['readonly'] = True
+        self.fields["frequency"].widget.attrs["readonly"] = True

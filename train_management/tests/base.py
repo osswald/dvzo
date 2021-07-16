@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Permission
 from django.http import HttpResponse
-from django.test import Client, TestCase
+from django.test import Client
+from django.test import TestCase
 from lxml import html
 
 from train_management.tests.helpers import SetupHelper
@@ -17,9 +18,7 @@ class DvzoTestCase(TestCase):
         username: username
         password: secret
         """
-        self.credentials = {
-            'username': 'testuser',
-            'password': 'secret'}
+        self.credentials = {"username": "testuser", "password": "secret"}
         self.user = User.objects.create(username=self.credentials["username"])
         self.user.set_password(self.credentials["password"])
         self.user.save()

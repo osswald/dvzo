@@ -1,13 +1,16 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoUpdateView
+from dvzo.views import DvzoCreateView
+from dvzo.views import DvzoDeleteView
+from dvzo.views import DvzoUpdateView
 from train_management.forms import TrainTimetableForm
-from train_management.models import Train, TrainTimetable
+from train_management.models import Train
+from train_management.models import TrainTimetable
 
 
 class TrainTimetableCreateView(DvzoCreateView):
-    permission_required = 'train_management.add_traintimetable'
+    permission_required = "train_management.add_traintimetable"
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
@@ -26,23 +29,23 @@ class TrainTimetableCreateView(DvzoCreateView):
         return return_value
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.train.day_planning.id})
 
 
 class TrainTimetableUpdateView(DvzoUpdateView):
-    permission_required = 'train_management.change_traintimetable'
+    permission_required = "train_management.change_traintimetable"
     model = TrainTimetable
     form_class = TrainTimetableForm
     template_name_suffix = "_update_form"
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.train.day_planning.id})
 
 
 class TrainTimetableDeleteView(DvzoDeleteView):
-    permission_required = 'train_management.delete_traintimetable'
+    permission_required = "train_management.delete_traintimetable"
     model = TrainTimetable
     template_name = "train_management/confirm_delete.html"
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.train.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.train.day_planning.id})

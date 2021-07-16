@@ -5,7 +5,6 @@ from train_management.models import AbstractDvzoModel
 
 
 class PersonnelCategory(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("personnel_category.singular")
         verbose_name_plural = _("personnel_category.plural")

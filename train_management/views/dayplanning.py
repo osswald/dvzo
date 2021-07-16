@@ -1,16 +1,29 @@
 from datetime import date
 
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoDetailView, DvzoListView, DvzoUpdateView, DvzoView
+from dvzo.views import DvzoCreateView
+from dvzo.views import DvzoDeleteView
+from dvzo.views import DvzoDetailView
+from dvzo.views import DvzoListView
+from dvzo.views import DvzoUpdateView
+from dvzo.views import DvzoView
 from train_management.forms import DayPlanningFieldsetForm
-from train_management.models import (CopyRecipient, DayPlanning, DayPlanningText, DvzoFunction, FunctionPersons,
-                                     Personnel, Train, TrainTimetable,)
+from train_management.models import CopyRecipient
+from train_management.models import DayPlanning
+from train_management.models import DayPlanningText
+from train_management.models import DvzoFunction
+from train_management.models import FunctionPersons
+from train_management.models import Personnel
+from train_management.models import Train
+from train_management.models import TrainTimetable
 
 
 class DayPlanningListView(DvzoListView):
-    permission_required = 'train_management.view_dayplanning'
+    permission_required = "train_management.view_dayplanning"
     context_object_name = "day_plannings"
 
     def get_queryset(self):
@@ -18,7 +31,7 @@ class DayPlanningListView(DvzoListView):
 
 
 class DayPlanningBulletinView(DvzoListView):
-    permission_required = 'train_management.view_dayplanning'
+    permission_required = "train_management.view_dayplanning"
     context_object_name = "day_plannings"
 
     def get_queryset(self):
@@ -27,7 +40,7 @@ class DayPlanningBulletinView(DvzoListView):
 
 
 class DayPlanningDetailView(DvzoDetailView):
-    permission_required = 'train_management.view_dayplanning'
+    permission_required = "train_management.view_dayplanning"
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_detail_form"
@@ -38,24 +51,25 @@ class DayPlanningDetailView(DvzoDetailView):
             function_type = functions.function_type
             function_type_data = {}
             for dvzo_function in DvzoFunction.objects.filter(
-                    functionpersons__dayplanning=self.object,
-                    function_type=function_type).order_by("sorting"):
-                persons = [function_person.person for function_person in FunctionPersons.objects.filter(
-                    dayplanning=self.object,
-                    dvzo_function=dvzo_function)]
+                functionpersons__dayplanning=self.object, function_type=function_type
+            ).order_by("sorting"):
+                persons = [
+                    function_person.person
+                    for function_person in FunctionPersons.objects.filter(
+                        dayplanning=self.object, dvzo_function=dvzo_function
+                    )
+                ]
                 function_type_data[dvzo_function] = persons
             function_types[function_type] = function_type_data
 
         trains_data = []
-        for train in Train.objects.filter(day_planning=self.object).order_by('pk'):
+        for train in Train.objects.filter(day_planning=self.object).order_by("pk"):
             functions = {}
             for function in _get_dvzo_functions_train().filter(functionpersons__train=train):
                 functions[function] = Personnel.objects.filter(
-                    functionpersons__dvzo_function=function,
-                    functionpersons__train=train)
-            trains_data.append({
-                "train": train,
-                "functions": functions})
+                    functionpersons__dvzo_function=function, functionpersons__train=train
+                )
+            trains_data.append({"train": train, "functions": functions})
 
         traintimetables = TrainTimetable.objects.filter(train__in=self.object.train_set.all()).order_by("label")
         dayplanning_texts = DayPlanningText.objects.filter(dayplanning=self.object).order_by("sorting")
@@ -64,31 +78,32 @@ class DayPlanningDetailView(DvzoDetailView):
             trains_data=trains_data,
             traintimetables=traintimetables,
             dayplanning_texts=dayplanning_texts,
-            **kwargs)
+            **kwargs
+        )
 
 
 class DayPlanningUpdateView(DvzoUpdateView):
-    permission_required = 'train_management.change_dayplanning'
+    permission_required = "train_management.change_dayplanning"
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_update_form"
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.id})
 
 
 class DayPlanningCreateView(DvzoCreateView):
-    permission_required = 'train_management.add_dayplanning'
+    permission_required = "train_management.add_dayplanning"
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_create_form"
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.id})
 
 
 class DayPlanningRecipientView(DvzoDetailView):
-    permission_required = 'train_management.view_dayplanning'
+    permission_required = "train_management.view_dayplanning"
     model = DayPlanning
     form_class = DayPlanningFieldsetForm
     template_name_suffix = "_recipient_form"
@@ -105,18 +120,19 @@ class DayPlanningRecipientView(DvzoDetailView):
             copy_recipients=copy_recipients,
             all_active_personnel=all_active_personnel,
             all_working_personnel=all_working_personnel_distinct,
-            **kwargs)
+            **kwargs
+        )
 
 
 class DayPlanningDeleteView(DvzoDeleteView):
-    permission_required = 'train_management.delete_dayplanning'
+    permission_required = "train_management.delete_dayplanning"
     model = DayPlanning
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("day-planning-list")
 
 
 class EditTrainFunctions(DvzoView):
-    permission_required = 'train_management.change_dayplanning'
+    permission_required = "train_management.change_dayplanning"
 
     def get(self, request, train_id, **kwargs):
         train = get_object_or_404(Train, pk=train_id)
@@ -124,14 +140,13 @@ class EditTrainFunctions(DvzoView):
         for dvzo_function in _get_dvzo_functions_train():
             all_function_persons_of_train = dvzo_function.functionpersons_set.filter(train=train)
             persons_ids = list(set([x.person.id for x in all_function_persons_of_train]))
-            dvzo_functions_with_extra_info.append({
-                'function': dvzo_function,
-                'persons': persons_ids,
-            })
+            dvzo_functions_with_extra_info.append({"function": dvzo_function, "persons": persons_ids})
 
         return render(
-            self.request, 'train_management/train_functions.html',
-            {'functions': dvzo_functions_with_extra_info, 'persons': _get_personnel()})
+            self.request,
+            "train_management/train_functions.html",
+            {"functions": dvzo_functions_with_extra_info, "persons": _get_personnel()},
+        )
 
     def post(self, request, train_id):
         train = get_object_or_404(Train, pk=train_id)
@@ -141,8 +156,8 @@ class EditTrainFunctions(DvzoView):
             if persons_in_function_ids:
                 for person_id in persons_in_function_ids:
                     function_person = FunctionPersons(
-                        person=Personnel.objects.get(pk=person_id),
-                        dvzo_function=dvzo_function)
+                        person=Personnel.objects.get(pk=person_id), dvzo_function=dvzo_function
+                    )
                     function_person.save()
                     function_persons.append(function_person)
         train.function_persons.set(function_persons)
@@ -151,29 +166,23 @@ class EditTrainFunctions(DvzoView):
 
 
 class EditDayPlanningFunctions(DvzoView):
-    permission_required = 'train_management.change_dayplanning'
+    permission_required = "train_management.change_dayplanning"
 
     def get(self, request, dayplanning_id, **kwargs):
         dayplanning = get_object_or_404(DayPlanning, pk=dayplanning_id)
-        places = [place for place in DvzoFunction.FunctionType
-                  if place != DvzoFunction.FunctionType.TRAIN]
+        places = [place for place in DvzoFunction.FunctionType if place != DvzoFunction.FunctionType.TRAIN]
         places.sort(key=lambda x: x.label)
         dvzo_functions_with_extra_info = []
         for dvzo_function in _get_dvzo_functions_no_train():
             all_function_persons_of_dayplanning = dvzo_function.functionpersons_set.filter(dayplanning=dayplanning)
             persons_ids = list(set([x.person.id for x in all_function_persons_of_dayplanning]))
-            dvzo_functions_with_extra_info.append({
-                'function': dvzo_function,
-                'persons': persons_ids,
-            })
+            dvzo_functions_with_extra_info.append({"function": dvzo_function, "persons": persons_ids})
 
         return render(
-            self.request, 'train_management/dayplanning_functions.html',
-            {'places': places,
-             'functions': dvzo_functions_with_extra_info,
-             'persons': _get_personnel()
-
-             })
+            self.request,
+            "train_management/dayplanning_functions.html",
+            {"places": places, "functions": dvzo_functions_with_extra_info, "persons": _get_personnel()},
+        )
 
     def post(self, request, dayplanning_id):
         dayplanning = get_object_or_404(DayPlanning, pk=dayplanning_id)
@@ -183,8 +192,8 @@ class EditDayPlanningFunctions(DvzoView):
             if persons_in_function_ids:
                 for person_id in persons_in_function_ids:
                     function_person = FunctionPersons(
-                        person=Personnel.objects.get(pk=person_id),
-                        dvzo_function=dvzo_function)
+                        person=Personnel.objects.get(pk=person_id), dvzo_function=dvzo_function
+                    )
                     function_person.save()
                     function_persons.append(function_person)
         dayplanning.function_persons.set(function_persons)
@@ -193,12 +202,12 @@ class EditDayPlanningFunctions(DvzoView):
 
 
 def _get_dvzo_functions_train():
-    return DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN).order_by('sorting')
+    return DvzoFunction.objects.filter(function_type=DvzoFunction.FunctionType.TRAIN).order_by("sorting")
 
 
 def _get_dvzo_functions_no_train():
-    return DvzoFunction.objects.exclude(function_type=DvzoFunction.FunctionType.TRAIN).order_by('sorting')
+    return DvzoFunction.objects.exclude(function_type=DvzoFunction.FunctionType.TRAIN).order_by("sorting")
 
 
 def _get_personnel():
-    return Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by('user__last_name')
+    return Personnel.objects.filter(status=Personnel.PersonnelStatus.ACTIVE).order_by("user__last_name")

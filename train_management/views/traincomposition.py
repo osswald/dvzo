@@ -1,13 +1,17 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoUpdateView
+from dvzo.views import DvzoCreateView
+from dvzo.views import DvzoDeleteView
+from dvzo.views import DvzoUpdateView
 from train_management.forms import TrainForm
-from train_management.models import DayPlanning, Train, Vehicle
+from train_management.models import DayPlanning
+from train_management.models import Train
+from train_management.models import Vehicle
 
 
 class TrainCompositionUpdateView(DvzoUpdateView):
-    permission_required = 'train_management.change_train'
+    permission_required = "train_management.change_train"
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"
@@ -25,11 +29,11 @@ class TrainCompositionUpdateView(DvzoUpdateView):
         return super().post(request, **kwargs)
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.day_planning.id})
 
 
 class TrainCompositionCreateView(DvzoCreateView):
-    permission_required = 'train_management.add_train'
+    permission_required = "train_management.add_train"
     model = Train
     form_class = TrainForm
     template_name_suffix = "_update_form"
@@ -52,13 +56,13 @@ class TrainCompositionCreateView(DvzoCreateView):
         return return_value
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.day_planning.id})
 
 
 class TrainDeleteView(DvzoDeleteView):
-    permission_required = 'train_management.delete_station'
+    permission_required = "train_management.delete_station"
     model = Train
     template_name = "train_management/confirm_delete.html"
 
     def get_success_url(self):
-        return reverse_lazy("day-planning-detail", kwargs={'pk': self.object.day_planning.id})
+        return reverse_lazy("day-planning-detail", kwargs={"pk": self.object.day_planning.id})

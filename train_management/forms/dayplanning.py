@@ -8,66 +8,51 @@ from train_management.models import DayPlanning
 
 
 class DayPlanningForm(BootstrapTapeformMixin, ModelForm):
-    field_container_css_class = 'mb-3'
+    field_container_css_class = "mb-3"
 
     class Meta:
         model = DayPlanning
-        fields = ['label',
-                  'date',
-                  'day_planning_type',
-                  'status',
-                  'billed',
-                  'slot_ordered_st',
-                  'slot_ordered_sbb',
-                  'railway_company',
-                  'personnel_disposition',
-                  'customers',
-                  'price',
-                  'booking_status',
-                  'comment',
-                  'post_mortem',
-                  'engine_planning_status',
-                  'carriage_planning_status'
-                  ]
-    date = forms.DateField(
-        widget=forms.DateInput(format='%Y-%m-%d')
-    )
+        fields = [
+            "label",
+            "date",
+            "day_planning_type",
+            "status",
+            "billed",
+            "slot_ordered_st",
+            "slot_ordered_sbb",
+            "railway_company",
+            "personnel_disposition",
+            "customers",
+            "price",
+            "booking_status",
+            "comment",
+            "post_mortem",
+            "engine_planning_status",
+            "carriage_planning_status",
+        ]
+
+    date = forms.DateField(widget=forms.DateInput(format="%Y-%m-%d"))
 
 
 class DayPlanningFieldsetForm(TapeformFieldsetsMixin, DayPlanningForm):
     fieldsets = (
         {
-            'extra': {
-                'title': _("form.dayplanning.master_data"),
-                'css_class': 'csssss'
-            },
-            'fields': (
-                'label',
-                'date',
-                'day_planning_type',
-                'status',
-                'post_mortem'),
-        }, {
-            'extra': {
-                'title': _("form.dayplanning.planning"),
-                'css_class': 'csssss',
-            },
-            'fields': (
-                'railway_company',
-                'slot_ordered_st',
-                'slot_ordered_sbb',
-                'personnel_disposition',
-                'engine_planning_status',
-                'carriage_planning_status'),
-        }, {
-            'extra': {
-                'title': _("form.dayplanning.booking"),
-                'css_class': 'csssss',
-            },
-            'fields': (
-                'booking_status',
-                'customers',
-                'price',
-                'billed',
-                'comment'),
-        })
+            "extra": {"title": _("form.dayplanning.master_data"), "css_class": "csssss"},
+            "fields": ("label", "date", "day_planning_type", "status", "post_mortem"),
+        },
+        {
+            "extra": {"title": _("form.dayplanning.planning"), "css_class": "csssss"},
+            "fields": (
+                "railway_company",
+                "slot_ordered_st",
+                "slot_ordered_sbb",
+                "personnel_disposition",
+                "engine_planning_status",
+                "carriage_planning_status",
+            ),
+        },
+        {
+            "extra": {"title": _("form.dayplanning.booking"), "css_class": "csssss"},
+            "fields": ("booking_status", "customers", "price", "billed", "comment"),
+        },
+    )

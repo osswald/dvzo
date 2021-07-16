@@ -26,5 +26,13 @@ class TestDashboard(DvzoTestCase):
         titles = self.resolve_xpath(response, "//div[@class='card-title']/text()")
         self.assertEqual(
             titles,
-            ['Nächste Fahrsonntage', 'Nächste Extrafahrten', 'Andere Fahrten', 'Frequenzen 2021',
-             'Fehlende Einteilung', 'Fehlende Trassenbestellung', 'Was ist neu?'])
+            [
+                "Nächste Fahrsonntage",
+                "Nächste Extrafahrten",
+                "Andere Fahrten",
+                "Frequenzen 2021",
+                "Fehlende Einteilung",
+                "Fehlende Trassenbestellung",
+                "Was ist neu?",
+            ],
+        )

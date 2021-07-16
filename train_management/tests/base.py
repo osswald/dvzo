@@ -2,7 +2,7 @@ from django.contrib.auth.models import Permission
 from django.http import HttpResponse
 from django.test import Client
 from django.test import TestCase
-from lxml import html
+from lxml import html  # nosec
 
 from train_management.tests.helpers import SetupHelper
 from users.models import User

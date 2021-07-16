@@ -26,7 +26,7 @@ python manage.py runserver
 pip install ".[test]"
 
 # run tests
-pytest
+python manage.py test
 ```
 
 For the formatting we have flake8 and isort in place plus bandit for

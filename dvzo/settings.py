@@ -1,6 +1,8 @@
 import os
+import sys
 from pathlib import Path
 
+from django.core.management import execute_from_command_line
 from dotenv import load_dotenv
 
 BASE_DIR = Path('.')
@@ -23,17 +25,17 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'phonenumber_field',
-    'tapeforms',
-    'compressor',
-] + PROJECT_APPS
+                     'whitenoise.runserver_nostatic',
+                     'django.contrib.admin',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     'phonenumber_field',
+                     'tapeforms',
+                     'compressor',
+                 ] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +81,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dvzo.wsgi.application'
 
-if os.getenv("PRODUCTION") == "False":
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
+    }
+    execute_from_command_line(['./manage.py', 'migrate'])
+elif os.getenv("PRODUCTION") != "True":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

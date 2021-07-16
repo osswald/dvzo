@@ -30,6 +30,7 @@ TEST_REQUIRE = [
     'flake8',
     'isort',
     'bandit',
+    'lxml',
 ]
 
 setuptools.setup(

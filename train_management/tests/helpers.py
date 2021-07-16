@@ -48,7 +48,7 @@ class SetupHelper:
             day_planning_type=DayPlanning.DayPlanningType.EXTRA,
             date=date.fromisoformat(date_str),
             status=DayPlanning.DayPlanningStatus.CONFIRMED,
-            paid=True,
+            billed=True,
         )
         day_planning.save()
         return day_planning

@@ -9,15 +9,15 @@ class Route(AbstractDvzoModel):
     class Meta:
         verbose_name = _("route.singular")
         verbose_name_plural = _("route.plural")
-        
+
     class Reason(models.TextChoices):
         NO_STOP = "no_stop", _("route.reason.no_stop")
         NO_STOP_DIFF = "no_stop_diff", _("route.reason.no_stop_diff")
         START = "start", _("route.reason.start")
         END = "end", _("route.reason.end")
         STOP = "stop", _("route.reason.stop")
-        
-# TODO: form, view, template. in template and view limit station (starting with 2nd station) to neighbours of previous station
+
+# TODO: form, view, template. in template and view limit station (starting with 2nd station) to neighbours of previous station  # noqa
 # in template and view handle adding of additional route-points
 
     traintimetable = models.ForeignKey(TrainTimetable, null=True, on_delete=models.DO_NOTHING)

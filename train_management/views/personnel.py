@@ -35,11 +35,11 @@ class PersonnelDetailView(DvzoDetailView):
                 Exception("Error: Either a dayplanning or a train needs to be set for each function_person")
 
             shift_data.append({
-                    'function': function_person.dvzo_function,
-                    'dayplanning': dayplanning,
-                    'date': dayplanning.date,
-                    'train': train
-                })
+                'function': function_person.dvzo_function,
+                'dayplanning': dayplanning,
+                'date': dayplanning.date,
+                'train': train
+            })
         return super().get_context_data(shift_data=shift_data, **kwargs)
 
 

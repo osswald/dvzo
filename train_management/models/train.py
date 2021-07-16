@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import Sum
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.forms import model_to_dict
 from django.utils.translation import gettext_lazy as _
 
 from train_management.models import AbstractDvzoModel, DayPlanning, FunctionPersons, Station, Vehicle

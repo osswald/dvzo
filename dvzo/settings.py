@@ -25,17 +25,17 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = [
-                     'whitenoise.runserver_nostatic',
-                     'django.contrib.admin',
-                     'django.contrib.auth',
-                     'django.contrib.contenttypes',
-                     'django.contrib.sessions',
-                     'django.contrib.messages',
-                     'django.contrib.staticfiles',
-                     'phonenumber_field',
-                     'tapeforms',
-                     'compressor',
-                 ] + PROJECT_APPS
+    'whitenoise.runserver_nostatic',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'phonenumber_field',
+    'tapeforms',
+    'compressor',
+] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,7 +1,6 @@
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.utils import dateformat, formats
 
 from dvzo.views import DvzoView
 from train_management.models import DayPlanning, TrainTimetable
@@ -9,6 +8,7 @@ from train_management.models import DayPlanning, TrainTimetable
 
 class ReservationCalendar(DvzoView):
     permission_required = 'train_management.view_dayplanning'
+
     def get(self, request):
         return render(request, "train_management/reservation_calendar.html")
 
@@ -18,7 +18,8 @@ class ReservationCalendarTrains(DvzoView):
 
     def get(self, request, pk, **kwargs):
         dayplanning = get_object_or_404(DayPlanning, pk=pk)
-        traintimetables = TrainTimetable.objects.filter(train__in=dayplanning.train_set.all()).order_by("label")
+        traintimetables = TrainTimetable.objects.filter(train__in=dayplanning.train_set.all()).order_by(
+            "label")
 
         return render(self.request, 'train_management/reservation_calendar_trains.html',
                       {'traintimetables': traintimetables, 'dayplanning': dayplanning})
@@ -30,9 +31,9 @@ class ReservationCalendarData(DvzoView):
     def get(self, request):
         dayplannings_out = []
         color = 'grey'
-        dayplannings = DayPlanning.objects.\
-            exclude(Q(booking_status=DayPlanning.DayPlanningBookingStatus.CANCELLED_CUSTOMER) |
-                    Q(booking_status=DayPlanning.DayPlanningBookingStatus.CANCELLED_DVZO))
+        dayplannings = DayPlanning.objects. \
+            exclude(Q(booking_status=DayPlanning.DayPlanningBookingStatus.CANCELLED_CUSTOMER) | Q(
+                booking_status=DayPlanning.DayPlanningBookingStatus.CANCELLED_DVZO))
 
         for dayplanning in dayplannings:
             date_formatted = dayplanning.date.isoformat()

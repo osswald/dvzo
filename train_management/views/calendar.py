@@ -8,6 +8,7 @@ from train_management.models import Availability, Vehicle
 
 class Calendar(DvzoView):
     permission_required = 'train_management.view_dayplanning'
+
     def get(self, request):
 
         return render(request, "train_management/calendar.html")
@@ -15,6 +16,7 @@ class Calendar(DvzoView):
 
 class CalendarAvailabilityData(DvzoView):
     permission_required = 'train_management.view_dayplanning'
+
     def get(self, request):
         availabilities_out = []
         availabilites = Availability.objects.all()
@@ -46,6 +48,7 @@ class CalendarAvailabilityData(DvzoView):
 
 class CalendarResourceData(DvzoView):
     permission_required = 'train_management.view_dayplanning'
+
     def get(self, request):
         resources_out = []
         resources = Vehicle.objects.all()

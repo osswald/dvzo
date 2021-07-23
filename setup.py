@@ -3,34 +3,28 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-NAME = 'dvzo'
-VERSION = '0.9.0'
-AUTHOR = 'osswald'
-EMAIL = 'christoph.osswald@dvzo.ch'
-DESCRIPTION = 'Betriebsplanung'
-URL = 'https://github.com/osswald/dvzo'
+NAME = "dvzo"
+VERSION = "0.9.0"
+AUTHOR = "osswald"
+EMAIL = "christoph.osswald@dvzo.ch"
+DESCRIPTION = "Betriebsplanung"
+URL = "https://github.com/osswald/dvzo"
 REQUIRED = [
-    'Pillow',
-    'weasyprint==52.5',  # use specific version of weasyprint since the following version is broken.
-    'gunicorn',
-    'django-compressor',
-    'Django',
-    'python-dotenv',
-    'psycopg2-binary',
-    'whitenoise[brotli]',
-    'django-phonenumber-field[phonenumbers]',
-    'django-tapeforms',
-    'django-weasyprint',
-    'django-currentuser',
-    'Django'
+    "Pillow",
+    "weasyprint==52.5",  # use specific version of weasyprint since the following version is broken.
+    "gunicorn",
+    "django-compressor",
+    "Django",
+    "python-dotenv",
+    "psycopg2-binary",
+    "whitenoise[brotli]",
+    "django-phonenumber-field[phonenumbers]",
+    "django-tapeforms",
+    "django-weasyprint",
+    "django-currentuser",
+    "Django",
 ]
-TEST_REQUIRE = [
-    'pytest',
-    'pytest-azurepipelines',
-    'flake8',
-    'isort',
-    'bandit',
-]
+TEST_REQUIRE = ["pytest", "pytest-azurepipelines", "black", "flake9", "isort", "bandit", "lxml"]
 
 setuptools.setup(
     name=NAME,
@@ -48,7 +42,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU GPL V3",
     ],
     install_requires=REQUIRED,
-    extras_require={
-        'test': TEST_REQUIRE
-    },
+    extras_require={"test": TEST_REQUIRE},
 )

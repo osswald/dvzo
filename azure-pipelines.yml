@@ -30,7 +30,8 @@ steps:
 - script: |
     flake8 .
     isort . --check
-  displayName: 'Style checks (pep8, isort)'
+    black . --check
+  displayName: 'Style checks (pep8, isort, black)'
 
 - script: |
     bandit --ini .bandit -r

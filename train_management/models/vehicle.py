@@ -5,7 +5,6 @@ from train_management.models import AbstractDvzoModel
 
 
 class Vehicle(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("vehicle.singular")
         verbose_name_plural = _("vehicle.plural")
@@ -54,14 +53,10 @@ class Vehicle(AbstractDvzoModel):
     empty_weight = models.FloatField(_("vehicle.empty_weight"), blank=True, null=True)
     added_weight = models.FloatField(_("vehicle.added_weight"), blank=True, null=True)
     seats = models.IntegerField(_("vehicle.seats"), blank=True, null=True)
-    vehicle_type = models.CharField(_("vehicle.type"),
-                                    max_length=80, choices=VehicleType.choices)
-    status = models.CharField(_("vehicle.status"),
-                              max_length=80, choices=Status.choices, default=Status.AVAILABLE)
-    carriage_type = models.CharField(_("vehiclecarriage_type"),
-                                     max_length=80, choices=CarriageType.choices, blank=True)
-    home = models.CharField(_("vehicle.home"),
-                            max_length=80, choices=Home.choices)
+    vehicle_type = models.CharField(_("vehicle.type"), max_length=80, choices=VehicleType.choices)
+    status = models.CharField(_("vehicle.status"), max_length=80, choices=Status.choices, default=Status.AVAILABLE)
+    carriage_type = models.CharField(_("vehiclecarriage_type"), max_length=80, choices=CarriageType.choices, blank=True)
+    home = models.CharField(_("vehicle.home"), max_length=80, choices=Home.choices)
     start_year = models.IntegerField(_("vehicle.start_year"), blank=True, null=True)
     last_revision = models.DateField(_("vehicle.last_revision"), blank=True, null=True)
     next_revision = models.DateField(_("vehicle.next_revision"), blank=True, null=True)
@@ -70,10 +65,8 @@ class Vehicle(AbstractDvzoModel):
     manufacturer = models.CharField(_("vehicle.manufacturer"), max_length=200, blank=True)
     traction_25 = models.IntegerField(_("vehicle.traction_25"), blank=True, null=True)
     traction_30 = models.IntegerField(_("vehicle.traction_30"), blank=True, null=True)
-    power_unit = models.CharField(_("vehicle.power_unit"),
-                                  max_length=80, choices=PowerUnit.choices)
-    steam_heating = models.CharField(_("vehicles.steam_heating"),
-                                     max_length=80, choices=SteamHeating.choices)
+    power_unit = models.CharField(_("vehicle.power_unit"), max_length=80, choices=PowerUnit.choices)
+    steam_heating = models.CharField(_("vehicles.steam_heating"), max_length=80, choices=SteamHeating.choices)
     max_speed = models.IntegerField(_("vehicle.maximum_speed"), blank=True, null=True)
 
     def __str__(self):

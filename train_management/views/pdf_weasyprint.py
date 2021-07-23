@@ -5,7 +5,8 @@ from django_weasyprint import WeasyTemplateResponseMixin
 from django_weasyprint.utils import django_url_fetcher
 from django_weasyprint.views import WeasyTemplateResponse
 
-from train_management.views import DayPlanningBulletinView, DayPlanningDetailView
+from train_management.views import DayPlanningBulletinView
+from train_management.views import DayPlanningDetailView
 
 
 class CustomWeasyTemplateResponse(WeasyTemplateResponse):

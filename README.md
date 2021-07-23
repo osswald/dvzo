@@ -26,7 +26,7 @@ python manage.py runserver
 pip install ".[test]"
 
 # run tests
-pytest
+python manage.py test
 ```
 
 For the formatting we have flake8 and isort in place plus bandit for
@@ -38,6 +38,9 @@ flake8 .
 
 # run isort checks (import sorting/ordering)
 isort . [--check]
+
+# run black checks (opinionated formatting)
+black . [--check]
 
 # check vulnerabilities
 bandit --ini .bandit -r

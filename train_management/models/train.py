@@ -1,15 +1,18 @@
 from django.db import models
 from django.db.models import Sum
-from django.db.models.signals import post_delete, post_save
+from django.db.models.signals import post_delete
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.forms import model_to_dict
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import AbstractDvzoModel, DayPlanning, FunctionPersons, Station, Vehicle
+from train_management.models import AbstractDvzoModel
+from train_management.models import DayPlanning
+from train_management.models import FunctionPersons
+from train_management.models import Station
+from train_management.models import Vehicle
 
 
 class Train(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("train.singular")
         verbose_name_plural = _("train.plural")
@@ -25,8 +28,7 @@ class Train(AbstractDvzoModel):
 
     @property
     def vehicles(self):
-        return Vehicle.objects.filter(
-            trainconfiguration__train=self).order_by('trainconfiguration__sorting')
+        return Vehicle.objects.filter(trainconfiguration__train=self).order_by("trainconfiguration__sorting")
 
     def set_composition(self, vehicles):
         TrainConfiguration.objects.filter(train=self).delete()
@@ -37,18 +39,19 @@ class Train(AbstractDvzoModel):
 
         for timetable in timetables:
             template = TrainTimetableTemplate.objects.get(pk=timetable.pk)
-            TrainTimetable(train=self,
-                           label=template.label,
-                           start_station=template.start_station,
-                           destination_station=template.destination_station,
-                           start_time=template.start_time,
-                           destination_time=template.destination_time,
-                           reservation_internal=template.reservation_internal,
-                           reservation_external=template.reservation_external,).save()
+            TrainTimetable(
+                train=self,
+                label=template.label,
+                start_station=template.start_station,
+                destination_station=template.destination_station,
+                start_time=template.start_time,
+                destination_time=template.destination_time,
+                reservation_internal=template.reservation_internal,
+                reservation_external=template.reservation_external,
+            ).save()
 
 
 class TrainConfiguration(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("train_configuration.singular")
         verbose_name_plural = _("train_configuration.plural")
@@ -59,7 +62,6 @@ class TrainConfiguration(AbstractDvzoModel):
 
 
 class TrainTimetable(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("train_timetable.singular")
         verbose_name_plural = _("train_timetable.plural")
@@ -71,17 +73,24 @@ class TrainTimetable(AbstractDvzoModel):
     label = models.CharField(_("train_timetable.label"), max_length=200)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, null=True)
     start_station = models.ForeignKey(Station, related_name="start_station", on_delete=models.DO_NOTHING, null=True)
-    destination_station = models.ForeignKey(Station, related_name="destination_station",
-                                            on_delete=models.DO_NOTHING, null=True)
+    destination_station = models.ForeignKey(
+        Station, related_name="destination_station", on_delete=models.DO_NOTHING, null=True
+    )
     start_time = models.TimeField(_("train_timetable.start time"), null=True, blank=True)
     destination_time = models.TimeField(_("train_timetable.destination time"), null=True, blank=True)
     comment = models.TextField(_("train_timetable.description"), blank=True)
-    reservation_internal = models.CharField(_("train_timetable.reservation_internal"), max_length=80,
-                                            choices=ReservationPossible.choices,
-                                            default=ReservationPossible.NOT_POSSIBLE)
-    reservation_external = models.CharField(_("train_timetable.reservation_external"), max_length=80,
-                                            choices=ReservationPossible.choices,
-                                            default=ReservationPossible.NOT_POSSIBLE)
+    reservation_internal = models.CharField(
+        _("train_timetable.reservation_internal"),
+        max_length=80,
+        choices=ReservationPossible.choices,
+        default=ReservationPossible.NOT_POSSIBLE,
+    )
+    reservation_external = models.CharField(
+        _("train_timetable.reservation_external"),
+        max_length=80,
+        choices=ReservationPossible.choices,
+        default=ReservationPossible.NOT_POSSIBLE,
+    )
     frequency = models.IntegerField(_("train_timetable.frequency"), null=True, blank=True)
 
     def __str__(self):
@@ -89,7 +98,6 @@ class TrainTimetable(AbstractDvzoModel):
 
 
 class TrainTimetableTemplate(TrainTimetable):
-
     class Meta:
         verbose_name = _("train_timetable_template.singular")
         verbose_name_plural = _("train_timetable_template.plural")
@@ -103,8 +111,9 @@ class TrainTimetableTemplate(TrainTimetable):
         POSSIBLE = "possible", _("train_timetable.reservation_possible.possible")
 
     template_name = models.CharField(_("train_timetable_template.template_name"), max_length=200)
-    active = models.CharField(_("train_timetable_template.active"), max_length=50, choices=Active.choices,
-                              default=Active.YES)
+    active = models.CharField(
+        _("train_timetable_template.active"), max_length=50, choices=Active.choices, default=Active.YES
+    )
 
     def __str__(self):
         return self.template_name
@@ -114,8 +123,8 @@ class TrainTimetableTemplate(TrainTimetable):
 def sum_up_frequencies_on_save(sender, instance, created, *args, **kwargs):
     train = Train.objects.get(id=instance.train.id)
     train_timetables = TrainTimetable.objects.filter(train=train)
-    frequency = train_timetables.aggregate(Sum('frequency'))
-    train.frequency = frequency['frequency__sum']
+    frequency = train_timetables.aggregate(Sum("frequency"))
+    train.frequency = frequency["frequency__sum"]
     train.save()
 
 
@@ -123,6 +132,6 @@ def sum_up_frequencies_on_save(sender, instance, created, *args, **kwargs):
 def sum_up_frequencies_on_delete(sender, instance, *args, **kwargs):
     train = Train.objects.get(id=instance.train.id)
     train_timetables = TrainTimetable.objects.filter(train=train)
-    frequency = train_timetables.aggregate(Sum('frequency'))
-    train.frequency = frequency['frequency__sum']
+    frequency = train_timetables.aggregate(Sum("frequency"))
+    train.frequency = frequency["frequency__sum"]
     train.save()

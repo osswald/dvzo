@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from train_management.models import AbstractDvzoModel, PersonnelCategory
+from train_management.models import AbstractDvzoModel
+from train_management.models import PersonnelCategory
 
 
 class DvzoFunction(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("dvzo_function.singular")
         verbose_name_plural = _("dvzo_function.plural")

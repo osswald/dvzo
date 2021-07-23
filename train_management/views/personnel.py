@@ -1,13 +1,19 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
-from dvzo.views import DvzoCreateView, DvzoDeleteView, DvzoDetailView, DvzoListView, DvzoUpdateView
-from train_management.forms import PersonnelForm, UserForm
-from train_management.models import FunctionPersons, Personnel
+from dvzo.views import DvzoCreateView
+from dvzo.views import DvzoDeleteView
+from dvzo.views import DvzoDetailView
+from dvzo.views import DvzoListView
+from dvzo.views import DvzoUpdateView
+from train_management.forms import PersonnelForm
+from train_management.forms import UserForm
+from train_management.models import FunctionPersons
+from train_management.models import Personnel
 
 
 class PersonnelListView(DvzoListView):
-    permission_required = 'train_management.view_personnel'
+    permission_required = "train_management.view_personnel"
     model = Personnel
     context_object_name = "personnels"
 
@@ -16,7 +22,7 @@ class PersonnelListView(DvzoListView):
 
 
 class PersonnelDetailView(DvzoDetailView):
-    permission_required = 'train_management.view_vehicle'
+    permission_required = "train_management.view_vehicle"
     model = Personnel
     form_class = PersonnelForm
     template_name = "train_management/personnel_detail_form.html"
@@ -34,17 +40,19 @@ class PersonnelDetailView(DvzoDetailView):
             else:
                 Exception("Error: Either a dayplanning or a train needs to be set for each function_person")
 
-            shift_data.append({
-                    'function': function_person.dvzo_function,
-                    'dayplanning': dayplanning,
-                    'date': dayplanning.date,
-                    'train': train
-                })
+            shift_data.append(
+                {
+                    "function": function_person.dvzo_function,
+                    "dayplanning": dayplanning,
+                    "date": dayplanning.date,
+                    "train": train,
+                }
+            )
         return super().get_context_data(shift_data=shift_data, **kwargs)
 
 
 class PersonnelUpdateView(DvzoUpdateView):
-    permission_required = 'train_management.change_personnel'
+    permission_required = "train_management.change_personnel"
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_update_form"
@@ -74,7 +82,7 @@ class PersonnelUpdateView(DvzoUpdateView):
 
 
 class PersonnelCreateView(DvzoCreateView):
-    permission_required = 'train_management.add_personnel'
+    permission_required = "train_management.add_personnel"
     model = Personnel
     form_class = PersonnelForm
     template_name_suffix = "_create_form"
@@ -109,7 +117,7 @@ class PersonnelCreateView(DvzoCreateView):
 
 
 class PersonnelDeleteView(DvzoDeleteView):
-    permission_required = 'train_management.delete_personnel'
+    permission_required = "train_management.delete_personnel"
     model = Personnel
     template_name = "train_management/confirm_delete.html"
     success_url = reverse_lazy("personnel-list")

@@ -6,7 +6,6 @@ from train_management.models import AbstractDvzoModel
 
 
 class PhoneNumber(AbstractDvzoModel):
-
     class Meta:
         verbose_name = _("phone_number.singular")
         verbose_name_plural = _("phone_number.plural")

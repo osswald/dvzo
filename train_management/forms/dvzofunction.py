@@ -5,13 +5,8 @@ from train_management.models import DvzoFunction
 
 
 class FunctionForm(BootstrapTapeformMixin, ModelForm):
-    field_container_css_class = 'mb-3'
+    field_container_css_class = "mb-3"
 
     class Meta:
         model = DvzoFunction
-        fields = ['label_short',
-                  'label',
-                  'function_type',
-                  'category',
-                  'sorting'
-                  ]
+        fields = ["label_short", "label", "function_type", "category", "sorting"]

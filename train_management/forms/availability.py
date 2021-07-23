@@ -6,18 +6,11 @@ from train_management.models import Availability
 
 
 class AvailabilityForm(BootstrapTapeformMixin, ModelForm):
-    field_container_css_class = 'mb-3'
+    field_container_css_class = "mb-3"
 
     class Meta:
         model = Availability
-        fields = ['availability_status',
-                  'start',
-                  'end'
-                  ]
+        fields = ["availability_status", "start", "end"]
 
-    start = forms.DateField(
-        widget=forms.DateInput(format='%Y-%m-%d')
-    )
-    end = forms.DateField(
-        widget=forms.DateInput(format='%Y-%m-%d')
-    )
+    start = forms.DateField(widget=forms.DateInput(format="%Y-%m-%d"))
+    end = forms.DateField(widget=forms.DateInput(format="%Y-%m-%d"))

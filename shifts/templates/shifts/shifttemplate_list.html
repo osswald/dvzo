@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "template.shift_template.list.title" %}{% endblock %}
+
+{% block content %}
+<div class="dvzo-container">
+  <div class="dvzo-header">
+    {% translate "template.shift_template.list.header" %}
+  </div>
+
+  <div class="dvzo-content">
+    <div class="row">
+      <div class="col">
+        <div class="card my-2">
+          <div class="card-body">
+            <div class="card-text">
+              <table
+                id="shiftTemplateListTable"
+                data-toggle="table"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-locale="de-DE"
+                data-search="true"
+                data-sort-name="label"
+                data-sort-order="asc"
+                data-pagination="true"
+                data-page-size="15"
+                data-page-list="[15, 25, 50, 100, 200, All]"
+              >
+                <thead>
+                <tr>
+                  <th data-field="state" data-checkbox="true">{% translate "table.state" %}</th>
+                  <th data-field="id" data-visible="false">{% translate "table.id" %}</th>
+                  <th data-field="label" data-sortable="true">{% translate "shift_template.label" %}</th>
+                  <th data-field="category" data-sortable="true">{% translate "shift_template.category" %}</th>
+                  <th data-field="active" data-sortable="true">{% translate "shift_template.active" %}</th>
+                  <th data-field="actions" data-sortable="false"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for shift_template in shift_templates %}
+                <tr>
+                  <td></td>
+                  <td>{{ shift_template.id }}</td>
+                  <td>{{ shift_template.label }}</td>
+                  <td>{{ shift_template.get_category_display }}</td>
+                  <td>{{ shift_template.active }}</td>
+                  <td>
+                    {% if perms.shifts.delete_shifttemplate %}
+                    <a href="{% url 'shift-template-delete' pk=shift_template.id %}">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </a>
+                    {% endif %}
+                    {% if perms.shifts.change_shifttemplate %}
+                    <a href="{% url 'shift-template-update' pk=shift_template.id %}">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="dvzo-buttons-bottom">
+          {% if perms.shifts.add_shifttemplate %}
+          <a href="{% url 'shift-template-create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+            {% translate "template.shift_template.add" %}
+          </a>
+          {% endif %}
+          <button id="daySelectionBtn" class="btn btn-primary btn-sm disabled">tmpGetSelections</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var $table = $('#stationListTable');
+var $button = $('#daySelectionBtn');
+
+$(function() {
+    $button.click(function () {
+        alert('getSelections: ' + JSON.stringify($table.bootstrapTable('getSelections')))
+      })
+  })
+
+</script>
+{% endblock content %}

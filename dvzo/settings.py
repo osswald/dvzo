@@ -19,7 +19,8 @@ ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS"), ]
 
 PROJECT_APPS = [
     'train_management',
-    'users'
+    'users',
+    'shifts'
 ]
 
 INSTALLED_APPS = [
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'dvzo.wsgi.application'
 if os.getenv("PRODUCTION") == "False":
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USERNAME'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOSTNAME'),
+            'PORT': os.getenv('DB_PORT'),
         }
     }
 else:

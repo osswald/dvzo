@@ -5,15 +5,15 @@
 
 {% block style %}
 <style>
-  @page  {
+  @page {
     size: landscape;
 
     @top-right {
-          color: #a9a;
-          content: '{% now "SHORT_DATETIME_FORMAT" %}';
-          font-family: 'Inter var', sans-serif;
-          font-size: 9pt;
-        }
+      color: #a9a;
+      content: '{% now "SHORT_DATETIME_FORMAT" %}';
+      font-family: 'Inter var', sans-serif;
+      font-size: 9pt;
+    }
   }
 </style>
 
@@ -24,14 +24,15 @@
 <h1>Bulletin</h1>
 
 {% for day_planning in day_plannings %}
-<b>{{day_planning.date}} {{day_planning}}</b>
-<table class="table table-sm table-bulletin">
-  <thead class="table-dark">
+<div style="page-break-inside: avoid">
+  <b>{{day_planning.date}} {{day_planning}}</b>
+  <table class="table table-sm table-bulletin">
+    <thead class="table-dark">
     <th style="width: 5cm;">Buchung</th>
     <th>Fahrten</th>
     <th style="width: 10cm;">Bemerkungen</th>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr>
       <td>
         <table>
@@ -78,14 +79,14 @@
           <tr>
             <td>
               <div class="badge bg-secondary">
-                    {{ timetable.label }}
-                  </div>
+                {{ timetable.label }}
+              </div>
             </td>
             <td>
               <span class="fw-bold">{{ timetable.start_station }}</span>
-                  <span>{{ timetable.start_time }}</span>
-                  - <span class="fw-bold">{{ timetable.destination_station }}</span>
-                  <span>{{ timetable.destination_time }}</span>
+              <span>{{ timetable.start_time }}</span>
+              - <span class="fw-bold">{{ timetable.destination_station }}</span>
+              <span>{{ timetable.destination_time }}</span>
             </td>
           </tr>
           {% endfor %}
@@ -94,9 +95,9 @@
       </td>
       <td>{{ day_planning.comment }}</td>
     </tr>
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
+</div>
 
 
 {% endfor %}
